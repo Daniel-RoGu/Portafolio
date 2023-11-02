@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Permisos>
+
+@{
+    ViewData["Title"] = "Mostrar";
+}
+
+<h1 style="text-align:center">PERMISOS</h1>
+
+<p>
+    <a asp-action="Registrar" class="btn btn-success">Crear Nuevo</a>
+</p>
+<table class="table">
+    <thead class=" table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idPermiso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombrePermiso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estadoPermiso)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new {id=item.idPermiso }, new {@class = "btn btn-primary"})
+                    @Html.ActionLink("Eliminar", "Eliminar", new {id=item.idPermiso }, new {@class = "btn btn-danger"})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

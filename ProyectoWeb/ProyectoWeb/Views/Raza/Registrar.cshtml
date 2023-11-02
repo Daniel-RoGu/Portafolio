@@ -1,0 +1,41 @@
+﻿@model ProyectoWeb.Models.Raza
+
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<h1 style="text-align:center">Registrar Raza</h1>
+
+
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Registrar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="idRaza" class="control-label"></label>
+                <input asp-for="idRaza" class="form-control" />
+                <span asp-validation-for="idRaza" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="nombreRaza" class="control-label">Nombre</label>
+                <input asp-for="nombreRaza" class="form-control" />
+                <span asp-validation-for="nombreRaza" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="estadoRaza" class="control-label">Estado</label>
+                <input asp-for="estadoRaza" class="form-control" />
+                <span asp-validation-for="estadoRaza" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Mostrar">Regresar a la Lista</a>
+</div>
+

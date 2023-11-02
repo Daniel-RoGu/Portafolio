@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Mascota>
+
+@{
+    ViewData["Title"] = "Mostrar";
+}
+
+<h1 style="text-align:center" >MASCOTAS</h1>
+
+<p>
+    <a asp-action="Registrar" class="btn btn-success">Crear</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @* <th>
+            @Html.DisplayNameFor(model => model.idMascota)
+            </th>*@
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Peso</th>
+            <th>Género</th>
+            <th>Observaciones</th>
+         @*   <th>
+                @Html.DisplayNameFor(model => model.estadoMascota)
+            </th>*@
+           @* <th>
+                @Html.DisplayNameFor(model => model.fk_idRaza)
+            </th>*@
+            <th>Raza</th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.fk_idTipo_Mascota)
+            </th>*@
+            <th> Tipo mascota</th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.fk_idUsuario)
+            </th>*@
+            <th>Dueño</th>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.imagen)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @* <td>
+            @Html.DisplayFor(modelItem => item.idMascota)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreMascota)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.edadMascota)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pesoMascota)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.generoMascota)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.observaciones)
+                </td>
+                @* <td>
+            @Html.DisplayFor(modelItem => item.estadoMascota)
+            </td>*@
+                @* <td>
+            @Html.DisplayFor(modelItem => item.fk_idRaza)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.raza)
+                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.fk_idTipo_Mascota)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.tpmascota)
+                </td>
+                @* <td>
+            @Html.DisplayFor(modelItem => item.fk_idUsuario)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.dueno)
+                </td>
+                @*  <td>
+            @Html.DisplayFor(modelItem => item.imagen)
+            </td>*@
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new {id=item.idMascota}, new {@class = "btn btn-primary"})
+                    @Html.ActionLink("Eliminar", "Eliminar", new {id=item.idMascota}, new {@class = "btn btn-danger"})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

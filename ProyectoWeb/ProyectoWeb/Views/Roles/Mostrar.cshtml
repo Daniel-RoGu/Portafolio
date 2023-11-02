@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Roles>
+
+@{
+    ViewData["Title"] = "Mostrar";
+}
+
+<h1 style="text-align:center">Roles</h1>
+
+<p>
+    <a asp-action="Registrar" class="btn btn-success">Crear Nuevo</a>
+</p>
+<table class="table">
+    <thead class=" table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idRol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreRol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estadoRol)
+            </td>
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new {id=item.idRol}, new {@class = "btn btn-primary"})
+                    @Html.ActionLink("Eliminar", "Eliminar", new {id=item.idRol}, new {@class = "btn btn-danger"})
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

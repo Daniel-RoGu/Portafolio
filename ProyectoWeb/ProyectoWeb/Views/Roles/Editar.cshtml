@@ -1,0 +1,39 @@
+﻿@model ProyectoWeb.Models.Roles
+
+@{
+    ViewData["Title"] = "Editar";
+}
+<h1 style="text-align:center">EDITAR ROLES</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idRol" class="control-label">Id</label>
+                <input asp-for="idRol" class="form-control"readonly/>
+                <span asp-validation-for="idRol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombreRol" class="control-label">Nombre</label>
+                <input asp-for="nombreRol" class="form-control" />
+                <span asp-validation-for="nombreRol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="estadoRol" class="control-label">Estado</label>
+                <input asp-for="estadoRol" class="form-control" />
+                <span asp-validation-for="estadoRol" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Mostrar">Regresar a la Lista</a>
+</div>
+

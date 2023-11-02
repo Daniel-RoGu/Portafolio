@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Persona>
+
+@{
+    ViewData["Title"] = "Mostrar";
+    TipoDocumento tpd = new TipoDocumento();
+}
+
+<h1 style="text-align:center" >PERSONAS</h1>
+
+<table class="table">
+    <thead class=" table-dark">
+        <tr>
+            <th>Identificación</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Edad</th>
+            <th>Teléfono</th>
+            <th>Ubicación</th>
+            <th>Correo</th>
+            <th>Documento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombrePersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellidoPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.edadPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefonoPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ubicacionPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correoPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fk_idTipoDocumento)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "Editar", new { id=item.idPersona }, new { @class="btn btn-primary btn-sm" })
+                    @Html.ActionLink("Eliminar", "Eliminar", new { id=item.idPersona }, new { @class="btn btn-danger btn-sm" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

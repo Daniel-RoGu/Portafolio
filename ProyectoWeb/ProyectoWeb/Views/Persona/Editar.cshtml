@@ -1,0 +1,65 @@
+﻿@model ProyectoWeb.Models.Persona
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1 style="text-align:center">EDITAR PERSONA</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idPersona" class="control-label">Documento</label>
+                <input asp-for="idPersona" class="form-control" readonly/>
+                <span asp-validation-for="idPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombrePersona" class="control-label"></label>
+                <input asp-for="nombrePersona" class="form-control" />
+                <span asp-validation-for="nombrePersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="apellidoPersona" class="control-label"></label>
+                <input asp-for="apellidoPersona" class="form-control" />
+                <span asp-validation-for="apellidoPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="edadPersona" class="control-label"></label>
+                <input asp-for="edadPersona" class="form-control" />
+                <span asp-validation-for="edadPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telefonoPersona" class="control-label"></label>
+                <input asp-for="telefonoPersona" class="form-control" />
+                <span asp-validation-for="telefonoPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ubicacionPersona" class="control-label"></label>
+                <input asp-for="ubicacionPersona" class="form-control" />
+                <span asp-validation-for="ubicacionPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="correoPersona" class="control-label"></label>
+                <input asp-for="correoPersona" class="form-control" />
+                <span asp-validation-for="correoPersona" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="fk_idTipoDocumento" class="control-label"></label>
+                <input asp-for="fk_idTipoDocumento" class="form-control" />
+                <span asp-validation-for="fk_idTipoDocumento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Mostrar">Regrasar a la Lista</a>
+</div>
+

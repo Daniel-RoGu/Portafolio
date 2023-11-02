@@ -1,0 +1,40 @@
+﻿@model ProyectoWeb.Models.Vacunas
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<h4>Vacunas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idVacunas" class="control-label"></label>
+                <input asp-for="idVacunas" class="form-control" />
+                <span asp-validation-for="idVacunas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombreVacuna" class="control-label"></label>
+                <input asp-for="nombreVacuna" class="form-control" />
+                <span asp-validation-for="nombreVacuna" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="estadoVacuna" class="control-label"></label>
+                <input asp-for="estadoVacuna" class="form-control" />
+                <span asp-validation-for="estadoVacuna" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

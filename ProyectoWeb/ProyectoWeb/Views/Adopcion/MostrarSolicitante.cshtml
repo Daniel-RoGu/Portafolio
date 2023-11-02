@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Adopcion>
+
+@{
+    ViewData["Title"] = "MostrarSolicitante";
+}
+
+<h1>Adopciones Solicitadas</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            @*
+            <th>
+            @Html.DisplayNameFor(model => model.idAdopcion)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.fechaInicioAdopcion)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.fechaFinAdopcion)
+            </th>*@
+            <th> Estado Adopción </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.fk_idMascota)
+            </th>*@
+            <th>Mascota</th>
+            <th>Dueño </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+                @* <td>
+            @Html.DisplayFor(modelItem => item.idAdopcion)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.fechaInicioAdopcion)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.fechaFinAdopcion)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.estadoAdopcion)
+                </td>
+                @*  <td>
+            @Html.DisplayFor(modelItem => item.fk_idMascota)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreMascota)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreUsuario)
+                </td>
+               @* <td>
+                    @Html.ActionLink("Aprobar", "#", new { /* id=item.PrimaryKey */ }, new {@class = "btn btn-primary btn-sm"})
+                    @Html.ActionLink("Rechazar", "#", new { /* id=item.PrimaryKey */ }, new {@class = "btn btn-danger btn-sm"})
+                </td>*@
+            </tr>
+}
+    </tbody>
+</table>

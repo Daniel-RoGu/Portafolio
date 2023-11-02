@@ -1,0 +1,113 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Persona>
+
+@{
+    ViewData["Title"] = "ObtenerPersona";
+}
+
+<h1>ObtenerPersona</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idPersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombrePersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.apellidoPersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.edadPersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefonoPersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ubicacionPersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correoPersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fk_idTipoDocumento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contrasenaUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estadoUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fk_idRol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fk_idPersona)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombrePersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellidoPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.edadPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefonoPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ubicacionPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correoPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fk_idTipoDocumento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contrasenaUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estadoUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fk_idRol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fk_idPersona)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

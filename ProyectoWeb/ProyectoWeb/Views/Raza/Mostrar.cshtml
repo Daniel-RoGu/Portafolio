@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Raza>
+
+@{
+    ViewData["Title"] = "Mostrar";
+}
+
+<h1 style="text-align:center">TIPO RAZA</h1>
+
+<p>
+    <a asp-action="Registrar" class="btn btn-success">Crear Nuevo</a>
+</p>
+<table class="table">
+    <thead class=" table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Raza item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idRaza)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreRaza)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estadoRaza)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new {id=item.idRaza }, new {@class = "btn btn-primary"})
+                    @Html.ActionLink("Eliminar", "Eliminar", new {id=item.idRaza }, new {@class = "btn btn-danger"})
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

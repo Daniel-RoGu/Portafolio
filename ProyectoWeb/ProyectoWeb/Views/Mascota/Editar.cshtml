@@ -1,0 +1,94 @@
+﻿@model ProyectoWeb.Models.Mascota
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1 style="text-align:center">EDITAR MASCOTA</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idMascota" class="control-label">Id Mascota</label>
+                <input asp-for="idMascota" class="form-control" readonly />
+                <span asp-validation-for="idMascota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombreMascota" class="control-label"></label>
+                <input asp-for="nombreMascota" class="form-control" />
+                <span asp-validation-for="nombreMascota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="edadMascota" class="control-label"></label>
+                <input asp-for="edadMascota" class="form-control" />
+                <span asp-validation-for="edadMascota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pesoMascota" class="control-label"></label>
+                <input asp-for="pesoMascota" class="form-control" />
+                <span asp-validation-for="pesoMascota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="generoMascota" class="control-label"></label>
+                <input asp-for="generoMascota" class="form-control" />
+                <span asp-validation-for="generoMascota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="observaciones" class="control-label"></label>
+                <input asp-for="observaciones" class="form-control" />
+                <span asp-validation-for="observaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="estadoMascota" class="control-label"></label>
+                <input asp-for="estadoMascota" class="form-control" />
+                <span asp-validation-for="estadoMascota" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="fk_idRaza" class="control-label"></label>
+                <input asp-for="fk_idRaza" class="form-control" />
+                <span asp-validation-for="fk_idRaza" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="raza" class="control-label"></label>
+                <input asp-for="raza" class="form-control" />
+                <span asp-validation-for="raza" class="text-danger"></span>
+            </div>
+            <div hidden class ="form-group">
+                <label asp-for="fk_idTipo_Mascota" class="control-label"></label>
+                <input asp-for="fk_idTipo_Mascota" class="form-control" />
+                <span asp-validation-for="fk_idTipo_Mascota" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="tpmascota" class="control-label"></label>
+                <input asp-for="tpmascota" class="form-control" />
+                <span asp-validation-for="tpmascota" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="fk_idUsuario" class="control-label"></label>
+                <input asp-for="fk_idUsuario" class="form-control" />
+                <span asp-validation-for="fk_idUsuario" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="dueno" class="control-label"></label>
+                <input asp-for="dueno" class="form-control" />
+                <span asp-validation-for="dueno" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="imagen" class="control-label"></label>
+                <input asp-for="imagen" class="form-control" />
+                <span asp-validation-for="imagen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

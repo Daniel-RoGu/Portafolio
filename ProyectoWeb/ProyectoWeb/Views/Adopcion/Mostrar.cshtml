@@ -1,0 +1,129 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Adopcion>
+
+@{
+    ViewData["Title"] = "Mostrar";
+}
+
+<h1>Adopciones</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+           @* <th>
+                @Html.DisplayNameFor(model => model.idAdopcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaInicioAdopcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaFinAdopcion)
+            </th>*@
+            <th>
+                Estado Adopción
+            </th>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.fk_idMascota)
+            </th>*@
+            <th>
+                Mascota
+            </th>
+            <th>
+                Solicitante
+            </th>
+            <th>
+               Teléfono Solicitante
+            </th>
+           @*
+            <th>
+                @Html.DisplayNameFor(model => model.Rechazar)
+            </th>*@
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.idAdopcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaInicioAdopcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaFinAdopcion)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.estadoAdopcion)
+            </td>
+          @*  <td>
+                @Html.DisplayFor(modelItem => item.fk_idMascota)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreMascota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreUsuario)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+            @*
+            <td>
+                @Html.DisplayFor(modelItem => item.Rechazar)
+            </td>*@
+            <td>
+                    <button type="button" id="submit_datos" class="btn btn-sm  btn-primary" onclick="funcionAprobado(@item.idAdopcion)"> Aprobar </button>
+                    <button type="button" id="submit_datos" class="btn btn-sm  btn-danger" onclick="funcionRechazado(@item.idAdopcion)"> Rechazar </button>
+                   @* @Html.ActionLink("Aprobar", "AprobarAdop", new {id=item.idAdopcion }, new {@class = "btn btn-primary btn-sm"})
+                    @Html.ActionLink("Rechazar", "Details", new {id=item.idAdopcion }, new {@class = "btn btn-danger btn-sm"})*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+
+    function funcionAprobado(id){
+        console.log(id)
+        $.get("AprobarAdop/?idAdopcion=" + id, function (data) {
+            alert("LA ADOPCIÓN FUE APROBADA" ) 
+        })
+    
+    }
+    function funcionRechazado(id){
+        console.log(id)
+        $.get("RechazarAdopcion/?idAdopcion=" + id, function (data) {
+            alert("LA ADOPCIÓN FUE RECHAZADA")
+        })
+    
+    }
+
+
+
+
+    //$(document).ready(function () {
+    //    $('#submit_datos').click(function () {
+    //        EnviarElem = {
+    //            id_adopcion: $('#submit_datos').val(),
+    //        };
+    //        Enviar('AprobarAdop', EnviarElem);
+    //    });
+
+    //    function Enviar(accion, evento) {
+    //        // console.log(accion);  // enviar
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/AdopcionController.cs/' + accion,
+    //            data: evento,
+    //            success: function (msg) {
+    //                if (msg) {
+    //                    alert('La operación fue realizada correctamente');
+    //                }
+    //            },
+    //            error: function () {
+    //                    alert('La operación no tuvo éxito');
+    //            }
+    //        });
+    //    };
+  
+</script>

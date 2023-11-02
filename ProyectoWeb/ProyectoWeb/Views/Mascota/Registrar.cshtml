@@ -1,0 +1,153 @@
+﻿@using Org.BouncyCastle.Asn1.Ocsp;
+@using ProyectoWeb.Controllers;
+@model ProyectoWeb.Models.Mascota
+
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+
+<!doctype html>
+<html lang="Es-es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    @{
+        var tp_raza = ViewBag.tp_raza;
+        var tp_mascota = ViewBag.tp_mascota;
+        var vacunas = ViewBag.vacunas;
+        var generos = ViewBag.generos;
+        //Mascota_VacunasController mv = new Mascota_VacunasController();
+        //ViewBag.idmascota = 0;
+        //ViewBag.idvacuna = 0;
+        //ViewBag.fechav = "";
+        //ViewBag.mascotavacuna = mv.Registrar(ViewBag.idmascota, ViewBag.idvacuna, ViewBag.fechav);
+    }
+
+    <section class="py-4 py-xl-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="fw-bold">Registrar Mascota</h2>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 col-xl-6">
+                    <div class="card mb-5 bg-dark text-white rounded-5">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <div class="m-4">
+                                <img class="rounded-circle flex-shrink-0 fit-cover" width="100" height="100"
+                                     src="https://i.pinimg.com/474x/e5/0c/5d/e50c5da3a13b02bb18d307c0027c5e69.jpg" />
+                            </div>
+                            <form class="text-center" method="post">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <input asp-for="nombreMascota" class="form-control" placeholder="Nombre" />
+                                                <span asp-validation-for="nombreMascota" class="text-danger"></span>
+
+                                            </div>
+                                            <div class="mb-3">
+                                                <input asp-for="edadMascota" class="form-control" placeholder="Edad (Meses)" />
+                                                <span asp-validation-for="edadMascota" class="text-danger"></span>
+
+                                            </div>
+                                            <div class="mb-3">
+                                                <input asp-for="pesoMascota" class="form-control" placeholder="Peso (Kg)" />
+                                                <span asp-validation-for="pesoMascota" class="text-danger"></span>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="checkbox-inline">
+                                                    @foreach (var item in vacunas)
+                                                    {
+                                                        <input type="checkbox" id="checkboxEnLinea1" value="@item.idVacunas"> @item.nombreVacuna
+                                                        ;
+                                                    }
+                                                </label>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <select asp-for="fk_idTipo_Mascota" class="form-select" name="fk_idTipo_Mascota" aria-label="Default select example">
+                                                    <option value="">Tipo Mascota</option>
+                                                    @foreach (var item in tp_mascota)
+                                                    {
+                                                        <option asp-for="fk_idTipo_Mascota" value="@item.idTipoMascota">@item.tipoMascota</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <select asp-for="fk_idRaza" class="form-select" name="fk_idRaza" aria-label="Default select example">
+                                                    <option value="">Raza</option>
+                                                    @foreach (var item in tp_raza)
+                                                    {
+                                                        <option asp-for="fk_idRaza" value="@item.idRaza">@item.nombreRaza</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <select asp-for="generoMascota" class="form-select" name="generoMascota" aria-label="Default select example">
+                                                    <option value="">Genero</option>
+                                                    @foreach (var item in generos)
+                                                    {
+                                                        <option asp-for="generoMascota" value="@item">@item</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                           
+                                            <div class="mb-3">
+                                                <input asp-for="observaciones" class="form-control" placeholder="Observaciones" />
+                                                <span asp-validation-for="observaciones" class="text-danger"></span>
+                                            </div>
+                                         
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="mb-3">
+                                    @*<input type="file" id="imagen" name="imagen" accept="image/*">
+                                    <button type="button" onclick="obtenerURLImagen()">Cargar imagen</button>*@
+                                        <input type="file" id="imagen" name="imagen" accept="image/*" />
+                                        <button type="button" onclick="obtenerURLImagen()">Enviar imagen</button>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="submit" value="Registrar" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark">
+        <div class="container py-4 py-lg-5">
+
+            <div class="text-muted d-flex justify-content-center align-items-center pt-3">
+                <p class="mb-0 text-center">Copyright © 2023 <br> Daniel Rojas - Esteban Muñoz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+            integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>

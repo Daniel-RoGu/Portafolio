@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Persona>
+
+@{
+    ViewData["Title"] = "Obtener";
+}
+
+<h1 style="text-align:center">DATOS PERSONALES</h1>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>Documento</th>
+            <th>Nombres </th>
+            <th>Apellidos</th>
+            <th>Edad</th>
+            <th>Teléfono </th>
+            <th>Ubicación</th>
+            <th>Correo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombrePersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellidoPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.edadPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefonoPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ubicacionPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correoPersona)
+            </td>
+           
+           
+            <td>
+              @Html.ActionLink("Editar", "Editar", new { id=item.idPersona }, new { @class="btn btn-primary btn-sm" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

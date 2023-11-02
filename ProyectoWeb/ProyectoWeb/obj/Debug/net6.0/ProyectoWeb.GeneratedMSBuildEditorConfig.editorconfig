@@ -1,0 +1,217 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ProyectoWeb
+build_property.RootNamespace = ProyectoWeb
+build_property.ProjectDir = C:\Users\ESTEBAN\Documents\ProyectoWeb\ProyectoWeb\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\ESTEBAN\Documents\ProyectoWeb\ProyectoWeb
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Administrador/Principal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxQcmluY2lwYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Adopcion/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRvcGNpb25cTW9zdHJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Adopcion/MostrarSolicitante.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRvcGNpb25cTW9zdHJhclNvbGljaXRhbnRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Mascota/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzY290YVxFZGl0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Mascota/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzY290YVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Mascota/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzY290YVxNb3N0cmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Mascota/Principal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzY290YVxQcmluY2lwYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Mascota/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzY290YVxSZWdpc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Mascota_Vacunas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzY290YV9WYWN1bmFzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Permisos/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Permisos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Permisos/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcTW9zdHJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Permisos/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcUmVnaXN0cmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Permisos_Roles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NfUm9sZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Persona/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYVxFZGl0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Persona/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Persona/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYVxNb3N0cmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Persona/Obtener.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYVxPYnRlbmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Persona/ObtenerPersona.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYVxPYnRlbmVyUGVyc29uYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Persona/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYVxSZWdpc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Principal/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpbmNpcGFsXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Raza/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmF6YVxFZGl0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Raza/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmF6YVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Raza/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmF6YVxNb3N0cmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Raza/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmF6YVxSZWdpc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Roles/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Roles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Roles/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcTW9zdHJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Roles/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcUmVnaXN0cmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/TipoDocumento/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb0RvY3VtZW50b1xFZGl0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/TipoDocumento/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb0RvY3VtZW50b1xNb3N0cmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/TipoDocumento/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb0RvY3VtZW50b1xSZWdpc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Tipo_Mascota/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb19NYXNjb3RhXEVkaXRhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Tipo_Mascota/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb19NYXNjb3RhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Tipo_Mascota/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb19NYXNjb3RhXE1vc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Tipo_Mascota/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb19NYXNjb3RhXFJlZ2lzdHJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Usuario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Usuario/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xSZWdpc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Vacunas/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjdW5hc1xFZGl0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Vacunas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjdW5hc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Vacunas/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjdW5hc1xNb3N0cmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Vacunas/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjdW5hc1xSZWdpc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ESTEBAN/Documents/ProyectoWeb/ProyectoWeb/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-wbci3pxnl6

@@ -1,0 +1,39 @@
+﻿@model ProyectoWeb.Models.Tipo_Mascota
+
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<h1 style="text-align:center">REGISTRAR TIPO MASCOTA</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Registrar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           @* <div class="form-group">
+                <label asp-for="idTipoMascota" class="control-label"></label>
+                <input asp-for="idTipoMascota" class="form-control" />
+                <span asp-validation-for="idTipoMascota" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="tipoMascota" class="control-label">Tipo Mascota</label>
+                <input asp-for="tipoMascota" class="form-control" />
+                <span asp-validation-for="tipoMascota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="estadoTipoMascota" class="control-label">Estado</label>
+                <input asp-for="estadoTipoMascota" class="form-control" />
+                <span asp-validation-for="estadoTipoMascota" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

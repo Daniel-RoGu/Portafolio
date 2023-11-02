@@ -1,0 +1,153 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Mascota>
+<!doctype html>
+<html lang="Es-es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            /* min-height: 100vh;
+                    min-height: -webkit-fill-available;*/
+        }
+
+        html {
+            height: -webkit-fit-content;
+            width: auto;
+        }
+
+        main {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            /*height: 100vh;/*
+                    max-height: 100vh;*/
+            height: -webkit-fill-available;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .b-example-divider {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0);
+            border: solid rgba(0, 0, 0, 0);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, 0), inset 0 .125em .5em rgba(0, 0, 0, 0);
+        }
+
+        img {
+            width: 80px;
+            height: 140px;
+        }
+    </style>
+</head>
+
+<body>
+    @{
+        var tp_mascota = ViewBag.listadotp;
+        var razas = ViewBag.listadoraza;
+        var generos = ViewBag.listadogenero;
+        var estados = ViewBag.listadoestados;
+        var edades = ViewBag.listadoedades;
+    }
+
+    <main>
+        <br />
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height:725px">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <i class="fa fa-dog me-1"></i>
+                <span class="fs-4"> Menú</span>
+            </a>
+            @if (ViewBag.Mensaje == "Usuario")
+            {
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="../Persona/Obtener" class="nav-link" aria-current="page">
+                            <i class="fa fa-user me-1"></i>
+                            Datos Personales
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../Mascota/Registrar" class="nav-link" aria-current="page">
+                            <i class="fa-solid fa-paw"></i>
+                            Registrar Mascota
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+            }
+            else
+            {
+                
+            }
+
+           
+
+        </div>
+
+        <div class="b-example-divider"></div>
+
+        @*Cards------------------------*@
+        <div class="row row-cols-1 row-cols-md-3 g-4" style="height:100%">
+
+            @foreach (var item in Model)
+            {
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col" style="width:100%; height:100%">
+                        <div class="card">
+                            <img id="imgcard" src="https://static.vecteezy.com/system/resources/previews/007/120/869/original/silhouettes-of-dog-and-cat-with-shadow-vector.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Nombre: @item.nombreMascota</h5>
+                                <p class="card-text">Edad: @item.edadMascota meses</p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                @Html.ActionLink("Editar", "Editar", new {id=item.idMascota}, new {@class = "btn btn-primary btn-sm"})
+                                @Html.ActionLink("Eliminar", "Eliminar", new {id=item.idMascota}, new {@class = "btn btn-danger btn-sm"})
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+
+
+    </main>
+
+
+
+
+
+
+    <!-- <footer class="bg-dark">
+        <div class="container py-4 py-lg-5">
+
+            <div class="text-muted d-flex justify-content-center align-items-center pt-3">
+                <p class="mb-0 text-center">Copyright © 2023 <br> Daniel Rojas - Esteban Muñoz</p>
+            </div>
+        </div>
+    </footer> -->
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+            integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

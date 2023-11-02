@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ProyectoWeb.Models.Vacunas>
+
+@{
+    ViewData["Title"] = "Mostrar";
+}
+
+<h1 style="text-align:center">VACUNAS</h1>
+
+<p>
+    <a asp-action="Registrar" class="btn btn-success">Crear Nuevo</a>
+</p>
+<table class="table">
+    <thead class=" table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idVacunas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreVacuna)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estadoVacuna)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "Editar", new {id=item.idVacunas}, new {@class = "btn btn-primary"})
+                    @Html.ActionLink("Eliminar", "Eliminar", new {id=item.idVacunas}, new {@class = "btn btn-danger"})
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

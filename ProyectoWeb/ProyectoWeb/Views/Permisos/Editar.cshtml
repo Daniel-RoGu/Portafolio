@@ -1,0 +1,40 @@
+﻿@model ProyectoWeb.Models.Permisos
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1 style="text-align:center">EDITAR PERMISOS</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idPermiso" class="control-label">Id</label>
+                <input asp-for="idPermiso" class="form-control" readonly/>
+                <span asp-validation-for="idPermiso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombrePermiso" class="control-label">Nombre</label>
+                <input asp-for="nombrePermiso" class="form-control" />
+                <span asp-validation-for="nombrePermiso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="estadoPermiso" class="control-label">Estado</label>
+                <input asp-for="estadoPermiso" class="form-control" />
+                <span asp-validation-for="estadoPermiso" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Mostrar">Regresar a la Lista</a>
+</div>
+
