@@ -1,0 +1,9 @@
+//configuracion de ESLint en este proyecto
+{
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
+    "rules": {
+        "semi": ["error", "always"] //sintaxis que permite establecer que elementos van a ser revisados para su correpcion
+    }
+}

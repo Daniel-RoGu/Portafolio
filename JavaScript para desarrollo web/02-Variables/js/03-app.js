@@ -1,0 +1,1 @@
+const producto = 'Monitor'; // En las variables tipo const su valor no puede ser reasignado, y siempre debe ser inicializada

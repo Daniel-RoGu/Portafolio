@@ -59,7 +59,7 @@ Output:
 | Bob       | Alice    | New York City | New York |
 +-----------+----------+---------------+----------+
 
------------------------Solucion: Ejercicio2-----------------------------------------------------------------
+-----------------------Solucion: Ejercicio1-----------------------------------------------------------------
 
 select firstName,lastname,city,state
 from person left join address using(personId);
@@ -109,5 +109,5 @@ Explanation: Joe is the only employee who earns more than his manager.
 
 -----------------------Solucion: Ejercicio2----------------------------------------------------------------- 
 
-Select emp.name as Employee from Employee as emp, Employee mgr
+Select emp.name as Employee from Employee as emp, Employee as mgr
 where emp.managerId = mgr.id and emp.salary > mgr.salary
