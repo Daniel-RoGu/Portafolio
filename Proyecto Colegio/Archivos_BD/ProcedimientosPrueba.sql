@@ -1,3 +1,5 @@
+use bd_colegio;
+
 /*--------------------------Registrar TipoSangre-------------------------*/
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarTipoSangre` $$

@@ -2,6 +2,16 @@
 {
     public class EPS
     {
-        private String nombreEPS { get; set; }
+        private List<string>? EPSs { get; set; }
+
+        public List<string> getEPSs()
+        {
+            return this.EPSs;
+        }
+
+        public void setEPSs(List<string> datos)
+        {
+            this.EPSs = datos;
+        }
     }
 }

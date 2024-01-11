@@ -1,3 +1,5 @@
+use bd_colegio;
+
 /*------buscar id de tipoDocumento------*/
 DELIMITER //
 CREATE FUNCTION ObtenerIdTipoDocumento(nomTpDocumento Varchar(200))

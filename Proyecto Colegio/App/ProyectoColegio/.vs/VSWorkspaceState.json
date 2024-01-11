@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Controllers",
+    "\\Data",
+    "\\Data\\Archivos_Json",
+    "\\Data\\Archivos_Python",
+    "\\Models",
+    "\\Views",
+    "\\Views\\Home",
+    "\\Views\\TipoSangre"
+  ],
+  "PreviewInSolutionExplorer": false
+}

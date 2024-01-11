@@ -1,8 +1,12 @@
+using ProyectoColegio.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSingleton(new Contexto(builder.Configuration.GetConnectionString("MyConexionSQL")));
+builder.Services.AddDistributedMemoryCache(); builder.Services.AddSession(options => { options.IdleTimeout = TimeSpan.FromSeconds(10); options.Cookie.HttpOnly = true; options.Cookie.IsEssential = true; });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -13,6 +17,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -22,6 +27,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=TipoSangre}/{action=RegistrarTipoSangre}/{id?}");
 
 app.Run();
+app.UseSession();

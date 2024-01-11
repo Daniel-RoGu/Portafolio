@@ -2,6 +2,16 @@
 {
     public class Discapacidad
     {
-        private String nombreDiscapacidad { get; set; }
+        private List<string>? Discapacidades { get; set; }
+
+        public List<string> getDiscapacidades()
+        {
+            return this.Discapacidades;
+        }
+
+        public void setDiscapacidades(List<string> datos)
+        {
+            this.Discapacidades = datos;
+        }
     }
 }
