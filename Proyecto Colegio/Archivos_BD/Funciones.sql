@@ -1,4 +1,4 @@
-use bd_colegio;
+use bdColegio;
 
 /*------buscar id de tipoDocumento------*/
 DELIMITER //

@@ -1,4 +1,4 @@
-use bd_colegio;
+use bdColegio;
 
 /*--------------------------Registrar TipoSangre-------------------------*/
 DELIMITER $$
@@ -140,8 +140,8 @@ create procedure `registrarUsuario`(
 ) 
 begin
 	insert into Usuario (identificacion, nombreUsuario, segundoNombreUsuario, primerApellidoUsuario, segundoApellidoUsuario, edadUsuario,
-						   telefonoCelular, telefonoFijo, correo, direccion, barrioUbicacionUsuario, fechaNacimiento, estadoUsuario, TipoDocumento_idTipoDocumento,
-                           TipoSangre_idTipoSangre, Discapacidad_idDiscapacidad, Sisben_idSisben, Rol_idRol, Estrato_idEstrato, EPS_idEPS, Genero_idGenero)
+						   telefonoCelular, telefonoFijo, correo, direccion, barrioUbicacionUsuario, fechaNacimiento, estadoUsuario, fkidTipoDocumento,
+                           fkidTipoSangre, fkidDiscapacidad, fkidSisben, fkidRol, fkidEstrato, fkidEPS, fkidGenero)
 				value(documento, nomUsuario, nom2Usuario, apellidoUsuario, apellido2Usuario, edad, telCelular, telFijo, correoUss,
 					   direccionUss, barrioUss, fechaNacimientoUss, "Activo", (select ObtenerIdTipoDocumento(tipoDocumento)), (select ObtenerIdTipoSangre(tipoSangre)), 
 					   (select ObtenerIdDiscapacidad(nombreDiscapacidad)), (select ObtenerIdSisben(nombreSisben)), (select ObtenerIdRol(nombreRol)), (select ObtenerIdEstrato(nombreEstrato)), 

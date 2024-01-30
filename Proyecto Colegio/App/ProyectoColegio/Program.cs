@@ -27,7 +27,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=TipoSangre}/{action=RegistrarTipoSangre}/{id?}");
+    pattern: "{controller=Login}/{action=Inicio}/{id?}");
 
 app.Run();
 app.UseSession();
