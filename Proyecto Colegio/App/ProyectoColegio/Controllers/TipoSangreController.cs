@@ -20,10 +20,10 @@ namespace ProyectoColegio.Controllers
             LecturaJson lecturaJson = new LecturaJson();
 
             //llama el metodo para la lectura del json
-            tipoSangre.setTipoSangre(lecturaJson.Resultado("Archivos_Json/TipoDeSangre.json"));
+            tipoSangre.TpSangre = (lecturaJson.Resultado("Archivos_Json/TipoDeSangre.json"));
 
             //return datos;
-            return (tipoSangre.getTipoSangre());
+            return (tipoSangre.TpSangre);
         }
 
 

@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Archivo CSV</title>
+</head>
+<body>
+    @{
+        var patch = "";
+    }
+    <div style="margin-top: 200px">
+        <form action="/Funcionario/CargarCsv" method="post" enctype="multipart/form-data">
+            <label for="inputFile">Seleccionar Archivo CSV:</label>
+            <input type="file" id="inputFile" name="file" accept=".csv">
+            <br>
+            <input type="submit" value="Cargar CSV">
+        </form>
+        @*
+        <form action="/Funcionario/CargarCsv"  method="post" enctype="multipart/form-data" onsubmit="return obtenerRuta()">
+            <label for="inputFile">Seleccionar Archivo CSV:</label>
+            <input type="file" id="inputFile" name="file" accept=".csv">
+            <br>
+            <input type="submit" value="Cargar CSV">
+        </form>
+        *@
+    </div>    
+    @*<script>
+        function obtenerRuta() {
+            var inputFile = document.getElementById('inputFile');
+            var ruta = inputFile.value; // Esto contendrá la ruta del archivo seleccionado por el usuario
+            alert("Ruta del archivo: " + ruta);
+            return ruta;
+            //return false; // Esto evita que el formulario se envíe realmente, ya que solo estamos interesados en la ruta del archivo
+        }
+    </script>*@
+</body>
+</html>

@@ -1,8 +1,8 @@
-/*
-	Drop database bdColegio;
+
+/*	Drop database bdColegio;*/
     Create database bdColegio;
     Use bdColegio;
-*/
+
 
 -- -----------------------------------------------------
 -- Table `TipoDocumento`

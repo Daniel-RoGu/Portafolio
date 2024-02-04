@@ -2,16 +2,13 @@
 {
     public class Estrato
     {
-        private List<string>? Estratos { get; set; }
+        private List<string>? _estratos { get; set; }
 
-        public List<string> getEstratos()
+        public List<string> Estratos
         {
-            return this.Estratos;
+            get { return _estratos; }
+            set { _estratos = value; }
         }
 
-        public void setEstratos(List<string> datos)
-        {
-            this.Estratos = datos;
-        }
     }
 }

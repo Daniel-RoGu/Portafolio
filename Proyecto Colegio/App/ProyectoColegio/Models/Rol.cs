@@ -2,6 +2,12 @@
 {
     public class Rol
     {
-        private String nombreRol { get; set; }
+        private String _nombreRol { get; set; }
+
+        public String NombreRol
+        {
+            get { return _nombreRol; }
+            set { _nombreRol = value; }
+        }
     }
 }

@@ -22,10 +22,10 @@ namespace ProyectoColegio.Controllers
             LecturaJson lecturaJson = new LecturaJson();
 
             //llama el metodo para la lectura del json
-            eps.setEPSs(lecturaJson.Resultado("Archivos_Json/EPS.json"));
+            eps.EPSs = (lecturaJson.Resultado("Archivos_Json/EPS.json"));
 
             //return datos;
-            return (eps.getEPSs());
+            return (eps.EPSs);
         }
 
 

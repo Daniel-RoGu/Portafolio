@@ -2,16 +2,13 @@
 {
     public class Discapacidad
     {
-        private List<string>? Discapacidades { get; set; }
+        private List<string>? _discapacidades { get; set; }
 
-        public List<string> getDiscapacidades()
+        public List<string> Discapacidades
         {
-            return this.Discapacidades;
+            get { return _discapacidades; }
+            set { _discapacidades = value; }
         }
 
-        public void setDiscapacidades(List<string> datos)
-        {
-            this.Discapacidades = datos;
-        }
     }
 }

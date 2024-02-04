@@ -20,10 +20,10 @@ namespace ProyectoColegio.Controllers
             LecturaJson lecturaJson = new LecturaJson();
 
             //llama el metodo para la lectura del json
-            tipoDocumento.setTipoDocumento(lecturaJson.Resultado("Archivos_Json/TipoDeDocumento.json"));
+            tipoDocumento.TpDocumento = (lecturaJson.Resultado("Archivos_Json/TipoDeDocumento.json"));
 
             //return datos;
-            return (tipoDocumento.getTipoDocumento());
+            return (tipoDocumento.TpDocumento);
         }
 
 

@@ -20,10 +20,10 @@ namespace ProyectoColegio.Controllers
             LecturaJson lecturaJson = new LecturaJson();
 
             //llama el metodo para la lectura del json
-            discapacidad.setDiscapacidades(lecturaJson.Resultado("Archivos_Json/Discapacidad.json"));
+            discapacidad.Discapacidades = (lecturaJson.Resultado("Archivos_Json/Discapacidad.json"));
 
             //return datos;
-            return (discapacidad.getDiscapacidades());
+            return (discapacidad.Discapacidades);
         }
 
 

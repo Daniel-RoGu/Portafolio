@@ -65,10 +65,10 @@ namespace ProyectoColegio.Controllers
             LecturaJson lecturaJson = new LecturaJson();
 
             //datos = lecturaJson.Resultado("Archivos_Json/PuntajeSisben.json");
-            sisben.setPuntaje_Sisben(lecturaJson.Resultado("Archivos_Json/PuntajeSisben.json"));
+            sisben.PuntajeSisben = (lecturaJson.Resultado("Archivos_Json/PuntajeSisben.json"));
 
             //return datos;
-            return (sisben.getPuntaje_Sisben());
+            return (sisben.PuntajeSisben);
         }
 
 

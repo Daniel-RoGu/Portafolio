@@ -2,16 +2,13 @@
 {
     public class Genero
     {
-        private List<string>? Generos { get; set; }
+        private List<string> _generos { get; set; }
 
-        public List<string> getGeneros()
+        public List<string> Generos
         {
-            return this.Generos;
+            get { return _generos; }
+            set { _generos = value; }
         }
 
-        public void setGeneros(List<string> datos)
-        {
-            this.Generos = datos;
-        }
     }
 }

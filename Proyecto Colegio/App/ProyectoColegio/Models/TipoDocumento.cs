@@ -2,16 +2,13 @@
 {
     public class TipoDocumento
     {
-        private List<string>? tipoDocumento { get; set; }
+        private List<string> _tipoDocumento { get; set; }
 
-        public List<string> getTipoDocumento()
+        public List<string> TpDocumento
         {
-            return this.tipoDocumento;
+            get { return _tipoDocumento; }
+            set { _tipoDocumento = value; }
         }
 
-        public void setTipoDocumento(List<string> datos)
-        {
-            this.tipoDocumento = datos;
-        }
     }
 }

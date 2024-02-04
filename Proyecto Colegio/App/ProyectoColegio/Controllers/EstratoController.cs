@@ -21,10 +21,10 @@ namespace ProyectoColegio.Controllers
             LecturaJson lecturaJson = new LecturaJson();
 
             //llama el metodo para la lectura del json
-            estrato.setEstratos(lecturaJson.Resultado("Archivos_Json/Estrato.json"));
+            estrato.Estratos = (lecturaJson.Resultado("Archivos_Json/Estrato.json"));
 
             //return datos;
-            return (estrato.getEstratos());
+            return (estrato.Estratos);
         }
 
 

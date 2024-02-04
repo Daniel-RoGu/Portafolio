@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proyectos\\Proyecto_Colegio\\App\\ProyectoColegio\\ProyectoColegio.csproj": {}
+    "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\ProyectoColegio.csproj": {}
   },
   "projects": {
-    "C:\\Proyectos\\Proyecto_Colegio\\App\\ProyectoColegio\\ProyectoColegio.csproj": {
+    "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\ProyectoColegio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\Proyecto_Colegio\\App\\ProyectoColegio\\ProyectoColegio.csproj",
+        "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\ProyectoColegio.csproj",
         "projectName": "ProyectoColegio",
-        "projectPath": "C:\\Proyectos\\Proyecto_Colegio\\App\\ProyectoColegio\\ProyectoColegio.csproj",
-        "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\Proyecto_Colegio\\App\\ProyectoColegio\\obj\\",
+        "projectPath": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\ProyectoColegio.csproj",
+        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,6 +44,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[30.1.0, )"
+            },
+            "CsvHelper.Excel.Core": {
+              "target": "Package",
+              "version": "[27.2.1, )"
+            },
             "IronPython": {
               "target": "Package",
               "version": "[3.4.1, )"
@@ -70,6 +78,10 @@
               "target": "Package",
               "version": "[6.0.16, )"
             },
+            "Modernizr": {
+              "target": "Package",
+              "version": "[2.8.3, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.2.0, )"
@@ -93,6 +105,10 @@
             "System.Text.Encodings.Web": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "V8.Net": {
+              "target": "Package",
+              "version": "[1.1.8, )"
             },
             "pythonnet": {
               "target": "Package",
@@ -118,7 +134,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

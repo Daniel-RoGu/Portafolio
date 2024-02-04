@@ -20,9 +20,9 @@ namespace ProyectoColegio.Controllers
             LecturaJson lecturaJson = new LecturaJson();
 
             //llama el metodo para la lectura del json
-            genero.setGeneros(lecturaJson.Resultado("Archivos_Json/Genero.json"));
+            genero.Generos = (lecturaJson.Resultado("Archivos_Json/Genero.json"));
 
-            return (genero.getGeneros());
+            return (genero.Generos);
         }
 
 

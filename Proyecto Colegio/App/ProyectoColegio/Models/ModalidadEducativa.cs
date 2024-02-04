@@ -2,16 +2,13 @@
 {
     public class ModalidadEducativa
     {
-        private List<string>? Modalidad { get; set; }
+        private List<string> _modalidad { get; set; }
 
-        public List<string> getModalidad()
+        public List<string> Modalidad
         {
-            return this.Modalidad;
+            get { return _modalidad; }
+            set { _modalidad = value; }
         }
-
-        public void setModalidad(List<string> datos)
-        {
-            this.Modalidad = datos;
-        }
+       
     }
 }

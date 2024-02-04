@@ -5,16 +5,12 @@ namespace ProyectoColegio.Models
     public class Sisben
     {
         //private String nombreSisben { set; get; }
-        private List<string>? Puntaje_Sisben { set; get; }       
-        
-        public List<string> getPuntaje_Sisben()
+        private List<string> _puntajeSisben { set; get; }       
+                
+        public List<string> PuntajeSisben
         {
-            return this.Puntaje_Sisben;
-        }
-
-        public void setPuntaje_Sisben(List<string> datos)
-        {
-            this.Puntaje_Sisben = datos;
+            get { return _puntajeSisben; }
+            set { _puntajeSisben = value; }
         }
     }
 

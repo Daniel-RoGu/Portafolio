@@ -2,16 +2,12 @@
 {
     public class TipoSangre
     {
-        private List<string>? tipoSangre { get; set; }
+        private List<string>? _tipoSangre { get; set; }
 
-        public List<string> getTipoSangre()
+        public List<string> TpSangre
         {
-            return this.tipoSangre;
-        }
-
-        public void setTipoSangre(List<string> datos)
-        {
-            this.tipoSangre = datos;
+            get { return _tipoSangre; }
+            set { _tipoSangre = value; }
         }
     }
 }

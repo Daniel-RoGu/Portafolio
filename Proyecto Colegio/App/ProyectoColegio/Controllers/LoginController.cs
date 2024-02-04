@@ -5,16 +5,13 @@ namespace ProyectoColegio.Controllers
 {
     public class LoginController : Controller
     {
-        TipoSangre tipoSangre = new TipoSangre();
-        // GET: /Login/Index
+        
         public IActionResult Inicio()
         {
             return View();
         }
 
-        // POST: /Login/Index
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Inicio(Login model)
         {
             if (ModelState.IsValid)

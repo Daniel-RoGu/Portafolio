@@ -1,0 +1,55 @@
+﻿@{
+    List<String> infoDatos;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leer Archivo CSV en JavaScript</title>
+    <!-- Agrega el enlace a la biblioteca PapaParse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <input type="file" id="inputFile" accept=".csv">
+    <div id="output"></div>
+    <button id="btnCrear" class="btn btn-primary">Crear</button>
+
+    @*<script src="~/js/TratamientoCsv.js"></script>*@
+
+   @* <script>
+        $(document).ready(function () {
+            $("#btnCrear").click(function () {
+                // Obtener datos del archivo CSV
+                var datosCSV = obtenerDatosCSV();
+
+                // Enviar datos al controlador mediante AJAX
+                $.ajax({
+                    type: "POST", // Método HTTP
+                    url: "/ControllerName/CargarCsv", // Reemplaza "ControllerName" con el nombre real de tu controlador
+                    data: { datosCSV: datosCSV }, // Datos a enviar (puedes ajustar esto según tus necesidades)
+                    success: function (respuesta) {
+                        // Manejar la respuesta del servidor
+                        console.log(respuesta);
+                    },
+                    error: function (error) {
+                        // Manejar errores
+                        console.error("Error en la solicitud AJAX: ", error);
+                    }
+                });
+            });
+
+            function obtenerDatosCSV() {
+                // Lógica para obtener y procesar los datos del archivo CSV utilizando PapaParse
+                // Devuelve los datos en el formato adecuado para ser enviados al controlador
+                // Ejemplo:
+                // var csvData = Papa.parse("tu_csv_aqui");
+                // var datos = ... // Procesar csvData según tus necesidades
+                // return datos;
+            }
+        });
+    </script>*@
+</body>
+</html>
