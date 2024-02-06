@@ -98,7 +98,7 @@ create procedure `registrarRolPermiso`(
     nombrePermiso varchar(60)
 ) 
 begin
-	insert into RolPermiso (nombreVista, vistaRaiz, Rol_idRol, Permiso_idPermiso)
+	insert into RolPermiso (nombreVista, vistaRaiz, fkidRol, fkidPermiso)
 				value(nombreInterfaz, nombreCarpetaRaiz, (select ObtenerIdRol(nombreRol)), (select ObtenerIdPermiso(nombrePermiso)));
 END$$
 
@@ -139,13 +139,74 @@ create procedure `registrarUsuario`(
     nombreRol varchar(45)
 ) 
 begin
-	insert into Usuario (identificacion, nombreUsuario, segundoNombreUsuario, primerApellidoUsuario, segundoApellidoUsuario, edadUsuario,
+	insert into Usuario (identificacion, primerNombreUsuario, segundoNombreUsuario, primerApellidoUsuario, segundoApellidoUsuario, edadUsuario,
 						   telefonoCelular, telefonoFijo, correo, direccion, barrioUbicacionUsuario, fechaNacimiento, estadoUsuario, fkidTipoDocumento,
                            fkidTipoSangre, fkidDiscapacidad, fkidSisben, fkidRol, fkidEstrato, fkidEPS, fkidGenero)
 				value(documento, nomUsuario, nom2Usuario, apellidoUsuario, apellido2Usuario, edad, telCelular, telFijo, correoUss,
 					   direccionUss, barrioUss, fechaNacimientoUss, "Activo", (select ObtenerIdTipoDocumento(tipoDocumento)), (select ObtenerIdTipoSangre(tipoSangre)), 
 					   (select ObtenerIdDiscapacidad(nombreDiscapacidad)), (select ObtenerIdSisben(nombreSisben)), (select ObtenerIdRol(nombreRol)), (select ObtenerIdEstrato(nombreEstrato)), 
                        (select ObtenerIdEPS(nombreEps)), (select ObtenerIdGenero(nombreGenero)));
+END$$
+
+/*--------------------------Registrar Estudiante-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `registrarEstudiante` $$
+create procedure `registrarEstudiante`(
+	documento int,
+	nomUsuario varchar(40),
+    nom2Usuario varchar(45),
+    apellidoUsuario varchar(45),
+    apellido2Usuario varchar(45),
+    edad int,
+    telCelular varchar(45),
+    telFijo varchar(10),
+    correoUss varchar(45),
+    direccionUss varchar(200),
+    barrioUss varchar(45),
+    fechaNacimientoUss varchar(45),
+    tipoSangre varchar(45),
+    tipoDocumento varchar(45),
+    nombreDiscapacidad varchar(45),
+    nombreSisben varchar(45),
+    nombreGenero varchar(45),
+    nombreEps varchar(45),
+    nombreEstrato varchar(45),
+    codigoStudent varchar(100),
+    ciudadNacimientoEs varchar(100),
+    ciudadResidenciaEs varchar(100),
+    ciudadExpedicionDocumentoEs varchar(100),
+    paisOrigenEs varchar(100),
+    asistenciaAcademicaEspecialEs varchar(200),
+    desplazadoEstadoEs varchar(100)
+) 
+begin
+	call registrarUsuario(documento, nomUsuario, nom2Usuario, apellidoUsuario, apellido2Usuario, edad, telCelular, telFijo, correoUss, direccionUss, barrioUss, 
+						  fechaNacimientoUss, tipoSangre, tipoDocumento, nombreDiscapacidad, nombreSisben, nombreGenero, nombreEps, nombreEstrato, "Estudiante");
+	insert into Estudiante (codigoEstudiante, ciudadNacimiento, ciudadResidencia, ciudadExpedicionDocumento, paisOrigen,
+                           asistenciaAcademicaEspecial, desplazadoEstado, Usuario_identificacion)
+				value(codigoStudent, ciudadNacimientoEs, ciudadResidenciaEs, ciudadExpedicionDocumentoEs, paisOrigenEs,
+                      asistenciaAcademicaEspecialEs, desplazadoEstadoEs, documento);
+END$$
+
+/*--------------------------Registrar Acudiente-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `registrarAcudiente` $$
+create procedure `registrarAcudiente`(
+    identificacionAcudienteEs int,
+    nombreAcudienteEs varchar(100),
+    apellidoAcudienteEs varchar(100),
+    correoAcudienteEs varchar(150),
+    celularAcudienteEs varchar(12),
+    parentescoAcudienteEs varchar(100),
+    responsabilidadEconomicaAcudienteEs varchar(100),
+    generoAcudienteEs varchar(45),
+    identificacionEstudianteEs int
+) 
+begin
+	insert into Acudiente (identificacionAcudiente, nombreAcudiente, apellidoAcudiente, correoAcudiente, celularAcudiente, 
+						   parentescoEstudiante, responsabilidadEconomicaEstudiante, estadoAcudiente, Genero_idGenero, Estudiante_idEstudiante)
+				value(identificacionAcudienteEs, nombreAcudienteEs, apellidoAcudienteEs, correoAcudienteEs, celularAcudienteEs, parentescoAcudienteEs,
+					  responsabilidadEconomicaAcudienteEs, "Activo", (select ObtenerIdGenero(generoAcudienteEs)), (select ObtenerIdEstudiante(identificacionEstudianteEs)));
 END$$
 
 /*--------------------------Registrar ModalidadEducativa-------------------------*/
@@ -206,3 +267,4 @@ begin
 	insert into Docente (estadoDocente, horasLaboralesSemanales, Usuario_identificacion, Sede_idSede)
 				value("Activo", horasTrabaja, (select ObtenerIdUsuario(documento)), (select ObtenerIdSede(nomSede)));
 END$$
+

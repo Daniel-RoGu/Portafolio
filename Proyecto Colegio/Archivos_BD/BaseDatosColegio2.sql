@@ -1,6 +1,6 @@
 
-/*	Drop database bdColegio;*/
-    Create database bdColegio;
+	/*Drop database bdColegio;
+    Create database bdColegio;*/
     Use bdColegio;
 
 
@@ -224,21 +224,21 @@ DROP TABLE IF EXISTS `Estudiante` ;
 
 CREATE TABLE IF NOT EXISTS `Estudiante` (
   `idEstudiante` INT NOT NULL AUTO_INCREMENT,
-  `identificacionAcudiente` INT NOT NULL,
-  `nombreAcudiente` VARCHAR(45) NOT NULL,
-  `apellidoAcudiente` VARCHAR(45) NOT NULL,
-  `generoAcudiente` VARCHAR(45) NOT NULL,
-  `correoAcudiente` VARCHAR(45) NOT NULL,
-  `celularAcudiente` VARCHAR(45) NOT NULL,
-  `parentescoAcudiente` VARCHAR(45) NOT NULL,
-  `responsabilidadEconomicaAcudiente` VARCHAR(100) NOT NULL,
+  `identificacionAcudiente` INT NULL,
+  `nombreAcudiente` VARCHAR(45) NULL,
+  `apellidoAcudiente` VARCHAR(45) NULL,
+  `generoAcudiente` VARCHAR(45) NULL,
+  `correoAcudiente` VARCHAR(45) NULL,
+  `celularAcudiente` VARCHAR(45) NULL,
+  `parentescoAcudiente` VARCHAR(45) NULL,
+  `responsabilidadEconomicaAcudiente` VARCHAR(100) NULL,
   `codigoEstudiante` VARCHAR(45) NOT NULL,
-  `ciudadNacimiento` VARCHAR(45) NOT NULL,
-  `ciudadResidencia` VARCHAR(45) NOT NULL,
-  `ciudadExpedicionDocumento` VARCHAR(45) NOT NULL,
+  `ciudadNacimiento` VARCHAR(45) NULL,
+  `ciudadResidencia` VARCHAR(45) NULL,
+  `ciudadExpedicionDocumento` VARCHAR(45) NULL,
   `paisOrigen` VARCHAR(45) NOT NULL,
   `asistenciaAcademicaEspecial` VARCHAR(200) NOT NULL,
-  `desplazadoEstado` VARCHAR(45) NOT NULL,
+  `desplazadoEstado` VARCHAR(45) NULL,
   `Usuario_identificacion` INT NOT NULL,
   PRIMARY KEY (`idEstudiante`),
   CONSTRAINT `fk_Estudiante_Usuario1`

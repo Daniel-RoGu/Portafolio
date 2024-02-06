@@ -27,7 +27,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Funcionario}/{action=CargarCsv}/{id?}");
+    pattern: "{controller=Administrador}/{action=CargeJSON}/{id?}");
 
 app.Run();
 app.UseSession();

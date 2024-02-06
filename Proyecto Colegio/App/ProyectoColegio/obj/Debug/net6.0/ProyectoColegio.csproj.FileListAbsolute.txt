@@ -2760,3 +2760,11 @@ C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\CsvH
 C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
 C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\ExcelNumberFormat.dll
 C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\System.IO.Packaging.dll
+C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\ClosedXML.dll
+C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\CsvHelper.dll
+C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\CsvHelper.Excel.dll
+C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
+C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\ExcelNumberFormat.dll
+C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\System.IO.Packaging.dll
+C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\System.Linq.Async.dll
+C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\V8.Net.dll

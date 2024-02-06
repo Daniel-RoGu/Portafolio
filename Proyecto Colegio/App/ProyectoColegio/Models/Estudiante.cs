@@ -18,6 +18,7 @@
         private string asistenciaAcademicaEspecial { get; set; }
         private string desplazadoEstado { get; set; }
         private int identificacion { get; set; }
+        private Usuario usuario { get; set; }
 
         public int IdentificacionAcudiente
         {
@@ -112,6 +113,12 @@
         {
             get { return identificacion; }
             set { identificacion = value; }
+        }
+
+        public Usuario Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
         }
 
     }

@@ -16,16 +16,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Discapacidad/RegistrarDiscapacidad.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY2FwYWNpZGFkXFJlZ2lzdHJhckRpc2NhcGFjaWRhZC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/EPS/RegistrarEPS.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRVBTXFJlZ2lzdHJhckVQUy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Estrato/RegistrarEstrato.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0cmF0b1xSZWdpc3RyYXJFc3RyYXRvLmNzaHRtbA==
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Administrador/CargeJSON.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxDYXJnZUpTT04uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/CargarCsv.cshtml]
@@ -34,10 +26,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/CargarDatosCsv.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cQ2FyZ2FyRGF0b3NDc3YuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Genero/RegistrarGenero.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VuZXJvXFJlZ2lzdHJhckdlbmVyby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Home/Index.cshtml]
@@ -60,16 +48,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Sisben/RegistrarSisben.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2lzYmVuXFJlZ2lzdHJhclNpc2Jlbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/TipoDocumento/RegistrarTipoDocumento.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb0RvY3VtZW50b1xSZWdpc3RyYXJUaXBvRG9jdW1lbnRvLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/TipoSangre/RegistrarTipoSangre.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1NhbmdyZVxSZWdpc3RyYXJUaXBvU2FuZ3JlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Usuario/RegistrarEstudiante.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xSZWdpc3RyYXJFc3R1ZGlhbnRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/_ViewImports.cshtml]

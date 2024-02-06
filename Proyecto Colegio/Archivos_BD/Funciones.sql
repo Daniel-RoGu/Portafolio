@@ -155,3 +155,17 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+/*------buscar id de Sede-----*/
+DELIMITER //
+CREATE FUNCTION ObtenerIdEstudiante(identificacion int)
+RETURNS INT 
+READS SQL DATA
+BEGIN
+    DECLARE resultado INT;
+    SET resultado = (SELECT Estudiante.idEstudiante FROM Estudiante WHERE Estudiante.Usuario_identificacion = identificacion LIMIT 1);
+    RETURN resultado;
+END;
+//
+DELIMITER ;
+

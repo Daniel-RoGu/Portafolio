@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Rzfio7zY0zTn1CmG2zrFluUrezSdEpBIia6IzLUDAr4=",
+  "Hash": "3aiDtlOz7JxCaZBLOynUPPlJKiBU3JbPd5GVU6MtZME=",
   "Source": "ProyectoColegio",
   "BasePath": "_content/ProyectoColegio",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProyectoColegio.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\estilos.css",
+      "SourceId": "ProyectoColegio",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\",
+      "BasePath": "_content/ProyectoColegio",
+      "RelativePath": "css/estilos.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\estilos.css"
     },
     {
       "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\Login.css",

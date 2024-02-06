@@ -1,0 +1,108 @@
+﻿@model ProyectoColegio.Models.Estudiante
+
+@{
+    ViewData["Title"] = "RegistrarEstudiante";
+}
+
+<h1>RegistrarEstudiante</h1>
+
+<h4>Estudiante</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegistrarEstudiante">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdentificacionAcudiente" class="control-label"></label>
+                <input asp-for="IdentificacionAcudiente" class="form-control" />
+                <span asp-validation-for="IdentificacionAcudiente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreAcudiente" class="control-label"></label>
+                <input asp-for="NombreAcudiente" class="form-control" />
+                <span asp-validation-for="NombreAcudiente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidoAcudiente" class="control-label"></label>
+                <input asp-for="ApellidoAcudiente" class="form-control" />
+                <span asp-validation-for="ApellidoAcudiente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GeneroAcudiente" class="control-label"></label>
+                <input asp-for="GeneroAcudiente" class="form-control" />
+                <span asp-validation-for="GeneroAcudiente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CorreoAcudiente" class="control-label"></label>
+                <input asp-for="CorreoAcudiente" class="form-control" />
+                <span asp-validation-for="CorreoAcudiente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CelularAcudiente" class="control-label"></label>
+                <input asp-for="CelularAcudiente" class="form-control" />
+                <span asp-validation-for="CelularAcudiente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParentescoAcudiente" class="control-label"></label>
+                <input asp-for="ParentescoAcudiente" class="form-control" />
+                <span asp-validation-for="ParentescoAcudiente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoResponsabilidadEconomicaAcudiente" class="control-label"></label>
+                <input asp-for="TipoResponsabilidadEconomicaAcudiente" class="form-control" />
+                <span asp-validation-for="TipoResponsabilidadEconomicaAcudiente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodigoEstudiante" class="control-label"></label>
+                <input asp-for="CodigoEstudiante" class="form-control" />
+                <span asp-validation-for="CodigoEstudiante" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CiudadNacimiento" class="control-label"></label>
+                <input asp-for="CiudadNacimiento" class="form-control" />
+                <span asp-validation-for="CiudadNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CiudadResidencia" class="control-label"></label>
+                <input asp-for="CiudadResidencia" class="form-control" />
+                <span asp-validation-for="CiudadResidencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CiudadExpedicionDocumento" class="control-label"></label>
+                <input asp-for="CiudadExpedicionDocumento" class="form-control" />
+                <span asp-validation-for="CiudadExpedicionDocumento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaisOrigen" class="control-label"></label>
+                <input asp-for="PaisOrigen" class="form-control" />
+                <span asp-validation-for="PaisOrigen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AsistenciaAcademicaEspecial" class="control-label"></label>
+                <input asp-for="AsistenciaAcademicaEspecial" class="form-control" />
+                <span asp-validation-for="AsistenciaAcademicaEspecial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DesplazadoEstado" class="control-label"></label>
+                <input asp-for="DesplazadoEstado" class="form-control" />
+                <span asp-validation-for="DesplazadoEstado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Identificacion" class="control-label"></label>
+                <input asp-for="Identificacion" class="form-control" />
+                <span asp-validation-for="Identificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
