@@ -11,7 +11,7 @@ namespace ProyectoColegio.Data
         private List<Object> Datos = new List<object>();
         private List<Object> ListaDatos = new List<object>();
         private List<String> parametros = new List<String>();
-
+       
         public ManejoProcedimientos(Contexto contexto)
         {
             _contexto = contexto;

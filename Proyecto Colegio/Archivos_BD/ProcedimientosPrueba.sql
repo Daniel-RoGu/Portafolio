@@ -1,10 +1,13 @@
 use bdColegio;
 
+/*modificador de tabla para usar formato de texto utf8mb4*/
+ALTER TABLE Usuario CONVERT TO CHARACTER SET utf8mb4;
+
 /*--------------------------Registrar TipoSangre-------------------------*/
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarTipoSangre` $$
 create procedure `registrarTipoSangre`(
-    nomTpSangre varchar(45)
+    nomTpSangre varchar(400)
 ) 
 begin
 	insert into TipoSangre (nombreTipoSangre, estadoTipoSangre)
@@ -15,7 +18,7 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarTipoDocumento` $$
 create procedure `registrarTipoDocumento`(
-    nomTpDocumento varchar(45)
+    nomTpDocumento varchar(400)
 ) 
 begin
 	insert into TipoDocumento (nombreTipoDocumento, estadoTipoDocumento)
@@ -26,7 +29,7 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarDiscapacidad` $$
 create procedure `registrarDiscapacidad`(
-    nomDiscapacidad	 varchar(45)
+    nomDiscapacidad	 varchar(400)
 ) 
 begin
 	insert into Discapacidad (nombreDiscapacidad, estadoDiscapacidad)
@@ -37,7 +40,7 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarGenero` $$
 create procedure `registrarGenero`(
-    nomGenero varchar(45)
+    nomGenero varchar(400)
 ) 
 begin
 	insert into Genero (nombreGenero, estadoGenero)
@@ -48,7 +51,7 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarEPS` $$
 create procedure `registrarEPS`(
-    nomEPS varchar(300)
+    nomEPS varchar(400)
 ) 
 begin
 	insert into EPS (nombreEPS, estadoEPS)
@@ -59,7 +62,7 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarEstrato` $$
 create procedure `registrarEstrato`(
-    nomEstrato varchar(45)
+    nomEstrato varchar(400)
 ) 
 begin
 	insert into Estrato (nombreEstrato, estadoEstrato)
@@ -70,7 +73,7 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarRol` $$
 create procedure `registrarRol`(
-    nomRol varchar(45)
+    nomRol varchar(400)
 ) 
 begin
 	insert into Rol (nombreRol, estadoRol)
@@ -81,7 +84,7 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarPermiso` $$
 create procedure `registrarPermiso`(
-    nomPermiso varchar(45)
+    nomPermiso varchar(400)
 ) 
 begin
 	insert into Permiso (nombrePermiso, estadoPermiso)
@@ -92,10 +95,10 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarRolPermiso` $$
 create procedure `registrarRolPermiso`(
-    nombreInterfaz varchar(60),
-    nombreCarpetaRaiz varchar(60),
-    nombreRol varchar(60),
-    nombrePermiso varchar(60)
+    nombreInterfaz varchar(400),
+    nombreCarpetaRaiz varchar(400),
+    nombreRol varchar(400),
+    nombrePermiso varchar(400)
 ) 
 begin
 	insert into RolPermiso (nombreVista, vistaRaiz, fkidRol, fkidPermiso)
@@ -106,7 +109,7 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarSisben` $$
 create procedure `registrarSisben`(
-    nomSisben varchar(45)
+    nomSisben varchar(400)
 ) 
 begin
 	insert into Sisben (nombreSisben, estadoSisben)
@@ -117,26 +120,26 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarUsuario` $$
 create procedure `registrarUsuario`(
-	documento int,
-	nomUsuario varchar(40),
-    nom2Usuario varchar(45),
-    apellidoUsuario varchar(45),
-    apellido2Usuario varchar(45),
+	documento BIGINT,
+	nomUsuario varchar(400),
+    nom2Usuario varchar(400),
+    apellidoUsuario varchar(400),
+    apellido2Usuario varchar(400),
     edad int,
-    telCelular varchar(45),
-    telFijo varchar(10),
-    correoUss varchar(45),
-    direccionUss varchar(200),
-    barrioUss varchar(45),
-    fechaNacimientoUss varchar(45),
-    tipoSangre varchar(45),
-    tipoDocumento varchar(45),
-    nombreDiscapacidad varchar(45),
-    nombreSisben varchar(45),
-    nombreGenero varchar(45),
-    nombreEps varchar(45),
-    nombreEstrato varchar(45),
-    nombreRol varchar(45)
+    telCelular varchar(400),
+    telFijo varchar(400),
+    correoUss varchar(400),
+    direccionUss varchar(400),
+    barrioUss varchar(400),
+    fechaNacimientoUss varchar(400),
+    tipoSangre varchar(400),
+    tipoDocumento varchar(400),
+    nombreDiscapacidad varchar(400),
+    nombreSisben varchar(400),
+    nombreGenero varchar(400),
+    nombreEps varchar(400),
+    nombreEstrato varchar(400),
+    nombreRol varchar(400)
 ) 
 begin
 	insert into Usuario (identificacion, primerNombreUsuario, segundoNombreUsuario, primerApellidoUsuario, segundoApellidoUsuario, edadUsuario,
@@ -152,35 +155,35 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarEstudiante` $$
 create procedure `registrarEstudiante`(
-	documento int,
-	nomUsuario varchar(40),
-    nom2Usuario varchar(45),
-    apellidoUsuario varchar(45),
-    apellido2Usuario varchar(45),
-    edad int,
-    telCelular varchar(45),
-    telFijo varchar(10),
-    correoUss varchar(45),
-    direccionUss varchar(200),
-    barrioUss varchar(45),
-    fechaNacimientoUss varchar(45),
-    tipoSangre varchar(45),
-    tipoDocumento varchar(45),
-    nombreDiscapacidad varchar(45),
-    nombreSisben varchar(45),
-    nombreGenero varchar(45),
-    nombreEps varchar(45),
-    nombreEstrato varchar(45),
-    codigoStudent varchar(100),
-    ciudadNacimientoEs varchar(100),
-    ciudadResidenciaEs varchar(100),
-    ciudadExpedicionDocumentoEs varchar(100),
-    paisOrigenEs varchar(100),
-    asistenciaAcademicaEspecialEs varchar(200),
-    desplazadoEstadoEs varchar(100)
+	documento varchar(400),
+	nomUsuario varchar(400),
+    nom2Usuario varchar(400),
+    apellidoUsuario varchar(400),
+    apellido2Usuario varchar(400),
+    edad varchar(400),
+    telCelular varchar(400),
+    telFijo varchar(100),
+    correoUss varchar(400),
+    direccionUss varchar(400),
+    barrioUss varchar(400),
+    fechaNacimientoUss varchar(400),
+    tipoSangre varchar(400),
+    tipoDocumento varchar(400),
+    nombreDiscapacidad varchar(400),
+    nombreSisben varchar(400),
+    nombreGenero varchar(400),
+    nombreEps varchar(400),
+    nombreEstrato varchar(400),
+    codigoStudent varchar(400),
+    ciudadNacimientoEs varchar(400),
+    ciudadResidenciaEs varchar(400),
+    ciudadExpedicionDocumentoEs varchar(400),
+    paisOrigenEs varchar(400),
+    asistenciaAcademicaEspecialEs varchar(400),
+    desplazadoEstadoEs varchar(400)
 ) 
 begin
-	call registrarUsuario(documento, nomUsuario, nom2Usuario, apellidoUsuario, apellido2Usuario, edad, telCelular, telFijo, correoUss, direccionUss, barrioUss, 
+	call registrarUsuario((SELECT CAST(documento AS SIGNED)), nomUsuario, nom2Usuario, apellidoUsuario, apellido2Usuario, (SELECT CAST(edad AS SIGNED)), telCelular, telFijo, correoUss, direccionUss, barrioUss, 
 						  fechaNacimientoUss, tipoSangre, tipoDocumento, nombreDiscapacidad, nombreSisben, nombreGenero, nombreEps, nombreEstrato, "Estudiante");
 	insert into Estudiante (codigoEstudiante, ciudadNacimiento, ciudadResidencia, ciudadExpedicionDocumento, paisOrigen,
                            asistenciaAcademicaEspecial, desplazadoEstado, Usuario_identificacion)
@@ -193,13 +196,13 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarAcudiente` $$
 create procedure `registrarAcudiente`(
     identificacionAcudienteEs int,
-    nombreAcudienteEs varchar(100),
-    apellidoAcudienteEs varchar(100),
-    correoAcudienteEs varchar(150),
-    celularAcudienteEs varchar(12),
-    parentescoAcudienteEs varchar(100),
-    responsabilidadEconomicaAcudienteEs varchar(100),
-    generoAcudienteEs varchar(45),
+    nombreAcudienteEs varchar(400),
+    apellidoAcudienteEs varchar(400),
+    correoAcudienteEs varchar(400),
+    celularAcudienteEs varchar(100),
+    parentescoAcudienteEs varchar(400),
+    responsabilidadEconomicaAcudienteEs varchar(400),
+    generoAcudienteEs varchar(400),
     identificacionEstudianteEs int
 ) 
 begin
@@ -213,7 +216,7 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarModalidadEducativa` $$
 create procedure `registrarModalidadEducativa`(
-    nomModalidadEducativa varchar(45)
+    nomModalidadEducativa varchar(400)
 ) 
 begin
 	insert into ModalidadEducativa (nombreModalidad, estadoModalidad)
@@ -224,9 +227,9 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarSede` $$
 create procedure `registrarSede`(
-    nomSede varchar(350),
-    esInternado varchar(45),
-    nomModalidadEducativa varchar(350)
+    nomSede varchar(400),
+    esInternado varchar(400),
+    nomModalidadEducativa varchar(400)
 ) 
 begin
 	insert into Sede (nombreSede, internadoDisponibilidad, estadoSede, fk_idModalidadEducativa)
@@ -239,26 +242,26 @@ DROP PROCEDURE IF EXISTS `registrarDocente` $$
 create procedure `registrarDocente`(
     horasTrabaja varchar(45),
     documento int,
-    nomSede varchar(350),
-	nomUsuario varchar(40),
-    nom2Usuario varchar(45),
-    apellidoUsuario varchar(45),
-    apellido2Usuario varchar(45),
+    nomSede varchar(400),
+	nomUsuario varchar(400),
+    nom2Usuario varchar(400),
+    apellidoUsuario varchar(400),
+    apellido2Usuario varchar(400),
     edad int,
-    telCelular varchar(45),
-    telFijo varchar(10),
-    correoUss varchar(45),
-    direccionUss varchar(200),
-    barrioUss varchar(45),
-    fechaNacimientoUss varchar(45),
-    tipoSangre varchar(45),
-    tipoDocumento varchar(45),
-    nombreDiscapacidad varchar(45),
-    nombreSisben varchar(45),
-    nombreGenero varchar(45),
-    nombreEps varchar(45),
-    nombreEstrato varchar(45),
-    nombreRol varchar(45)
+    telCelular varchar(100),
+    telFijo varchar(100),
+    correoUss varchar(400),
+    direccionUss varchar(400),
+    barrioUss varchar(400),
+    fechaNacimientoUss varchar(400),
+    tipoSangre varchar(400),
+    tipoDocumento varchar(400),
+    nombreDiscapacidad varchar(400),
+    nombreSisben varchar(400),
+    nombreGenero varchar(400),
+    nombreEps varchar(400),
+    nombreEstrato varchar(400),
+    nombreRol varchar(400)
 ) 
 begin
 	call registrarUsuario(documento, nomUsuario, nom2Usuario, apellidoUsuario, apellido2Usuario, edad, telCelular, telFijo, correoUss,

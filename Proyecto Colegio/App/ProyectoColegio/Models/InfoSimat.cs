@@ -5,319 +5,133 @@ namespace ProyectoColegio.Models
     public class InfoSimat
     {
         [Name("ANO")]
-        private int? _annoElectivo;
+        public int? ANO { get; set; }
 
         [Name("ETC")]
-        private String? _departamento;
+        public String? ETC { get; set; }
 
         [Name("ESTADO")]
-        private String? _estadoMatricula;
+        public String? ESTADO { get; set; }
 
         [Name("JERARQUIA")]
-        private String? _municipio;
+        public String? JERARQUIA { get; set; }
 
         [Name("INSTITUCION")]
-        private String? _institucion;
+        public String? INSTITUCION { get; set; }
+
+        [Name("DANE")]
+        public String? DANE { get; set; }
 
         [Name("CALENDARIO")]
-        private String? _calendario;
+        public String? CALENDARIO { get; set; }
 
         [Name("SECTOR")]
-        private String? _sector;
+        public String? SECTOR { get; set; }
 
         [Name("SEDE")]
-        private String? _sede;
+        public String? SEDE { get; set; }
+
+        [Name("CODIGO_DANE_SEDE")]
+        public String? CODIGO_DANE_SEDE { get; set; }
+
+        [Name("CONSECUTIVO")]
+        public String? CONSECUTIVO { get; set; }
 
         [Name("ZONA_SEDE")]
-        private String? _zonaSede;
+        public String? ZONA_SEDE { get; set; }
 
         [Name("JORNADA")]
-        private String? _jornada;
+        public String? JORNADA { get; set; }
 
         [Name("GRADO_COD")]
-        private int? _grado;
+        public int? GRADO_COD { get; set; }
 
         [Name("GRUPO")]
-        private int? _grupo;
+        public int? GRUPO { get; set; }
 
         [Name("MODELO")]
-        private String? _modalidad;
+        public String? MODELO { get; set; }
+
+        [Name("MOTIVO")]
+        public String? MOTIVO { get; set; }
 
         [Name("FECHAINI")]
-        private String? _fechaInicio;
+        public String? FECHAINI { get; set; }
 
         [Name("FECHAFIN")]
-        private String? _fechaFin;
+        public String? FECHAFIN { get; set; }
 
         [Name("NUI")]
-        private String? _NUI;
+        public String? NUI { get; set; }
 
         [Name("ESTRATO")]
-        private String? _estrato;
+        public String? ESTRATO { get; set; }
 
         [Name("SISBEN IV")]
-        private String? _sisben;
+        public String? SISBEN_IV { get; set; }
 
         [Name("PER_ID")]
-        private int? _PERID;
+        public int? PER_ID { get; set; }
 
         [Name("DOC")]
-        private int? _numeroIdentificacion;
+        public string? DOC { get; set; }
 
         [Name("TIPODOC")]
-        private String? _tipoIdentificacion;
+        public String? TIPODOC { get; set; }
 
         [Name("APELLIDO1")]
-        private String? _apellido1;
+        public String? APELLIDO1 { get; set; }
 
         [Name("APELLIDO2")]
-        private String? _apellido2;
+        public String? APELLIDO2 { get; set; }
 
         [Name("NOMBRE1")]
-        private String? _nombre1;
+        public String? NOMBRE1 { get; set; }
 
         [Name("NOMBRE2")]
-        private String? _nombre2;
+        public String? NOMBRE2 { get; set; }
 
         [Name("GENERO")]
-        private String? _genero;
+        public String? GENERO { get; set; }
 
         [Name("FECHA_NACIMIENTO")]
-        private String? _fechaNacimiento;
+        public String? FECHA_NACIMIENTO { get; set; }
 
         [Name("BARRIO")]
-        private String? _barrio;
+        public String? BARRIO { get; set; }
 
         [Name("EPS")]
-        private String? _eps;
+        public String? EPS { get; set; }
 
         [Name("TIPO DE SANGRE")]
-        private String? _tipoSangre;
+        public String? TIPO_DE_SANGRE { get; set; }
+
+        [Name("MATRICULACONTRATADA")]
+        public String? MATRICULACONTRATADA { get; set; }
+
+        [Name("FUENTE_RECURSOS")]
+        public String? FUENTE_RECURSOS { get; set; }
 
         [Name("INTERNADO")]
-        private String? _internado;
+        public String? INTERNADO { get; set; }
+
+        [Name("NUM_CONTRATO")]
+        public String? NUM_CONTRATO { get; set; }
 
         [Name("APOYO_ACADEMICO_ESPECIAL")]
-        private String? _apoyoAcademicoEspecial;
+        public String? APOYO_ACADEMICO_ESPECIAL { get; set; }
+
+        [Name("SRPA")]
+        public String? SRPA { get; set; }
 
         [Name("DISCAPACIDAD")]
-        private String? _discapacidad;
+        public String? DISCAPACIDAD { get; set; }
 
         [Name("PAIS_ORIGEN")]
-        private String? _paisOrigen;
+        public String? PAIS_ORIGEN { get; set; }
 
         [Name("CORREO")]
-        private String? _correo;
-
-        public int? AnnoElectivo
-        {
-            get { return _annoElectivo; }
-            set { _annoElectivo = value; }
-        }
-
-        public string? Departamento
-        {
-            get { return _departamento; }
-            set { _departamento = value; }
-        }
-
-        public string? EstadoMatricula
-        {
-            get { return _estadoMatricula; }
-            set { _estadoMatricula = value; }
-        }
-
-        public string? Municipio
-        {
-            get { return _municipio; }
-            set { _municipio = value; }
-        }
-
-        public string? Institucion
-        {
-            get { return _institucion; }
-            set { _institucion = value; }
-        }
-
-        public string? Calendario
-        {
-            get { return _calendario; }
-            set { _calendario = value; }
-        }
-
-        public string? Sector
-        {
-            get { return _sector; }
-            set { _sector = value; }
-        }
-
-        public string? Sede
-        {
-            get { return _sede; }
-            set { _sede = value; }
-        }
-
-        public string? ZonaSede
-        {
-            get { return _zonaSede; }
-            set { _zonaSede = value; }
-        }
-
-        public string? Jornada
-        {
-            get { return _jornada; }
-            set { _jornada = value; }
-        }
-
-        public int? Grado
-        {
-            get { return _grado; }
-            set { _grado = value; }
-        }
-
-        public int? Grupo
-        {
-            get { return _grupo; }
-            set { _grupo = value; }
-        }
-
-        public string? Modalidad
-        {
-            get { return _modalidad; }
-            set { _modalidad = value; }
-        }
-
-        public string? FechaInicio
-        {
-            get { return _fechaInicio; }
-            set { _fechaInicio = value; }
-        }
-
-        public string? FechaFin
-        {
-            get { return _fechaFin; }
-            set { _fechaFin = value; }
-        }
-
-        public string? NUI
-        {
-            get { return _NUI; }
-            set { _NUI = value; }
-        }
-
-        public string? Estrato
-        {
-            get { return _estrato; }
-            set { _estrato = value; }
-        }
-
-        public string? Sisben
-        {
-            get { return _sisben; }
-            set { _sisben = value; }
-        }
-
-        public int? PERID
-        {
-            get { return _PERID; }
-            set { _PERID = value; }
-        }
-
-        public int? NumeroIdentificacion
-        {
-            get { return _numeroIdentificacion; }
-            set { _numeroIdentificacion = value; }
-        }
-
-        public string? TipoIdentificacion
-        {
-            get { return _tipoIdentificacion; }
-            set { _tipoIdentificacion = value; }
-        }
-
-        public string? Apellido1
-        {
-            get { return _apellido1; }
-            set { _apellido1 = value; }
-        }
-
-        public string? Apellido2
-        {
-            get { return _apellido2; }
-            set { _apellido2 = value; }
-        }
-
-        public string? Nombre1
-        {
-            get { return _nombre1; }
-            set { _nombre1 = value; }
-        }
-
-        public string? Nombre2
-        {
-            get { return _nombre2; }
-            set { _nombre2 = value; }
-        }
-
-        public string? Genero
-        {
-            get { return _genero; }
-            set { _genero = value; }
-        }
-
-        public string? FechaNacimiento
-        {
-            get { return _fechaNacimiento; }
-            set { _fechaNacimiento = value; }
-        }
-
-        public string? Barrio
-        {
-            get { return _barrio; }
-            set { _barrio = value; }
-        }
-
-        public string? Eps
-        {
-            get { return _eps; }
-            set { _eps = value; }
-        }
-
-        public string? TipoSangre
-        {
-            get { return _tipoSangre; }
-            set { _tipoSangre = value; }
-        }
-
-        public string? Internado
-        {
-            get { return _internado; }
-            set { _internado = value; }
-        }
-
-        public string? ApoyoAcademicoEspecial
-        {
-            get { return _apoyoAcademicoEspecial; }
-            set { _apoyoAcademicoEspecial = value; }
-        }
-
-        public string? Discapacidad
-        {
-            get { return _discapacidad; }
-            set { _discapacidad = value; }
-        }
-
-        public string? PaisOrigen
-        {
-            get { return _paisOrigen; }
-            set { _paisOrigen = value; }
-        }
-
-        public string? Correo
-        {
-            get { return _correo; }
-            set { _correo = value; }
-        }
+        public String? CORREO { get; set; }
 
     }
  }

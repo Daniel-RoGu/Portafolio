@@ -2,7 +2,7 @@ use bdColegio;
 
 /*------buscar id de tipoDocumento------*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdTipoDocumento(nomTpDocumento Varchar(200))
+CREATE FUNCTION ObtenerIdTipoDocumento(nomTpDocumento Varchar(400))
 RETURNS INT 
 READS SQL DATA
 BEGIN
@@ -15,7 +15,7 @@ DELIMITER ;
 
 /*------buscar id de tipoSangre------*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdTipoSangre(nomTpSangre Varchar(200))
+CREATE FUNCTION ObtenerIdTipoSangre(nomTpSangre Varchar(400))
 RETURNS INT 
 READS SQL DATA
 BEGIN
@@ -28,7 +28,7 @@ DELIMITER ;
 
 /*------buscar id de Discapacidad------*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdDiscapacidad (nomDiscapacidad Varchar(60))
+CREATE FUNCTION ObtenerIdDiscapacidad (nomDiscapacidad Varchar(400))
 RETURNS INT 
 READS SQL DATA
 BEGIN
@@ -41,7 +41,7 @@ DELIMITER ;
 
 /*------buscar id de Rol------*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdRol (nomRol Varchar(60))
+CREATE FUNCTION ObtenerIdRol (nomRol Varchar(400))
 RETURNS INT 
 READS SQL DATA
 BEGIN
@@ -54,7 +54,7 @@ DELIMITER ;
 
 /*------buscar id de Permiso------*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdPermiso (nomPermiso Varchar(60))
+CREATE FUNCTION ObtenerIdPermiso (nomPermiso Varchar(400))
 RETURNS INT 
 READS SQL DATA
 BEGIN
@@ -67,7 +67,7 @@ DELIMITER ;
 
 /*------buscar id de Sisben------*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdSisben (nomSisben Varchar(60))
+CREATE FUNCTION ObtenerIdSisben (nomSisben Varchar(400))
 RETURNS INT 
 READS SQL DATA
 BEGIN
@@ -80,7 +80,7 @@ DELIMITER ;
 
 /*------buscar id de Estrato------*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdEstrato (nomEstrato Varchar(60))
+CREATE FUNCTION ObtenerIdEstrato (nomEstrato Varchar(400))
 RETURNS INT 
 READS SQL DATA
 BEGIN
@@ -93,7 +93,7 @@ DELIMITER ;
 
 /*------buscar id de EPS------*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdEPS (nomEPS Varchar(60))
+CREATE FUNCTION ObtenerIdEPS (nomEPS Varchar(400))
 RETURNS INT 
 READS SQL DATA
 BEGIN
@@ -106,7 +106,7 @@ DELIMITER ;
 
 /*------buscar id de Genero------*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdGenero (nomGenero Varchar(60))
+CREATE FUNCTION ObtenerIdGenero (nomGenero Varchar(400))
 RETURNS INT 
 READS SQL DATA
 BEGIN
@@ -119,7 +119,7 @@ DELIMITER ;
 
 /*------buscar id de ModalidadEducativa------*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdModalidadEducativa(nomModalidad Varchar(200))
+CREATE FUNCTION ObtenerIdModalidadEducativa(nomModalidad Varchar(400))
 RETURNS INT 
 READS SQL DATA
 BEGIN
@@ -132,11 +132,11 @@ DELIMITER ;
 
 /*------buscar id de Usuario------*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdUsuario(documento int)
-RETURNS INT 
+CREATE FUNCTION ObtenerIdUsuario(documento bigint)
+RETURNS bigint 
 READS SQL DATA
 BEGIN
-    DECLARE resultado INT;
+    DECLARE resultado bigint;
     SET resultado = (SELECT Usuario.identificacion FROM Usuario WHERE Usuario.identificacion = documento LIMIT 1);
     RETURN resultado;
 END;
@@ -145,7 +145,7 @@ DELIMITER ;
 
 /*------buscar id de Sede-----*/
 DELIMITER //
-CREATE FUNCTION ObtenerIdSede(nomSede Varchar(60))
+CREATE FUNCTION ObtenerIdSede(nomSede Varchar(400))
 RETURNS INT 
 READS SQL DATA
 BEGIN
@@ -156,7 +156,7 @@ END;
 //
 DELIMITER ;
 
-/*------buscar id de Sede-----*/
+/*------buscar id de Estudiante-----*/
 DELIMITER //
 CREATE FUNCTION ObtenerIdEstudiante(identificacion int)
 RETURNS INT 

@@ -25,3 +25,6 @@ call registrarDocente(24, 12345, "JoPutos", "Alguien", null, "Soy", "Yo", 30, "3
 select ObtenerIdRol("ElJefe");
 select ObtenerIdPermiso("RegistrarTipoDocumento");
 select ObtenerIdTipoSangre("O+");
+
+select count(*) from estudiante;
+select count(*) from usuario;

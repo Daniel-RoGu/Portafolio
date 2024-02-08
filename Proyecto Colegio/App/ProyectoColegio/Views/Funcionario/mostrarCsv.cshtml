@@ -1,0 +1,305 @@
+﻿@model IEnumerable<ProyectoColegio.Models.InfoSimat>
+
+@{
+    ViewData["Title"] = "mostrarCsv";
+}
+
+<h1>mostrarCsv</h1>
+
+@foreach (var item in Model)
+{
+    <div>
+        <h4>InfoSimat</h4>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ANO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.ANO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ETC)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.ETC)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ESTADO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.ESTADO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.JERARQUIA)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.JERARQUIA)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.INSTITUCION)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.INSTITUCION)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.DANE)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.DANE)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.CALENDARIO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.CALENDARIO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.SECTOR)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.SECTOR)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.SEDE)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.SEDE)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.CODIGO_DANE_SEDE)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.CODIGO_DANE_SEDE)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.CONSECUTIVO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.CONSECUTIVO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ZONA_SEDE)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.ZONA_SEDE)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.JORNADA)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.JORNADA)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.GRADO_COD)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.GRADO_COD)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.GRUPO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.GRUPO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.MODELO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.MODELO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.MOTIVO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.MOTIVO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.FECHAINI)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.FECHAINI)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.FECHAFIN)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.FECHAFIN)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.NUI)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.NUI)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ESTRATO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.ESTRATO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.SISBEN_IV)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.SISBEN_IV)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PER_ID)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.PER_ID)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.DOC)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.DOC)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.TIPODOC)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.TIPODOC)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.APELLIDO1)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.APELLIDO1)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.APELLIDO2)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.APELLIDO2)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.NOMBRE1)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.NOMBRE1)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.NOMBRE2)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.NOMBRE2)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.GENERO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.GENERO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.FECHA_NACIMIENTO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.FECHA_NACIMIENTO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.BARRIO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.BARRIO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.EPS)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.EPS)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.TIPO_DE_SANGRE)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.TIPO_DE_SANGRE)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.MATRICULACONTRATADA)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.MATRICULACONTRATADA)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.FUENTE_RECURSOS)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.FUENTE_RECURSOS)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.INTERNADO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.INTERNADO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.NUM_CONTRATO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.NUM_CONTRATO)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.APOYO_ACADEMICO_ESPECIAL)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.APOYO_ACADEMICO_ESPECIAL)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.SRPA)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.SRPA)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.DISCAPACIDAD)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.DISCAPACIDAD)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PAIS_ORIGEN)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.PAIS_ORIGEN)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.CORREO)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => item.CORREO)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
+}
+
+@*<div>
+    <h4>InfoSimat</h4>
+    <hr />
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre Estudiante</th>
+                <th>Segundo Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* @foreach (var item in Model)
+            {
+            <tr>
+            <td>@item.NOMBRE1</td>
+            <td>@item.NOMBRE2</td>
+            <td>@item.APELLIDO1</td>
+            <td>@item.APELLIDO2</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>*@

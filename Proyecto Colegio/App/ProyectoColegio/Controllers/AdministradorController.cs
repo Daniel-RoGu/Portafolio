@@ -119,7 +119,6 @@ namespace ProyectoColegio.Controllers
                 foreach (string dato in LeerEPS())
                 {
                     ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarEPS", "nomEPS", dato, _contexto.Conexion);
-                    Console.WriteLine(dato);
                 }
             }
             catch (Exception ex)
@@ -135,7 +134,6 @@ namespace ProyectoColegio.Controllers
                 foreach (string dato in LeerDiscapacidad())
                 {
                     ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarDiscapacidad", "nomDiscapacidad", dato, _contexto.Conexion);
-                    Console.WriteLine(dato);
                 }
             }
             catch (Exception ex)
@@ -151,7 +149,6 @@ namespace ProyectoColegio.Controllers
                 foreach (string dato in LeerEstrato())
                 {
                     ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarEstrato", "nomEstrato", dato, _contexto.Conexion);
-                    Console.WriteLine(dato);
                 }
             }
             catch (Exception ex)
@@ -167,7 +164,6 @@ namespace ProyectoColegio.Controllers
                 foreach (string dato in LeerGenero())
                 {
                     ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarGenero", "nomGenero", dato, _contexto.Conexion);
-                    Console.WriteLine(dato);
                 }
             }
             catch (Exception ex)
@@ -183,7 +179,6 @@ namespace ProyectoColegio.Controllers
                 foreach (string dato in LeerSisben())
                 {
                     ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarSisben", "nomSisben", dato, _contexto.Conexion);
-                    Console.WriteLine(dato);
                 }
             }
             catch (Exception ex)
@@ -199,7 +194,6 @@ namespace ProyectoColegio.Controllers
                 foreach (string dato in LeerTipoDocumento())
                 {
                     ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarTipoDocumento", "nomTpDocumento", dato, _contexto.Conexion);
-                    Console.WriteLine(dato);
                 }
             }
             catch (Exception ex)
@@ -215,7 +209,6 @@ namespace ProyectoColegio.Controllers
                 foreach (string dato in LeerTipoSangre())
                 {
                     ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarTipoSangre", "nomTpSangre", dato, _contexto.Conexion);
-                    Console.WriteLine(dato);
                 }
             }
             catch (Exception ex)
