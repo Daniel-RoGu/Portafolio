@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    align-items: center;
+    text-align: center;
+}
+
+.contenedor-botones {
+    margin-top: 50px;
+    height: 500px;
+    width: 250px;
+    margin-left: 0px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+button {
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background-color: #2980b9;
+}

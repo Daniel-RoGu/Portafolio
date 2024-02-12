@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3aiDtlOz7JxCaZBLOynUPPlJKiBU3JbPd5GVU6MtZME=",
+  "Hash": "cRAgh8TslWX42qw3KClBmBn1hAiX6eAnHJ6vlEmVZd0=",
   "Source": "ProyectoColegio",
   "BasePath": "_content/ProyectoColegio",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProyectoColegio.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\EstiloMenu.css",
+      "SourceId": "ProyectoColegio",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\",
+      "BasePath": "_content/ProyectoColegio",
+      "RelativePath": "css/EstiloMenu.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\EstiloMenu.css"
     },
     {
       "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\estilos.css",

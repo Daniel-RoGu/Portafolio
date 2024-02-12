@@ -109,7 +109,7 @@ namespace ProyectoColegio.Controllers
         [HttpPost]
         public IActionResult CargeJSON(int identidicacion)
         {
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("CargeJSON", "Administrador");
         }
 
         public void RegistrarEPS()

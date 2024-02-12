@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\ProyectoColegio.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\EstiloMenu.css",
+      "PackagePath": "staticwebassets\\css\\EstiloMenu.css"
+    },
+    {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\Login.css",
       "PackagePath": "staticwebassets\\css\\Login.css"
     },

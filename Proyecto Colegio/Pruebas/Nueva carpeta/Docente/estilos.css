@@ -1,0 +1,276 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.contenedor-principal {
+    display: flex;
+    margin-top: 100px;
+    flex-direction: column;
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    height: 100%;
+    width: 100%;
+}
+
+.contenedor-botones {
+    margin-top: -60px;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.contenedor-formulario {
+    width: 500px;
+    height: 470px;
+    display: flex;
+    overflow: auto;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.contenedor-buscar {
+    margin-top: -30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+}
+
+.boton-buscar {
+    margin-left: 5px;
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor-numero-documento {
+    margin-left: 7px;
+    margin-top: 20px;
+    width: 235px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+}
+
+.contenedor-tipo-documento {
+    margin-left: 245px;
+
+    margin-top: -60px;
+    width: 235px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.contenedor-tipo-documento select {
+    border-radius: 5px;
+    height: 27px;
+    width: 200px;
+}
+
+.contenedor-primer-nombre{
+    margin-left: 7px;
+    margin-top: 20px;
+    width: 235px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+}
+
+.contenedor-segundo-nombre{
+    margin-left: 245px;
+
+    margin-top: -60px;
+    width: 235px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.contenedor-primer-apellido{
+    margin-left: 7px;
+    margin-top: 20px;
+    width: 235px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+}
+
+.contenedor-segundo-apellido{
+    margin-left: 245px;
+   
+    margin-top: -60px;
+    width: 235px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.contenedor-eps{
+    margin-left: 7px;
+    margin-top: 20px;
+    width: 235px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+}
+
+.contenedor-genero{
+    margin-left: 245px;
+
+    margin-top: -60px;
+    width: 235px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+.contenedor-asignatura {
+    margin-left: 5px;
+    width: 233px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.contenedor-asignatura label[for="asignatura"] {
+    margin-top: -130px;
+    margin-left: 65px;
+}
+
+.seleccion-asignatura {
+    border: 1px solid #000;
+    margin-top: 50px;
+    margin-left: -158px;
+    width: 500px;
+    height: 145px;
+    overflow: auto;
+
+}
+
+.contenedor-grados {
+    margin-left: 245px;
+    margin-top: -200px;
+    width: 235px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.contenedor-grados label[for="grados"] {
+    margin-top: -120px;
+    margin-left: 80px;
+
+}
+
+.seleccion-grados {
+    border: 1px solid #000;
+    margin-top: 50px;
+    margin-left: -143px;
+    width: 235px;
+    height: 145px;
+    overflow: auto;
+}
+
+.contenedor-sede {
+    margin-left: 7px;
+    margin-top: 20px;
+    width: 235px;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.contenedor-sede select {
+    border-radius: 5px;
+    height: 27px;
+    width: 200px;
+}
+.contenedor-eps select {
+    border-radius: 5px;
+    height: 27px;
+    width: 200px;
+}
+.contenedor-genero select {
+    border-radius: 5px;
+    height: 27px;
+    width: 200px;
+}
+
+.contenedor-boton-guardar {
+    margin-left: 249px;
+    margin-top: -60px;
+    width: 231px;
+    align-items: center;
+    text-align: center;
+}
+
+.contenedor-boton-guardar button {
+    width: 100px;
+    height: 40px;
+}
+
+
+label {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+input {
+    border-radius: 5px;
+    height: 20px;
+    width: 200px;
+}
+
+select {
+    border-radius: 5px;
+    height: 50px;
+    width: 200px;
+
+}
+
+button {
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background-color: #2980b9;
+}

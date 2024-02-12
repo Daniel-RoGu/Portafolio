@@ -2,7 +2,7 @@
 {
     public class Usuario
     {
-        private int identificacion {  get; set; }
+        private long identificacion { get; set; }
         private String nombreUsuario { get; set; }
         private String? segundoNombreUsuario { get; set; }
         private String apellidoUsuario { get; set; }
@@ -14,17 +14,17 @@
         private String? direccion { get; set; }
         private String? barrio { get; set; }
         private String fechaNacimiento { get; set; }
-        private String estadoUsuario { get; set; }
-        private TipoDocumento tpDocumento { get; set; }
-        private TipoSangre tipoSangre { get; set; }
-        private Discapacidad discapacidad { get; set; }
-        private Sisben sisben { get; set;}
-        private Rol rol { get; set; }
-        private Estrato estrato { get; set; }
-        private EPS eps { get; set; }
-        private Genero genero { get; set; }
+        private String? estadoUsuario { get; set; }
+        private String? tpDocumento { get; set; }
+        private String? tipoSangre { get; set; }
+        private String? discapacidad { get; set; }
+        private String? sisben { get; set; }
+        private String? rol { get; set; }
+        private String? estrato { get; set; }
+        private String? eps { get; set; }
+        private String? genero { get; set; }
 
-        public int Identificacion
+        public long Identificacion
         {
             get { return identificacion; }
             set { identificacion = value; }
@@ -102,49 +102,49 @@
             set { estadoUsuario = value; }
         }
 
-        public TipoDocumento TipoDocumento
+        public String? TipoDocumento
         {
             get { return tpDocumento; }
             set { tpDocumento = value; }
         }
 
-        public TipoSangre TipoSangre
+        public String? TipoSangre
         {
             get { return tipoSangre; }
             set { tipoSangre = value; }
         }
 
-        public Discapacidad Discapacidad
+        public String? Discapacidad
         {
             get { return discapacidad; }
             set { discapacidad = value; }
         }
 
-        public Sisben Sisben
+        public String? Sisben
         {
             get { return sisben; }
             set { sisben = value; }
         }
 
-        public Rol Rol
+        public String? Rol
         {
             get { return rol; }
             set { rol = value; }
         }
 
-        public Estrato Estrato
+        public String? Estrato
         {
             get { return estrato; }
             set { estrato = value; }
         }
 
-        public EPS EPS
+        public String? EPS
         {
             get { return eps; }
             set { eps = value; }
         }
 
-        public Genero Genero
+        public String? Genero
         {
             get { return genero; }
             set { genero = value; }

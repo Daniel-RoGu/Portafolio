@@ -15,8 +15,12 @@
             <label for="inputFile">Seleccionar Archivo CSV:</label>
             <input type="file" id="inputFile" name="file" accept=".csv">
             <br>
-            <input type="submit" value="Cargar CSV">
+           <input type="submit" value="Cargar CSV">
         </form>
+        <a href="/Funcionario/mostrarCsv">Mostrar Vista</a>
+        <input type="submit" value="mostrar" href="/Funcionario/mostrarCsv" />
+        @*<button class="btn btn-primary d-block w-100" type="submit" asp-action="mostrarCsv">Mostrar Info</button>*@
+              
         @*
         <form action="/Funcionario/CargarCsv"  method="post" enctype="multipart/form-data" onsubmit="return obtenerRuta()">
             <label for="inputFile">Seleccionar Archivo CSV:</label>

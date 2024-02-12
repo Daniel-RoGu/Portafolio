@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://kit.fontawesome.com/f3f65ff77b.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <title>Título de tu página</title>
+</head>
+
+<body>
+
+    <div class="contenedor-botones">
+        <button id="boton-registrar-asignatura" class="boton">Registrar Asignatura</button>
+        <button id="boton-buscar-asignatura" class="boton">Modificar Asignatura</button>
+        <button id="boton-mostrar-asigntatura" class="boton">Mostrar Asignatura</button>
+    </div>
+
+    <div class="contenedor-registrar-asignatura">
+        <div class="contenedor-label">
+            <label for="nombre-asignatura" id="label-nombre-asignatura">Nombre De La Asignatura</label>
+        </div>
+        <div class="contenedor-nombre-asignatura">
+            <input type="text" id="nombre-asignatura" name="nombre-asignatura">
+            <div class="contenedor-boton-guardar">
+                <button id="guardar-nombre-asignatura" class="boton-guardar">Guardar</button>
+            </div>
+        </div>
+        <div class="contenedor-label-dos">
+            <label for="grados" id="label-grados">Seleccione Los Grados</label>
+        </div>
+        <div class="contenedor-botones-grado">
+            <!-- Aquí puedes agregar checkboxes para los grados -->
+        </div>
+        <div class="contenedor-label-tres">
+            <label for="sedes" id="label-sedes">Seleccione Las Sedes</label>
+        </div>
+        <div class="contenedor-sedes">
+            <!-- Aquí puedes agregar elementos para seleccionar sedes -->
+        </div>
+    </div>
+
+    <div class="contenedor-buscar-asignatura">
+        <div class="contenedor-buscar">
+            <input type="buscar" placeholder=" Nombre De La Asignatura">
+            <button id="boton-buscar" class="boton-buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <div class="contenedor-label-cuatro">
+                <label for="nombre-asignatura" id="label-nombre-asignatura-dos">Nombre De La Asignatura</label>
+            </div>
+        </div>
+        <div class="contenedor-nombre-asignatura-dos">
+            <input type="text" id="nombre-asignatura-dos" name="nombre-asignatura-dos">
+            <div class="contenedor-boton-guardar-dos">
+                <button id="guardar-nombre-asignatura-dos" class="boton-guardar-dos">Guardar</button>
+            </div>
+        </div>
+        <div class="contenedor-label-cinco">
+            <label for="grados" id="label-grados">Seleccione Los Grados</label>
+        </div>
+        <div class="contenedor-botones-grado-dos">
+            <!-- Aquí puedes agregar checkboxes para los grados -->
+        </div>
+        <div class="contenedor-label-seix">
+            <label for="sedes" id="label-sedes">Seleccione Las Sedes</label>
+        </div>
+        <div class="contenedor-sedes-dos">
+            <!-- Aquí puedes agregar elementos para seleccionar sedes -->
+        </div>
+    </div>
+
+    <div class="contenedor-tabla">
+        <table border="2">
+            <tr>
+                <td>Id Asignatura</td>
+                <td>Nombre Asignatura</td>
+                <td>Grados</td>
+                <td>Sedes</td>
+                <td>Estado Asignatura</td>
+                  </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>

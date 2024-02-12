@@ -2,12 +2,14 @@
 using System;
 using System.Data;
 using System.Collections.Generic;
+using System.Dynamic;
 
 namespace ProyectoColegio.Data
 {
     public static class ManejoBaseDatos
     {
-        //Permite llamar procedimientos que reciben un solo dato como parametro
+
+        //Permite llamar procedimientos que reciben un solo dato como parametro, registra en bd
         public static void EjecutarProcedimientoAlmacenado(string nombreProcedimiento, string parametroNombre, object parametroValor, string cadenaConexion)
         {
             try
@@ -34,7 +36,8 @@ namespace ProyectoColegio.Data
             }
         }
 
-        //Permite llamar procedimientos que reciben multiples datos como parametro
+
+        //Permite llamar procedimientos que reciben multiples datos como parametro, envia informacion a base de datos
         public static void EjecutarProcedimientoMultiParametro(string nombreProcedimiento, Dictionary<string, object> parametros, string cadenaConexion)
         {
             try
@@ -64,6 +67,118 @@ namespace ProyectoColegio.Data
             }
         }
 
+
+        //Permite enviar una consulta a base de datos que retorna multiples resultados, usando parametros vacios
+        public static List<Object> ConsultarProcedimientoDinamico(string nombreProcedimiento, Dictionary<string, Type> atributos, string cadenaConexion)
+        {
+            //List<T> listaObjetos = new List<T>();
+            List<Object> listaObjetos = new List<Object>();
+            List<Object> listaDatos = new List<object>();
+            
+            try
+            {
+                using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+                    MySqlCommand comando = new MySqlCommand(nombreProcedimiento, conexion);
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    using (MySqlDataReader lector = comando.ExecuteReader())
+                    {
+                        while (lector.Read())
+                        {
+                            //T objeto = new T();
+
+                            foreach (var atributo in atributos)
+                            {
+                                string nombreColumna = atributo.Key;
+                                Dato dato = new Dato();
+                                GestionDato gestionDato = new GestionDato();
+
+                                // Verificar si la columna existe en el resultado del lector
+                                if (lector.HasColumn(nombreColumna))
+                                {
+                                    object valor = lector[nombreColumna];
+
+                                    // Asignar directamente el valor al atributo correspondiente del objeto
+                                    //typeof(T).GetProperty(nombreColumna)?.SetValue(objeto, valor != DBNull.Value ? Convert.ChangeType(valor, atributo.Value) : "Sin_Registro");
+                                    dato.Nombre = nombreColumna;
+                                    dato.Valor = valor != DBNull.Value ? Convert.ChangeType(valor, atributo.Value) : "Sin_Registro";
+                                }
+                              
+                                listaDatos.Add(dato.Valor);
+
+                            }
+
+                            listaObjetos.Add(listaDatos);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el procedimiento almacenado: {ex.Message}");
+            }
+
+            return listaObjetos;
+        }
+
+        /*
+        public static List<Object> EjecutarProcedimientoConParametroYConsulta(string nombreProcedimiento, string nombreParametro, object valorParametro, Dictionary<string, Type> atributos, string cadenaConexion)
+        {
+            List<Object> listaObjetos = new List<Object>();
+
+            try
+            {
+                using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+
+                    // Consultar el procedimiento almacenado para obtener los resultados
+                    //string sqlConsulta = $"CALL {nombreProcedimiento}(@{nombreParametro})";
+                    string sqlConsulta = $"CALL bdColegio.{nombreProcedimiento}(@{nombreParametro})";
+                    using (MySqlCommand comando = new MySqlCommand(sqlConsulta, conexion))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue($"@{nombreParametro}", valorParametro);
+
+                        using (MySqlDataReader lector = comando.ExecuteReader())
+                        {
+                            while (lector.Read())
+                            {
+                                List<Object> listaDatos = new List<Object>();
+
+                                foreach (var atributo in atributos)
+                                {
+                                    string nombreColumna = atributo.Key;
+
+                                    // Verificar si la columna existe en el resultado del lector
+                                    if (lector.HasColumn(nombreColumna))
+                                    {
+                                        object valor = lector[nombreColumna];
+
+                                        // Asignar directamente el valor al atributo correspondiente del objeto
+                                        object valorFinal = valor != DBNull.Value ? Convert.ChangeType(valor, atributo.Value) : "Sin_Registro";
+                                        listaDatos.Add(valorFinal);
+                                    }
+                                }
+
+                                listaObjetos.Add(listaDatos);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el procedimiento almacenado: {ex.Message}");
+            }
+
+            return listaObjetos;
+        }
+        */
+
+
         public static int CalcularEdad(string fechaNacimiento)
         {
             DateTime fechaNac;
@@ -91,6 +206,61 @@ namespace ProyectoColegio.Data
                 throw new ArgumentException("Formato de fecha de nacimiento no válido. Debe ser 'dd/MM/yyyy' o 'd/MM/yyyy'.");
             }
         }
+
+
+        public static List<Object> EjecutarProcedimientoConParametroYConsulta(string nombreProcedimiento, string nombreParametro, object valorParametro, int numeroAtributos, string cadenaConexion)
+        {
+            List<Object> listaObjetos = new List<Object>();
+
+            try
+            {
+                MySqlConnection conexion = new MySqlConnection(cadenaConexion);
+                conexion.Open();
+                //String sql = "call obtenerCodigoEstudiantes(@identificacionUs)";
+                string sqlConsulta = $"CALL bdColegio.{nombreProcedimiento}(@{nombreParametro})";
+                MySqlCommand conexionCommand = new MySqlCommand(sqlConsulta, conexion);
+                conexionCommand.Parameters.AddWithValue($"@{nombreParametro}", valorParametro);
+                MySqlDataReader mySqlDataReader = conexionCommand.ExecuteReader();
+
+                while (mySqlDataReader.Read())
+                {
+                    for (int i = 0; i < numeroAtributos; i++)
+                    {
+                        listaObjetos.Add(mySqlDataReader.GetString(i));
+                    }                  
+                }
+                conexion.Close();                
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el procedimiento almacenado: {ex.Message}");
+            }
+
+            return listaObjetos;
+        }
+
+
+    }
+
+    public class Dato
+    {
+        public string Nombre { get; set; }
+        public object Valor { get; set; }
+    }
+
+    public class GestionDato
+    {
+        
+         public object ConvertirDatoADynamic(Dato dato)
+         {
+            dynamic dynamicObject = new ExpandoObject();
+            var dictionary = (IDictionary<string, object>)dynamicObject;
+
+            dictionary[dato.Nombre] = dato.Valor;
+
+            return dynamicObject;
+         }
 
     }
 
