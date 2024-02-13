@@ -1,3 +1,4 @@
+/*CASOS DE PRUEBA PARA LA VALIDACION DE PROCEDIMIENTOS Y FUNCIONES*/
 use bdcolegio;
 GRANT EXECUTE ON PROCEDURE bdColegio.obtenerCodigoEstudiantes TO 'root'@'localhost';
 GRANT EXECUTE ON FUNCTION bdColegio.ObtenerCodigoEstudiante TO 'root'@'localhost';
@@ -46,4 +47,17 @@ call mostrarEstudiantes();
 call obtenerCodigoEstudiantes('1029565035');
 select ObtenerNombreSisben(616);
 select ObtenerNombreTipoDocumento();
-
+call existeEstudiante('1029560098');
+call existeEstudiante('10295');
+call existeEPS('Nueva EPS');
+call existeEPS('Vieja EPS');
+call existeTpSangre('O+');
+call existeTpSangre('O +');
+call existeTpDocumento('Pasaporte');
+call existeTpDocumento('TI');
+call existeDiscapacidad('Sordo-ceguera');
+call existeDiscapacidad('Sordo-Seguera');
+call existeGenero('Masculino');
+call existeGenero('M');
+call existeSisben('A1');
+call existeSisben('A8');

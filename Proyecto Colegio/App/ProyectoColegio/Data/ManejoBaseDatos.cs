@@ -123,62 +123,7 @@ namespace ProyectoColegio.Data
             return listaObjetos;
         }
 
-        /*
-        public static List<Object> EjecutarProcedimientoConParametroYConsulta(string nombreProcedimiento, string nombreParametro, object valorParametro, Dictionary<string, Type> atributos, string cadenaConexion)
-        {
-            List<Object> listaObjetos = new List<Object>();
-
-            try
-            {
-                using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
-                {
-                    conexion.Open();
-
-                    // Consultar el procedimiento almacenado para obtener los resultados
-                    //string sqlConsulta = $"CALL {nombreProcedimiento}(@{nombreParametro})";
-                    string sqlConsulta = $"CALL bdColegio.{nombreProcedimiento}(@{nombreParametro})";
-                    using (MySqlCommand comando = new MySqlCommand(sqlConsulta, conexion))
-                    {
-                        comando.CommandType = CommandType.StoredProcedure;
-                        comando.Parameters.AddWithValue($"@{nombreParametro}", valorParametro);
-
-                        using (MySqlDataReader lector = comando.ExecuteReader())
-                        {
-                            while (lector.Read())
-                            {
-                                List<Object> listaDatos = new List<Object>();
-
-                                foreach (var atributo in atributos)
-                                {
-                                    string nombreColumna = atributo.Key;
-
-                                    // Verificar si la columna existe en el resultado del lector
-                                    if (lector.HasColumn(nombreColumna))
-                                    {
-                                        object valor = lector[nombreColumna];
-
-                                        // Asignar directamente el valor al atributo correspondiente del objeto
-                                        object valorFinal = valor != DBNull.Value ? Convert.ChangeType(valor, atributo.Value) : "Sin_Registro";
-                                        listaDatos.Add(valorFinal);
-                                    }
-                                }
-
-                                listaObjetos.Add(listaDatos);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al ejecutar el procedimiento almacenado: {ex.Message}");
-            }
-
-            return listaObjetos;
-        }
-        */
-
-
+       
         public static int CalcularEdad(string fechaNacimiento)
         {
             DateTime fechaNac;

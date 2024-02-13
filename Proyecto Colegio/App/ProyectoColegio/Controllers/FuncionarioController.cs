@@ -26,13 +26,12 @@ namespace ProyectoColegio.Controllers
         //Funcionario funcionario = new Funcionario();
         private readonly Contexto _contexto;
         ManejoProcedimientos manejoProcedimientos = new ManejoProcedimientos();
-        
+        ConsultasValidacionesBD consultasValidacionesBD = new ConsultasValidacionesBD();
+
         public FuncionarioController(Contexto contexto)
         {
             _contexto = contexto;
         }
-
-        //VariablesGlobales variablesGlobales = new VariablesGlobales();
 
         public IActionResult CargarCsv()
         {
@@ -146,37 +145,51 @@ namespace ProyectoColegio.Controllers
             {
                 foreach (InfoSimat dato in datos)
                 {
-                    
-                    Dictionary<string, object> parametros = new Dictionary<string, object>
+                    VerificacionRegistrosEPS(dato.EPS);
+                    VerificacionRegistrosTipoSangre(dato.TIPO_DE_SANGRE);
+                    VerificacionRegistrosTipoDocumento(dato.TIPODOC);
+                    VerificacionRegistrosDiscapacidades(dato.DISCAPACIDAD);
+                    VerificacionRegistrosGenero(dato.GENERO);
+                    VerificacionRegistrosSisben(dato.SISBEN_IV);
+
+                    if (consultasValidacionesBD.ExisteEstudiante(Convert.ToInt64(dato.DOC), _contexto.Conexion) == true)
                     {
-                        { "documento", dato.DOC },
-                        { "nomUsuario", dato.NOMBRE1 },
-                        { "nom2Usuario", dato.NOMBRE2 ?? "Sin_Registro"},
-                        { "apellidoUsuario", dato.APELLIDO1 },
-                        { "apellido2Usuario", dato.APELLIDO2 },
-                        { "edad", ManejoBaseDatos.CalcularEdad(dato.FECHA_NACIMIENTO) },
-                        { "telCelular", "Sin_Registro" },
-                        { "telFijo", "Sin_Registro" },
-                        { "correoUss", dato.CORREO ?? "Sin_Registro"},
-                        { "direccionUss", "Sin_Registro" },
-                        { "barrioUss", dato.BARRIO ?? "Sin_Registro"},
-                        { "fechaNacimientoUss", dato.FECHA_NACIMIENTO },
-                        { "tipoSangre", dato.TIPO_DE_SANGRE ?? "Sin_Registro"},
-                        { "tipoDocumento", dato.TIPODOC ?? "Sin_Registro"},
-                        { "nombreDiscapacidad", dato.DISCAPACIDAD ?? "Sin_Registro"},
-                        { "nombreSisben", dato.SISBEN_IV ?? "Sin_Registro"},
-                        { "nombreGenero", dato.GENERO ?? "Sin_Registro"},
-                        { "nombreEps", dato.EPS ?? "Sin_Registro"},
-                        { "nombreEstrato", dato.ESTRATO ?? "Sin_Registro"},
-                        { "codigoStudent", dato.PER_ID },
-                        { "ciudadNacimientoEs", "Sin_Registro" },
-                        { "ciudadResidenciaEs", "Sin_Registro" },
-                        { "ciudadExpedicionDocumentoEs", "Sin_Registro" },
-                        { "paisOrigenEs", dato.PAIS_ORIGEN ?? "Sin_Registro"},
-                        { "asistenciaAcademicaEspecialEs", dato.APOYO_ACADEMICO_ESPECIAL ?? "Sin_Registro"},
-                        { "desplazadoEstadoEs", "Sin_Registro" },
-                    };
-                    ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarEstudiante", parametros, _contexto.Conexion);
+                        //Construir mecanismo de alerta para generar el aviso ("Ya esta registrado");
+                        return;
+                    }
+                    else
+                    {
+                        Dictionary<string, object> parametros = new Dictionary<string, object>
+                        {
+                            { "documento", dato.DOC },
+                            { "nomUsuario", dato.NOMBRE1 },
+                            { "nom2Usuario", dato.NOMBRE2 ?? "Sin_Registro"},
+                            { "apellidoUsuario", dato.APELLIDO1 },
+                            { "apellido2Usuario", dato.APELLIDO2 },
+                            { "edad", ManejoBaseDatos.CalcularEdad(dato.FECHA_NACIMIENTO) },
+                            { "telCelular", "Sin_Registro" },
+                            { "telFijo", "Sin_Registro" },
+                            { "correoUss", dato.CORREO ?? "Sin_Registro"},
+                            { "direccionUss", "Sin_Registro" },
+                            { "barrioUss", dato.BARRIO ?? "Sin_Registro"},
+                            { "fechaNacimientoUss", dato.FECHA_NACIMIENTO },
+                            { "tipoSangre", dato.TIPO_DE_SANGRE ?? "Sin_Registro"},
+                            { "tipoDocumento", dato.TIPODOC ?? "Sin_Registro"},
+                            { "nombreDiscapacidad", dato.DISCAPACIDAD ?? "Sin_Registro"}, 
+                            { "nombreSisben", dato.SISBEN_IV ?? "Sin_Registro"}, 
+                            { "nombreGenero", dato.GENERO ?? "Sin_Registro"}, 
+                            { "nombreEps", dato.EPS ?? "Sin_Registro"},
+                            { "nombreEstrato", dato.ESTRATO ?? "Sin_Registro"},
+                            { "codigoStudent", dato.PER_ID },
+                            { "ciudadNacimientoEs", "Sin_Registro" },
+                            { "ciudadResidenciaEs", "Sin_Registro" },
+                            { "ciudadExpedicionDocumentoEs", "Sin_Registro" },
+                            { "paisOrigenEs", dato.PAIS_ORIGEN ?? "Sin_Registro"},
+                            { "asistenciaAcademicaEspecialEs", dato.APOYO_ACADEMICO_ESPECIAL ?? "Sin_Registro"},
+                            { "desplazadoEstadoEs", "Sin_Registro" },
+                        };                       
+                        ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarEstudiante", parametros, _contexto.Conexion);
+                    }                 
                 }
             }
             catch (Exception ex)
@@ -294,6 +307,78 @@ namespace ProyectoColegio.Controllers
             // Llamar al método
             List<Object> resultados = ManejoBaseDatos.EjecutarProcedimientoConParametroYConsulta(nombreProcedimiento, nombreParametro, identificacion, numeroAtributos, _contexto.Conexion);           
             return resultados;
+        }
+
+        public void VerificacionRegistrosEPS(string nombreEps)
+        {
+            if (nombreEps == "" || consultasValidacionesBD.ExisteEPS(nombreEps, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarEPS", "nomEPS", nombreEps, _contexto.Conexion);
+            }
+        }
+
+        public void VerificacionRegistrosTipoSangre(string nombreTpSangre)
+        {
+            if (nombreTpSangre == "" || consultasValidacionesBD.ExisteTipoSangre(nombreTpSangre, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarTipoSangre", "nomTpSangre", nombreTpSangre, _contexto.Conexion);
+            }
+        }
+        
+        public void VerificacionRegistrosTipoDocumento(string nombreTpDocumento)
+        {
+            if (nombreTpDocumento == "" || consultasValidacionesBD.ExisteTipoDocumento(nombreTpDocumento, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarTipoDocumento", "nomTpDocumento", nombreTpDocumento, _contexto.Conexion);
+            }
+        }
+
+        public void VerificacionRegistrosDiscapacidades(string nombreDiscapacidad)
+        {
+            if (nombreDiscapacidad == "" || consultasValidacionesBD.ExisteDiscapacidad(nombreDiscapacidad, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarDiscapacidad", "nomDiscapacidad", nombreDiscapacidad, _contexto.Conexion);
+            }
+        }
+        
+        public void VerificacionRegistrosGenero(string nombreGenero)
+        {
+            if (nombreGenero == "" || consultasValidacionesBD.ExisteGenero(nombreGenero, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarGenero", "nomGenero", nombreGenero, _contexto.Conexion);
+            }
+        }
+         
+        public void VerificacionRegistrosSisben(string nombreSisben)
+        {
+            if (nombreSisben == "" || consultasValidacionesBD.ExisteSisben(nombreSisben, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarSisben", "nomSisben", nombreSisben, _contexto.Conexion);
+            }
         }
 
     }

@@ -83,3 +83,16 @@ begin
 				value(identificacionFamiliarEs, nombreFamiliarEs, apellidoFamiliarEs, correoFamiliarEs, celularFamiliarEs, parentescoFamiliarEs,
 					  responsabilidadEconomicaFamiliarEs, "No", (select ObtenerIdGenero(generoFamiliarEs)), (select ObtenerIdEstudiante(identificacionEstudianteEs)));
 END$$
+
+/*--------------------------Validar existencia de Estudiante-------------------------*/
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `existeEstudiante` $$
+create procedure `existeEstudiante`(identificacionUs long) 
+begin
+	/*select if(est.Usuario_identificacion = identificacionUs, true, false)
+    from Estudiante as est;*/
+    SELECT COUNT(*) > 0 AS existe_valor
+	FROM Estudiante as est
+	WHERE est.Usuario_identificacion = identificacionUs;
+END$$
