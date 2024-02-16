@@ -1,8 +1,8 @@
 /*
-Drop database bdColegio;
-Create database bdColegio CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+	DROP DATABASE bdColegio;
+    CREATE DATABASE bdColegio CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 */
-Use bdColegio;
+USE bdColegio;
 
 -- -----------------------------------------------------
 -- Table `TipoDocumento`
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `TipoSangre` (
   `estadoTipoSangre` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idTipoSangre`));
 
-ALTER TABLE TipoSangre AUTO_INCREMENT = 200;
+ALTER TABLE TipoSangre AUTO_INCREMENT = 100;
 
 -- -----------------------------------------------------
 -- Table `Discapacidad`
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `Discapacidad` (
   `estadoDiscapacidad` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idDiscapacidad`));
 
-ALTER TABLE Discapacidad AUTO_INCREMENT = 300;
+ALTER TABLE Discapacidad AUTO_INCREMENT = 200;
 
 -- -----------------------------------------------------
 -- Table `Sisben`
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `Sisben` (
   `estadoSisben` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idSisben`));
 
-ALTER TABLE Sisben AUTO_INCREMENT = 600;
+ALTER TABLE Sisben AUTO_INCREMENT = 1200;
 
 -- -----------------------------------------------------
 -- Table `Rol`
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `Rol` (
   `estadoRol` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idRol`));
 
-ALTER TABLE Rol AUTO_INCREMENT = 800;
+ALTER TABLE Rol AUTO_INCREMENT = 1600;
 
 -- -----------------------------------------------------
 -- Table `Estrato`
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `Estrato` (
   `estadoEstrato` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idEstrato`));
 
-ALTER TABLE Estrato AUTO_INCREMENT = 900;
+ALTER TABLE Estrato AUTO_INCREMENT = 1700;
 
 -- -----------------------------------------------------
 -- Table `EPS`
@@ -89,11 +89,11 @@ DROP TABLE IF EXISTS `EPS` ;
 
 CREATE TABLE IF NOT EXISTS `EPS` (
   `idEPS` INT NOT NULL AUTO_INCREMENT,
-  `nombreEPS` VARCHAR(400) NOT NULL,
-  `estadoEPS` VARCHAR(400) NOT NULL,
+  `nombreEPS` VARCHAR(45) NOT NULL,
+  `estadoEPS` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idEPS`));
 
-ALTER TABLE EPS AUTO_INCREMENT = 1100;
+ALTER TABLE EPS AUTO_INCREMENT = 2000;
 
 -- -----------------------------------------------------
 -- Table `Genero`
@@ -102,11 +102,11 @@ DROP TABLE IF EXISTS `Genero` ;
 
 CREATE TABLE IF NOT EXISTS `Genero` (
   `idGenero` INT NOT NULL AUTO_INCREMENT,
-  `nombreGenero` VARCHAR(400) NOT NULL,
-  `estadoGenero` VARCHAR(400) NOT NULL,
+  `nombreGenero` VARCHAR(45) NOT NULL,
+  `estadoGenero` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idGenero`));
 
-ALTER TABLE Genero AUTO_INCREMENT = 2000;
+ALTER TABLE Genero AUTO_INCREMENT = 5000;
 
 -- -----------------------------------------------------
 -- Table `Usuario`
@@ -115,18 +115,18 @@ DROP TABLE IF EXISTS `Usuario` ;
 
 CREATE TABLE IF NOT EXISTS `Usuario` (
   `identificacion` BIGINT NOT NULL,
-  `primerNombreUsuario` VARCHAR(400) NULL,
+  `primerNombreUsuario` VARCHAR(400) NOT NULL,
   `segundoNombreUsuario` VARCHAR(400) NULL,
-  `primerApellidoUsuario` VARCHAR(400) NULL,
+  `primerApellidoUsuario` VARCHAR(400) NOT NULL,
   `segundoApellidoUsuario` VARCHAR(400) NULL,
   `edadUsuario` INT NOT NULL,
-  `telefonoCelular` VARCHAR(40) NULL,
-  `telefonoFijo` VARCHAR(45) NULL,
+  `telefonoCelular` VARCHAR(400) NULL,
+  `telefonoFijo` VARCHAR(400) NULL,
   `correo` VARCHAR(400) NULL,
   `direccion` VARCHAR(400) NULL,
   `barrioUbicacionUsuario` VARCHAR(400) NULL,
-  `fechaNacimiento` VARCHAR(400) NULL,
-  `estadoUsuario` VARCHAR(400) NULL,
+  `fechaNacimiento` VARCHAR(400) NOT NULL,
+  `estadoUsuario` VARCHAR(400) NOT NULL,
   `fkidTipoDocumento` INT NULL,
   `fkidTipoSangre` INT NULL,
   `fkidDiscapacidad` INT NULL,
@@ -177,8 +177,6 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE Usuario AUTO_INCREMENT = 2100;
-
 -- -----------------------------------------------------
 -- Table `Permiso`
 -- -----------------------------------------------------
@@ -190,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `Permiso` (
   `estadoPermiso` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idPermiso`));
 
-ALTER TABLE Permiso AUTO_INCREMENT = 20000;
+ALTER TABLE Permiso AUTO_INCREMENT = 105100;
 
 -- -----------------------------------------------------
 -- Table `RolPermiso`
@@ -215,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `RolPermiso` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE RolPermiso AUTO_INCREMENT = 20100;
+ALTER TABLE RolPermiso AUTO_INCREMENT = 105600;
 
 -- -----------------------------------------------------
 -- Table `Estudiante`
@@ -224,7 +222,7 @@ DROP TABLE IF EXISTS `Estudiante` ;
 
 CREATE TABLE IF NOT EXISTS `Estudiante` (
   `idEstudiante` INT NOT NULL AUTO_INCREMENT,
-  `codigoEstudiante` VARCHAR(400) NULL,
+  `codigoEstudiante` VARCHAR(400) NOT NULL,
   `ciudadNacimiento` VARCHAR(400) NULL,
   `ciudadResidencia` VARCHAR(400) NULL,
   `ciudadExpedicionDocumento` VARCHAR(400) NULL,
@@ -239,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `Estudiante` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE Estudiante AUTO_INCREMENT = 21000;
+ALTER TABLE Estudiante AUTO_INCREMENT = 106600;
 
 -- -----------------------------------------------------
 -- Table `Modalida_Educativa`
@@ -252,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `Modalida_Educativa` (
   `estadoModalidad` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idModalida_Educativa`));
 
-ALTER TABLE Modalida_Educativa AUTO_INCREMENT = 31000;
+ALTER TABLE Modalida_Educativa AUTO_INCREMENT = 186600;
 
 -- -----------------------------------------------------
 -- Table `Sede`
@@ -262,7 +260,7 @@ DROP TABLE IF EXISTS `Sede` ;
 CREATE TABLE IF NOT EXISTS `Sede` (
   `idSede` INT NOT NULL AUTO_INCREMENT,
   `nombreSede` VARCHAR(400) NOT NULL,
-  `internadoDisponibilidad` VARCHAR(400) NOT NULL,
+  `internadoDisponibilidad` VARCHAR(400) NULL,
   `estadoSede` VARCHAR(400) NOT NULL,
   `fk_idModalida_Educativa` INT NOT NULL,
   PRIMARY KEY (`idSede`),
@@ -272,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `Sede` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE Sede AUTO_INCREMENT = 31100;
+ALTER TABLE Sede AUTO_INCREMENT = 186800;
 
 -- -----------------------------------------------------
 -- Table `Docente`
@@ -282,7 +280,7 @@ DROP TABLE IF EXISTS `Docente` ;
 CREATE TABLE IF NOT EXISTS `Docente` (
   `idDocente` INT NOT NULL AUTO_INCREMENT,
   `estadoDocente` VARCHAR(400) NOT NULL,
-  `horasLaboralesSemanales` INT NOT NULL,
+  `horasLaboralesSemanales` INT NULL,
   `fkidentificacion` BIGINT NOT NULL,
   `fkidSede` INT NOT NULL,
   PRIMARY KEY (`idDocente`),
@@ -297,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `Docente` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE Docente AUTO_INCREMENT = 31200;
+ALTER TABLE Docente AUTO_INCREMENT = 187000;
 
 -- -----------------------------------------------------
 -- Table `Funcionario`
@@ -306,7 +304,7 @@ DROP TABLE IF EXISTS `Funcionario` ;
 
 CREATE TABLE IF NOT EXISTS `Funcionario` (
   `idFuncionario` INT NOT NULL AUTO_INCREMENT,
-  `firmaFuncionario` LONGBLOB NOT NULL,
+  `firmaFuncionario` LONGBLOB NULL,
   `estadoFuncionario` VARCHAR(400) NOT NULL,
   `Usuario_identificacion` BIGINT NOT NULL,
   `fkidSede` INT NOT NULL,
@@ -322,7 +320,7 @@ CREATE TABLE IF NOT EXISTS `Funcionario` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE Funcionario AUTO_INCREMENT = 32200;
+ALTER TABLE Funcionario AUTO_INCREMENT = 197000;
 
 -- -----------------------------------------------------
 -- Table `Grados`
@@ -335,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `Grados` (
   `estadoGrado` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idGrado`));
 
-ALTER TABLE Grados AUTO_INCREMENT = 33200;
+ALTER TABLE Grados AUTO_INCREMENT = 207000;
 
 -- -----------------------------------------------------
 -- Table `SedeGrados`
@@ -359,20 +357,7 @@ CREATE TABLE IF NOT EXISTS `SedeGrados` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE SedeGrados AUTO_INCREMENT = 33500;
-
--- -----------------------------------------------------
--- Table `Grupos`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Grupos` ;
-
-CREATE TABLE IF NOT EXISTS `Grupos` (
-  `idGrupo` INT NOT NULL AUTO_INCREMENT,
-  `nombreGrupo` VARCHAR(400) NOT NULL,
-  `estadoGrupo` VARCHAR(400) NOT NULL,
-  PRIMARY KEY (`idGrupo`));
-
-ALTER TABLE Grupos AUTO_INCREMENT = 34500;
+ALTER TABLE SedeGrados AUTO_INCREMENT = 207100;
 
 -- -----------------------------------------------------
 -- Table `GradoGrupo`
@@ -381,23 +366,32 @@ DROP TABLE IF EXISTS `GradoGrupo` ;
 
 CREATE TABLE IF NOT EXISTS `GradoGrupo` (
   `idGradoGrupo` INT NOT NULL AUTO_INCREMENT,
-  `nombreTitular` VARCHAR(400) NOT NULL,
+  `nombreTitular` VARCHAR(400) NULL,
+  `grupoGrado` VARCHAR(400) NOT NULL,
   `estadoGrupoGrado` VARCHAR(400) NOT NULL,
   `fkidGrado` INT NOT NULL,
-  `fkidGrupo` INT NOT NULL,
   PRIMARY KEY (`idGradoGrupo`),
   CONSTRAINT `fk_GradoGrupo_Grados1`
     FOREIGN KEY (`fkidGrado`)
     REFERENCES `Grados` (`idGrado`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_GradoGrupo_Grupo1`
-    FOREIGN KEY (`fkidGrupo`)
-    REFERENCES `Grupos` (`idGrupo`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE GradoGrupo AUTO_INCREMENT = 35000;
+ALTER TABLE GradoGrupo AUTO_INCREMENT = 208100;
+
+-- -----------------------------------------------------
+-- Table `Asignatura`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Asignatura` ;
+
+CREATE TABLE IF NOT EXISTS `Asignatura` (
+  `idAsignatura` INT NOT NULL AUTO_INCREMENT,
+  `nombreAsignatura` VARCHAR(400) NOT NULL,
+  `estadoAsignatura` VARCHAR(400) NOT NULL,
+  `horasSemanales` INT NULL,
+  PRIMARY KEY (`idAsignatura`));
+
+ALTER TABLE Asignatura AUTO_INCREMENT = 213100;
 
 -- -----------------------------------------------------
 -- Table `Horario`
@@ -412,52 +406,7 @@ CREATE TABLE IF NOT EXISTS `Horario` (
   `estadoHorario` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idHorario`));
 
-ALTER TABLE Horario AUTO_INCREMENT = 36000;
-
--- -----------------------------------------------------
--- Table `Asignatura`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Asignatura` ;
-
-CREATE TABLE IF NOT EXISTS `Asignatura` (
-  `idAsignatura` INT NOT NULL AUTO_INCREMENT,
-  `nombreAsignatura` VARCHAR(400) NOT NULL,
-  `estadoAsignatura` VARCHAR(400) NOT NULL,
-  `horasSemanales` INT NOT NULL,
-  `fkidHorario` INT NOT NULL,
-  PRIMARY KEY (`idAsignatura`),
-  CONSTRAINT `fk_Asignatura_Horario1`
-    FOREIGN KEY (`fkidHorario`)
-    REFERENCES `Horario` (`idHorario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
-ALTER TABLE Asignatura AUTO_INCREMENT = 37000;
-
--- -----------------------------------------------------
--- Table `AsignaturasGrado`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `AsignaturasGrado` ;
-
-CREATE TABLE IF NOT EXISTS `AsignaturasGrado` (
-  `idGradoAsignatura` INT NOT NULL AUTO_INCREMENT,
-  `estadoAsignaturaGrado` VARCHAR(400) NOT NULL,
-  `fkidAsignatura` INT NOT NULL,
-  `fkidGrado` INT NOT NULL,
-  PRIMARY KEY (`idGradoAsignatura`),
-  CONSTRAINT `fk_GradoAsignatura_Asignatura1`
-    FOREIGN KEY (`fkidAsignatura`)
-    REFERENCES `Asignatura` (`idAsignatura`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_GradoAsignatura_Grados1`
-    FOREIGN KEY (`fkidGrado`)
-    REFERENCES `Grados` (`idGrado`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
-ALTER TABLE AsignaturasGrado AUTO_INCREMENT = 38000;
-
+ALTER TABLE Horario AUTO_INCREMENT = 214100;
 -- -----------------------------------------------------
 -- Table `PeriodoAcademico`
 -- -----------------------------------------------------
@@ -471,7 +420,7 @@ CREATE TABLE IF NOT EXISTS `PeriodoAcademico` (
   `estadoPeriodo` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idPeriodoAcademico`));
 
-ALTER TABLE PeriodoAcademico AUTO_INCREMENT = 39000;
+ALTER TABLE PeriodoAcademico AUTO_INCREMENT = 414100;
 
 -- -----------------------------------------------------
 -- Table `NotaFinal`
@@ -485,7 +434,7 @@ CREATE TABLE IF NOT EXISTS `NotaFinal` (
   `estadoCalificacionAño` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idNotaDefinitiva`));
 
-ALTER TABLE NotaFinal AUTO_INCREMENT = 39100;
+ALTER TABLE NotaFinal AUTO_INCREMENT = 414200;
 
 -- -----------------------------------------------------
 -- Table `NotaDefinitivaPeriodo`
@@ -516,7 +465,7 @@ CREATE TABLE IF NOT EXISTS `NotaDefinitivaPeriodo` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE NotaDefinitivaPeriodo AUTO_INCREMENT = 50100;
+ALTER TABLE NotaDefinitivaPeriodo AUTO_INCREMENT = 415200;
 
 -- -----------------------------------------------------
 -- Table `Competencias`
@@ -525,9 +474,9 @@ DROP TABLE IF EXISTS `Competencias` ;
 
 CREATE TABLE IF NOT EXISTS `Competencias` (
   `idCompetencias` INT NOT NULL AUTO_INCREMENT,
-  `nombreCompetencia` VARCHAR(400) NOT NULL,
-  `objetivoCompetencia` VARCHAR(400) NOT NULL,
-  `informacionCompetencia` VARCHAR(400) NULL,
+  `nombreCompetencia` VARCHAR(450) NOT NULL,
+  `objetivoCompetencia` VARCHAR(450) NOT NULL,
+  `informacionCompetencia` VARCHAR(450) NULL,
   `estadoCompetencia` VARCHAR(400) NOT NULL,
   `fkidAsignatura` INT NOT NULL,
   PRIMARY KEY (`idCompetencias`),
@@ -537,7 +486,7 @@ CREATE TABLE IF NOT EXISTS `Competencias` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE Competencias AUTO_INCREMENT = 60100;
+ALTER TABLE Competencias AUTO_INCREMENT = 417200;
 
 -- -----------------------------------------------------
 -- Table `Matricula`
@@ -546,13 +495,13 @@ DROP TABLE IF EXISTS `Matricula` ;
 
 CREATE TABLE IF NOT EXISTS `Matricula` (
   `idMatricula` INT NOT NULL AUTO_INCREMENT,
-  `jornada` VARCHAR(400) NOT NULL,
-  `fechaInicio` VARCHAR(400) NOT NULL,
+  `jornada` VARCHAR(400) NULL,
+  `fechaInicio` VARCHAR(400) NULL,
   `fechaFin` VARCHAR(400) NULL,
-  `internadoEstado` VARCHAR(400) NOT NULL,
-  `gradoEstudiante` VARCHAR(400) NOT NULL,
-  `grupoEstudiante` VARCHAR(400) NOT NULL,
-  `estadoMatricula` VARCHAR(400) NOT NULL,
+  `internadoEstado` VARCHAR(400) NULL,
+  `gradoEstudiante` VARCHAR(400) NULL,
+  `grupoEstudiante` VARCHAR(400) NULL,
+  `estadoMatricula` VARCHAR(400) NULL,
   `fkidEstudiante` INT NOT NULL,
   `fkidFuncionario` INT NOT NULL,
   `fkidSede` INT NOT NULL,
@@ -573,7 +522,7 @@ CREATE TABLE IF NOT EXISTS `Matricula` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE Matricula AUTO_INCREMENT = 70100;
+ALTER TABLE Matricula AUTO_INCREMENT = 420200;
 
 -- -----------------------------------------------------
 -- Table `Observaciones`
@@ -598,7 +547,7 @@ CREATE TABLE IF NOT EXISTS `Observaciones` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE Observaciones AUTO_INCREMENT = 100100;
+ALTER TABLE Observaciones AUTO_INCREMENT = 500200;
 
 -- -----------------------------------------------------
 -- Table `Asistencia`
@@ -609,15 +558,9 @@ CREATE TABLE IF NOT EXISTS `Asistencia` (
   `idAsistencia` INT NOT NULL AUTO_INCREMENT,
   `nFallas` VARCHAR(400) NOT NULL,
   `estadoAsistencia` VARCHAR(400) NOT NULL,
-  `fkidAsignatura` INT NOT NULL,
-  PRIMARY KEY (`idAsistencia`),
-  CONSTRAINT `fk_Asistencia_Asignatura2`
-    FOREIGN KEY (`fkidAsignatura`)
-    REFERENCES `Asignatura` (`idAsignatura`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  PRIMARY KEY (`idAsistencia`));
 
-ALTER TABLE Asistencia AUTO_INCREMENT = 140100;
+ALTER TABLE Asistencia AUTO_INCREMENT = 580200;
 
 -- -----------------------------------------------------
 -- Table `EstudiantesGradoGrupo`
@@ -642,8 +585,7 @@ CREATE TABLE IF NOT EXISTS `EstudiantesGradoGrupo` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE EstudiantesGradoGrupo AUTO_INCREMENT = 200100;
-
+ALTER TABLE EstudiantesGradoGrupo AUTO_INCREMENT = 680200;
 -- -----------------------------------------------------
 -- Table `DocenteAsignatura`
 -- -----------------------------------------------------
@@ -666,7 +608,7 @@ CREATE TABLE IF NOT EXISTS `DocenteAsignatura` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE DocenteAsignatura AUTO_INCREMENT = 210100;
+ALTER TABLE DocenteAsignatura AUTO_INCREMENT = 780200;
 
 -- -----------------------------------------------------
 -- Table `DocentesGrado`
@@ -690,7 +632,7 @@ CREATE TABLE IF NOT EXISTS `DocentesGrado` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE DocentesGrado AUTO_INCREMENT = 215100;
+ALTER TABLE DocentesGrado AUTO_INCREMENT = 790200;
 
 -- -----------------------------------------------------
 -- Table `AsistenciaEstudiante`
@@ -701,20 +643,20 @@ CREATE TABLE IF NOT EXISTS `AsistenciaEstudiante` (
   `idAsistenciaGradoGrupo` INT NOT NULL AUTO_INCREMENT,
   `estadoAsistencia` VARCHAR(400) NOT NULL,
   `fkidAsistencia` INT NOT NULL,
-  `fkidEstudianteGG` INT NOT NULL,
+  `fkidEstudiante` INT NOT NULL,
   PRIMARY KEY (`idAsistenciaGradoGrupo`),
   CONSTRAINT `fk_AsistenciaEstudiante_Asistencia1`
     FOREIGN KEY (`fkidAsistencia`)
     REFERENCES `Asistencia` (`idAsistencia`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_AsistenciaEstudiante_EstudiantesGradoGrupo1`
-    FOREIGN KEY (`fkidEstudianteGG`)
-    REFERENCES `EstudiantesGradoGrupo` (`idEstudianteGG`)
+  CONSTRAINT `fk_AsistenciaEstudiante_Estudiante1`
+    FOREIGN KEY (`fkidEstudiante`)
+    REFERENCES `Estudiante` (`idEstudiante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE AsistenciaEstudiante AUTO_INCREMENT = 218100;
+ALTER TABLE AsistenciaEstudiante AUTO_INCREMENT = 800200;
 
 -- -----------------------------------------------------
 -- Table `TipoNota`
@@ -728,7 +670,7 @@ CREATE TABLE IF NOT EXISTS `TipoNota` (
   `estadoNota` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idTipoNota`));
 
-ALTER TABLE TipoNota AUTO_INCREMENT = 278100;
+ALTER TABLE TipoNota AUTO_INCREMENT = 900200;
 
 -- -----------------------------------------------------
 -- Table `NotasEstudiante`
@@ -739,15 +681,10 @@ CREATE TABLE IF NOT EXISTS `NotasEstudiante` (
   `idNotaEstudiante` INT NOT NULL AUTO_INCREMENT,
   `estadoNota` VARCHAR(400) NOT NULL,
   `notaDefinitiva` FLOAT NOT NULL,
-  `fkidEstudianteGG` INT NOT NULL,
   `fkidTipoNota` INT NOT NULL,
   `fkidNotaDefinitivaPeriodo` INT NOT NULL,
+  `fkidEstudiante` INT NOT NULL,
   PRIMARY KEY (`idNotaEstudiante`),
-  CONSTRAINT `fk_NotasEstudiante_EstudiantesGradoGrupo1`
-    FOREIGN KEY (`fkidEstudianteGG`)
-    REFERENCES `EstudiantesGradoGrupo` (`idEstudianteGG`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_NotasEstudiante_TipoNota1`
     FOREIGN KEY (`fkidTipoNota`)
     REFERENCES `TipoNota` (`idTipoNota`)
@@ -757,34 +694,135 @@ CREATE TABLE IF NOT EXISTS `NotasEstudiante` (
     FOREIGN KEY (`fkidNotaDefinitivaPeriodo`)
     REFERENCES `NotaDefinitivaPeriodo` (`idNotas`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_NotasEstudiante_Estudiante1`
+    FOREIGN KEY (`fkidEstudiante`)
+    REFERENCES `Estudiante` (`idEstudiante`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-ALTER TABLE NotasEstudiante AUTO_INCREMENT = 278200;
+ALTER TABLE NotasEstudiante AUTO_INCREMENT = 900300;
 
 -- -----------------------------------------------------
--- Table `Acudiente`
+-- Table `Familiar`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Acudiente` ;
+DROP TABLE IF EXISTS `Familiar` ;
 
-CREATE TABLE IF NOT EXISTS `Acudiente` (
+CREATE TABLE IF NOT EXISTS `Familiar` (
   `identificacionFamiliar` BIGINT NOT NULL,
   `nombreFamiliar` VARCHAR(400) NOT NULL,
   `apellidoFamiliar` VARCHAR(400) NOT NULL,
   `correoFamiliar` VARCHAR(400) NULL,
   `celularFamiliar` VARCHAR(400) NULL,
-  `parentescoEstudiante` VARCHAR(400) NOT NULL,
-  `responsabilidadEconomicaEstudiante` VARCHAR(450) NOT NULL,
+  `parentescoFamiliar` VARCHAR(400) NOT NULL,
+  `responsabilidadEconomicaEstudiante` VARCHAR(400) NOT NULL,
   `estadoAcudiente` VARCHAR(400) NOT NULL,
   `Genero_idGenero` INT NOT NULL,
   `Estudiante_idEstudiante` INT NOT NULL,
   PRIMARY KEY (`identificacionFamiliar`),
-  CONSTRAINT `fk_Familiar_Genero1`
+  CONSTRAINT `fk_Acudiente_Genero1`
     FOREIGN KEY (`Genero_idGenero`)
     REFERENCES `Genero` (`idGenero`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Familiar_Estudiante1`
+  CONSTRAINT `fk_Acudiente_Estudiante1`
     FOREIGN KEY (`Estudiante_idEstudiante`)
     REFERENCES `Estudiante` (`idEstudiante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+-- -----------------------------------------------------
+-- Table `horarioGradoGrupo`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `horarioGradoGrupo` ;
+
+CREATE TABLE IF NOT EXISTS `horarioGradoGrupo` (
+  `idHorarioGradoGrupo` INT NOT NULL AUTO_INCREMENT,
+  `estadoHorarioGG` VARCHAR(400) NOT NULL,
+  `fkidHorario` INT NOT NULL,
+  `fkidGradoGrupo` INT NOT NULL,
+  PRIMARY KEY (`idHorarioGradoGrupo`),
+  CONSTRAINT `fk_detalleHorario_Horario1`
+    FOREIGN KEY (`fkidHorario`)
+    REFERENCES `Horario` (`idHorario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_detalleHorario_GradoGrupo1`
+    FOREIGN KEY (`fkidGradoGrupo`)
+    REFERENCES `GradoGrupo` (`idGradoGrupo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+ALTER TABLE horarioGradoGrupo AUTO_INCREMENT = 1160300;
+
+-- -----------------------------------------------------
+-- Table `horarioAsignatura`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `horarioAsignatura` ;
+
+CREATE TABLE IF NOT EXISTS `horarioAsignatura` (
+  `idhorarioAsignatura` INT NOT NULL AUTO_INCREMENT,
+  `estadoHorarioAsignatura` VARCHAR(400) NOT NULL,
+  `fkidHorario` INT NOT NULL,
+  `fkidAsignatura` INT NOT NULL,
+  PRIMARY KEY (`idhorarioAsignatura`),
+  CONSTRAINT `fk_horarioAsignatura_Horario1`
+    FOREIGN KEY (`fkidHorario`)
+    REFERENCES `Horario` (`idHorario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_horarioAsignatura_Asignatura1`
+    FOREIGN KEY (`fkidAsignatura`)
+    REFERENCES `Asignatura` (`idAsignatura`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+ALTER TABLE horarioAsignatura AUTO_INCREMENT = 1260300;
+
+-- -----------------------------------------------------
+-- Table `horarioAsistencia`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `horarioAsistencia` ;
+
+CREATE TABLE IF NOT EXISTS `horarioAsistencia` (
+  `idhorarioAsistencia` INT NOT NULL AUTO_INCREMENT,
+  `estadoHorarioAsistencia` VARCHAR(400) NOT NULL,
+  `fkidHorario` INT NOT NULL,
+  `fkidAsistencia` INT NOT NULL,
+  PRIMARY KEY (`idhorarioAsistencia`),
+  CONSTRAINT `fk_horarioAsistencia_Horario1`
+    FOREIGN KEY (`fkidHorario`)
+    REFERENCES `Horario` (`idHorario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_horarioAsistencia_Asistencia1`
+    FOREIGN KEY (`fkidAsistencia`)
+    REFERENCES `Asistencia` (`idAsistencia`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+ALTER TABLE horarioAsistencia AUTO_INCREMENT = 1360300;
+
+-- -----------------------------------------------------
+-- Table `asignaturaGradoGrupo`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `asignaturaGradoGrupo` ;
+
+CREATE TABLE IF NOT EXISTS `asignaturaGradoGrupo` (
+  `idasignaturaGradoGrupo` INT NOT NULL AUTO_INCREMENT,
+  `estadoAsignaturaGG` VARCHAR(400) NOT NULL,
+  `fkidGradoGrupo` INT NOT NULL,
+  `fkidAsignatura` INT NOT NULL,
+  PRIMARY KEY (`idasignaturaGradoGrupo`),
+  CONSTRAINT `fk_asignaturaGradoGrupo_GradoGrupo1`
+    FOREIGN KEY (`fkidGradoGrupo`)
+    REFERENCES `GradoGrupo` (`idGradoGrupo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_asignaturaGradoGrupo_Asignatura1`
+    FOREIGN KEY (`fkidAsignatura`)
+    REFERENCES `Asignatura` (`idAsignatura`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+ALTER TABLE asignaturaGradoGrupo AUTO_INCREMENT = 1460300;

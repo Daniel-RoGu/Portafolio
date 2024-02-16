@@ -31,6 +31,7 @@
             <th>EPS</th>
             <th>Estrato</th>
             <th>Codigo Estudiante</th>
+            <th>Opciones</th>
         </tr>
 
         @foreach (var usuario in Model)
@@ -56,6 +57,11 @@
                 <td>@usuario.Usuario.EPS</td>
                 <td>@usuario.Usuario.Estrato</td>
                 <td>@usuario.CodigoEstudiante</td>
+                <td>
+                    @Html.ActionLink("registrarFamiliar", "registrarFamiliar", new {identificacion=usuario.Identificacion}, new {@class = "btn btn-success"})
+                    @Html.ActionLink("registrarObservacion", "registrarObservacion", new {identificacionEst=usuario.Identificacion}, new {@class = "btn btn-warning"})
+                    @*<button class="btn btn-warning" onclick="window.location.href='/Funcionario/registrarObservacion'">Registrar Observacion</button>*@
+                </td>
             </tr>
         }
     </table>

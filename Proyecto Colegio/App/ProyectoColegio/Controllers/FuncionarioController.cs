@@ -18,6 +18,7 @@ using System.Globalization;
 using DocumentFormat.OpenXml.EMMA;
 using Newtonsoft.Json;
 using Org.BouncyCastle.Asn1.Cms;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace ProyectoColegio.Controllers
 {
@@ -93,13 +94,13 @@ namespace ProyectoColegio.Controllers
         [HttpGet]
         public IActionResult mostrarCsv()
         {           
-            List<Estudiante> Estudiantes = new List<Estudiante>();
-            Estudiante Student = new Estudiante();
+            List<Estudiante> Estudiantes = new List<Estudiante>();         
             
             try
             {
                 foreach (Usuario item in mostrarInfoSimat())
                 {
+                    Estudiante Student = new Estudiante();
                     Student.Identificacion = item.Identificacion;
                     Student.Usuario.NombreUsuario = item.NombreUsuario;
                     Student.Usuario.SegundoNombreUsuario = item.SegundoNombreUsuario;
@@ -242,13 +243,14 @@ namespace ProyectoColegio.Controllers
             //Esta contando el grupo de registros totales de resultado
             foreach (List<Object> item in resultados)
             {
-                Usuario usuario = new Usuario();
+                
                 int cont = 0;
 
                 //i < resultados.Count por que es el conjunto de datos que obtenidos desde la base de datos
                 //cont =+cantidadAtributos "20" por que es el numero de atributos que configura el objeto usuario (numero registrado en el diccionario "atributosEstudiante") 
                 for (int i=0; i < resultados.Count; i++)
                 {
+                    Usuario usuario = new Usuario();
                     usuario.Identificacion = (Convert.ToInt64(item[cont]));
                     usuario.NombreUsuario = Convert.ToString(item[cont + 1]);
                     usuario.SegundoNombreUsuario = Convert.ToString(item[cont + 2]);
@@ -279,6 +281,70 @@ namespace ProyectoColegio.Controllers
             }
 
             return usuarios; 
+        }
+
+        public IActionResult registrarFamiliar(string identificacion)
+        {
+            ViewBag.Identificacion = Convert.ToInt64(identificacion);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult registrarFamiliar(Familiar familiar) {
+            try
+            {
+
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    { "identificacionFamiliarEs", familiar.identificacionFamiliar },
+                    { "nombreFamiliarEs", familiar.nombresFamiliar },
+                    { "apellidoFamiliarEs", familiar.apellidosFamiliar },
+                    { "correoFamiliarEs", familiar.correoFamiliar },
+                    { "celularFamiliarEs", familiar.celularFamiliar },
+                    { "parentescoFamiliarEs", familiar.parentescoFamiliar },
+                    { "responsabilidadEconomicaFamiliarEs", familiar.responsabilidadEconomicaEstudiante },
+                    { "generoFamiliarEs", familiar.genero },
+                    { "identificacionEstudianteEs", familiar.identificacionEstudiante },
+                            
+                };
+
+                ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarFamiliar", parametros, _contexto.Conexion);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+            }
+            return RedirectToAction("mostrarCsv", "Funcionario");
+        }
+
+        public IActionResult registrarObservacion(string identificacionEst)
+        {
+            ViewBag.IdentificacionEstudiante = Convert.ToInt64(identificacionEst);
+            ViewBag.IdentificacionFuncionario = Convert.ToInt64("12368974"); //modificar la forma de aignar la identificacion del funcionario
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult registrarObservacion(Observacion observacion)
+        {
+            try
+            {
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    { "descripcionObsrv", observacion.Observaciones },
+                    { "identificacionEstudiante", observacion.identificacionEstudiante },
+                    { "identificacionFuncionario", observacion.identificacionFuncionario },
+                };
+
+                ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarObservacionEst", parametros, _contexto.Conexion);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+            }
+            return RedirectToAction("mostrarCsv", "Funcionario");
         }
 
         public List<Object> ObtenerCodigoEstudiante(long identificacion)

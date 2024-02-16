@@ -215,7 +215,7 @@ RETURNS INT
 READS SQL DATA
 BEGIN
     DECLARE resultado INT;
-    SET resultado = (SELECT ModalidadEducativa.idModalidad_Educativa FROM ModalidadEducativa WHERE ModalidadEducativa.nombreModalidad = nomModalidad LIMIT 1);
+    SET resultado = (SELECT ModalidadEducativa.idModalida_Educativa FROM Modalida_Educativa as ModalidadEducativa WHERE ModalidadEducativa.nombreModalidad = nomModalidad LIMIT 1);
     RETURN resultado;
 END;
 //
@@ -250,11 +250,24 @@ DELIMITER ;
 /*------buscar id de Estudiante-----*/
 DELIMITER //
 CREATE FUNCTION ObtenerIdEstudiante(identificacion long)
-RETURNS int 
+RETURNS long 
 READS SQL DATA
 BEGIN
-    DECLARE resultado int;
+    DECLARE resultado long;
     SET resultado = (SELECT Estudiante.idEstudiante FROM Estudiante WHERE Estudiante.Usuario_identificacion = identificacion LIMIT 1);
+    RETURN resultado;
+END;
+//
+DELIMITER ;
+
+/*------buscar documento de Estudiante-----*/
+DELIMITER //
+CREATE FUNCTION ObtenerDocEstudiante(identificacion long)
+RETURNS long 
+READS SQL DATA
+BEGIN
+    DECLARE resultado long;
+    SET resultado = (SELECT Estudiante.Usuario_identificacion FROM Estudiante WHERE Estudiante.Usuario_identificacion = identificacion LIMIT 1);
     RETURN resultado;
 END;
 //
@@ -268,6 +281,19 @@ READS SQL DATA
 BEGIN
     DECLARE resultado long;
     SET resultado = (SELECT Estudiante.codigoEstudiante FROM Estudiante WHERE Estudiante.Usuario_identificacion = identificacion LIMIT 1);
+    RETURN resultado;
+END;
+//
+DELIMITER ;
+
+/*------buscar id de Funcionario-----*/
+DELIMITER //
+CREATE FUNCTION ObtenerIdFuncionario(identificacion long)
+RETURNS long
+READS SQL DATA
+BEGIN
+    DECLARE resultado long;
+    SET resultado = (SELECT Funcionario.idFuncionario FROM Funcionario WHERE Funcionario.Usuario_identificacion = identificacion LIMIT 1);
     RETURN resultado;
 END;
 //

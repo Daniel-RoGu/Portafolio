@@ -1,3 +1,5 @@
+use bdColegio;
+
 /*--------------------------Registrar Docente-------------------------*/
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarDocente` $$

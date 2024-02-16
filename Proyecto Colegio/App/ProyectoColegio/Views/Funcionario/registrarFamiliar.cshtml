@@ -1,0 +1,82 @@
+﻿@model ProyectoColegio.Models.Familiar
+
+@{
+    ViewData["Title"] = "registrarFamiliar";
+    var identificacion = ViewBag.Identificacion;
+}
+
+<h1>registrarFamiliar</h1>
+
+<h4>Familiar</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="registrarFamiliar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="identificacionFamiliar" class="control-label"></label>
+                <input asp-for="identificacionFamiliar" class="form-control" />
+                <span asp-validation-for="identificacionFamiliar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombresFamiliar" class="control-label"></label>
+                <input asp-for="nombresFamiliar" class="form-control" />
+                <span asp-validation-for="nombresFamiliar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="apellidosFamiliar" class="control-label"></label>
+                <input asp-for="apellidosFamiliar" class="form-control" />
+                <span asp-validation-for="apellidosFamiliar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="correoFamiliar" class="control-label"></label>
+                <input asp-for="correoFamiliar" class="form-control" />
+                <span asp-validation-for="correoFamiliar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="celularFamiliar" class="control-label"></label>
+                <input asp-for="celularFamiliar" class="form-control" />
+                <span asp-validation-for="celularFamiliar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="parentescoFamiliar" class="control-label"></label>
+                <input asp-for="parentescoFamiliar" class="form-control" />
+                <span asp-validation-for="parentescoFamiliar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="responsabilidadEconomicaEstudiante" class="control-label"></label>
+                <input asp-for="responsabilidadEconomicaEstudiante" class="form-control" />
+                <span asp-validation-for="responsabilidadEconomicaEstudiante" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="estadoAcudiente" class="control-label"></label>
+                <input asp-for="estadoAcudiente" class="form-control" />
+                <span asp-validation-for="estadoAcudiente" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="genero" class="control-label"></label>
+                <input asp-for="genero" class="form-control" />
+                <span asp-validation-for="genero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="identificacionEstudiante" class="control-label"></label>*@
+                @*<input asp-for="identificacionEstudiante" class="form-control" />*@
+                @*<span asp-validation-for="identificacionEstudiante" class="text-danger"></span>*@
+                <label asp-for="identificacionEstudiante"  class="control-label"></label>
+                <input asp-for="identificacionEstudiante" value="@identificacion" class="form-control" readonly />
+                <span asp-validation-for="identificacionEstudiante" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

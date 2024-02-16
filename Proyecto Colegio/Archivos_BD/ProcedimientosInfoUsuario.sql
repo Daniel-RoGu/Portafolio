@@ -151,32 +151,6 @@ begin
                        (select ObtenerIdEPS(nombreEps)), (select ObtenerIdGenero(nombreGenero)));
 END$$
 
-
-/*--------------------------Registrar ModalidadEducativa-------------------------*/
-DELIMITER $$
-DROP PROCEDURE IF EXISTS `registrarModalidadEducativa` $$
-create procedure `registrarModalidadEducativa`(
-    nomModalidadEducativa varchar(400)
-) 
-begin
-	insert into ModalidadEducativa (nombreModalidad, estadoModalidad)
-				value(nomModalidadEducativa, "Activa");
-END$$
-
-/*--------------------------Registrar Sede-------------------------*/
-DELIMITER $$
-DROP PROCEDURE IF EXISTS `registrarSede` $$
-create procedure `registrarSede`(
-    nomSede varchar(400),
-    esInternado varchar(400),
-    nomModalidadEducativa varchar(400)
-) 
-begin
-	insert into Sede (nombreSede, internadoDisponibilidad, estadoSede, fk_idModalidadEducativa)
-				value(nomSede, esInternado, "Activa", (select ObtenerIdModalidadEducativa(nomModalidadEducativa)));
-END$$
-
-
 /*--------------------------Validar existencia de EPS-------------------------*/
 
 DELIMITER $$

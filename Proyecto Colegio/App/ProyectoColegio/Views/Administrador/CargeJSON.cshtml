@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="~/css/estilos.css">
 </head>
 <body>
-    <div class="contenedor-botones">
-        <button id="boton-cargar-asignaturas" class="cargar-asignaturas">Cargar Asignaturas</button>
+    <div class="contenedor-botones">       
+        <button onclick="location.href='@Url.Action("RegistrarAsignatura", "Administrador")'" id="boton-cargar-asignaturas" class="cargar-asignaturas">Cargar Asignaturas</button>
         <button onclick="location.href='@Url.Action("RegistrarSisben", "Administrador")'" id="boton-cargar-sisben" class="cargar-sisben">Cargar Sisben</button>
         <button onclick="location.href='@Url.Action("RegistrarEstrato", "Administrador")'" id="boton-cargar-estrato" class="cargar-estrato">Cargar Estrato</button>
         <button onclick="location.href='@Url.Action("RegistrarEPS", "Administrador")'" id="boton-cargar-EPS" class="cargar-EPS">Cargar EPS</button>
@@ -22,7 +22,8 @@
         <button onclick="location.href='@Url.Action("RegistrarTipoDocumento", "Administrador")'" id="boton-cargar-tipo-documento" class="cargar-tipo-documento">Cargar Tipo Documento</button>
         <button onclick="location.href='@Url.Action("RegistrarTipoSangre", "Administrador")'" id="boton-cargar-tipo-sangre" class="cargar-tipo-sangre">Cargar Tipo De Sangre</button>
         <button onclick="location.href='@Url.Action("RegistrarGenero", "Administrador")'" id="boton-cargar-genero" class="cargar-genero">Cargar Genero</button>
-        <button id="boton-cargar-sedes" class="cargar-sedes">Cargar Sedes</button>
+        <button onclick="location.href='@Url.Action("RegistrarSedes", "Administrador")'" id="boton-cargar-sedes" class="cargar-sedes">Cargar Sedes</button>
+        <button onclick="location.href='@Url.Action("RegistrarTipoNota", "Administrador")'" id="boton-cargar-tipo-nota" class="cargar-tipo-notas">Cargar Tipo de Notas</button>
     </div>
 </body>
 </html>

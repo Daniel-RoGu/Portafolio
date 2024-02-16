@@ -1,7 +1,7 @@
 {
   "Notas": [
-    {"tipo": "Heteroevaluación", "porcentaje": 90},
-    {"tipo": "Autoevaluación", "porcentaje": 5},
-    {"tipo": "Coevaluación", "porcentaje": 5}
+    "Heteroevaluación",
+    "Autoevaluación",
+    "Coevaluación"
   ]
 }

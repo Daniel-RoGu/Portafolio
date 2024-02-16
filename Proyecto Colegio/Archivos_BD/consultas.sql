@@ -6,13 +6,17 @@ FLUSH PRIVILEGES;
 
 call registrarTipoSangre("O+");
 call registrarTipoDocumento("TI");
+call registrarTipoDocumento("CC");
 call registrarDiscapacidad("Limitaciones Motoras");
 call registrarDiscapacidad("Ninguna");
-call registrarGenero("Jhulian");
+call registrarGenero("Hombre");
+call registrarGenero("Mujer");
 call registrarEPS("PaJoderte");
 call registrarEstrato("NiExiste");
 call registrarRol("ElJefe");
 call registrarRol("Estudiante");
+call registrarRol("Coordinador");
+call registrarRol("Docente");
 call registrarPermiso("RegistrarTipoDocumento");
 call registrarRolPermiso("vistaRegistroTipoDocumento", "Views/TipoDocumento", "ElJefe", "RegistrarTipoDocumento"); /*luego se remplaza el nombre de la vista por el http//algo.com*/
 call registrarSisben("Ninguno");
@@ -23,6 +27,7 @@ call registrarEstudiante(123, "Alguien", null, "Soy", "Yo", 30, "321654", null, 
 call registrarAcudiente(98747, "Tutoi", "Pepinto", "Elpepinto@putoi.com", null, "Papi", "Toda no hace nada", "Jhulian", 123);
 
 call registrarModalidadEducativa("Nueva escuela");
+call registrarModalidadEducativa("Sin definir");
 call registrarSede("JoPutos", "No", "Nueva escuela");
 call registrarDocente(24, 12345, "JoPutos", "Alguien", null, "Soy", "Yo", 30, "321654", null, "AlguienSoyYo@Jhu.lalo", "Donde tu quieras", null, "2023-12-15", "O+", "TI", "Ninguna", "Ninguno", "Jhulian", "PaJoderte", "NiExiste", "ElJefe");
 
@@ -61,3 +66,14 @@ call existeGenero('Masculino');
 call existeGenero('M');
 call existeSisben('A1');
 call existeSisben('A8');
+
+call registrarAsignatura('Probabilisticos');
+call registrarTipoNota('Definitiva');
+call registrarSede('Central');
+call registrarFamiliar(1117568978,"Alguien Roberto", "Hus Hus", null, "312654987", "Padre", "Completa", "Hombre", 1118377419);
+call registrarFuncionario(12368974, "Alguien", null, "Soy", "Yo", 30, "321654", null, "AlguienSoyYo@Jhu.lalo", "Donde tu quieras", null, "2023-12-15", "O+", "CC", 
+						  "Ninguna", "Ninguno", "Masculino", "CAPRECOM EPS", "4", null, "Alta Aguililla");
+call registrarObservacionEst("Pinche decerebrado pelion", "1118377419", "12368974");
+select ObtenerIdFuncionario((SELECT CAST('12368974' AS SIGNED)));                          
+                          
+                          

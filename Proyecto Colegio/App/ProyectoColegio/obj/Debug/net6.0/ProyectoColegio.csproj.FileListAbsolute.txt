@@ -2768,3 +2768,6 @@ C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\ExcelNumberFo
 C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\System.IO.Packaging.dll
 C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\System.Linq.Async.dll
 C:\Proyectos\Proyecto_Colegio\App\ProyectoColegio\bin\Debug\net6.0\V8.Net.dll
+C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\Archivos_Json\Asignaturas.json
+C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\Archivos_Json\Notas.json
+C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\Archivos_Json\Sedes.json

@@ -1,3 +1,5 @@
+use bdColegio;
+
 /*--------------------------Registrar Estudiante-------------------------*/
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarEstudiante` $$
@@ -67,7 +69,7 @@ END$$
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarFamiliar` $$
 create procedure `registrarFamiliar`(
-    identificacionFamiliarEs int,
+    identificacionFamiliarEs long,
     nombreFamiliarEs varchar(400),
     apellidoFamiliarEs varchar(400),
     correoFamiliarEs varchar(400),
@@ -75,13 +77,27 @@ create procedure `registrarFamiliar`(
     parentescoFamiliarEs varchar(400),
     responsabilidadEconomicaFamiliarEs varchar(400),
     generoFamiliarEs varchar(400),
-    identificacionEstudianteEs int
+    identificacionEstudianteEs long
 ) 
 begin
-	insert into Acudiente (identificacionFamiliar, nombreFamiliar, apellidoFamiliar, correoFamiliar, celularFamiliar, 
+	insert into Familiar (identificacionFamiliar, nombreFamiliar, apellidoFamiliar, correoFamiliar, celularFamiliar, 
 						   parentescoFamiliar, responsabilidadEconomicaEstudiante, estadoAcudiente, Genero_idGenero, Estudiante_idEstudiante)
 				value(identificacionFamiliarEs, nombreFamiliarEs, apellidoFamiliarEs, correoFamiliarEs, celularFamiliarEs, parentescoFamiliarEs,
 					  responsabilidadEconomicaFamiliarEs, "No", (select ObtenerIdGenero(generoFamiliarEs)), (select ObtenerIdEstudiante(identificacionEstudianteEs)));
+END$$
+
+/*--------------------------Registrar Observacion-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `registrarObservacionEst` $$
+create procedure `registrarObservacionEst`(
+    descripcionObsrv varchar(400),
+    identificacionEstudiante varchar(400),
+    identificacionFuncionario varchar(400)
+) 
+begin
+	insert into Observaciones (descripcionObservacion, estadoObservacion, fkidEstudiante, fkidFuncionario)
+				value(descripcionObsrv, "Activa", (select ObtenerIdEstudiante((SELECT CAST(identificacionEstudiante AS SIGNED)))) ,
+                (select ObtenerIdFuncionario((SELECT CAST(identificacionFuncionario AS SIGNED)))) );
 END$$
 
 /*--------------------------Validar existencia de Estudiante-------------------------*/
@@ -95,4 +111,18 @@ begin
     SELECT COUNT(*) > 0 AS existe_valor
 	FROM Estudiante as est
 	WHERE est.Usuario_identificacion = identificacionUs;
+END$$
+
+/*--------------------------Buscar Estudiante-------------------------*/
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerEstudiante` $$
+create procedure `obtenerEstudiante`(codigoEst Varchar(400)) 
+begin
+	/*select if(est.Usuario_identificacion = identificacionUs, true, false)
+    from Estudiante as est;*/
+    SELECT Us.primerNombreUsuario, Us.segundoNombreUsuario, Us.primerApellidoUsuario, Us.segundoApellidoUsuario
+	FROM Estudiante as est
+    inner join Usuario as Us
+	WHERE est.idEstudiante = (SELECT CAST(codigoEst AS SIGNED)) and est.Usuario_identificacion = Us.identificacion;
 END$$

@@ -21,13 +21,13 @@ namespace ProyectoColegio.Data
                 string jsonContent = File.ReadAllText(ruta);
 
                 // Deserializar el JSON en un objeto DatosArchivo
-                DatosArchivo puntajeSisben = JsonConvert.DeserializeObject<DatosArchivo>(jsonContent);
+                DatosArchivo datos = JsonConvert.DeserializeObject<DatosArchivo>(jsonContent);
 
                 // Verificar si se obtuvo un objeto válido
-                if (puntajeSisben != null && puntajeSisben.Datos != null)
+                if (datos != null && datos.Datos != null)
                 {
                     // Llenar la lista 'grupo' con los atributos del objeto 'Datos'
-                    grupo = puntajeSisben.Datos;
+                    grupo = datos.Datos;
 
                     // Imprimir la lista
                     Console.WriteLine(grupo.Count);

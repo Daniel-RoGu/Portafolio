@@ -16,6 +16,9 @@ namespace ProyectoColegio.Controllers
         Sisben sisben = new Sisben();
         TipoDocumento tipoDocumento = new TipoDocumento();
         TipoSangre tipoSangre = new TipoSangre();
+        Asignatura asignatura = new Asignatura();
+        Sede sede = new Sede();
+        TipoNota tipoNota = new TipoNota(); 
 
         public AdministradorController(Contexto contexto)
         {
@@ -100,6 +103,39 @@ namespace ProyectoColegio.Controllers
             //return datos;
             return (tipoSangre.TpSangre);
         }
+        
+        public List<string> LeerAsignatura()
+        {
+            LecturaJson lecturaJson = new LecturaJson();
+
+            //llama el metodo para la lectura del json
+            asignatura.Asignaturas = (lecturaJson.Resultado("Archivos_Json/Asignaturas.json"));             
+
+            //return datos;
+            return (asignatura.Asignaturas);
+        }
+        
+        public List<string> LeerSedes()
+        {
+            LecturaJson lecturaJson = new LecturaJson();
+
+            //llama el metodo para la lectura del json
+            sede.Sedes = (lecturaJson.Resultado("Archivos_Json/Sedes.json"));             
+
+            //return datos;
+            return (sede.Sedes);
+        }
+        
+        public List<string> LeerTipoNota()
+        {
+            LecturaJson lecturaJson = new LecturaJson();
+
+            //llama el metodo para la lectura del json
+            tipoNota.TipoNotas = (lecturaJson.Resultado("Archivos_Json/Sedes.json"));             
+
+            //return datos;
+            return (tipoNota.TipoNotas);
+        }
 
         public IActionResult CargeJSON()
         {
@@ -109,6 +145,8 @@ namespace ProyectoColegio.Controllers
         [HttpPost]
         public IActionResult CargeJSON(int identidicacion)
         {
+            //El archivo json debe traer solo una columna, estilo lista de nombres con el titulo de Datos
+            //ej: {"Datos":["algo1", "algo2"]}
             return RedirectToAction("CargeJSON", "Administrador");
         }
 
@@ -209,6 +247,51 @@ namespace ProyectoColegio.Controllers
                 foreach (string dato in LeerTipoSangre())
                 {
                     ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarTipoSangre", "nomTpSangre", dato, _contexto.Conexion);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+            }
+        }
+
+        public void RegistrarAsignatura()
+        {
+            try
+            {
+                foreach (string dato in LeerAsignatura())
+                {
+                    ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarAsignatura", "nomAsignatura", dato, _contexto.Conexion);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+            }
+        }
+        
+        public void RegistrarSedes()
+        {
+            try
+            {
+                foreach (string dato in LeerSedes())
+                {
+                    ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarSede", "nomSede", dato, _contexto.Conexion);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+            }
+        }
+        
+        public void RegistrarTipoNota()
+        {
+            try
+            {
+                foreach (string dato in LeerTipoNota())
+                {
+                    ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarTipoNota", "nomTpNota", dato, _contexto.Conexion);
                 }
             }
             catch (Exception ex)
