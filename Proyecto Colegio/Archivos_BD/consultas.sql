@@ -71,9 +71,23 @@ call registrarAsignatura('Probabilisticos');
 call registrarTipoNota('Definitiva');
 call registrarSede('Central');
 call registrarFamiliar(1117568978,"Alguien Roberto", "Hus Hus", null, "312654987", "Padre", "Completa", "Hombre", 1118377419);
+
 call registrarFuncionario(12368974, "Alguien", null, "Soy", "Yo", 30, "321654", null, "AlguienSoyYo@Jhu.lalo", "Donde tu quieras", null, "2023-12-15", "O+", "CC", 
 						  "Ninguna", "Ninguno", "Masculino", "CAPRECOM EPS", "4", null, "Alta Aguililla");
+
 call registrarObservacionEst("Pinche decerebrado pelion", "1118377419", "12368974");
-select ObtenerIdFuncionario((SELECT CAST('12368974' AS SIGNED)));                          
-                          
-                          
+select ObtenerIdFuncionario((SELECT CAST('12368974' AS SIGNED)));   
+call obtenerEstudiante('106657');
+                       
+call ObtenerSedes();                       
+call ObtenerTipoSangre();                       
+call ObtenerTipoDocumento();                       
+call obtenerDiscapacidad();                       
+call obtenerSisben();                       
+call obtenerGenero();                       
+call obtenerEPS();                       
+call obtenerEstrato();                       
+
+call registrarDocente(24, "Central", "12654987", "Jhulius", null, "Rommanus", "Magnus", 45, "365987465", "654987", null, "cerca al barrio", "El barrio",
+					  "1979-12-15", "O+", "CC", "Ninguna", "Ninguno", "Masculino", "CAPRECOM EPS", "4");
+select ObtenerIdSede("Central");                          

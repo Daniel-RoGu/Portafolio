@@ -1,0 +1,178 @@
+﻿@model ProyectoColegio.Models.Docente
+
+@{
+    ViewData["Title"] = "RegistrarDocente";
+    var sedes = ViewBag.Sedes;
+    var tiposSangre = ViewBag.TiposSangre;
+    var tiposDocumento = ViewBag.TiposDocumento;
+    var discapacidades = ViewBag.Discapacidades;
+    var sisbens = ViewBag.Sisbens;
+    var generos = ViewBag.Generos;
+    var epss = ViewBag.EPSs;
+    var estratos = ViewBag.Estratos;
+}
+
+<h1>RegistrarDocente</h1>
+
+<h4>Docente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegistrarDocente">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="EstadoDocente" class="control-label"></label>
+                <input asp-for="EstadoDocente" class="form-control" />
+                <span asp-validation-for="EstadoDocente" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="HorasLabora" class="control-label">Horas laborales</label>
+                <input asp-for="HorasLabora" class="form-control" />
+                <span asp-validation-for="HorasLabora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <select asp-for="NombreSede" class="form-select" name="NombreSede" aria-label="Default select example">
+                    <option value="">Sedes</option>
+                    @foreach (var item in sedes)
+                    {
+                        <option asp-for="NombreSede" value="@item">@item</option>
+                    }
+                </select>
+            </div>           
+            <div class="form-group">
+                <label asp-for="Usuario.Identificacion" class="control-label">Identificacion</label>
+                <input asp-for="Usuario.Identificacion" class="form-control" />
+                <span asp-validation-for="Usuario.Identificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.NombreUsuario" class="control-label">Primer nombre</label>
+                <input asp-for="Usuario.NombreUsuario" class="form-control" />
+                <span asp-validation-for="Usuario.NombreUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.SegundoNombreUsuario" class="control-label">Segundo nombre</label>
+                <input asp-for="Usuario.SegundoNombreUsuario" class="form-control" />
+                <span asp-validation-for="Usuario.SegundoNombreUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.ApellidoUsuario" class="control-label">Primer Apellido</label>
+                <input asp-for="Usuario.ApellidoUsuario" class="form-control" />
+                <span asp-validation-for="Usuario.ApellidoUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.SegundoApellidoUsuario" class="control-label">Segundo Apellido</label>
+                <input asp-for="Usuario.SegundoApellidoUsuario" class="form-control" />
+                <span asp-validation-for="Usuario.SegundoApellidoUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.Edad" class="control-label">Edad</label>
+                <input asp-for="Usuario.Edad" class="form-control" />
+                <span asp-validation-for="Usuario.Edad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.TelefonoCelular" class="control-label">Telefono celular</label>
+                <input asp-for="Usuario.TelefonoCelular" class="form-control" />
+                <span asp-validation-for="Usuario.TelefonoCelular" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.TelefonoFijo" class="control-label">Telefono fijo</label>
+                <input asp-for="Usuario.TelefonoFijo" class="form-control" />
+                <span asp-validation-for="Usuario.TelefonoFijo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.Correo" class="control-label">Correo</label>
+                <input asp-for="Usuario.Correo" class="form-control" />
+                <span asp-validation-for="Usuario.Correo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.Direccion" class="control-label">Direccion</label>
+                <input asp-for="Usuario.Direccion" class="form-control" />
+                <span asp-validation-for="Usuario.Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.Barrio" class="control-label">Barrio</label>
+                <input asp-for="Usuario.Barrio" class="form-control" />
+                <span asp-validation-for="Usuario.Barrio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario.FechaNacimiento" class="control-label">Fecha nacimiento</label>
+                <input asp-for="Usuario.FechaNacimiento" class="form-control" />
+                <span asp-validation-for="Usuario.FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">                
+                <select asp-for="Usuario.TipoSangre" class="form-select" name="Usuario.TipoSangre" aria-label="Default select example">
+                    <option value="">Tipo de sangre</option>
+                    @foreach (var item in tiposSangre)
+                    {
+                        <option asp-for="Usuario.TipoSangre" value="@item">@item</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <select asp-for="Usuario.TipoDocumento" class="form-select" name="Usuario.TipoDocumento" aria-label="Default select example">
+                    <option value="">Tipo de documento</option>
+                    @foreach (var item in tiposDocumento)
+                    {
+                        <option asp-for="Usuario.TipoDocumento" value="@item">@item</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group"> 
+                <select asp-for="Usuario.Discapacidad" class="form-select" name="Usuario.Discapacidad" aria-label="Default select example">
+                    <option value="">Tipo de discapacidad</option>
+                    @foreach (var item in discapacidades)
+                    {
+                        <option asp-for="Usuario.Discapacidad" value="@item">@item</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <select asp-for="Usuario.Sisben" class="form-select" name="Usuario.Sisben" aria-label="Default select example">
+                    <option value="">Tipo de sisben</option>
+                    @foreach (var item in sisbens)
+                    {
+                        <option asp-for="Usuario.Sisben" value="@item">@item</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <select asp-for="Usuario.Genero" class="form-select" name="Usuario.Genero" aria-label="Default select example">
+                    <option value="">Tipo de genero</option>
+                    @foreach (var item in generos)
+                    {
+                        <option asp-for="Usuario.Genero" value="@item">@item</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <select asp-for="Usuario.EPS" class="form-select" name="Usuario.EPS" aria-label="Default select example">
+                    <option value="">EPS</option>
+                    @foreach (var item in epss)
+                    {
+                        <option asp-for="Usuario.EPS" value="@item">@item</option>
+                    }
+                </select>
+            </div>            
+            <div class="form-group">
+                <select asp-for="Usuario.Estrato" class="form-select" name="Usuario.Estrato" aria-label="Default select example">
+                    <option value="">Estratos</option>
+                    @foreach (var item in estratos)
+                    {
+                        <option asp-for="Usuario.Estrato" value="@item">@item</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

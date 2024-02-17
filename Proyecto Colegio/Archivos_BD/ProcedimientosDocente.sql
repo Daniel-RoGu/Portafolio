@@ -5,8 +5,8 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarDocente` $$
 create procedure `registrarDocente`(
     horasTrabaja varchar(45),
-    documento int,
     nomSede varchar(400),
+    documento varchar(400),    
 	nomUsuario varchar(400),
     nom2Usuario varchar(400),
     apellidoUsuario varchar(400),
@@ -24,13 +24,12 @@ create procedure `registrarDocente`(
     nombreSisben varchar(400),
     nombreGenero varchar(400),
     nombreEps varchar(400),
-    nombreEstrato varchar(400),
-    nombreRol varchar(400)
+    nombreEstrato varchar(400)
 ) 
 begin
-	call registrarUsuario(documento, nomUsuario, nom2Usuario, apellidoUsuario, apellido2Usuario, edad, telCelular, telFijo, correoUss,
+	call registrarUsuario((SELECT CAST(documento AS SIGNED)), nomUsuario, nom2Usuario, apellidoUsuario, apellido2Usuario, edad, telCelular, telFijo, correoUss,
 						  direccionUss, barrioUss, fechaNacimientoUss, tipoSangre, tipoDocumento, nombreDiscapacidad, nombreSisben, nombreGenero,
-                          nombreEps, nombreEstrato, nombreRol);
-	insert into Docente (estadoDocente, horasLaboralesSemanales, Usuario_identificacion, Sede_idSede)
-				value("Activo", horasTrabaja, (select ObtenerIdUsuario(documento)), (select ObtenerIdSede(nomSede)));
+                          nombreEps, nombreEstrato, "Docente");
+	insert into Docente (estadoDocente, horasLaboralesSemanales, fkidentificacion, fkidSede)
+				value("Activo", horasTrabaja, (SELECT CAST(documento AS SIGNED)), (select ObtenerIdSede(nomSede)));
 END$$

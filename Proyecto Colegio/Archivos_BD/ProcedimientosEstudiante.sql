@@ -126,3 +126,5 @@ begin
     inner join Usuario as Us
 	WHERE est.idEstudiante = (SELECT CAST(codigoEst AS SIGNED)) and est.Usuario_identificacion = Us.identificacion;
 END$$
+
+

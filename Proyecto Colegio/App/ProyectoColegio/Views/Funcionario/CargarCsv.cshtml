@@ -10,35 +10,20 @@
     <title>Subir Archivo CSV</title>
 </head>
 <body>
+
     <div style="margin-top: 200px">
+
         <form action="/Funcionario/CargarCsv" method="post" enctype="multipart/form-data">
             <label for="inputFile">Seleccionar Archivo CSV:</label>
             <input type="file" id="inputFile" name="file" accept=".csv">
             <br>
            <input type="submit" value="Cargar CSV">
-        </form>
-        @*<a href="/Funcionario/mostrarCsv">Mostrar Vista</a>*@
+        </form>     
+
         <button class="btn btn-success" onclick="window.location.href='/Funcionario/mostrarCsv'">Mostrar Estudiantes</button>
+        <button class="btn btn-success" onclick="window.location.href='/Funcionario/RegistrarDocente'">RegistrarDocente</button> 
         
-        @*<button class="btn btn-primary d-block w-100" type="submit" asp-action="mostrarCsv">Mostrar Info</button>*@
-              
-        @*
-        <form action="/Funcionario/CargarCsv"  method="post" enctype="multipart/form-data" onsubmit="return obtenerRuta()">
-            <label for="inputFile">Seleccionar Archivo CSV:</label>
-            <input type="file" id="inputFile" name="file" accept=".csv">
-            <br>
-            <input type="submit" value="Cargar CSV">
-        </form>
-        *@
-    </div>    
-    @*<script>
-        function obtenerRuta() {
-            var inputFile = document.getElementById('inputFile');
-            var ruta = inputFile.value; // Esto contendrá la ruta del archivo seleccionado por el usuario
-            alert("Ruta del archivo: " + ruta);
-            return ruta;
-            //return false; // Esto evita que el formulario se envíe realmente, ya que solo estamos interesados en la ruta del archivo
-        }
-    </script>*@
+    </div> 
+
 </body>
 </html>

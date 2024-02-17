@@ -28,6 +28,7 @@ namespace ProyectoColegio.Controllers
         private readonly Contexto _contexto;
         ManejoProcedimientos manejoProcedimientos = new ManejoProcedimientos();
         ConsultasValidacionesBD consultasValidacionesBD = new ConsultasValidacionesBD();
+        VariablesGlobales variablesGlobales = new VariablesGlobales();
 
         public FuncionarioController(Contexto contexto)
         {
@@ -345,6 +346,60 @@ namespace ProyectoColegio.Controllers
                 Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
             }
             return RedirectToAction("mostrarCsv", "Funcionario");
+        }
+
+        public IActionResult RegistrarDocente()
+        {
+            ViewBag.Sedes = variablesGlobales.Sedes(_contexto.Conexion);
+            ViewBag.TiposSangre = variablesGlobales.TiposSangre(_contexto.Conexion);
+            ViewBag.TiposDocumento = variablesGlobales.TiposDocumento(_contexto.Conexion);
+            ViewBag.Discapacidades = variablesGlobales.Discapacidades(_contexto.Conexion);
+            ViewBag.Sisbens = variablesGlobales.Sisbens(_contexto.Conexion);
+            ViewBag.Generos = variablesGlobales.Generos(_contexto.Conexion);
+            ViewBag.EPSs = variablesGlobales.EPSs(_contexto.Conexion);
+            ViewBag.Estratos = variablesGlobales.Estratos(_contexto.Conexion);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult RegistrarDocente(Docente docente)
+        {
+            try
+            {
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    { "horasTrabaja", docente.HorasLabora },
+                    { "nomSede", docente.NombreSede }, //para seleccionar
+                    { "documento", docente.Usuario.Identificacion },
+                    { "nomUsuario", docente.Usuario.NombreUsuario },
+                    { "nom2Usuario", docente.Usuario.SegundoNombreUsuario },
+                    { "apellidoUsuario", docente.Usuario.ApellidoUsuario },
+                    { "apellido2Usuario", docente.Usuario.SegundoApellidoUsuario },
+                    { "edad", Convert.ToInt16(docente.Usuario.Edad) },
+                    { "telCelular", docente.Usuario.TelefonoCelular },
+                    { "telFijo", docente.Usuario.TelefonoFijo },
+                    { "correoUss", docente.Usuario.Correo },
+                    { "direccionUss", docente.Usuario.Direccion },
+                    { "barrioUss", docente.Usuario.Barrio },
+                    { "fechaNacimientoUss", docente.Usuario.FechaNacimiento },
+                    { "tipoSangre", docente.Usuario.TipoSangre }, //para seleccionar
+                    { "tipoDocumento", docente.Usuario.TipoDocumento }, //para seleccionar
+                    { "nombreDiscapacidad", docente.Usuario.Discapacidad }, //para seleccionar
+                    { "nombreSisben", docente.Usuario.Sisben }, //para seleccionar
+                    { "nombreGenero", docente.Usuario.Genero }, //para seleccionar
+                    { "nombreEps", docente.Usuario.EPS }, //para seleccionar
+                    { "nombreEstrato", docente.Usuario.Estrato }, //para seleccionar
+                 };
+
+                ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarDocente", parametros, _contexto.Conexion);                
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+            }
+
+            return RedirectToAction("CargarCsv", "Funcionario");
         }
 
         public List<Object> ObtenerCodigoEstudiante(long identificacion)

@@ -120,6 +120,11 @@ namespace ProyectoColegio.Data
                 Console.WriteLine($"Error al ejecutar el procedimiento almacenado: {ex.Message}");
             }
 
+            if (atributos.Count == 1)
+            {
+                return listaDatos;
+            }
+
             return listaObjetos;
         }
 

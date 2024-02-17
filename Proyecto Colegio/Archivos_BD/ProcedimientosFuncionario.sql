@@ -76,3 +76,81 @@ begin
 	insert into tipoNota (tipoNota, porcentajeNota, estadoNota)
 				value(nomTpNota, "Sin definir", "Activo");
 END$$
+
+/*--------------------------Obtener Sedes-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `ObtenerSedes` $$
+create procedure `ObtenerSedes`(
+) 
+begin
+	select Sede.nombreSede as Sede from Sede;
+END$$
+
+/*--------------------------Obtener Tipos de Sangre-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `ObtenerTipoSangre` $$
+create procedure `ObtenerTipoSangre`(
+) 
+begin
+	select ts.nombreTipoSangre as TipoSangre from tipoSangre as ts;
+END$$
+
+/*--------------------------Obtener Tipos de Documento-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `ObtenerTipoDocumento` $$
+create procedure `ObtenerTipoDocumento`(
+) 
+begin
+	select td.nombreTipoDocumento as TipoDocumento from tipoDocumento as td;
+END$$
+
+
+/*--------------------------Obtener Tipos Discapacidad-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerDiscapacidad` $$
+create procedure `obtenerDiscapacidad`(
+) 
+begin
+	select d.nombreDiscapacidad as Discapacidad from Discapacidad as d;
+END$$
+
+
+/*--------------------------Obtener Tipos Sisben-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerSisben` $$
+create procedure `obtenerSisben`(
+) 
+begin
+	select s.nombreSisben as Siben from Sisben as s;
+END$$
+
+
+/*--------------------------Obtener Generos-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerGenero` $$
+create procedure `obtenerGenero`(
+) 
+begin
+	select g.nombreGenero as Genero from Genero as g;
+END$$
+
+
+/*--------------------------Obtener EPSs-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerEPS` $$
+create procedure `obtenerEPS`(
+) 
+begin
+	select EPS.nombreEPS as EPS from EPS;
+END$$
+
+
+/*--------------------------Obtener Estratos-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerEstrato` $$
+create procedure `obtenerEstrato`(
+) 
+begin
+	select e.nombreEstrato as Estrato from Estrato as e;
+END$$
+
