@@ -37,6 +37,8 @@ namespace ProyectoColegio.Controllers
 
         public IActionResult CargarCsv()
         {
+            //muestra el contenido desde base de datos
+            mostrarCsv();
             return View();
         }
 
@@ -83,50 +85,99 @@ namespace ProyectoColegio.Controllers
             // Eliminar el archivo temporal después de procesarlo si es necesario
             System.IO.File.Delete(tempFilePath);
 
-            // Procesa la lista
-            UsarCsv(info);
-            
+            // Procesa la lista en base de datos
+            UsarCsv(info);           
+
             //return RedirectToAction("Index", "Home");
             return RedirectToAction("CargarCsv", "Funcionario");
 
         }
 
 
-        [HttpGet]
-        public IActionResult mostrarCsv()
-        {           
-            List<Estudiante> Estudiantes = new List<Estudiante>();         
-            
+        //[HttpGet]
+        //public IActionResult mostrarCsv()
+        //{           
+        //    List<Estudiante> Estudiantes = new List<Estudiante>();         
+
+        //    try
+        //    {
+        //        foreach (Usuario item in mostrarInfoSimat())
+        //        {
+        //            Estudiante Student = new Estudiante();
+        //            Student.Identificacion = item.Identificacion;
+        //            Student.Usuario.NombreUsuario = item.NombreUsuario;
+        //            Student.Usuario.SegundoNombreUsuario = item.SegundoNombreUsuario;
+        //            Student.Usuario.ApellidoUsuario = item.ApellidoUsuario;
+        //            Student.Usuario.SegundoApellidoUsuario = item.SegundoNombreUsuario;
+        //            Student.Usuario.Edad = item.Edad;
+        //            Student.Usuario.TelefonoCelular = item.TelefonoCelular;
+        //            Student.Usuario.TelefonoFijo = item.TelefonoFijo;
+        //            Student.Usuario.Correo = item.Correo;
+        //            Student.Usuario.Direccion = item.Direccion;
+        //            Student.Usuario.Barrio = item.Barrio;
+        //            Student.Usuario.FechaNacimiento = item.FechaNacimiento;
+        //            foreach (Object obj in ObtenerCodigoEstudiante(item.Identificacion))
+        //            {
+        //                Student.CodigoEstudiante = Convert.ToInt64(obj);
+        //            }                    
+        //            Student.Usuario.TipoSangre = item.TipoSangre;
+        //            Student.Usuario.TipoDocumento = item.TipoDocumento;
+        //            Student.Usuario.Discapacidad = item.Discapacidad;
+        //            Student.Usuario.Sisben = item.Sisben;
+        //            Student.Usuario.Genero = item.Genero;
+        //            Student.Usuario.EPS = item.EPS;
+        //            Student.Usuario.Estrato = item.Estrato;
+
+        //            Estudiantes.Add(Student);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+
+        //    ViewBag.ListaEstudiante = Estudiantes;
+        //    //return View("mostrarCsv", Estudiantes);
+        //    return View();
+        //}
+
+        public void mostrarCsv()
+        {
+            List<Estudiante> Estudiantes = new List<Estudiante>();
+            List<Object> Datos = new List<Object>();
+
             try
             {
                 foreach (Usuario item in mostrarInfoSimat())
                 {
-                    Estudiante Student = new Estudiante();
-                    Student.Identificacion = item.Identificacion;
-                    Student.Usuario.NombreUsuario = item.NombreUsuario;
-                    Student.Usuario.SegundoNombreUsuario = item.SegundoNombreUsuario;
-                    Student.Usuario.ApellidoUsuario = item.ApellidoUsuario;
-                    Student.Usuario.SegundoApellidoUsuario = item.SegundoNombreUsuario;
-                    Student.Usuario.Edad = item.Edad;
-                    Student.Usuario.TelefonoCelular = item.TelefonoCelular;
-                    Student.Usuario.TelefonoFijo = item.TelefonoFijo;
-                    Student.Usuario.Correo = item.Correo;
-                    Student.Usuario.Direccion = item.Direccion;
-                    Student.Usuario.Barrio = item.Barrio;
-                    Student.Usuario.FechaNacimiento = item.FechaNacimiento;
+                    List<String> Dato = new List<String>();
+
+                    Dato.Add(Convert.ToString(item.Identificacion));
+                    Dato.Add(item.NombreUsuario);
+                    Dato.Add(item.SegundoNombreUsuario);
+                    Dato.Add(item.ApellidoUsuario);
+                    Dato.Add(item.SegundoNombreUsuario);
+                    Dato.Add(Convert.ToString(item.Edad));
+                    Dato.Add(item.TelefonoCelular);
+                    Dato.Add(item.TelefonoFijo);
+                    Dato.Add(item.Correo);
+                    Dato.Add(item.Direccion);
+                    Dato.Add(item.Barrio);
+                    Dato.Add(item.FechaNacimiento);                    
+                    Dato.Add(item.TipoSangre);
+                    Dato.Add(item.TipoDocumento);
+                    Dato.Add(item.Discapacidad);
+                    Dato.Add(item.Sisben);
+                    Dato.Add(item.Genero);
+                    Dato.Add(item.EPS);
+                    Dato.Add(item.Estrato);
                     foreach (Object obj in ObtenerCodigoEstudiante(item.Identificacion))
                     {
-                        Student.CodigoEstudiante = Convert.ToInt64(obj);
-                    }                    
-                    Student.Usuario.TipoSangre = item.TipoSangre;
-                    Student.Usuario.TipoDocumento = item.TipoDocumento;
-                    Student.Usuario.Discapacidad = item.Discapacidad;
-                    Student.Usuario.Sisben = item.Sisben;
-                    Student.Usuario.Genero = item.Genero;
-                    Student.Usuario.EPS = item.EPS;
-                    Student.Usuario.Estrato = item.Estrato;
+                        Dato.Add(Convert.ToString(obj));
+                    }
 
-                    Estudiantes.Add(Student);
+                    Datos.Add(Dato);
+                   
                 }
             }
             catch (Exception ex)
@@ -134,15 +185,12 @@ namespace ProyectoColegio.Controllers
                 Console.WriteLine(ex.Message);
             }
 
-            ViewBag.ListaEstudiante = Estudiantes;
-            Console.WriteLine(Estudiantes);
-            //return View("mostrarCsv", Estudiantes);
-            return View();
+            ViewBag.ListaEstudiante = Datos;
+            //return View("CargarCsv", "Funcionario");
         }
 
-
         public void UsarCsv(List<InfoSimat> datos)
-        {           
+        {            
             try
             {
                 foreach (InfoSimat dato in datos)
@@ -153,11 +201,15 @@ namespace ProyectoColegio.Controllers
                     VerificacionRegistrosDiscapacidades(dato.DISCAPACIDAD);
                     VerificacionRegistrosGenero(dato.GENERO);
                     VerificacionRegistrosSisben(dato.SISBEN_IV);
+                    VerificacionRegistrosSede(dato.SEDE);
+                    VerificacionRegistrosGrado(Convert.ToString(dato.GRADO_COD));
+                    VerificacionRegistrosGrupoGrado(Convert.ToString(dato.GRADO_COD), Convert.ToString(dato.GRUPO));
+                    VerificacionRegistrosSedeGrado(dato.SEDE, Convert.ToString(dato.GRADO_COD));
+                    VerificacionRegistrosEstudianteGrupoGrado(dato.DOC, Convert.ToString(dato.GRUPO));
 
                     if (consultasValidacionesBD.ExisteEstudiante(Convert.ToInt64(dato.DOC), _contexto.Conexion) == true)
                     {
-                        //Construir mecanismo de alerta para generar el aviso ("Ya esta registrado");
-                        return;
+                        //Construir mecanismo de alerta para generar el aviso ("Ya esta registrado");                     
                     }
                     else
                     {
@@ -191,7 +243,11 @@ namespace ProyectoColegio.Controllers
                             { "desplazadoEstadoEs", "Sin_Registro" },
                         };                       
                         ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarEstudiante", parametros, _contexto.Conexion);
-                    }                 
+                        registrarMatricula(dato);
+                        registrarModalidadEducativa(dato.MODELO);
+                    }
+                    //registrarMatricula(dato); //para eliminar, se uso dado que se registraron los estudiantes sin matricula
+                    //registrarModalidadEducativa(dato.MODELO);
                 }
             }
             catch (Exception ex)
@@ -237,51 +293,97 @@ namespace ProyectoColegio.Controllers
             };
                    
             var resultados = ManejoBaseDatos.ConsultarProcedimientoDinamico("MostrarEstudiantes", atributosEstudiante, _contexto.Conexion);
-            
-            //numero de atributos del diccionario
-            int cantidadAtributos = atributosEstudiante.Count;
-
-            //Esta contando el grupo de registros totales de resultado
+                        
             foreach (List<Object> item in resultados)
-            {
-                
-                int cont = 0;
-
-                //i < resultados.Count por que es el conjunto de datos que obtenidos desde la base de datos
-                //cont =+cantidadAtributos "20" por que es el numero de atributos que configura el objeto usuario (numero registrado en el diccionario "atributosEstudiante") 
-                for (int i=0; i < resultados.Count; i++)
-                {
+            {                             
                     Usuario usuario = new Usuario();
-                    usuario.Identificacion = (Convert.ToInt64(item[cont]));
-                    usuario.NombreUsuario = Convert.ToString(item[cont + 1]);
-                    usuario.SegundoNombreUsuario = Convert.ToString(item[cont + 2]);
-                    usuario.ApellidoUsuario = Convert.ToString(item[cont + 3]);
-                    usuario.SegundoApellidoUsuario = Convert.ToString(item[cont + 4]);
-                    usuario.Edad = Convert.ToInt16(item[cont + 5]);
-                    usuario.TelefonoCelular = Convert.ToString(item[cont + 6]);
-                    usuario.TelefonoFijo = Convert.ToString(item[cont + 7]);
-                    usuario.Correo = Convert.ToString(item[cont + 8]);
-                    usuario.Direccion = Convert.ToString(item[cont + 9]);
-                    usuario.Barrio = Convert.ToString(item[cont + 10]);
-                    usuario.FechaNacimiento = Convert.ToString(item[cont + 11]);
-                    usuario.EstadoUsuario = Convert.ToString(item[cont + 12]);
-                    usuario.TipoSangre = Convert.ToString(item[cont + 13]);
-                    usuario.TipoDocumento = Convert.ToString(item[cont + 14]);
-                    usuario.Discapacidad = Convert.ToString(item[cont + 15]);
-                    usuario.Sisben = Convert.ToString(item[cont + 16]);
-                    usuario.Genero = Convert.ToString(item[cont + 17]);
-                    usuario.EPS = Convert.ToString(item[cont + 18]);
-                    usuario.Estrato = Convert.ToString(item[cont + 19]);
+                    usuario.Identificacion = (Convert.ToInt64(item[0]));
+                    usuario.NombreUsuario = Convert.ToString(item[1]);
+                    usuario.SegundoNombreUsuario = Convert.ToString(item[2]);
+                    usuario.ApellidoUsuario = Convert.ToString(item[3]);
+                    usuario.SegundoApellidoUsuario = Convert.ToString(item[4]);
+                    usuario.Edad = Convert.ToInt16(item[5]);
+                    usuario.TelefonoCelular = Convert.ToString(item[6]);
+                    usuario.TelefonoFijo = Convert.ToString(item[7]);
+                    usuario.Correo = Convert.ToString(item[8]);
+                    usuario.Direccion = Convert.ToString(item[9]);
+                    usuario.Barrio = Convert.ToString(item[10]);
+                    usuario.FechaNacimiento = Convert.ToString(item[11]);
+                    usuario.EstadoUsuario = Convert.ToString(item[12]);
+                    usuario.TipoSangre = Convert.ToString(item[13]);
+                    usuario.TipoDocumento = Convert.ToString(item[14]);
+                    usuario.Discapacidad = Convert.ToString(item[15]);
+                    usuario.Sisben = Convert.ToString(item[16]);
+                    usuario.Genero = Convert.ToString(item[17]);
+                    usuario.EPS = Convert.ToString(item[18]);
+                    usuario.Estrato = Convert.ToString(item[19]);
 
-                    usuarios.Add(usuario);
-                    cont+=cantidadAtributos;
-                }
-
-                Console.WriteLine(usuarios);
-                
+                    usuarios.Add(usuario);               
             }
 
             return usuarios; 
+        }
+
+        public void registrarMatricula(InfoSimat datos)
+        {
+            try
+            {
+                //Tener en cuenta que se debe cambiar la manera en que se esta usando la identificacion del coordinador "12368974"                                                                                                           
+                if (datos.DOC == "" || datos.SEDE == "" || consultasValidacionesBD.ExisteMatricula(datos.DOC, "12368974", datos.SEDE, _contexto.Conexion) == true)
+                {
+                    return;
+                }
+                else
+                {
+                    
+                    Dictionary<string, object> parametros = new Dictionary<string, object>
+                    {
+                        { "jornadaEs", datos.JORNADA },
+                        { "fechaInicioM", datos.FECHAINI },
+                        { "fechaFinM", datos.FECHAFIN },
+                        { "esInternado", datos.INTERNADO },
+                        { "gradoEst", datos.GRADO_COD },
+                        { "grupoEst", datos.GRUPO },
+                        { "identificacionEst", datos.DOC },
+                        { "identificacionFuncionario", Convert.ToInt64("12368974") }, //Se debe obtener el id del funcionario al iniciar seccion
+                        { "nombreSede", datos.SEDE },
+
+                    };
+
+                    ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarMatricula", parametros, _contexto.Conexion);
+                    
+                }                             
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+            }
+        }
+
+        public void registrarModalidadEducativa(string modalidad)
+        {
+            try
+            {
+                if (modalidad == "" || consultasValidacionesBD.ExisteModalidadEducativa(modalidad, _contexto.Conexion) == true)
+                {
+                    return;
+                }
+                else
+                {
+                    Dictionary<string, object> parametros = new Dictionary<string, object>
+                    {
+                        { "nomModalidadEducativa", modalidad}
+                    };
+
+                    ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarModalidadEducativa", parametros, _contexto.Conexion);
+                }                                 
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+            }
         }
 
         public IActionResult registrarFamiliar(string identificacion)
@@ -366,33 +468,42 @@ namespace ProyectoColegio.Controllers
         {
             try
             {
-                Dictionary<string, object> parametros = new Dictionary<string, object>
+                if (docente.Usuario.Identificacion == null || consultasValidacionesBD.ExisteDocente(docente.Usuario.Identificacion, _contexto.Conexion) == true)
                 {
-                    { "horasTrabaja", docente.HorasLabora },
-                    { "nomSede", docente.NombreSede }, //para seleccionar
-                    { "documento", docente.Usuario.Identificacion },
-                    { "nomUsuario", docente.Usuario.NombreUsuario },
-                    { "nom2Usuario", docente.Usuario.SegundoNombreUsuario },
-                    { "apellidoUsuario", docente.Usuario.ApellidoUsuario },
-                    { "apellido2Usuario", docente.Usuario.SegundoApellidoUsuario },
-                    { "edad", Convert.ToInt16(docente.Usuario.Edad) },
-                    { "telCelular", docente.Usuario.TelefonoCelular },
-                    { "telFijo", docente.Usuario.TelefonoFijo },
-                    { "correoUss", docente.Usuario.Correo },
-                    { "direccionUss", docente.Usuario.Direccion },
-                    { "barrioUss", docente.Usuario.Barrio },
-                    { "fechaNacimientoUss", docente.Usuario.FechaNacimiento },
-                    { "tipoSangre", docente.Usuario.TipoSangre }, //para seleccionar
-                    { "tipoDocumento", docente.Usuario.TipoDocumento }, //para seleccionar
-                    { "nombreDiscapacidad", docente.Usuario.Discapacidad }, //para seleccionar
-                    { "nombreSisben", docente.Usuario.Sisben }, //para seleccionar
-                    { "nombreGenero", docente.Usuario.Genero }, //para seleccionar
-                    { "nombreEps", docente.Usuario.EPS }, //para seleccionar
-                    { "nombreEstrato", docente.Usuario.Estrato }, //para seleccionar
-                 };
+                    //Se podria generar una alerta de que el docente ya existe
+                }
+                else
+                {                  
+                
+                    Dictionary<string, object> parametros = new Dictionary<string, object>
+                    {
+                        { "horasTrabaja", docente.HorasLabora },
+                        { "nomSede", docente.NombreSede }, //para seleccionar
+                        { "documento", docente.Usuario.Identificacion },
+                        { "nomUsuario", docente.Usuario.NombreUsuario },
+                        { "nom2Usuario", docente.Usuario.SegundoNombreUsuario },
+                        { "apellidoUsuario", docente.Usuario.ApellidoUsuario },
+                        { "apellido2Usuario", docente.Usuario.SegundoApellidoUsuario },
+                        { "edad", Convert.ToInt16(docente.Usuario.Edad) },
+                        { "telCelular", docente.Usuario.TelefonoCelular },
+                        { "telFijo", docente.Usuario.TelefonoFijo },
+                        { "correoUss", docente.Usuario.Correo },
+                        { "direccionUss", docente.Usuario.Direccion },
+                        { "barrioUss", docente.Usuario.Barrio },
+                        { "fechaNacimientoUss", docente.Usuario.FechaNacimiento },
+                        { "tipoSangre", docente.Usuario.TipoSangre }, //para seleccionar
+                        { "tipoDocumento", docente.Usuario.TipoDocumento }, //para seleccionar
+                        { "nombreDiscapacidad", docente.Usuario.Discapacidad }, //para seleccionar
+                        { "nombreSisben", docente.Usuario.Sisben }, //para seleccionar
+                        { "nombreGenero", docente.Usuario.Genero }, //para seleccionar
+                        { "nombreEps", docente.Usuario.EPS }, //para seleccionar
+                        { "nombreEstrato", docente.Usuario.Estrato }, //para seleccionar
+                     };
 
-                ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarDocente", parametros, _contexto.Conexion);                
+                    ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarDocente", parametros, _contexto.Conexion);
+                    VerificacionRegistrosDocenteGrado(docente.Usuario.Identificacion, docente.NombreSede);
 
+                }
             }
             catch (Exception ex)
             {
@@ -501,6 +612,136 @@ namespace ProyectoColegio.Controllers
                 ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarSisben", "nomSisben", nombreSisben, _contexto.Conexion);
             }
         }
+         
+        public void VerificacionRegistrosSede(string nombreSede)
+        {
+            if (nombreSede == "" || consultasValidacionesBD.ExisteSede(nombreSede, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarSede", "nomSede", nombreSede, _contexto.Conexion);
+            }
+        }
+         
+        public void VerificacionRegistrosGrado(string nombreGrado)
+        {
+            if (nombreGrado == "" || consultasValidacionesBD.ExisteGrado(nombreGrado, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                ManejoBaseDatos.EjecutarProcedimientoAlmacenado("registrarGrado", "nomGrado", nombreGrado, _contexto.Conexion);
+            }
+        }
+         
+        public void VerificacionRegistrosGrupoGrado(string nombreGrado, string nombreGradoGrupo)
+        {
+            if (nombreGradoGrupo == "" || consultasValidacionesBD.ExisteGrupoGrado(nombreGradoGrupo, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                try
+                {
+                    Dictionary<string, object> parametros = new Dictionary<string, object>
+                    {
+                        { "nomGrado", nombreGrado },
+                        { "nomGradoGrupo", nombreGradoGrupo }, 
+                    };
+
+                    ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarGradoGrupo", parametros, _contexto.Conexion);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+                }
+            }
+        }
+         
+        public void VerificacionRegistrosSedeGrado(string nombreSede, string nombreGrado)
+        {
+            if (nombreGrado == "" || nombreSede == "" || consultasValidacionesBD.ExisteSedeGrado(nombreSede, nombreGrado, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                try
+                {
+                    Dictionary<string, object> parametros = new Dictionary<string, object>
+                    {                        
+                        { "nomSede", nombreSede },
+                        { "nomGrado", nombreGrado },
+                    };
+
+                    ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarSedeGrado", parametros, _contexto.Conexion);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+                }
+            }
+        }
+         
+        public void VerificacionRegistrosEstudianteGrupoGrado(string identificacionEst, string grupoGrado)
+        {
+            if (identificacionEst == "" || grupoGrado == "" || consultasValidacionesBD.ExisteEstudianteGrupoGrado(identificacionEst, grupoGrado, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                try
+                {
+                    Dictionary<string, object> parametros = new Dictionary<string, object>
+                    {                        
+                        { "identificacionEst", identificacionEst },
+                        { "grupoGrado", grupoGrado },
+                    };
+
+                    ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarEstudiantesGradoGrupo", parametros, _contexto.Conexion);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+                }
+            }
+        }
+
+         
+        public void VerificacionRegistrosDocenteGrado(long identificacionDocente, string nomGrado)
+        {
+            if (identificacionDocente == null || nomGrado == "" || consultasValidacionesBD.ExisteDocenteGrado(identificacionDocente, nomGrado, _contexto.Conexion) == true)
+            {
+                return;
+            }
+            else
+            {
+                try
+                {
+                    Dictionary<string, object> parametros = new Dictionary<string, object>
+                    {                        
+                        { "identificacionDocente", identificacionDocente },
+                        { "nomGrado", nomGrado },
+                    };
+
+                    ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarDocenteGrado", parametros, _contexto.Conexion);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al ejecutar el script: {ex.Message}");
+                }
+            }
+        }
+
 
     }
 

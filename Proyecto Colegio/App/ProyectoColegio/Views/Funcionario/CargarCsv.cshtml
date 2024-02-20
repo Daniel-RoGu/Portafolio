@@ -1,13 +1,24 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
+﻿
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subir Archivo CSV</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- Asegúrate de incluir jQuery -->
+    <script>
+        $(document).ready(function () {
+            // Oculta la tabla inicialmente
+            $("#contenidoEstudiantes").hide();
+
+            // Maneja el clic en el botón
+            $("#mostrarEstudiantesBtn").click(function () {
+                // Muestra la tabla al hacer clic en el botón
+                $("#contenidoEstudiantes").show();
+                $("#mensajeNoEstudiantes").hide(); // Oculta el mensaje si está visible
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -20,10 +31,83 @@
            <input type="submit" value="Cargar CSV">
         </form>     
 
-        <button class="btn btn-success" onclick="window.location.href='/Funcionario/mostrarCsv'">Mostrar Estudiantes</button>
-        <button class="btn btn-success" onclick="window.location.href='/Funcionario/RegistrarDocente'">RegistrarDocente</button> 
+        @*<button class="btn btn-success" onclick="window.location.href='/Funcionario/mostrarCsv'">Mostrar Estudiantes</button>*@
+        <button id="mostrarEstudiantesBtn" class="btn btn-success">Mostrar Estudiantes</button>
+        <button class="btn btn-success" onclick="window.location.href='/Funcionario/RegistrarDocente'">RegistrarDocente</button>         
+    </div>
         
-    </div> 
+    <div id="contenidoEstudiantes">
+        <h1>Lista de Usuarios</h1>
+        <table border="1">
+            <tr>
+                <th>Documento</th>
+                <th>Primer Nombre</th>
+                <th>Segundo Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Edad</th>
+                <th>Telefono Celular</th>
+                <th>Telefono Fijo</th>
+                <th>Correo Usuario</th>
+                <th>Direccion Usuario</th>
+                <th>Barrio Usuario</th>
+                <th>Fecha Nacimiento</th>
+                <th>Tipo Sangre</th>
+                <th>Tipo Documento</th>
+                <th>Discapacidad</th>
+                <th>Sisben</th>
+                <th>Genero</th>
+                <th>EPS</th>
+                <th>Estrato</th>
+                <th>Codigo Estudiante</th>
+                <th>Opciones</th>
+            </tr>                  
+
+            @if (ViewBag.ListaEstudiante != null)
+            {
+                List<Object> Datos = ViewBag.ListaEstudiante;
+
+                foreach (List<String> usuario in Datos)
+                {
+                    <tr>
+                        <td>@usuario[0]</td>
+                        <td>@usuario[1]</td>
+                        <td>@usuario[2]</td>
+                        <td>@usuario[3]</td>
+                        <td>@usuario[4]</td>
+                        <td>@usuario[5]</td>
+                        <td>@usuario[6]</td>
+                        <td>@usuario[7]</td>
+                        <td>@usuario[8]</td>
+                        <td>@usuario[9]</td>
+                        <td>@usuario[10]</td>
+                        <td>@usuario[11]</td>
+                        <td>@usuario[12]</td>
+                        <td>@usuario[13]</td>
+                        <td>@usuario[14]</td>
+                        <td>@usuario[15]</td>
+                        <td>@usuario[16]</td>
+                        <td>@usuario[17]</td>
+                        <td>@usuario[18]</td>
+                        <td>@usuario[19]</td>
+                        <td>
+                            @Html.ActionLink("registrarFamiliar", "registrarFamiliar", new {identificacion=long.Parse(usuario[0])}, new {@class = "btn btn-success"})
+                            @Html.ActionLink("registrarObservacion", "registrarObservacion", new {identificacionEst=long.Parse(usuario[0])}, new {@class = "btn btn-warning"})
+                            @*<button class="btn btn-warning" onclick="window.location.href='/Funcionario/registrarObservacion'">Registrar Observacion</button>*@
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <div id="mensajeNoEstudiantes" class="alert alert-warning">
+                    Aún no ha presionado el botón "Mostrar Estudiantes" para visualizar el contenido del CSV.
+                </div>
+            }
+
+        </table>
+
+    </div>
 
 </body>
 </html>

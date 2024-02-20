@@ -73,8 +73,8 @@ namespace ProyectoColegio.Data
         {
             //List<T> listaObjetos = new List<T>();
             List<Object> listaObjetos = new List<Object>();
-            List<Object> listaDatos = new List<object>();
-            
+            List<Object> listaDatosRetornoUnico = new List<object>();
+
             try
             {
                 using (MySqlConnection conexion = new MySqlConnection(cadenaConexion))
@@ -88,6 +88,8 @@ namespace ProyectoColegio.Data
                         while (lector.Read())
                         {
                             //T objeto = new T();
+
+                            List<Object> listaDatos = new List<object>();
 
                             foreach (var atributo in atributos)
                             {
@@ -107,7 +109,7 @@ namespace ProyectoColegio.Data
                                 }
                               
                                 listaDatos.Add(dato.Valor);
-
+                                listaDatosRetornoUnico = listaDatos;
                             }
 
                             listaObjetos.Add(listaDatos);
@@ -122,7 +124,7 @@ namespace ProyectoColegio.Data
 
             if (atributos.Count == 1)
             {
-                return listaDatos;
+                return listaDatosRetornoUnico;
             }
 
             return listaObjetos;
@@ -181,6 +183,53 @@ namespace ProyectoColegio.Data
                 }
                 conexion.Close();                
                 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al ejecutar el procedimiento almacenado: {ex.Message}");
+            }
+
+            return listaObjetos;
+        }
+
+        public static List<Object> EjecutarProcedimientoConMultiParametroYConsulta(string nombreProcedimiento, Dictionary<string, object> parametros, int numeroAtributos, string cadenaConexion)
+        {
+            List<Object> listaObjetos = new List<Object>();
+
+            try
+            {
+                MySqlConnection conexion = new MySqlConnection(cadenaConexion);
+                conexion.Open();
+
+                // Construye la consulta con los parámetros
+                string sqlConsulta = $"CALL bdColegio.{nombreProcedimiento}(";
+
+                foreach (var parametro in parametros)
+                {
+                    sqlConsulta += $"@{parametro.Key}, ";
+                }
+
+                sqlConsulta = sqlConsulta.TrimEnd(' ', ',') + ")";
+
+                MySqlCommand conexionCommand = new MySqlCommand(sqlConsulta, conexion);
+
+                // Agrega los parámetros al comando
+                foreach (var parametro in parametros)
+                {
+                    conexionCommand.Parameters.AddWithValue($"@{parametro.Key}", parametro.Value);
+                }
+
+                MySqlDataReader mySqlDataReader = conexionCommand.ExecuteReader();
+
+                while (mySqlDataReader.Read())
+                {
+                    for (int i = 0; i < numeroAtributos; i++)
+                    {
+                        listaObjetos.Add(mySqlDataReader.GetString(i));
+                    }
+                }
+
+                conexion.Close();
             }
             catch (Exception ex)
             {

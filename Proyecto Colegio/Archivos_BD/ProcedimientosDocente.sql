@@ -33,3 +33,41 @@ begin
 	insert into Docente (estadoDocente, horasLaboralesSemanales, fkidentificacion, fkidSede)
 				value("Activo", horasTrabaja, (SELECT CAST(documento AS SIGNED)), (select ObtenerIdSede(nomSede)));
 END$$
+
+/*--------------------------Validar existencia Docente-------------------------*/
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `existeDocente` $$
+create procedure `existeDocente`(identificacionDocente varchar(400)) 
+begin
+    SELECT COUNT(*) > 0 AS existe_valor
+	FROM Docente as d
+	WHERE d.fkidentificacion = (select ObtenerIdDocente((select CAST(identificacionDocente AS SIGNED))));
+END$$
+
+/*--------------------------Registrar Docente Grado-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `registrarDocenteGrado` $$
+create procedure `registrarDocenteGrado`(
+    identificacionDocente varchar(400),
+    nomGrado varchar(400)
+) 
+begin
+	insert into DocentesGrado (estadoDocenteGrado, fkidDocente, fkidGrado)				
+				value("Activo", (select ObtenerIdDocente((select CAST(identificacionDocente AS SIGNED)))), (select ObtenerIdGrado(nomGrado)) );
+END$$
+
+/*--------------------------Validar existencia Docente Grado-------------------------*/
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `existeDocenteGrado` $$
+create procedure `existeDocenteGrado`(identificacionDocente varchar(400), nomGrado varchar(400)) 
+begin
+    SELECT COUNT(*) > 0 AS existe_valor
+	FROM DocentesGrado as dg
+	WHERE dg.fkidDocente = (select ObtenerIdDocente( (select CAST(identificacionDocente AS SIGNED)))) 
+		  and dg.fkidGrado = (select ObtenerIdGrado(nomGrado)) ;
+END$$
+
+
+

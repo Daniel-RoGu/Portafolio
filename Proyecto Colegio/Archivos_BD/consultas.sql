@@ -90,4 +90,41 @@ call obtenerEstrato();
 
 call registrarDocente(24, "Central", "12654987", "Jhulius", null, "Rommanus", "Magnus", 45, "365987465", "654987", null, "cerca al barrio", "El barrio",
 					  "1979-12-15", "O+", "CC", "Ninguna", "Ninguno", "Masculino", "CAPRECOM EPS", "4");
-select ObtenerIdSede("Central");                          
+select ObtenerIdSede("Central");
+
+call registrarMatricula("Mañana", "2024-01-02", null, "No", "8", "802", "1118377419", "12368974", "Central");
+
+call existeSede("Central");
+call existeSede("Central2");
+call existeGrado("12");
+call existeGrupoGrado("1202");
+call registrarGrado("11");
+call registrarGrado("12");
+call registrarGradoGrupo("12", "1202");
+select ObtenerIdGrado("12");
+call registrarGradoGrupo("11", "1102");
+call registrarSedeGrado("Central", "12");
+call registrarEstudiantesGradoGrupo('1118377419', "1202");
+
+call existeSedeGrado("Central", "12");
+call existeEstudianteGrupoGrado("1118377419", "1202");
+call existeEstudianteGrupoGrado("1118377419", "1102");
+call existeMatricula("1118377419", "12368974", "Central");
+call existeMatricula("1118073184", "12368974", "Central");
+call existeModalidad("Sin definir");
+call existeModalidad("Nueva Escuela");
+call existeDocente("12357951");
+call existeDocenteGrado("12654987", "12");
+call existeDocenteGrado("12357951", "12");
+
+select ObtenerIdDocente((select CAST("12357951" AS SIGNED)));
+select ObtenerIdGrado("12");
+/*call registrarDocenteGrado("12357951", "12");*/
+call registrarDocenteGrado("12357951", "12");
+select existeGradoRetorno("12");
+
+select count(*) from gradogrupo;                          
+select count(*) from estudiantesgradogrupo;                          
+select count(*) from sedegrados;                          
+select count(*) from sede;                          
+select count(*) from grados;                          

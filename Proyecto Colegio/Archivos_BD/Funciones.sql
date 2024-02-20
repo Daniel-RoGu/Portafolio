@@ -299,3 +299,54 @@ END;
 //
 DELIMITER ;
 
+/*------buscar id de Grado-----*/
+DELIMITER //
+CREATE FUNCTION ObtenerIdGrado(nomGrado Varchar(400))
+RETURNS INT 
+READS SQL DATA
+BEGIN
+    DECLARE resultado INT;
+    SET resultado = (SELECT Grados.idGrado FROM Grados WHERE Grados.nombreGrado = nomGrado LIMIT 1);
+    RETURN resultado;
+END;
+//
+DELIMITER ;
+
+/*------buscar id de GradoGrupo-----*/
+DELIMITER //
+CREATE FUNCTION ObtenerIdGradoGrupo(nomGradoGrupo Varchar(400))
+RETURNS INT 
+READS SQL DATA
+BEGIN
+    DECLARE resultado INT;
+    SET resultado = (SELECT GradoGrupo.idGradoGrupo FROM GradoGrupo WHERE GradoGrupo.grupoGrado = nomGradoGrupo LIMIT 1);
+    RETURN resultado;
+END;
+//
+DELIMITER ;
+
+/*------buscar id de Docente-----*/
+DELIMITER //
+CREATE FUNCTION ObtenerIdDocente(identificacionDocente long)
+RETURNS int
+READS SQL DATA
+BEGIN
+    DECLARE resultado int;
+    SET resultado = (SELECT Docente.idDocente FROM Docente WHERE Docente.fkidentificacion = identificacionDocente LIMIT 1);
+    RETURN resultado;
+END;
+//
+DELIMITER ;
+
+/*------buscar id de Existe Grado retorno-----*/
+DELIMITER $$
+CREATE FUNCTION existeGradoRetorno(nomGrado varchar(400))
+RETURNS int
+READS SQL DATA 
+begin
+	DECLARE resultado int;
+    SET resultado = (SELECT COUNT(*) > 0 AS existe_valor
+	FROM Grados as g
+	WHERE g.nombreGrado = nomGrado);
+    RETURN resultado;
+END$$
