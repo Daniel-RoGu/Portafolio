@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    var idUs = ViewBag.idetificacionUs;
+}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,6 +36,8 @@
         @*<button class="btn btn-success" onclick="window.location.href='/Funcionario/mostrarCsv'">Mostrar Estudiantes</button>*@
         <button id="mostrarEstudiantesBtn" class="btn btn-success">Mostrar Estudiantes</button>
         <button class="btn btn-success" onclick="window.location.href='/Funcionario/RegistrarDocente'">RegistrarDocente</button>         
+        <button class="btn btn-success" onclick="window.location.href='/Funcionario/GestionAsignaturas'">Gestion Asignaturas</button>
+        <button class="btn btn-success" >@idUs</button>
     </div>
         
     <div id="contenidoEstudiantes">

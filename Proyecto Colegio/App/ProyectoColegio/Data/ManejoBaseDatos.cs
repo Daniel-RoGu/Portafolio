@@ -90,6 +90,7 @@ namespace ProyectoColegio.Data
                             //T objeto = new T();
 
                             List<Object> listaDatos = new List<object>();
+                            
 
                             foreach (var atributo in atributos)
                             {
@@ -109,7 +110,8 @@ namespace ProyectoColegio.Data
                                 }
                               
                                 listaDatos.Add(dato.Valor);
-                                listaDatosRetornoUnico = listaDatos;
+                                listaDatosRetornoUnico.AddRange(listaDatos);
+                                
                             }
 
                             listaObjetos.Add(listaDatos);

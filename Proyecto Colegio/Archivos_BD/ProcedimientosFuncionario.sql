@@ -148,6 +148,32 @@ begin
 				value("Sin definir", "Activo", (select ObtenerIdEstudiante(CAST(identificacionEst AS SIGNED))), (select ObtenerIdGradoGrupo(grupoGrado)) );
 END$$
 
+/*--------------------------Registrar Asignaturas del Grado-Grupo-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `registrarAsignaturaGradoGrupo` $$
+create procedure `registrarAsignaturaGradoGrupo`(
+    nomAsignatura varchar(400),
+    grupoGrado varchar(400)
+) 
+begin
+	insert into AsignaturaGradoGrupo (estadoAsignaturaGG, fkidGradoGrupo, fkidAsignatura)
+				value("Disponible", (select ObtenerIdGradoGrupo(grupoGrado)), (select ObtenerIdAsignatura(nomAsignatura)) );
+END$$
+
+/*--------------------------Registrar Competencias Asignaturas-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `registrarCompetenciasAsignatura` $$
+create procedure `registrarCompetenciasAsignatura`(
+    nomCompetencia varchar(400),
+    objCompetencia varchar(400),
+    competenciaDetalle varchar(400),
+    nomAsignatura varchar(400)
+) 
+begin
+	insert into Competencias (nombreCompetencia, objetivoCompetencia, informacionCompetencia, estadoCompetencia, fkidAsignatura)
+				value(nomCompetencia, objCompetencia, competenciaDetalle, "Disponible", (select ObtenerIdAsignatura(nomAsignatura)) );
+END$$
+
 /*--------------------------Obtener Sedes-------------------------*/
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `ObtenerSedes` $$
@@ -305,3 +331,48 @@ begin
 	FROM modalida_educativa as m
 	WHERE m.nombreModalidad = nomModalidad;
 END$$
+
+/*--------------------------Validar existencia Competencias-------------------------*/
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `existeCompetencia` $$
+create procedure `existeCompetencia`(nomCompetencia varchar(400), nomAsignatura varchar(400)) 
+begin
+    SELECT COUNT(*) > 0 AS existe_valor
+	FROM Competencias as c
+	WHERE c.nombreCompetencia = nomCompetencia
+		  and c.fkidAsignatura = (select ObtenerIdAsignatura(nomAsignatura));
+END$$
+
+/*--------------------------Validar existencia Asignatura en Grupo Grado-------------------------*/
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `existeAsignaturaGradoGrupo` $$
+create procedure `existeAsignaturaGradoGrupo`(nomAsignatura varchar(400), grupoGrado varchar(400)) 
+begin
+    SELECT COUNT(*) > 0 AS existe_valor
+	FROM asignaturaGradoGrupo as agg
+	WHERE agg.fkidGradoGrupo = (select ObtenerIdGradoGrupo(grupoGrado))
+		  and agg.fkidAsignatura = (select ObtenerIdAsignatura(nomAsignatura));
+END$$
+
+
+/*--------------------------Obtener Asignaturas-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerAsignaturas` $$
+create procedure `obtenerAsignaturas`(
+) 
+begin
+	select a.nombreAsignatura as Asignatura from Asignatura as a;
+END$$
+
+/*--------------------------Obtener Grupos por Grado-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerGruposGrado` $$
+create procedure `obtenerGruposGrado`(
+) 
+begin
+	select gg.grupoGrado as Grupo from GradoGrupo as gg;
+END$$
+
+

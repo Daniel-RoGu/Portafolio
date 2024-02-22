@@ -1,0 +1,79 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    // Aquí puedes definir tus datos, como una lista de objetos o un ViewBag, dependiendo de tu aplicación
+    var asignaturas = ViewBag.Asignaturas;
+    var docentes = ViewBag.Docentes;
+    var grupos = ViewBag.GruposGrado;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignaciones</title>
+</head>
+<body>
+
+    <div style="margin-top: 50px">
+        <button class="btn btn-primary" onclick="window.location.href='/Controlador/AsignacionDocente'">Asignacion Docente</button>
+        <button class="btn btn-primary" onclick="window.location.href='/Controlador/AsignacionGrupos'">Asignacion de Grupos</button>
+        <button class="btn btn-primary" onclick="window.location.href='/Controlador/AsignacionHorarios'">Asignacion de Horarios</button>
+    </div>  
+    <table border="1">
+        <tr>
+            <th>Asignaturas</th>
+            <th>Docentes</th>
+            <th>Grupos</th>
+            <th>Opciones</th>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <select class="form-select" name="Asignaturas" aria-label="Default select example">
+                        <option value="">Asignaturas</option>
+                        @foreach (var item in asignaturas)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <select class="form-select" name="Docentes" aria-label="Default select example">
+                        <option value="">Docentes</option>
+                        @foreach (var item in docentes)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <select class="form-select" name="Grupos" aria-label="Default select example">
+                        <option value="">Grupos</option>
+                        @foreach (var item in grupos)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+            </td>
+            <td>
+                <button class="btn btn-primary" onclick="window.location.href='/Controlador/Opcion1'">Opción 1</button>
+                <button class="btn btn-primary" onclick="window.location.href='/Controlador/Opcion2'">Opción 2</button>
+            </td>
+        </tr>
+        
+           
+       
+        
+
+    </table>
+</body>
+</html>
+

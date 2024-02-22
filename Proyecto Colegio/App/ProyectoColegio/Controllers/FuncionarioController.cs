@@ -29,6 +29,7 @@ namespace ProyectoColegio.Controllers
         ManejoProcedimientos manejoProcedimientos = new ManejoProcedimientos();
         ConsultasValidacionesBD consultasValidacionesBD = new ConsultasValidacionesBD();
         VariablesGlobales variablesGlobales = new VariablesGlobales();
+        
 
         public FuncionarioController(Contexto contexto)
         {
@@ -37,6 +38,11 @@ namespace ProyectoColegio.Controllers
 
         public IActionResult CargarCsv()
         {
+            
+            // En el segundo controlador
+            var identificacion = TempData["identificacion"];
+            ViewBag.idetificacionUs = identificacion;
+
             //muestra el contenido desde base de datos
             mostrarCsv();
             return View();
@@ -511,6 +517,14 @@ namespace ProyectoColegio.Controllers
             }
 
             return RedirectToAction("CargarCsv", "Funcionario");
+        }
+
+        public IActionResult GestionAsignaturas()
+        {
+            ViewBag.Asignaturas = variablesGlobales.Asignaturas(_contexto.Conexion);
+            ViewBag.Docentes = variablesGlobales.Docentes(_contexto.Conexion);
+            ViewBag.GruposGrado = variablesGlobales.GruposGrado(_contexto.Conexion);
+            return View();
         }
 
         public List<Object> ObtenerCodigoEstudiante(long identificacion)

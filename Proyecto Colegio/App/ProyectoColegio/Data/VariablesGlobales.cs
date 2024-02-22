@@ -174,6 +174,66 @@ namespace ProyectoColegio.Data
             return tpsEstratos;
 
         }
+        
+        public List<string> Asignaturas(string conexion)
+        {
+            List<string> tpsAsignaturas = new List<string>();
+            
+            Dictionary<string, Type> atributosAsignatura = new Dictionary<string, Type>
+            {
+                { "Asignatura", typeof(string) },
+            };
+
+            var resultados = ManejoBaseDatos.ConsultarProcedimientoDinamico("obtenerAsignaturas", atributosAsignatura, conexion);
+            
+            foreach (var item in resultados)
+            {
+                tpsAsignaturas.Add(item.ToString());
+            }
+
+            return tpsAsignaturas;
+
+        }
+        
+        public List<string> Docentes(string conexion)
+        {
+            List<string> tpsDocentes = new List<string>();
+            
+            Dictionary<string, Type> atributosDocente = new Dictionary<string, Type>
+            {
+                { "Docente", typeof(string) },
+            };
+
+            var resultados = ManejoBaseDatos.ConsultarProcedimientoDinamico("obtenerDocentes", atributosDocente, conexion);
+            
+            foreach (var item in resultados)
+            {
+                tpsDocentes.Add(item.ToString());
+            }
+
+            return tpsDocentes;
+
+        }
+        
+        public List<string> GruposGrado(string conexion)
+        {
+            List<string> tpsGruposGrado = new List<string>();
+            
+            Dictionary<string, Type> atributosGrupo = new Dictionary<string, Type>
+            {
+                { "Grupo", typeof(string) },
+            };
+
+            var resultados = ManejoBaseDatos.ConsultarProcedimientoDinamico("obtenerGruposGrado", atributosGrupo, conexion);
+            
+            foreach (var item in resultados)
+            {
+                tpsGruposGrado.Add(item.ToString());
+            }
+
+            return tpsGruposGrado;
+
+        }
 
     }
 }

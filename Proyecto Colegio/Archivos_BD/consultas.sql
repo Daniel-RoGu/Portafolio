@@ -121,10 +121,28 @@ select ObtenerIdDocente((select CAST("12357951" AS SIGNED)));
 select ObtenerIdGrado("12");
 /*call registrarDocenteGrado("12357951", "12");*/
 call registrarDocenteGrado("12357951", "12");
+call registrarDocenteAsignatura("12357951", "Español");
+call registrarAsignaturaGradoGrupo("Español", 1202);
+call registrarCompetenciasAsignatura("Lectura critica", "Dominar la lectura critica", "El estudiante debe ser bueno en LC", "Español");
 select existeGradoRetorno("12");
+call existeDocenteAsignatura("12357951", "Español");
+call existeDocenteAsignatura("12357951", "Matemáticas");
+call existeAsignaturaGradoGrupo("Español", 1202);
+call existeAsignaturaGradoGrupo("Matemáticas", 1202);
+call existeCompetencia("Lectura critica", "Español");
+call existeCompetencia("Lectura critica", "Matemáticas");
+call existeUsuarioLogin("12357951", "12357951");
+call existeUsuarioLogin("12357951", "12357958");
 
 select count(*) from gradogrupo;                          
 select count(*) from estudiantesgradogrupo;                          
 select count(*) from sedegrados;                          
 select count(*) from sede;                          
-select count(*) from grados;                          
+select count(*) from grados;
+select count(*) from asignatura;
+
+call obtenerAsignaturas();
+call obtenerDocente("12357951");
+call obtenerDocentes();
+call obtenerGruposGrado();
+                          

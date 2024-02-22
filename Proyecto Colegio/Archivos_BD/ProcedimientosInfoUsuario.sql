@@ -216,3 +216,17 @@ begin
 	FROM Sisben as Sb
 	WHERE Sb.nombreSisben = nomSisben;
 END$$
+
+/*--------------------------Validar existencia Usuario Login-------------------------*/
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `existeUsuarioLogin` $$
+create procedure `existeUsuarioLogin`(idUsuario varchar(400), passUsuario varchar(400)) 
+begin
+    SELECT COUNT(*) > 0 AS existe_valor
+	FROM Usuario as us
+	WHERE us.identificacion = (SELECT CAST(idUsuario AS SIGNED)) and
+		  us.identificacion = (SELECT CAST(passUsuario AS SIGNED));
+END$$
+
+

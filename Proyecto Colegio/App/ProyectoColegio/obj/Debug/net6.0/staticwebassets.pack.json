@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\js\\TratamientoCsv.js"
     },
     {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\ValidacionLogin.js",
+      "PackagePath": "staticwebassets\\js\\ValidacionLogin.js"
+    },
+    {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

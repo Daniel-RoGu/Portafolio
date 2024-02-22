@@ -1,7 +1,12 @@
 ﻿@model ProyectoColegio.Models.Login
+@*@using ProyectoColegio.Data*@
 
 @{
+    //VariablesGlobales variablesGlobales = new VariablesGlobales();
     ViewData["Title"] = "Index";
+    
+    string disabledAttribute = "disabled";
+    //string onclickAttribute = "onclick=\"window.location.href='/Funcionario/cargarCsv'\"";
 }
 
 <!DOCTYPE html>
@@ -10,32 +15,66 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="~/css/Login.css?v=1.0" />
-
+    <script>
+        var botonIniciarSesion = document.getElementById('botonIniciarSesion');
+        botonIniciarSesion.setAttribute('disabled', 'disabled'); // Deshabilitar el botón
+    </script> 
 </head>
 <body>
     <div class="form-body">
         <img src="" alt="" />
         <p class="text">Nombre Del Colegio</p>
         <p class="text">Florencia - Caquetá</p>
-        <form asp-action="Index" class="login-form">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input asp-for="UserName" placeholder="Nombre De Usuario" />
+        <form asp-action="Inicio" class="login-form">
+            <input asp-for="UserName" placeholder="Nombre De Usuario" oninput="checkInputs()" />
             <span asp-validation-for="UserName" class="text-danger"></span>
-            <input asp-for="Password" placeholder="Contraseña" />
+            <input asp-for="Password" placeholder="Contraseña" oninput="checkInputs()" />
             <span asp-validation-for="Password" class="text-danger"></span>
 
-            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            @*<button type="submit" class="btn btn-primary">Iniciar Sesión</button>*@
+            @*<button id="botonIniciarSesion" @disabledAttribute type="submit" class="btn btn-success">Iniciar Sesión</button>*@
+            <button id="botonIniciarSesion" type="submit" class="btn btn-success">Iniciar Sesión</button>
         </form>
-    </div>
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
+       @* @{
+            var estadoUs = ViewBag.estado;
+            var estadoTemporal = TempData["estado"] as bool?;
 
-    @section Scripts {
-        @{
-            await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        }
-    }
+            if (estadoTemporal != null)
+            {
+                disabledAttribute = "enabled";
+                //onclickAttribute = ""; // Limpiamos el onclick si está deshabilitado
+                if (estadoTemporal == true)
+                {
+                    <p id="mensajeUsuario" style="background:green; display: none;">
+                        <span>USUARIO VALIDADO</span>
+                    </p>
+                }
+                else if (estadoTemporal == false)
+                {
+                    <p id="mensajeUsuario" style="background: red; display: none;">
+                        <span>USUARIO NO REGISTRADO</span>
+                    </p>                   
+                }
+            }
+        }*@
+        
+    </div>
 
 </body>
+<script>
+    function checkInputs() {
+        var userName = document.querySelector('input[name="UserName"]').value;
+        var password = document.querySelector('input[name="Password"]').value;
+        var mensajeUsuario = document.getElementById('mensajeUsuario');
+        var botonIniciarSesion = document.getElementById('botonIniciarSesion');
+
+        if (userName.trim() !== '' && password.trim() !== '') {
+            mensajeUsuario.style.display = 'block';
+            botonIniciarSesion.removeAttribute('disabled'); // Habilitar el botón
+        } else {
+            mensajeUsuario.style.display = 'none';
+            botonIniciarSesion.setAttribute('disabled', 'disabled'); // Deshabilitar el botón
+        }
+    }
+</script>
 </html>

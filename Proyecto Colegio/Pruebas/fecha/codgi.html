@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="diaInicio">Día:</label>
+    <select id="diaInicio" name="diaInicio" class="dia">
+      <option value="">Día de inicio</option>
+      <!-- Generar opciones del 1 al 31 -->
+      <script>
+        for (var i = 1; i <= 31; i++) {
+          document.write('<option value="' + i + '">' + i + '</option>');
+        }
+      </script>
+    </select>
+    
+    <label for="mesInicio">Mes:</label>
+    <select id="mesInicio" name="mesInicio" class="mes">
+      <option value="">Mes De inicio</option>
+      <!-- Lista de meses -->
+      <option value="1">Enero</option>
+      <option value="2">Febrero</option>
+      <option value="3">Marzo</option>
+      <option value="4">Abril</option>
+      <option value="5">Mayo</option>
+      <option value="6">Junio</option>
+      <option value="7">Julio</option>
+      <option value="8">Agosto</option>
+      <option value="9">Septiembre</option>
+      <option value="10">Octubre</option>
+      <option value="11">Noviembre</option>
+      <option value="12">Diciembre</option>
+    </select>
+    <label for="diaFin">Día:</label>
+    <select id="diaFin" name="diaFin" class="dia">
+      <option value="">Día Fin</option>
+      <!-- Generar opciones del 1 al 31 -->
+      <script>
+        for (var i = 1; i <= 31; i++) {
+          document.write('<option value="' + i + '">' + i + '</option>');
+        }
+      </script>
+    </select>
+    
+    <label for="mesFin">Mes:</label>
+    <select id="mesFin" name="mesFin" class="mes">
+      <option value="">Mes Fin</option>
+      <!-- Lista de meses -->
+      <option value="1">Enero</option>
+      <option value="2">Febrero</option>
+      <option value="3">Marzo</option>
+      <option value="4">Abril</option>
+      <option value="5">Mayo</option>
+      <option value="6">Junio</option>
+      <option value="7">Julio</option>
+      <option value="8">Agosto</option>
+      <option value="9">Septiembre</option>
+      <option value="10">Octubre</option>
+      <option value="11">Noviembre</option>
+      <option value="12">Diciembre</option>
+    </select>
+</body>
+</html>

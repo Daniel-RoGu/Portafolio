@@ -70,4 +70,52 @@ begin
 END$$
 
 
+/*--------------------------Registrar Docente Asignatura-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `registrarDocenteAsignatura` $$
+create procedure `registrarDocenteAsignatura`(
+    identificacionDocente varchar(400),
+    asignatura varchar(400)
+) 
+begin
+	insert into DocenteAsignatura (estadoDocenteAsignatura, fkidDocente, fkidAsignatura)				
+				value("Asignado", (select ObtenerIdDocente((select CAST(identificacionDocente AS SIGNED)))), (select ObtenerIdAsignatura(asignatura)) );
+END$$
+
+/*--------------------------Validar existencia Docente Asignatura-------------------------*/
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `existeDocenteAsignatura` $$
+create procedure `existeDocenteAsignatura`(identificacionDocente varchar(400), nomAsignatura varchar(400)) 
+begin
+    SELECT COUNT(*) > 0 AS existe_valor
+	FROM DocenteAsignatura as da
+	WHERE da.fkidDocente = (select ObtenerIdDocente( (select CAST(identificacionDocente AS SIGNED)))) 
+		  and da.fkidAsignatura = (select ObtenerIdAsignatura(nomAsignatura)) ;
+END$$
+
+/*--------------------------Obtener Docente-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerDocente` $$
+create procedure `obtenerDocente`(identificacion varchar(400)) 
+begin
+	SELECT (CONCAT(COALESCE(Usuario.primerNombreUsuario, ''), ' ', COALESCE(Usuario.segundoNombreUsuario, ''), 
+            COALESCE(Usuario.primerApellidoUsuario, ''), ' ', COALESCE(Usuario.segundoApellidoUsuario, ''))) AS Docente
+    FROM Docente 
+    inner join Usuario on Docente.fkidentificacion = Usuario.identificacion
+    where Docente.fkidentificacion = (CAST(identificacion AS SIGNED));
+END$$
+
+/*--------------------------Obtener Docentes-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerDocentes` $$
+CREATE PROCEDURE `obtenerDocentes`() 
+BEGIN
+    SELECT (CONCAT(COALESCE(Usuario.primerNombreUsuario, ''), ' ', COALESCE(Usuario.segundoNombreUsuario, ''), 
+            COALESCE(Usuario.primerApellidoUsuario, ''), ' ', COALESCE(Usuario.segundoApellidoUsuario, ''))) AS Docente
+    FROM Docente 
+    INNER JOIN Usuario ON Docente.fkidentificacion = Usuario.identificacion;
+END$$
+
+
 

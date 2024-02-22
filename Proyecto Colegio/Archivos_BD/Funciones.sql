@@ -338,6 +338,19 @@ END;
 //
 DELIMITER ;
 
+/*------buscar id de Asignatura-----*/
+DELIMITER //
+CREATE FUNCTION ObtenerIdAsignatura(nomAsignatura varchar(400))
+RETURNS int
+READS SQL DATA
+BEGIN
+    DECLARE resultado int;
+    SET resultado = (SELECT Asignatura.idAsignatura FROM Asignatura WHERE Asignatura.nombreAsignatura = nomAsignatura LIMIT 1);
+    RETURN resultado;
+END;
+//
+DELIMITER ;
+
 /*------buscar id de Existe Grado retorno-----*/
 DELIMITER $$
 CREATE FUNCTION existeGradoRetorno(nomGrado varchar(400))
