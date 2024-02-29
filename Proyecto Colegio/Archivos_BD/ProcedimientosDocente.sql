@@ -34,64 +34,42 @@ begin
 				value("Activo", horasTrabaja, (SELECT CAST(documento AS SIGNED)), (select ObtenerIdSede(nomSede)));
 END$$
 
-/*--------------------------Validar existencia Docente-------------------------*/
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS `existeDocente` $$
-create procedure `existeDocente`(identificacionDocente varchar(400)) 
-begin
-    SELECT COUNT(*) > 0 AS existe_valor
-	FROM Docente as d
-	WHERE d.fkidentificacion = (select ObtenerIdDocente((select CAST(identificacionDocente AS SIGNED))));
-END$$
-
 /*--------------------------Registrar Docente Grado-------------------------*/
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarDocenteGrado` $$
 create procedure `registrarDocenteGrado`(
-    identificacionDocente varchar(400),
-    nomGrado varchar(400)
+    nombreDocente varchar(400),
+    nomGrupo varchar(400)
 ) 
 begin
+	declare identificacionDocente long;
+    declare identificacionGrupo varchar(400);
+    set identificacionDocente = (SELECT d.idDocente FROM docente AS d
+								 INNER JOIN usuario AS u ON CONCAT(COALESCE(u.primerNombreUsuario, ''), ' ', COALESCE(u.segundoNombreUsuario, ''), 
+																   COALESCE(u.primerApellidoUsuario, ''), ' ', COALESCE(u.segundoApellidoUsuario, '')) COLLATE utf8mb4_unicode_ci = nombreDocente
+								 WHERE d.fkidentificacion = u.identificacion);
+	set identificacionGrupo = (select g.idGrado from gradogrupo as gg 
+							   inner join Grados as g on gg.fkidGrado = g.idGrado
+                               where gg.grupoGrado = nomGrupo);
 	insert into DocentesGrado (estadoDocenteGrado, fkidDocente, fkidGrado)				
-				value("Activo", (select ObtenerIdDocente((select CAST(identificacionDocente AS SIGNED)))), (select ObtenerIdGrado(nomGrado)) );
+				value("Activo", identificacionDocente, identificacionGrupo );
 END$$
-
-/*--------------------------Validar existencia Docente Grado-------------------------*/
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS `existeDocenteGrado` $$
-create procedure `existeDocenteGrado`(identificacionDocente varchar(400), nomGrado varchar(400)) 
-begin
-    SELECT COUNT(*) > 0 AS existe_valor
-	FROM DocentesGrado as dg
-	WHERE dg.fkidDocente = (select ObtenerIdDocente( (select CAST(identificacionDocente AS SIGNED)))) 
-		  and dg.fkidGrado = (select ObtenerIdGrado(nomGrado)) ;
-END$$
-
 
 /*--------------------------Registrar Docente Asignatura-------------------------*/
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `registrarDocenteAsignatura` $$
 create procedure `registrarDocenteAsignatura`(
-    identificacionDocente varchar(400),
+    nombreDocente varchar(400),
     asignatura varchar(400)
 ) 
 begin
+	declare identificacionDocente long;
+    set identificacionDocente = (SELECT d.idDocente FROM docente AS d
+								 INNER JOIN usuario AS u ON CONCAT(COALESCE(u.primerNombreUsuario, ''), ' ', COALESCE(u.segundoNombreUsuario, ''), 
+																   COALESCE(u.primerApellidoUsuario, ''), ' ', COALESCE(u.segundoApellidoUsuario, '')) COLLATE utf8mb4_unicode_ci = nombreDocente
+								 WHERE d.fkidentificacion = u.identificacion);
 	insert into DocenteAsignatura (estadoDocenteAsignatura, fkidDocente, fkidAsignatura)				
-				value("Asignado", (select ObtenerIdDocente((select CAST(identificacionDocente AS SIGNED)))), (select ObtenerIdAsignatura(asignatura)) );
-END$$
-
-/*--------------------------Validar existencia Docente Asignatura-------------------------*/
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS `existeDocenteAsignatura` $$
-create procedure `existeDocenteAsignatura`(identificacionDocente varchar(400), nomAsignatura varchar(400)) 
-begin
-    SELECT COUNT(*) > 0 AS existe_valor
-	FROM DocenteAsignatura as da
-	WHERE da.fkidDocente = (select ObtenerIdDocente( (select CAST(identificacionDocente AS SIGNED)))) 
-		  and da.fkidAsignatura = (select ObtenerIdAsignatura(nomAsignatura)) ;
+				value("Asignado", identificacionDocente, (select ObtenerIdAsignatura(asignatura)) );
 END$$
 
 /*--------------------------Obtener Docente-------------------------*/
@@ -117,5 +95,38 @@ BEGIN
     INNER JOIN Usuario ON Docente.fkidentificacion = Usuario.identificacion;
 END$$
 
+/*--------------------------Obtener Estudiantes Grupo-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerEstudiantesGrupo` $$
+create procedure `obtenerEstudiantesGrupo`(nomGrupo varchar(400)) 
+begin
+	select Us.identificacion as documento, Us.primerNombreUsuario as nomUsuario, Us.segundoNombreUsuario as nom2Usuario, 
+		   Us.primerApellidoUsuario as apellidoUsuario, Us.segundoApellidoUsuario as apellido2Usuario, Us.edadUsuario as edad,
+		   Us.telefonoCelular as telCelular, Us.telefonoFijo as telFijo, Us.correo as correoUss, 
+           Us.direccion as direccioUss, Us.barrioUbicacionUsuario as barrioUss, Us.fechaNacimiento as fechaNacimientoUss, Us.estadoUsuario as estadoUss, 
+           COALESCE((select ObtenerNombreTipoSangre(Us.fkidTipoSangre)), 'Sin definir') as tipoSangre,
+           COALESCE((select ObtenerNombreTipoDocumento(Us.fkidTipoDocumento)), 'Sin definir') as tipoDocumento, 
+           COALESCE((select ObtenerNombreDiscapacidad(Us.fkidDiscapacidad)), 'Sin definir') as nombreDiscapacidad, 
+           COALESCE((select ObtenerNombreSisben(Us.fkidSisben)), 'Sin definir') as nombreSisben,
+           COALESCE((select ObtenerNombreGenero(Us.fkidGenero)), 'Sin definir') as nombreGenero, 
+           COALESCE((SELECT ObtenerNombreEPS(Us.fkidEPS)), 'Sin definir') AS nombreEPS, 
+           COALESCE((select ObtenerNombreEstrato(Us.fkidEstrato)), 'Sin definir') as nombreEstrato
+	From GradoGrupo as gg
+    inner join estudiantesGradoGrupo as egg on egg.fkidGradoGrupo = gg.idGradoGrupo
+    inner join Estudiante as e on egg.fkidEstudiante = e.idEstudiante
+    inner join Usuario as Us on e.Usuario_identificacion = Us.identificacion
+    where gg.grupoGrado = nomGrupo;
+    
+END$$
 
+/*--------------------------Obtener Sede Docente-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerSedeDocente` $$
+CREATE PROCEDURE `obtenerSedeDocente`(identificacion varchar(400)) 
+BEGIN
+    SELECT s.nombreSede AS Sede
+    FROM Docente 
+    INNER JOIN Sede as s ON Docente.fkidSede = s.idSede
+    where Docente.idDocente = (select ObtenerIdDocente(CAST(identificacion AS SIGNED)));
+END$$
 

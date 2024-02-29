@@ -281,17 +281,94 @@ namespace ProyectoColegio.Data
             return existe;
         }
         
-        public bool ExisteDocenteGrado(long identificacion, string grupoGrado, string conexion)
+        public bool ExisteDocenteGrado(string nombreDocente, string nomGrupo, string conexion)
         {
             bool existe = false;
 
             Dictionary<string, object> parametros = new Dictionary<string, object>
             {
-                { "identificacionDocente", identificacion },
-                { "nomGrado", grupoGrado },
+                { "nombreDocente", nombreDocente },
+                { "nomGrupo", nomGrupo },
             };
 
             List<Object> resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("existeDocenteGrado", parametros, 1, conexion);
+
+            foreach (Object obj in resultados)
+            {
+                existe = Convert.ToBoolean(Convert.ToInt16(obj));
+            }
+            return existe;
+        }
+        
+        public bool ExisteDocenteAsignatura(string nombreDocente, string nomAsignatura, string conexion)
+        {
+            bool existe = false;
+
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+            {
+                { "nombreDocente", nombreDocente },
+                { "nomAsignatura", nomAsignatura },
+            };
+
+            List<Object> resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("existeDocenteAsignatura", parametros, 1, conexion);
+
+            foreach (Object obj in resultados)
+            {
+                existe = Convert.ToBoolean(Convert.ToInt16(obj));
+            }
+            return existe;
+        }
+
+        public bool ExisteAsignaturaGradoGrupo(string nomAsignatura, string grupoGrado, string conexion)
+        {
+            bool existe = false;
+
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+            {
+                { "nomAsignatura", nomAsignatura },
+                { "grupoGrado", grupoGrado },
+            };
+
+            List<Object> resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("existeAsignaturaGradoGrupo", parametros, 1, conexion);
+
+            foreach (Object obj in resultados)
+            {
+                existe = Convert.ToBoolean(Convert.ToInt16(obj));
+            }
+            return existe;
+        }
+        
+        public bool ExisteDocenteAsignaturaGradoGrupo(string nombreDocente, string nomAsignatura, string nomGrupo, string conexion)
+        {
+            bool existe = false;
+
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+            {
+                { "nombreDocente", nombreDocente },
+                { "nomAsignatura", nomAsignatura },
+                { "nomGrupo", nomGrupo },
+            };
+
+            List<Object> resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("existeDocenteAsignaturaGrupo", parametros, 1, conexion);
+
+            foreach (Object obj in resultados)
+            {
+                existe = Convert.ToBoolean(Convert.ToInt16(obj));
+            }
+            return existe;
+        }
+        
+        public bool ExisteCompetenciaAsignatura(string nomCompetencia, string nomAsignatura, string conexion)
+        {
+            bool existe = false;
+
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+            {
+                { "nomCompetencia", nomCompetencia },
+                { "nomAsignatura", nomAsignatura },
+            };
+
+            List<Object> resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("existeCompetencia", parametros, 1, conexion);
 
             foreach (Object obj in resultados)
             {

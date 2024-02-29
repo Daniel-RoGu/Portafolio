@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3onwsBEl0MTqBIkejqEcaAIJlV9wTLIMy0tE/NDoci4=",
+  "Hash": "m8Zc1RbAe79w8Kk4/W3ah79J3RpUoSPGVFgvTKlaoh8=",
   "Source": "ProyectoColegio",
   "BasePath": "_content/ProyectoColegio",
   "Mode": "Default",
@@ -17,40 +17,6 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\obj\\Debug\\net6.0\\scopedcss\\bundle\\ProyectoColegio.styles.css",
-      "SourceId": "ProyectoColegio",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/ProyectoColegio",
-      "RelativePath": "ProyectoColegio.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\obj\\Debug\\net6.0\\scopedcss\\bundle\\ProyectoColegio.styles.css"
-    },
-    {
-      "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProyectoColegio.bundle.scp.css",
-      "SourceId": "ProyectoColegio",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/ProyectoColegio",
-      "RelativePath": "ProyectoColegio.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProyectoColegio.bundle.scp.css"
-    },
-    {
       "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\EstiloMenu.css",
       "SourceId": "ProyectoColegio",
       "SourceType": "Discovered",
@@ -66,6 +32,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\EstiloMenu.css"
+    },
+    {
+      "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\EstiloRegistrarFamiliar.css",
+      "SourceId": "ProyectoColegio",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\",
+      "BasePath": "_content/ProyectoColegio",
+      "RelativePath": "css/EstiloRegistrarFamiliar.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\EstiloRegistrarFamiliar.css"
     },
     {
       "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\estilos.css",
@@ -136,6 +119,23 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\VistaEstudiante.css",
+      "SourceId": "ProyectoColegio",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\",
+      "BasePath": "_content/ProyectoColegio",
+      "RelativePath": "css/VistaEstudiante.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\VistaEstudiante.css"
+    },
+    {
       "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\VistaEstudianteSecretaria.css",
       "SourceId": "ProyectoColegio",
       "SourceType": "Discovered",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\FlujoDeDatos.js",
+      "SourceId": "ProyectoColegio",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\",
+      "BasePath": "_content/ProyectoColegio",
+      "RelativePath": "js/FlujoDeDatos.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\FlujoDeDatos.js"
     },
     {
       "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\site.js",
@@ -204,12 +221,12 @@
       "OriginalItemSpec": "wwwroot\\js\\TratamientoCsv.js"
     },
     {
-      "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\ValidacionLogin.js",
+      "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\VistaEstudiante.js",
       "SourceId": "ProyectoColegio",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\",
       "BasePath": "_content/ProyectoColegio",
-      "RelativePath": "js/ValidacionLogin.js",
+      "RelativePath": "js/VistaEstudiante.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -218,7 +235,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\ValidacionLogin.js"
+      "OriginalItemSpec": "wwwroot\\js\\VistaEstudiante.js"
+    },
+    {
+      "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\VistaFamiliar.js",
+      "SourceId": "ProyectoColegio",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\",
+      "BasePath": "_content/ProyectoColegio",
+      "RelativePath": "js/VistaFamiliar.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\VistaFamiliar.js"
     },
     {
       "Identity": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

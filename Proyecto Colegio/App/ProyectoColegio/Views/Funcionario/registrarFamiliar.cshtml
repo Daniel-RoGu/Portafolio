@@ -5,78 +5,84 @@
     var identificacion = ViewBag.Identificacion;
 }
 
-<h1>registrarFamiliar</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/EstiloRegistrarFamiliar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Glitch+Pop&display=swap"
+          rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f3f65ff77b.js" crossorigin="anonymous"></script>
+    <script src="~/js/VistaFamiliar.js" defer></script>
 
-<h4>Familiar</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="registrarFamiliar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="identificacionFamiliar" class="control-label"></label>
-                <input asp-for="identificacionFamiliar" class="form-control" />
-                <span asp-validation-for="identificacionFamiliar" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="nombresFamiliar" class="control-label"></label>
-                <input asp-for="nombresFamiliar" class="form-control" />
-                <span asp-validation-for="nombresFamiliar" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="apellidosFamiliar" class="control-label"></label>
-                <input asp-for="apellidosFamiliar" class="form-control" />
-                <span asp-validation-for="apellidosFamiliar" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="correoFamiliar" class="control-label"></label>
-                <input asp-for="correoFamiliar" class="form-control" />
-                <span asp-validation-for="correoFamiliar" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="celularFamiliar" class="control-label"></label>
-                <input asp-for="celularFamiliar" class="form-control" />
-                <span asp-validation-for="celularFamiliar" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="parentescoFamiliar" class="control-label"></label>
-                <input asp-for="parentescoFamiliar" class="form-control" />
-                <span asp-validation-for="parentescoFamiliar" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="responsabilidadEconomicaEstudiante" class="control-label"></label>
-                <input asp-for="responsabilidadEconomicaEstudiante" class="form-control" />
-                <span asp-validation-for="responsabilidadEconomicaEstudiante" class="text-danger"></span>
-            </div>
-            @*<div class="form-group">
-                <label asp-for="estadoAcudiente" class="control-label"></label>
-                <input asp-for="estadoAcudiente" class="form-control" />
-                <span asp-validation-for="estadoAcudiente" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="genero" class="control-label"></label>
-                <input asp-for="genero" class="form-control" />
-                <span asp-validation-for="genero" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                @*<label asp-for="identificacionEstudiante" class="control-label"></label>*@
-                @*<input asp-for="identificacionEstudiante" class="form-control" />*@
-                @*<span asp-validation-for="identificacionEstudiante" class="text-danger"></span>*@
-                <label asp-for="identificacionEstudiante"  class="control-label"></label>
-                <input asp-for="identificacionEstudiante" value="@identificacion" class="form-control" readonly />
-                <span asp-validation-for="identificacionEstudiante" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+</head>
+<body>
+    <div class="contenedor-principal">
+        <div class="contenedor-botones">
+            <button id="boton-modulo-padre" class="boton">Modulo Padre De Familia</button>
+            <button id="boton-modulo-madre" class="boton">Modulo Madre De Familia</button>
+            <button id="boton-modulo-acudiente" class="boton">Modulo Acudiente</button>
+        </div>
+        <div class="contenedor-formulario">
+            <form asp-action="registrarFamiliar">
+                <div class="contenedor-informacion-padre">
+                    <label for="titulo-padre">INFORMACIÓN DEL PADRE DE FAMILIA</label>
+                    <label asp-for="nombresFamiliar" class="control-label">Nombre completo del padre</label>
+                    <input asp-for="nombresFamiliar" name="nombre-padre" class="form-control" />
+                    <span asp-validation-for="nombresFamiliar" class="text-danger"></span>
+                    <label asp-for="identificacionFamiliar" class="control-label">Número de documento</label>
+                    <input asp-for="identificacionFamiliar" name="identificacion-padre" class="form-control" />
+                    <span asp-validation-for="identificacionFamiliar" class="text-danger"></span>
+                    <label asp-for="celularFamiliar" class="control-label">Número de celular</label>
+                    <input asp-for="celularFamiliar" name="celuar-padre" class="form-control" />
+                    <span asp-validation-for="celularFamiliar" class="text-danger"></span>
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </form>
+            <form asp-action="registrarFamiliar">
+                <div class="contenedor-informacion-madre">
+                    <label for="titulo-madre">INFORMACIÓN DE LA MADRE DE FAMILIA</label>
+                    <label asp-for="nombresFamiliar" class="control-label">Nombre completo de la madre</label>
+                    <input asp-for="nombresFamiliar" name="nombre-madre" class="form-control" />
+                    <span asp-validation-for="nombresFamiliar" class="text-danger"></span>
+                    <label asp-for="identificacionFamiliar" class="control-label">Número de documento</label>
+                    <input asp-for="identificacionFamiliar" name="identificacion-madre" class="form-control" />
+                    <span asp-validation-for="identificacionFamiliar" class="text-danger"></span>
+                    <label asp-for="celularFamiliar" class="control-label">Número de celular</label>
+                    <input asp-for="celularFamiliar" name="celular-madre" class="form-control" />
+                    <span asp-validation-for="celularFamiliar" class="text-danger"></span>
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </form>
+            <form asp-action="registrarFamiliar">
+                <div class="contenedor-informacion-acudiente">
+                    <label for="titulo-acudiente">INFORMACIÓN DEL ACUDIENTE</label>
+                    <label asp-for="nombresFamiliar" class="control-label">Nombre completo del acudiente</label>
+                    <input asp-for="nombresFamiliar" name="nombre-acudiente" class="form-control" />
+                    <span asp-validation-for="nombresFamiliar" class="text-danger"></span>
+                    <label asp-for="identificacionFamiliar" class="control-label">Número de documento</label>
+                    <input asp-for="identificacionFamiliar" name="identificacion-acudiente" class="form-control" />
+                    <span asp-validation-for="identificacionFamiliar" class="text-danger"></span>
+                    <label asp-for="celularFamiliar" class="control-label">Número de celular</label>
+                    <input asp-for="celularFamiliar" name="celular-acudiente" class="form-control" />
+                    <span asp-validation-for="celularFamiliar" class="text-danger"></span>
+                    <label asp-for="identificacionFamiliar" class="control-label">Parentesco acudiente</label>
+                    <select asp-for="parentescoFamiliar" name="parentesco" class="form-control">
+                        <option value="opcion1">Opción 1</option>
+                        <option value="opcion2">Opción 2</option>
+                        <option value="opcion3">Opción 3</option>
+                        <option value="opcion4">Opción 4</option>
+                    </select>
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</body>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

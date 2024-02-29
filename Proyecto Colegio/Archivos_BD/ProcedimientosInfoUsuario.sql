@@ -151,82 +151,17 @@ begin
                        (select ObtenerIdEPS(nombreEps)), (select ObtenerIdGenero(nombreGenero)));
 END$$
 
-/*--------------------------Validar existencia de EPS-------------------------*/
 
+/*--------------------------Obtener Rol Usuario-------------------------*/
 DELIMITER $$
-DROP PROCEDURE IF EXISTS `existeEPS` $$
-create procedure `existeEPS`(nomEps varchar(400)) 
+DROP PROCEDURE IF EXISTS `obtenerRolUsuario` $$
+create procedure `obtenerRolUsuario`(
+    identificacion varchar(400)
+) 
 begin
-    SELECT COUNT(*) > 0 AS existe_valor
-	FROM EPS as eps
-	WHERE eps.nombreEPS = nomEps;
+	select r.nombreRol 
+    from Usuario as u
+    inner join Rol as r on u.fkidRol = r.idRol
+    where u.identificacion = (SELECT CAST(identificacion AS SIGNED));
 END$$
-
-/*--------------------------Validar existencia tipo de sangre-------------------------*/
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS `existeTpSangre` $$
-create procedure `existeTpSangre`(nomTpSangre varchar(400)) 
-begin
-    SELECT COUNT(*) > 0 AS existe_valor
-	FROM tipoSangre as tpSangre
-	WHERE tpSangre.nombreTipoSangre = nomTpSangre;
-END$$
-
-/*--------------------------Validar existencia tipo de documento-------------------------*/
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS `existeTpDocumento` $$
-create procedure `existeTpDocumento`(nomTpDocumento varchar(400)) 
-begin
-    SELECT COUNT(*) > 0 AS existe_valor
-	FROM tipoDocumento as tpDoc
-	WHERE tpDoc.nombreTipoDocumento = nomTpDocumento;
-END$$
-
-/*--------------------------Validar existencia discapacidad-------------------------*/
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS `existeDiscapacidad` $$
-create procedure `existeDiscapacidad`(nomDiscapacidad varchar(400)) 
-begin
-    SELECT COUNT(*) > 0 AS existe_valor
-	FROM Discapacidad as dis
-	WHERE dis.nombreDiscapacidad = nomDiscapacidad;
-END$$
-
-/*--------------------------Validar existencia Genero-------------------------*/
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS `existeGenero` $$
-create procedure `existeGenero`(nomGenero varchar(400)) 
-begin
-    SELECT COUNT(*) > 0 AS existe_valor
-	FROM Genero as gen
-	WHERE gen.nombreGenero = nomGenero;
-END$$
-
-/*--------------------------Validar existencia Sisven-------------------------*/
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS `existeSisben` $$
-create procedure `existeSisben`(nomSisben varchar(400)) 
-begin
-    SELECT COUNT(*) > 0 AS existe_valor
-	FROM Sisben as Sb
-	WHERE Sb.nombreSisben = nomSisben;
-END$$
-
-/*--------------------------Validar existencia Usuario Login-------------------------*/
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS `existeUsuarioLogin` $$
-create procedure `existeUsuarioLogin`(idUsuario varchar(400), passUsuario varchar(400)) 
-begin
-    SELECT COUNT(*) > 0 AS existe_valor
-	FROM Usuario as us
-	WHERE us.identificacion = (SELECT CAST(idUsuario AS SIGNED)) and
-		  us.identificacion = (SELECT CAST(passUsuario AS SIGNED));
-END$$
-
 

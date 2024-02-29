@@ -1,12 +1,12 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProyectoColegio.bundle.scp.css",
-      "PackagePath": "staticwebassets\\ProyectoColegio.bundle.scp.css"
-    },
-    {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\EstiloMenu.css",
       "PackagePath": "staticwebassets\\css\\EstiloMenu.css"
+    },
+    {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\EstiloRegistrarFamiliar.css",
+      "PackagePath": "staticwebassets\\css\\EstiloRegistrarFamiliar.css"
     },
     {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\Login.css",
@@ -15,6 +15,10 @@
     {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\Menu.css",
       "PackagePath": "staticwebassets\\css\\Menu.css"
+    },
+    {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\VistaEstudiante.css",
+      "PackagePath": "staticwebassets\\css\\VistaEstudiante.css"
     },
     {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\VistaEstudianteSecretaria.css",
@@ -33,12 +37,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\FlujoDeDatos.js",
+      "PackagePath": "staticwebassets\\js\\FlujoDeDatos.js"
+    },
+    {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\TratamientoCsv.js",
       "PackagePath": "staticwebassets\\js\\TratamientoCsv.js"
     },
     {
-      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\ValidacionLogin.js",
-      "PackagePath": "staticwebassets\\js\\ValidacionLogin.js"
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\VistaEstudiante.js",
+      "PackagePath": "staticwebassets\\js\\VistaEstudiante.js"
+    },
+    {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\VistaFamiliar.js",
+      "PackagePath": "staticwebassets\\js\\VistaFamiliar.js"
     },
     {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\site.js",

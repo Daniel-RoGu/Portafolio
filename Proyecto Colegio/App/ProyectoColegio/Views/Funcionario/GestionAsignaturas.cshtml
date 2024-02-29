@@ -2,7 +2,6 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    // Aquí puedes definir tus datos, como una lista de objetos o un ViewBag, dependiendo de tu aplicación
     var asignaturas = ViewBag.Asignaturas;
     var docentes = ViewBag.Docentes;
     var grupos = ViewBag.GruposGrado;
@@ -14,13 +13,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asignaciones</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/js/FlujoDeDatos.js"></script>
+
 </head>
 <body>
 
     <div style="margin-top: 50px">
-        <button class="btn btn-primary" onclick="window.location.href='/Controlador/AsignacionDocente'">Asignacion Docente</button>
-        <button class="btn btn-primary" onclick="window.location.href='/Controlador/AsignacionGrupos'">Asignacion de Grupos</button>
-        <button class="btn btn-primary" onclick="window.location.href='/Controlador/AsignacionHorarios'">Asignacion de Horarios</button>
+        @*para eliminar*@
     </div>  
     <table border="1">
         <tr>
@@ -32,7 +32,7 @@
         <tr>
             <td>
                 <div class="form-group">
-                    <select class="form-select" name="Asignaturas" aria-label="Default select example">
+                    <select class="form-select" name="Asignaturas" id="asignaturasSelect" aria-label="Default select example">
                         <option value="">Asignaturas</option>
                         @foreach (var item in asignaturas)
                         {
@@ -43,7 +43,7 @@
             </td>
             <td>
                 <div class="form-group">
-                    <select class="form-select" name="Docentes" aria-label="Default select example">
+                    <select class="form-select" name="Docentes" id="docentesSelect" aria-label="Default select example">
                         <option value="">Docentes</option>
                         @foreach (var item in docentes)
                         {
@@ -54,7 +54,7 @@
             </td>
             <td>
                 <div class="form-group">
-                    <select class="form-select" name="Grupos" aria-label="Default select example">
+                    <select class="form-select" name="Grupos" id="grupoSelect" aria-label="Default select example">
                         <option value="">Grupos</option>
                         @foreach (var item in grupos)
                         {
@@ -64,16 +64,90 @@
                 </div>
             </td>
             <td>
-                <button class="btn btn-primary" onclick="window.location.href='/Controlador/Opcion1'">Opción 1</button>
-                <button class="btn btn-primary" onclick="window.location.href='/Controlador/Opcion2'">Opción 2</button>
+                <button class="btn btn-primary" id="btnOpcion1" onchange="habilitarBoton()" onclick="window.location.href='/Funcionario/GestionAsignaturas'">Guardar</button>
             </td>
         </tr>
-        
-           
-       
-        
 
     </table>
+    <div style="margin-top: 20px">
+        <table>
+            <tr>
+                <th>Asignaturas</th>
+                <th>Nombre Competencia</th>
+                <th>Objetivo Competencia</th>
+                <th>Detalle Competencia</th>
+                <th>Opciones</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <select class="form-select" name="Asignaturas" id="asignaturasSelect2" aria-label="Default select example">
+                            <option value="">Asignaturas</option>
+                            @foreach (var item in asignaturas)
+                            {
+                                <option value="@item">@item</option>
+                            }
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input class="form-control" id="nombreCompetencia" placeholder="Ej: Lectura Critica"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input class="form-control" id="objetivoCompetencia" placeholder="Ej: Dominar la Lectura Critica"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input class="form-control" id="detalleComepetencia" placeholder="Ej: El estudiante logra dominar los principios de LC"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        @*<button class="btn btn-primary" id="btnOpcion2" onchange="habilitarBoton()" onclick="window.location.href='/Funcionario/GestionAsignaturas'">Guardar</button>*@
+                        <button class="btn btn-primary" onclick="window.location.href='/Funcionario/GestionAsignaturas'" id="btnOpcion2">Guardar</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
+<script>
+    // En este script, llama a la función del archivo JS cuando cambia el select
+    $(document).ready(function () {
+        $('#asignaturasSelect').change(function () {
+            var valorSeleccionado = asignaturasSelectChanged();
+        });
+
+        $('#docentesSelect').change(function () {
+            var valorSeleccionado = docentesSelectChanged();
+        });
+
+        $('#grupoSelect').change(function () {
+            var valorSeleccionado = grupoSelectChanged();
+        });
+
+        $('#asignaturasSelect2').change(function () {
+            var valorSeleccionado = asignaturasSelect2Changed();
+        });
+
+        $('#nombreCompetencia').change(function () {
+            var valorSeleccionado = nombreCompetenciaSelectChanged();
+        });
+        
+        $('#objetivoCompetencia').change(function () {
+            var valorSeleccionado = objetivoCompetenciaSelectChanged();
+        });
+        
+        $('#detalleComepetencia').change(function () {
+            var valorSeleccionado = detalleCompetenciaSelectChanged();
+        });
+
+
+    });
+</script>
 </html>
 

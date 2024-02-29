@@ -1,20 +1,26 @@
-﻿@{
-    var idUs = ViewBag.idetificacionUs;
-}
+﻿
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir Archivo CSV</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- Asegúrate de incluir jQuery -->
+    @*<link rel="stylesheet" href="~/css/VistaEstudiante.css">*@
+    <script src="~/js/VistaEstudiante.js" defer></script>
     <script>
         $(document).ready(function () {
             // Oculta la tabla inicialmente
             $("#contenidoEstudiantes").hide();
 
             // Maneja el clic en el botón
-            $("#mostrarEstudiantesBtn").click(function () {
+            $("#mostrarEstudiantes").click(function () {
+                // Muestra la tabla al hacer clic en el botón
+                $("#contenidoEstudiantes").show();
+                $("#mensajeNoEstudiantes").hide(); // Oculta el mensaje si está visible
+            });
+            
+            // Maneja el clic en el botón
+            $("#btnOpcionFiltrar").click(function () {
                 // Muestra la tabla al hacer clic en el botón
                 $("#contenidoEstudiantes").show();
                 $("#mensajeNoEstudiantes").hide(); // Oculta el mensaje si está visible
@@ -23,95 +29,148 @@
     </script>
 </head>
 <body>
-
-    <div style="margin-top: 200px">
-
-        <form action="/Funcionario/CargarCsv" method="post" enctype="multipart/form-data">
-            <label for="inputFile">Seleccionar Archivo CSV:</label>
-            <input type="file" id="inputFile" name="file" accept=".csv">
-            <br>
-           <input type="submit" value="Cargar CSV">
-        </form>     
-
-        @*<button class="btn btn-success" onclick="window.location.href='/Funcionario/mostrarCsv'">Mostrar Estudiantes</button>*@
-        <button id="mostrarEstudiantesBtn" class="btn btn-success">Mostrar Estudiantes</button>
-        <button class="btn btn-success" onclick="window.location.href='/Funcionario/RegistrarDocente'">RegistrarDocente</button>         
-        <button class="btn btn-success" onclick="window.location.href='/Funcionario/GestionAsignaturas'">Gestion Asignaturas</button>
-        <button class="btn btn-success" >@idUs</button>
-    </div>
-        
-    <div id="contenidoEstudiantes">
-        <h1>Lista de Usuarios</h1>
-        <table border="1">
-            <tr>
-                <th>Documento</th>
-                <th>Primer Nombre</th>
-                <th>Segundo Nombre</th>
-                <th>Primer Apellido</th>
-                <th>Segundo Apellido</th>
-                <th>Edad</th>
-                <th>Telefono Celular</th>
-                <th>Telefono Fijo</th>
-                <th>Correo Usuario</th>
-                <th>Direccion Usuario</th>
-                <th>Barrio Usuario</th>
-                <th>Fecha Nacimiento</th>
-                <th>Tipo Sangre</th>
-                <th>Tipo Documento</th>
-                <th>Discapacidad</th>
-                <th>Sisben</th>
-                <th>Genero</th>
-                <th>EPS</th>
-                <th>Estrato</th>
-                <th>Codigo Estudiante</th>
-                <th>Opciones</th>
-            </tr>                  
-
-            @if (ViewBag.ListaEstudiante != null)
+    @{
+        var sedes = ViewBag.Sedes;
+        var grupos = ViewBag.GruposGrado;
+    }
+    <div class="contenedor-principal">
+        <div class="contenedor-botones">
+            <button id="mostrarEstudiantes" class="boton-principal">Mostrar Estudiantes</button>
+            <button id="buscar-estudiante" class="boton-principal">Buscar Estudiante</button>
+        </div>
+        <div class="contenedor-buscar-estudiante">
+            <input type="buscar" class="buscar-numero" placeholder="Digite El Número De Identificación">
+            <button id="boton-buscar-dos" class="boton-buscar">Buscar</button>
+        </div>
+        <div class="contenedor-filtrar">
+            <@using (Html.BeginForm("obtenerEstudiantesGrupoSede", "Funcionario", FormMethod.Post))
             {
-                List<Object> Datos = ViewBag.ListaEstudiante;
-
-                foreach (List<String> usuario in Datos)
-                {
-                    <tr>
-                        <td>@usuario[0]</td>
-                        <td>@usuario[1]</td>
-                        <td>@usuario[2]</td>
-                        <td>@usuario[3]</td>
-                        <td>@usuario[4]</td>
-                        <td>@usuario[5]</td>
-                        <td>@usuario[6]</td>
-                        <td>@usuario[7]</td>
-                        <td>@usuario[8]</td>
-                        <td>@usuario[9]</td>
-                        <td>@usuario[10]</td>
-                        <td>@usuario[11]</td>
-                        <td>@usuario[12]</td>
-                        <td>@usuario[13]</td>
-                        <td>@usuario[14]</td>
-                        <td>@usuario[15]</td>
-                        <td>@usuario[16]</td>
-                        <td>@usuario[17]</td>
-                        <td>@usuario[18]</td>
-                        <td>@usuario[19]</td>
-                        <td>
-                            @Html.ActionLink("registrarFamiliar", "registrarFamiliar", new {identificacion=long.Parse(usuario[0])}, new {@class = "btn btn-success"})
-                            @Html.ActionLink("registrarObservacion", "registrarObservacion", new {identificacionEst=long.Parse(usuario[0])}, new {@class = "btn btn-warning"})
-                            @*<button class="btn btn-warning" onclick="window.location.href='/Funcionario/registrarObservacion'">Registrar Observacion</button>*@
-                        </td>
-                    </tr>
-                }
-            }
-            else
-            {
-                <div id="mensajeNoEstudiantes" class="alert alert-warning">
-                    Aún no ha presionado el botón "Mostrar Estudiantes" para visualizar el contenido del CSV.
+                <div class="contenedor-filtro-sede">
+                    <div class="form-group">
+                        <select class="form-select" name="sede" id="sede" aria-label="Default select example">
+                            <option value="">Sede</option>
+                            @if (sedes!=null)
+                            {
+                                foreach (var item in sedes)
+                                {
+                                    <option value="@item">@item</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="contenedor-filtro-grupo">
+                    <div class="form-group">
+                        <select class="form-select" name="grupo" id="grupo" aria-label="Default select example">
+                            <option value="">Grupo</option>
+                            @if (grupos!=null)
+                            {
+                                foreach (var item in grupos)
+                                {
+                                    <option value="@item">@item</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-primary" id="btnOpcionFiltrar" type="submit">Filtrar</button>
                 </div>
             }
+        </div>
+        <div class="contenedor-tabla">
+            <h1>Lista de Estudiantes</h1>
+            <table id="tabla-estudiantes">
+                <tr>
+                    <th>Documento</th>
+                    <th>Primer Nombre</th>
+                    <th>Segundo Nombre</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>            
+                    <th>Tipo Sangre</th>
+                    <th>Tipo Documento</th>
+                    <th>Discapacidad</th>
+                    <th>Sisben</th>
+                    <th>Genero</th>
+                    <th>EPS</th>
+                    <th>Estrato</th>
+                    <th>Codigo Estudiante</th>
+                    <th>Opciones</th>
+                </tr>
+                @if (ViewBag.ListaEstudiante != null)
+                {
+                    List<Object> Datos = ViewBag.ListaEstudiante;
 
-        </table>
+                    if (ViewBag.ListaEstudianteGrupo != null)
+                    {
+                        Datos = ViewBag.ListaEstudianteGrupo;
+                    }
 
+                    foreach (List<String> usuario in Datos)
+                    {
+                        <tr>
+                            <td>@usuario[0]</td>
+                            <td>@usuario[1]</td>
+                            <td>@usuario[2]</td>
+                            <td>@usuario[3]</td>
+                            <td>@usuario[4]</td>                          
+                            <td>@usuario[12]</td>
+                            <td>@usuario[13]</td>
+                            <td>@usuario[14]</td>
+                            <td>@usuario[15]</td>
+                            <td>@usuario[16]</td>
+                            <td>@usuario[17]</td>
+                            <td>@usuario[18]</td>
+                            <td>@usuario[19]</td>
+                            <td>
+                                @Html.ActionLink("registrarFamiliar", "registrarFamiliar", new { identificacion = long.Parse(usuario[0]) }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("registrarObservacion", "registrarObservacion", new { identificacionEst = long.Parse(usuario[0]) }, new { @class = "btn btn-warning" })
+                                @*<button class="btn btn-warning" onclick="window.location.href='/Funcionario/registrarObservacion'">Registrar Observacion</button>*@
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <div id="mensajeNoEstudiantes" class="alert alert-warning">
+                        Aún no ha presionado el botón "Mostrar Estudiantes" para visualizar el contenido del CSV.
+                    </div>
+                }
+
+            </table>
+        </div>
+        <div class="contendor-input">
+
+        </div>
+        <form action="/Funcionario/CargarCsv" method="post" enctype="multipart/form-data">
+            <input type="file" id="inputFile" name="file" accept=".csv">
+            <br>
+            <input type="submit" value="Cargar CSV">
+        </form>
     </div>
+    <style>
+        .contenedor-tabla {
+            width: 100%;
+            height: 500px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
 
+        #tabla-estudiantes {
+            border: 1px solid #000;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            text-align: center;
+            font-size: 10px;
+        }
+    </style>
 </body>
 </html>
