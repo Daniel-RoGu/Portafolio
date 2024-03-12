@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxDYXJnZUpTT04uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Docente/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jZW50ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Docente/Principal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jZW50ZVxQcmluY2lwYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,8 +36,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cR2VzdGlvbkFzaWduYXR1cmFzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/gestionCertificados.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cZ2VzdGlvbkNlcnRpZmljYWRvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/GestionPeriodoAcademico.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cR2VzdGlvblBlcmlvZG9BY2FkZW1pY28uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/mostrarCsv.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cbW9zdHJhckNzdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/plantillaNotas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9ccGxhbnRpbGxhTm90YXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/principalDocente.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9ccHJpbmNpcGFsRG9jZW50ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/PrincipalFamiliar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cUHJpbmNpcGFsRmFtaWxpYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/principalObservacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9ccHJpbmNpcGFsT2JzZXJ2YWNpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/RegistrarDocente.cshtml]
@@ -58,6 +86,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Login/Inicio.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5pY2lvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/MostrarPDFenPagina.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXE1vc3RyYXJQREZlblBhZ2luYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/vistaParaPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXHZpc3RhUGFyYVBERi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Shared/Error.cshtml]

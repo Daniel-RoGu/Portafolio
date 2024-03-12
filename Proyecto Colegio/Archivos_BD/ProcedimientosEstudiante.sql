@@ -54,6 +54,23 @@ begin
     inner join Estudiante on Estudiante.Usuario_identificacion = Us.identificacion;
 END$$
 
+/*--------------------------Mostrar Estudiantes 2-------------------------*/
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `mostrarEstudiantes2` $$
+create procedure `mostrarEstudiantes2`() 
+begin
+	select Us.identificacion as documento, Us.primerNombreUsuario as nomUsuario, Us.segundoNombreUsuario as nom2Usuario, Us.primerApellidoUsuario as apellidoUsuario, Us.segundoApellidoUsuario as apellido2Usuario, Us.edadUsuario as edad,
+		   Us.telefonoCelular as telCelular, Us.telefonoFijo as telFijo, Us.correo as correoUss, Us.direccion as direccioUss, Us.barrioUbicacionUsuario as barrioUss, Us.fechaNacimiento as fechaNacimientoUss, Us.estadoUsuario as estadoUss, (select ObtenerNombreTipoSangre(Us.fkidTipoSangre)) as tipoSangre,
+           (select ObtenerNombreTipoDocumento(Us.fkidTipoDocumento)) as tipoDocumento, (select ObtenerNombreDiscapacidad(Us.fkidDiscapacidad)) as nombreDiscapacidad, (select ObtenerNombreSisben(Us.fkidSisben)) as nombreSisben,
+           (select ObtenerNombreGenero(Us.fkidGenero)) as nombreGenero, (select ObtenerNombreEPS(Us.fkidEPS)) as nombreEPS, (select ObtenerNombreEstrato(Us.fkidEstrato)) as nombreEstrato, g.nombreGrado as Grado, gg.grupoGrado as Grupo
+	From Usuario as Us
+    inner join Estudiante as e on e.Usuario_identificacion = Us.identificacion
+    inner join EstudiantesGradoGrupo as egg on egg.fkidEstudiante = e.idEstudiante
+    inner join GradoGrupo as gg on egg.fkidGradoGrupo = gg.idGradoGrupo
+    inner join Grados as g on gg.fkidGrado = g.idGrado;
+END$$
+
 /*--------------------------Obtener codigo Estudiantes-------------------------*/
 
 DELIMITER $$
@@ -71,19 +88,20 @@ DROP PROCEDURE IF EXISTS `registrarFamiliar` $$
 create procedure `registrarFamiliar`(
     identificacionFamiliarEs long,
     nombreFamiliarEs varchar(400),
-    apellidoFamiliarEs varchar(400),
+    ocupacionFamiliarEs varchar(400),
     correoFamiliarEs varchar(400),
     celularFamiliarEs varchar(100),
     parentescoFamiliarEs varchar(400),
     responsabilidadEconomicaFamiliarEs varchar(400),
+    esAcudiente varchar(400),
     generoFamiliarEs varchar(400),
     identificacionEstudianteEs long
 ) 
 begin
-	insert into Familiar (identificacionFamiliar, nombreFamiliar, apellidoFamiliar, correoFamiliar, celularFamiliar, 
+	insert into Familiar (identificacionFamiliar, nombreFamiliar, ocupacionFamiliar, correoFamiliar, celularFamiliar, 
 						   parentescoFamiliar, responsabilidadEconomicaEstudiante, estadoAcudiente, Genero_idGenero, Estudiante_idEstudiante)
-				value(identificacionFamiliarEs, nombreFamiliarEs, apellidoFamiliarEs, correoFamiliarEs, celularFamiliarEs, parentescoFamiliarEs,
-					  responsabilidadEconomicaFamiliarEs, "No", (select ObtenerIdGenero(generoFamiliarEs)), (select ObtenerIdEstudiante(identificacionEstudianteEs)));
+				value(identificacionFamiliarEs, nombreFamiliarEs, ocupacionFamiliarEs, correoFamiliarEs, celularFamiliarEs, parentescoFamiliarEs,
+					  responsabilidadEconomicaFamiliarEs, esAcudiente, (select ObtenerIdGenero(generoFamiliarEs)), (select ObtenerIdEstudiante(identificacionEstudianteEs)));
 END$$
 
 /*--------------------------Registrar Observacion-------------------------*/
@@ -113,6 +131,51 @@ begin
 	FROM Estudiante as est
     inner join Usuario as Us
 	WHERE est.idEstudiante = (SELECT CAST(codigoEst AS SIGNED)) and est.Usuario_identificacion = Us.identificacion;
+END$$
+
+/*--------------------------Buscar Grado y Grupo Estudiante-------------------------*/
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerGradoYGrupoEstudiante` $$
+create procedure `obtenerGradoYGrupoEstudiante`(identificacionEst Varchar(400)) 
+begin
+    SELECT g.nombreGrado as Grado, gg.grupoGrado as Grupo
+	FROM Estudiante as e
+    inner join estudiantesGradoGrupo as egg on fkidEstudiante = e.idEstudiante
+    inner join gradoGrupo as gg on egg.fkidGradoGrupo = gg.idGradoGrupo
+    inner join Grados as g on gg.fkidGrado = g.idGrado
+	WHERE e.Usuario_identificacion = (SELECT CAST(identificacionEst AS SIGNED));
+END$$
+
+/*--------------------------Buscar Grado y Grupo Estudiante 2-------------------------*/
+/*permite recuperar el valor del grado y el grupo en dos variables independientes (OUT) se usa en mostrarEstudiante2*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerGradoYGrupoEstudiante2` $$
+CREATE PROCEDURE `obtenerGradoYGrupoEstudiante2`(
+    IN identificacionEst VARCHAR(400),
+    OUT resultadoGrado VARCHAR(100),
+    OUT resultadoGrupo VARCHAR(100)
+)
+BEGIN
+    SELECT g.nombreGrado, gg.grupoGrado
+    INTO resultadoGrado, resultadoGrupo
+    FROM Estudiante AS e
+    INNER JOIN estudiantesGradoGrupo AS egg ON e.idEstudiante = egg.fkidEstudiante
+    INNER JOIN gradoGrupo AS gg ON egg.fkidGradoGrupo = gg.idGradoGrupo
+    INNER JOIN Grados AS g ON gg.fkidGrado = g.idGrado
+    WHERE e.Usuario_identificacion = CAST(identificacionEst AS SIGNED);
+END$$
+
+/*--------------------------Obtener Familiares Estudiante-------------------------*/
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerFamiliaresEstudiante` $$
+create procedure `obtenerFamiliaresEstudiante`(identificacionEst Varchar(400)) 
+begin
+    SELECT f.nombreFamiliar, f.parentescoFamiliar, f.estadoAcudiente 
+    from estudiante as e
+    inner join Familiar as f on f.Estudiante_idEstudiante = e.idEstudiante
+    where e.idEstudiante = (select ObtenerIdEstudiante(CAST(identificacionEst AS SIGNED)));
 END$$
 
 

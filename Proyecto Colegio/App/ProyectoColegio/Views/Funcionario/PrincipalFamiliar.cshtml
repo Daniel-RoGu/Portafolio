@@ -1,0 +1,83 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Gestion Familiar";
+    var codigoEst = ViewBag.CodigoEst;
+    var nombreEst = ViewBag.NombreEst;
+    var identificacion = ViewBag.Identificacion;
+    var nombreCompleto = ViewBag.NombreCompleto;
+    var codigoEstudiante = ViewBag.CodigoEstudiante;
+    List<Object> familiares = ViewBag.Familiares as List<object>;
+}
+
+<h2>Gestion Familiar</h2>
+
+<div style="display: flex;">
+
+    <!-- Primera Columna -->
+    <div style="flex: 1; margin-right: 20px;">
+        <h3>Información del Estudiante</h3>
+        <p>Código Estudiante: @codigoEstudiante</p>
+        <p>Nombre Completo: @nombreCompleto</p>
+        <p>Número Documento: @identificacion</p>
+    </div>
+
+    <!-- Segunda Columna -->
+    <div style="flex: 1;">
+        @*<button onclick="location.href='@Url.Action("registrarFamiliar", "Funcionario")'">Registrar Familiar</button>*@
+        @Html.ActionLink("registrarFamiliar", "registrarFamiliar",
+                        new {
+                            identificacion = Convert.ToInt64(identificacion),
+                        },
+                        new { @class = "btn btn-success" })
+    </div>
+
+</div>
+
+<div>
+    <h3>Lista de Familiares</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>Nombre Completo</th>
+                <th>Vinculo</th>
+                <th>Acudiente</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*<!-- Aquí deberías iterar sobre los familiares y llenar la tabla -->
+            <tr>
+                <td>1</td>
+                <td>Nombre Familiar 1</td>
+                <td>Padre</td>
+                <td>Si</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Nombre Familiar 2</td>
+                <td>Madre</td>
+                <td>No</td>
+            </tr>
+            <!-- ... más filas ... -->*@
+            
+            @if (familiares!=null)
+            {
+                
+                @foreach (List<string> item in familiares)
+                {
+                    int i = 0;
+                    <tr>
+                        <td>@(i++)</td>
+                        <td>@item[0]</td>
+                        <td>@item[1]</td>
+                        <td>@item[2]</td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+</div>
+

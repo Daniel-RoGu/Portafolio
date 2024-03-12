@@ -1,0 +1,188 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Gestion Observaciones Estudiante";
+    var identificacion = ViewBag.Identificacion;
+    var nombreCompleto = ViewBag.NombreCompleto;
+    var codigoEstudiante = ViewBag.CodigoEstudiante;
+    List<Object> familiares = ViewBag.Familiares as List<object>;
+}
+
+<h2>Gestion Observaciones Estudiante</h2>
+
+<div style="display: flex;">
+
+    <!-- Primera Columna -->
+    <div style="flex: 1; margin-right: 20px;">
+        <h2>GESTION DE SITUACIONES DISCIPLINARIAS</h2>
+    </div>
+
+    <!-- Segunda Columna -->
+    <div style="flex: 1;">
+        <button onclick="location.href='@Url.Action("registrarFamiliar", "Funcionario")'">Reporte de situaciones disciplinarias tipo 1</button>
+        <button onclick="location.href='@Url.Action("registrarFamiliar", "Funcionario")'">Reporte de situaciones disciplinarias tipo 2</button>
+        <button onclick="location.href='@Url.Action("registrarFamiliar", "Funcionario")'">Reporte de situaciones disciplinarias tipo 3</button>
+        @*@Html.ActionLink("registrarObservacion", "registrarObservacion",
+        new {
+            identificacion = Convert.ToInt64(identificacion),
+        },
+        new { @class = "btn btn-success" })*@
+    </div>
+
+</div>
+
+<div class="container-datos-estudiante">
+
+        <h2>DATOS DEL ESTUDIANTE</h2>
+        @*LOS SPAN DEBEN SER CONSULTAS A BASE DE DATOS*@
+        <div>
+            <label>NOMBRE COMPLETO DEL ESTUDIANTE:</label>
+            <span>Nombre Completo Estudiante</span>
+        </div>
+
+        <div>
+            <label>FECHA DE NACIMIENTO:</label>
+            <span>Fecha Nacimiento</span>
+        </div>
+
+        <div>
+            <label>NÚMERO DE DOCUMENTO:</label>
+            <span>Numero Documento</span>
+        </div>
+
+        <div>
+            <label>TIPO DE DISCAPACIDAD:</label>
+            <span>Tipo Discapacidad</span>
+        </div>
+
+        <div>
+            <label>DIRECCIÓN:</label>
+            <span>Direccion</span>
+        </div>
+
+        <div>
+            <label>ESTUDIANTE RESIDENTE:</label>
+            <span>Es Estudiante Residente ? "SI" : "NO"</span>
+        </div>
+
+        <div>
+            <label>NÚMERO DE TELÉFONO:</label>
+            <span>Numero Telefono</span>
+        </div>
+
+        <div>
+            <label>ENTIDAD DE SALUD QUE LO ATIENDE:</label>
+            <span>Entidad Salud</span>
+        </div>
+
+        <div>
+            <label>VICTIMA DEL CONFLICO O DESPLAZADO:</label>
+            <span>Es Victima Conflicto ? "SI" : "NO"</span>
+        </div>
+
+        <div>
+            <label>OBSERVACIONES DE SALUD U OTRO TIPO:</label>
+            <span>Observaciones</span>
+        </div>
+
+</div>
+
+<div class="container-datos-familiares">
+    <h2>INFORMACION FAMILIAR</h2>
+
+    <div class="container-datos-padre">
+        <h3>DATOS DEL PADRE</h3>
+
+        <div>
+            <label>NOMBRE COMPLETO DEL PADRE:</label>
+            <span>Nombre Completo Padre</span>
+        </div>
+
+        <div>
+            <label>NÚMERO DE DOCUMENTO:</label>
+            <span>Numero Documento Padre</span>
+        </div>
+
+        <div>
+            <label>OCUPACIÓN:</label>
+            <span>Ocupacion Padre</span>
+        </div>
+
+        <div>
+            <label>NÚMERO DE CELULAR:</label>
+            <span>Numero Celular Padre</span>
+        </div>
+
+        <div>
+            <label>DIRECCIÓN:</label>
+            <span>Direccion Padre</span>
+        </div>
+    </div>
+   
+    <div class="container-datos-madre">
+
+        <h3>DATOS DE LA MADRE</h3>
+
+        <div>
+            <label>NOMBRE COMPLETO DE LA MADRE:</label>
+            <span>Nombre Completo Madre</span>
+        </div>
+
+        <div>
+            <label>NÚMERO DE DOCUMENTO:</label>
+            <span>Numero Documento Madre</span>
+        </div>
+
+        <div>
+            <label>OCUPACIÓN:</label>
+            <span>Ocupacion Madre</span>
+        </div>
+
+        <div>
+            <label>NÚMERO DE CELULAR:</label>
+            <span>Numero Celular Madre</span>
+        </div>
+
+        <div>
+            <label>DIRECCIÓN:</label>
+            <span>Direccion Madre</span>
+        </div>
+    </div>
+   
+    <div class="container-datos-acudiente">
+
+        <h3>DATOS DEL ACUDIENTE</h3>
+
+        <div>
+            <label>NOMBRE COMPLETO DEL ACUDIENTE:</label>
+            <span>Nombre Completo Acudiente</span>
+        </div>
+
+        <div>
+            <label>NÚMERO DE DOCUMENTO:</label>
+            <span>Numero Documento Acudiente</span>
+        </div>
+        
+        <div>
+            <label>TIPO DE VÍNCULO CON EL ESTUDIANTE:</label>
+            <span>Tipo de vinculo del Acudiente con el estudiante</span>
+        </div>
+
+        <div>
+            <label>OCUPACIÓN:</label>
+            <span>Ocupacion Acudiente</span>
+        </div>
+
+        <div>
+            <label>NÚMERO DE CELULAR:</label>
+            <span>Numero Celular Acudiente</span>
+        </div>
+
+        <div>
+            <label>DIRECCIÓN:</label>
+            <span>Direccion Acudiente</span>
+        </div>
+    </div>
+   
+</div>

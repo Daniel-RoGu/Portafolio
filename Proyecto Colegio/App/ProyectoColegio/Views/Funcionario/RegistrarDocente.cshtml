@@ -10,8 +10,11 @@
     var generos = ViewBag.Generos;
     var epss = ViewBag.EPSs;
     var estratos = ViewBag.Estratos;
+    var docentesValidacion = ViewBag.PrincipalDocentes;    
 }
-
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
 <h1>RegistrarDocente</h1>
 
 <h4>Docente</h4>
@@ -41,7 +44,7 @@
             </div>           
             <div class="form-group">
                 <label asp-for="Usuario.Identificacion" class="control-label">Identificacion</label>
-                <input asp-for="Usuario.Identificacion" class="form-control" />
+                <input asp-for="Usuario.Identificacion" id="Identificacion" oninput="validarDocente(this.value)" class="form-control" />
                 <span asp-validation-for="Usuario.Identificacion" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -163,8 +166,18 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" id="btn-registro-docente" class="btn btn-primary" />
             </div>
+
+            @*PARA ELIMINAR, SOLO ES UN VISUAL DE LOS DOC DOCENTES REGISTRADOS PARA LA CEDE*@
+            @if (ViewBag.PrincipalDocentes != null)
+            {
+                foreach (var item in ViewBag.PrincipalDocentes)
+                {
+                    <p>@item</p>
+                }              
+                
+            }
         </form>
     </div>
 </div>
@@ -172,6 +185,22 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+    function validarDocente(valorInput) {
+        var docentesValidacion = @Html.Raw(Json.Serialize(docentesValidacion));
+
+        // Comprobar si el valor está en la lista de valores inhabilitados
+        if (docentesValidacion.includes(valorInput)) {
+            // Si está en la lista, inhabilitar el botón
+            document.getElementById('btn-registro-docente').disabled = true;
+            alert("Ya existe un docente con el número de identificación " + valorInput);
+        } else {
+            // Si no está en la lista, habilitar el botón
+            document.getElementById('btn-registro-docente').disabled = false;
+        }
+    }
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

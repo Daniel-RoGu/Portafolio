@@ -1,0 +1,198 @@
+﻿@using ProyectoColegio.Data; 
+
+@{
+    var sedes = ViewBag.Sedes;
+    var grupos = ViewBag.Grupos;
+    var estudiantes = ViewBag.ListaEstudiantes;
+    var estudiante = DatosCompartidos.IdentificacionEstudiante; // hay que reiniciar el valor cuando se cierre la seccion
+}
+
+<div class="contenedor-buscar-estudiante">
+    @using (Html.BeginForm("obtenerIdentificacionEstudiante", "Funcionario", FormMethod.Post))
+    {
+        <input type="buscar" class="buscar-numero" name="identificacion" placeholder="Digite El Número De Identificación">
+        <button id="boton-buscar-dos" class="boton-buscar" type="submit">Buscar</button>
+    }
+</div>
+
+<button id="plantilla-notas" onclick="window.location.href='/Pdf/index'" class="boton-principal">Plantilla de notas</button>
+
+<div class="contenedor-filtrar">
+    @using (Html.BeginForm("obtenerEstudiantesGestionCertificados", "Funcionario", FormMethod.Post))
+    {
+        <div class="contenedor-filtro-sede">
+            <div class="form-group">
+                <select class="form-select" name="sede" id="sede" aria-label="Default select example">
+                    <option value="">Sede</option>
+                    @if (sedes != null)
+                    {
+                        foreach (List<string> item in sedes)
+                        {
+                            <option value="@item[1]">@item[1]</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="contenedor-filtro-grupo">
+            <div class="form-group">
+                <select class="form-select" name="grupo" id="grupo" aria-label="Default select example">
+                    <option value="">Grupo</option>
+                    @if (grupos != null && ViewBag.SedeSeleccionada != null)
+                    {
+                        foreach (List<string> item in grupos)
+                        {
+                            <option value="@item[1]">@item[1]</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-primary" id="btnOpcionFiltrar" type="submit">Filtrar</button>
+        </div>
+    }
+</div>
+     
+
+<div class="contenedor-tabla">
+
+    @if (ViewBag.SedeSeleccionada != null)
+    {
+        var sede = ViewBag.SedeSeleccionada;
+
+        if (ViewBag.GrupoSeleccionado != null)
+        {
+            var grupo = ViewBag.GrupoSeleccionado;
+            <h1>Lista de Estudiantes sede: @sede grupo: @grupo</h1>
+        }
+        else
+        {
+            <h1>Lista de Estudiantes sede: @sede</h1>
+        }
+
+    }
+    else
+    {
+        <h1>Lista de Estudiantes</h1>
+    }
+
+    <table id="tabla-estudiantes">
+        <tr>
+            <th>Documento</th>
+            <th>Primer Nombre</th>
+            <th>Segundo Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Tipo Sangre</th>
+            <th>Tipo Documento</th>
+            <th>Discapacidad</th>
+            <th>Sisben</th>
+            <th>Genero</th>
+            <th>EPS</th>
+            <th>Estrato</th>
+            <th>Codigo Estudiante</th>
+            <th>Grado</th>
+            <th>Grupo</th>
+            <th>Opciones</th>
+
+        </tr>
+        @if (ViewBag.ListaEstudiante != null)
+        {
+            List<Object> Datos = ViewBag.ListaEstudiante;
+
+            if (ViewBag.ListaEstudianteGrupo != null)
+            {
+                Datos = ViewBag.ListaEstudianteGrupo;
+            }
+
+            @if (estudiante != null)
+            {
+
+                foreach (List<String> usuario in Datos)
+                {
+                    if (usuario[0] == estudiante)
+                    {
+
+                        <tr>
+                            <td>@usuario[0]</td>
+                            <td>@usuario[1]</td>
+                            <td>@usuario[2]</td>
+                            <td>@usuario[3]</td>
+                            <td>@usuario[4]</td>
+                            <td>@usuario[12]</td>
+                            <td>@usuario[13]</td>
+                            <td>@usuario[14]</td>
+                            <td>@usuario[15]</td>
+                            <td>@usuario[16]</td>
+                            <td>@usuario[17]</td>
+                            <td>@usuario[18]</td>
+                            <td>@usuario[19]</td>
+                            <td>@usuario[20]</td>
+                            <td>@usuario[21]</td>
+                            <td>
+                                @if (@usuario[20] == "0")
+                                {
+                                    <button id="certificados-preescolar" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Certificados preescolar</button>
+                                }else{
+                                    <button id="boletin" onclick="window.location.href='/Funcionario/GestionPeriodoAcademico'" class="boton-principal">Boletin</button>
+                                }                                
+                                <button id="carnet-estudiantil" onclick="window.location.href='/Funcionario/principalDocente'" class="boton-principal">Carnet estudiantl</button>
+                                <button id="certificado-estudio" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Certificado de estudio</button>
+                                <button id="hoja-matricula" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Hoja de matricula</button>                                                               
+                                <button id="formato-observaciones" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Formato de observaciones</button>
+                                <button id="formato-paz-y-salvo" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Paz y salvo</button>                                
+                            </td>
+                         </tr>
+                     }
+                }
+            }
+            else
+            {
+                foreach (List<String> usuario in Datos)
+                {
+                    <tr>
+                        <td>@usuario[0]</td>
+                        <td>@usuario[1]</td>
+                        <td>@usuario[2]</td>
+                        <td>@usuario[3]</td>
+                        <td>@usuario[4]</td>
+                        <td>@usuario[12]</td>
+                        <td>@usuario[13]</td>
+                        <td>@usuario[14]</td>
+                        <td>@usuario[15]</td>
+                        <td>@usuario[16]</td>
+                        <td>@usuario[17]</td>
+                        <td>@usuario[18]</td>
+                        <td>@usuario[19]</td>
+                        <td>@usuario[20]</td>
+                        <td>@usuario[21]</td>
+                        <td>
+                            @if (@usuario[20] == "0")
+                            {
+                                <button id="certificados-preescolar" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Certificados preescolar</button>
+                            }
+                            else
+                            {
+                                <button id="boletin" onclick="window.location.href='/Funcionario/GestionPeriodoAcademico'" class="boton-principal">Boletin</button>
+                            }
+                            <button id="carnet-estudiantil" onclick="window.location.href='/Funcionario/principalDocente'" class="boton-principal">Carnet estudiantl</button>
+                            <button id="certificado-estudio" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Certificado de estudio</button>
+                            <button id="hoja-matricula" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Hoja de matricula</button>
+                            <button id="formato-observaciones" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Formato de observaciones</button>
+                            <button id="formato-paz-y-salvo" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Paz y salvo</button>
+                        </td>
+                    </tr>
+                }
+            }
+
+        }
+        else
+        {
+            <div id="mensajeNoEstudiantes" class="alert alert-warning">
+                No hay datos para mostrar
+            </div>
+        }
+
+    </table>
+</div>

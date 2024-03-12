@@ -247,6 +247,19 @@ END;
 //
 DELIMITER ;
 
+/*------buscar nombre de Sede-----*/
+DELIMITER //
+CREATE FUNCTION ObtenerNombreSede(idSedeRef Varchar(400))
+RETURNS Varchar(400) 
+READS SQL DATA
+BEGIN
+    DECLARE resultado Varchar(400);
+    SET resultado = (SELECT Sede.nombreSede FROM Sede WHERE Sede.idSede = idSedeRef LIMIT 1);
+    RETURN resultado;
+END;
+//
+DELIMITER ;
+
 /*------buscar id de Estudiante-----*/
 DELIMITER //
 CREATE FUNCTION ObtenerIdEstudiante(identificacion long)

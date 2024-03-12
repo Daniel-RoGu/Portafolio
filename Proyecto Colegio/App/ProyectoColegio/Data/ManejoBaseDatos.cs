@@ -212,6 +212,7 @@ namespace ProyectoColegio.Data
         public static List<Object> EjecutarProcedimientoConMultiParametroYConsulta(string nombreProcedimiento, Dictionary<string, object> parametros, int numeroAtributos, string cadenaConexion)
         {
             List<Object> listaObjetos = new List<Object>();
+            List<Object> listaIndividual = new List<Object>();
             int tamanoPool = 100;
             GestorConexion gestorConexion = new GestorConexion(cadenaConexion, tamanoPool);
 
@@ -249,16 +250,24 @@ namespace ProyectoColegio.Data
                     for (int i = 0; i < numeroAtributos; i++)
                     {
                         listaDatos.Add(mySqlDataReader.GetString(i));
+                        listaIndividual.Add(mySqlDataReader.GetString(i));
                     }
 
+                    
                     listaObjetos.Add(listaDatos);
 
-                    if (numeroAtributos == 1)
-                    {
-                        return listaObjetos = listaDatos;
-                    }
+                    //if (numeroAtributos == 1)
+                    //{
+                    //    //return listaObjetos = listaDatos;
+                        
+                    //}
                 }
 
+                if (numeroAtributos == 1)
+                {
+                    listaObjetos = listaIndividual;
+
+                }
                 //conexion.Close();
                 TimeSpan tiempoMaximoInactividad = TimeSpan.FromSeconds(1);
                 gestorConexion.CerrarConexionesInactivas(tiempoMaximoInactividad);
@@ -269,7 +278,6 @@ namespace ProyectoColegio.Data
             {
                 Console.WriteLine($"Error al ejecutar el procedimiento almacenado: {ex.Message}");
             }
-
             return listaObjetos;
         }
 

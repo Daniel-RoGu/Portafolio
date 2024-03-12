@@ -1,0 +1,160 @@
+﻿@{
+    List<string> rangosHorarios = new List<string>
+    {
+        "06:00-07:00 AM",
+        "07:00-08:00 AM",
+        "09:00-10:00 AM",
+        "10:00-11:00 AM",
+        "11:00-12:00 AM",
+        "12:00-01:00 Pm",
+        "01:00-02:00 Pm",
+        "02:00-03:00 Pm",
+        "03:00-04:00 Pm",
+        "04:00-05:00 Pm",
+        "05:00-06:00 Pm",
+    };
+
+    var listaDocenteSede = ViewBag.Docentes;
+    var sedes = ViewBag.Sedes;
+    var grupos = ViewBag.GruposGrado;
+    var asignaturas = ViewBag.Asignaturas;
+
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de periodos academicos</title>
+</head>
+<body>
+
+    <h2>Registro de Periodo Academico</h2>
+
+    <form action="/procesar_registro" method="post">
+        <label class="control-label">Periodo academico</label>
+        <input value="" class="form-control" placeholder="periodo 1º" readonly />
+        <br>
+        <label for="fecha">Fecha Inicio (YYYY-MM-DD): </label>
+        <input type="text" id="fecha" name="fecha" pattern="\d{4}-\d{2}-\d{2}" title="Ingrese una fecha en formato YYYY-MM-DD" required>
+        <br>
+        <label for="fecha">Fecha Fin (YYYY-MM-DD): </label>
+        <input type="text" id="fecha" name="fecha" pattern="\d{4}-\d{2}-\d{2}" title="Ingrese una fecha en formato YYYY-MM-DD" required>
+        <br>
+        <input type="submit" value="Registrar">
+    </form>
+    <br>
+    <br>
+
+    <h2>Gestion de Asignaturas</h2>
+
+    @using (Html.BeginForm("GestionPeriodoAcademico", "Funcionario", FormMethod.Post))
+    {
+        <div class="contenedor-filtro-sede">
+            <div class="form-group">
+                <select class="form-select" name="sede" id="sede" aria-label="Default select example">
+                    <option value="">Sede</option>
+                    @if (sedes != null)
+                    {
+                        foreach (var item in sedes)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="contenedor-filtro-grupo">
+            <div class="form-group">
+                <select class="form-select" name="grupo" id="grupo" aria-label="Default select example">
+                    <option value="">Grupo</option>
+                    @if (grupos != null)
+                    {
+                        foreach (var item in grupos)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" id="btnOpcionFiltrar" type="submit">Filtrar</button>
+        </div>
+    }
+
+    
+    <form action="/procesar_registro" method="post">
+        <table>
+            <tr>
+                <th>Hora</th>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miercoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+            </tr>
+
+            @for (int i = 0; i < rangosHorarios.Count; i++)
+            {
+                <tr>
+                    <td>@rangosHorarios[i]</td>
+
+                    @for (int j = 0; j < 5; j++) // j<5 porque el número de columnas de la tabla corresponde a 6
+                    {
+                        <td>
+                            @using (Html.BeginForm("RegistrarDocenteAsignatura", "Funcionario", FormMethod.Post))
+                            {
+                                <div class="form-group">
+                                    <select class="form-select" name="asignaturas" id="asignaturas" aria-label="Default select example">
+                                        <option value="">Asignaturas</option>
+                                        @if (asignaturas != null)
+                                        {
+                                            foreach (var item in asignaturas)
+                                            {
+                                                <option value="@item">@item</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-select" name="grupo" id="grupo" aria-label="Default select example">
+                                        <option value="">Docentes</option>
+                                        @if (listaDocenteSede != null)
+                                        {
+                                            foreach (var item in listaDocenteSede)
+                                            {
+                                                <option value="@item">@item</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                if (j>0)
+                                {
+                                    <!-- Agrega un campo oculto para enviar el valor de "i" -->
+                                    <input type="hidden" name="dia" value="@j" />
+                                }
+                                if (i>=0)
+                                {
+                                    <!-- Agrega un campo oculto para enviar el valor de "j" -->
+                                    <input type="hidden" name="hora" value="@i" />
+                                }
+
+                                <button type="submit">Enviar</button>
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+
+
+        </table>
+
+    </form>
+
+</body>
+</html>
+

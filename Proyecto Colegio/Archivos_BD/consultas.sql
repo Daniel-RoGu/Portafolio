@@ -50,7 +50,9 @@ select * from tiposangre;
 select * from genero;
 
 call mostrarEstudiantes();
-/*select ObtenerNombreTipoDocumento(());*/
+call mostrarEstudiantes2();
+select Us.identificacion From Usuario as Us
+inner join Estudiante on Estudiante.Usuario_identificacion = Us.identificacion;
 
 call obtenerCodigoEstudiantes('1029565035');
 select ObtenerNombreSisben(616);
@@ -73,7 +75,9 @@ call existeSisben('A8');
 call registrarAsignatura('Probabilisticos');
 call registrarTipoNota('Definitiva');
 call registrarSede('Central');
-call registrarFamiliar(1117568978,"Alguien Roberto", "Hus Hus", null, "312654987", "Padre", "Completa", "Hombre", 1118377419);
+call registrarFamiliar(1117568978,"Alguien Roberto", "Doctor", null, "312654987", "Padre", "Completa", "MASCULINO", 1118377419);
+call obtenerFamiliaresEstudiante("1118377419");
+select ObtenerIdEstudiante("1118377419");
 
 call registrarFuncionario(12368974, "Alguien", null, "Soy", "Yo", 30, "321654", null, "AlguienSoyYo@Jhu.lalo", "Donde tu quieras", null, "2023-12-15", "O+", "CC", 
 						  "Ninguna", "Ninguno", "Masculino", "CAPRECOM EPS", "4", null, "Alta Aguililla");
@@ -97,10 +101,14 @@ call obtenerEstrato();
 
 call registrarDocente(24, "Central", "12654987", "Jhulius", null, "Rommanus", "Magnus", 45, "365987465", "654987", null, "cerca al barrio", "El barrio",
 					  "1979-12-15", "O+", "CC", "Ninguna", "Ninguno", "Masculino", "CAPRECOM EPS", "4");
+call registrarDocente(24, "Central", "12987137", "Edector", null, "Cumbai", "Cutui", 45, "365987465", "654987", null, "cerca al barrio", "El barrio",
+					  "1979-12-15", "O+", "CC", "Ninguna", "Ninguno", "Masculino", "CAPRECOM EPS", "4");
 call registrarDocente(25, "Central", "12987852", "Ana", null, "Riquianus", "Mamus", 38, "364659518", "231687", null, "cerca al otto barrio", "El barrio2",
 					  "1986-01-15", "O+", "CC", "Ninguna", "Ninguno", "Femenino", "CAPRECOM EPS", "4");
 call registrarDocente(24, "EL VATICANO", "12357189", "Eva", null, "Mamus", "Mamus", 32, "359789654", "357753", null, "lejos al otto barrio", "El barrio3",
 					  "1980-12-18", "O+", "CC", "Ninguna", "Ninguno", "Femenino", "CAPRECOM EPS", "4");
+call registrarDocente(24, "EL VATICANO", "12351998", "Ximena", null, "Magnus", "Mamus", 28, "359789654", "357753", null, "lejos al ottto barrio", "El barrio3",
+					  "1996-12-18", "O+", "CC", "Ninguna", "Ninguno", "Femenino", "CAPRECOM EPS", "3");
 select ObtenerIdSede("Central");
 
 call registrarMatricula("Mañana", "2024-01-02", null, "No", "8", "802", "1118377419", "12368974", "Central");
@@ -111,13 +119,18 @@ call existeSede("Central2");
 call existeGrado("12");
 call existeGrupoGrado("1202");
 call registrarGrado("11");
+call registrarGrado("10");
 call registrarGrado("12");
 call registrarGradoGrupo("12", "1202");
 select ObtenerIdGrado("12");
 call registrarGradoGrupo("11", "1102");
 call registrarSedeGrado("Central", "12");
+call registrarSedeGrado("Central", "1");
+call registrarSedeGrado("Central", "11");
+call registrarSedeGrado("Central", "10");
 call registrarEstudiantesGradoGrupo('1118377419', "1202");
 call registrarEstudiantesGradoGrupo('1118373676', "1202");
+select ObtenerIdGradoGrupo(1202);
 
 call existeSedeGrado("Central", "12");
 call existeEstudianteGrupoGrado("1118377419", "1202");
@@ -134,11 +147,16 @@ select ObtenerIdDocente((select CAST("12357951" AS SIGNED)));
 select ObtenerIdGrado("12");
 call obtenerSedeDocente("12987852");
 /*call registrarDocenteGrado("12357951", "12");*/
-call registrarDocenteGrado("Ana Riquianus Mamus", "101");
-call registrarDocenteGrado("Edector Cumbai Cutui", "1202");
+call registrarDocenteGrado("Ana Riquianus Mamus", "1202");
+call registrarDocenteGrado("Edector Cumbai Cutui", "101");
 call registrarDocenteGrado("Jhulius Rommanus Magnus", "1202");
+call registrarAsignatura("Español");
+call registrarAsignatura("Matemáticas");
 call registrarDocenteAsignatura("Edector Cumbai Cutui", "Español");
 call registrarAsignaturaGradoGrupo("Español", 1202);
+call registrarAsignaturaGradoGrupo("Matemáticas", 1202);
+call registrarAsignaturaGradoGrupo("Español", 101);
+call registrarAsignaturaGradoGrupo("Matemáticas", 101);
 call registrarCompetenciasAsignatura("Lectura critica", "Dominar la lectura critica", "El estudiante debe ser bueno en LC", "Español");
 select existeGradoRetorno("12");
 call existeDocenteAsignatura("Edector Cumbai Cutui", "Español");
@@ -146,6 +164,7 @@ call existeDocenteAsignatura("Edector Cumbai Cutui", "Matemáticas");
 call existeDocenteGrado("Jhulius Rommanus Magnus", "1202");
 call existeDocenteGrado("Jhulius Rommanus Magnus", "1202");
 call existeDocenteGrado("Ana Riquianus Mamus", "1202");
+call existeDocenteGrado("Prueba Registro Docente", "1202");
 call existeAsignaturaGradoGrupo("Español", 1202);
 call existeAsignaturaGradoGrupo("Matemáticas", 1202);
 call existeCompetencia("Lectura critica", "Español");
@@ -166,16 +185,38 @@ call obtenerAsignaturas();
 call obtenerDocente("12357951");
 call obtenerDocentes();
 call obtenerGruposGrado();
+call obtenerGrados();
 call obtenerRolUsuario("12987852");
 call obtenerEstudiantesGrupo("201");
 call obtenerEstudiantesGrupo("1202");
 call obtenerEstudiantesGrupo("701");
 call obtenerEstudiantesGrupo("901");
-call obtenerEstudianteSedeGrado("Central", "1202");
+call obtenerEstudiantesSedeGrupo("Central", "1202");
 call obtenerEstudiantesSedeGrupo("EL VATICANO", "101");
+call obtenerEstudiantesSedeGrupo2("EL VATICANO", "101");
+call obtenerEstudiantesSedeGrupo("NIEVES ARRIBA KM. 18", "701");
 call obtenerEstudiantesSede("Central");
 call obtenerEstudiantesSede("EL VATICANO");
-call obtenerSedeDocente("EL VATICANO");
+call obtenerEstudiantesSede2("EL VATICANO");
+call obtenerGruposGradoSede("EL VATICANO");
+call obtenerGradosXSede("EL VATICANO");
+call obtenerGruposGradoSede("Central");
+call obtenerGradosXSede("Central");
+call ObtenerDocenteSede("EL VATICANO");
+call ObtenerDocenteSede("Central");
+call ObtenerInfoDocenteSede("Central");
+call ObtenerInfoDocenteSede("EL VATICANO");
+call obtenerGradoYGrupoEstudiante("1118377419");
+call ObtenerDocentesSedeGrado("Central", "101");
+call ObtenerDocentesSedeGrado("Central", "1202");
+call ObtenerInfoDocentesSedeGrado("Central", "1202");
+
+select ObtenerNombreSede('186800');
+select ObtenerNombreEPS('2000');
+
+select g.nombreGrado from Grados as g
+inner join GradoGrupo as gg 
+on gg.fkidGrado = g.idGrado and gg.grupoGrado = "1202";
 
 select CONCAT(COALESCE(u.primerNombreUsuario, ''), ' ', COALESCE(u.segundoNombreUsuario, ''), 
 			  COALESCE(u.primerApellidoUsuario, ''), ' ', COALESCE(u.segundoApellidoUsuario, '')) as NombresCompletos

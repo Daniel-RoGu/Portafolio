@@ -4,7 +4,7 @@
     {
         public long identificacionFamiliar { get; set; }
         public string nombresFamiliar { get; set; }
-        public string apellidosFamiliar { get; set; }
+        public string ocupacionFamiliar { get; set; }
         public string correoFamiliar { get; set; }
         public string celularFamiliar { get; set; }
         public string parentescoFamiliar { get; set; }

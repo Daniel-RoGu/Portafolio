@@ -402,6 +402,7 @@ CREATE TABLE IF NOT EXISTS `Horario` (
   `idHorario` INT NOT NULL AUTO_INCREMENT,
   `horaInicio` VARCHAR(400) NOT NULL,
   `horaFin` VARCHAR(400) NOT NULL,
+  `diaHorario` VARCHAR(400) NOT NULL,
   `fechaHorario` VARCHAR(400) NOT NULL,
   `estadoHorario` VARCHAR(400) NOT NULL,
   PRIMARY KEY (`idHorario`));
@@ -447,7 +448,7 @@ CREATE TABLE IF NOT EXISTS `NotaDefinitivaPeriodo` (
   `estadoNota` VARCHAR(400) NOT NULL,
   `fkidPeriodoAcademico` INT NOT NULL,
   `fkidAsignatura` INT NOT NULL,
-  `fkidNotaDefinitiva` INT NOT NULL,
+  `fkidNotaFinal` INT,
   PRIMARY KEY (`idNotas`),
   CONSTRAINT `fk_NotaDefinitiva_PeriodoAcademico1`
     FOREIGN KEY (`fkidPeriodoAcademico`)
@@ -460,7 +461,7 @@ CREATE TABLE IF NOT EXISTS `NotaDefinitivaPeriodo` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_NotaDefinitivaPeriodo_NotaFinal1`
-    FOREIGN KEY (`fkidNotaDefinitiva`)
+    FOREIGN KEY (`fkidNotaFinal`)
     REFERENCES `NotaFinal` (`idNotaDefinitiva`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
@@ -681,7 +682,7 @@ CREATE TABLE IF NOT EXISTS `NotasEstudiante` (
   `idNotaEstudiante` INT NOT NULL AUTO_INCREMENT,
   `estadoNota` VARCHAR(400) NOT NULL,
   `notaDefinitiva` FLOAT NOT NULL,
-  `fkidTipoNota` INT NOT NULL,
+  `fkidTipoNota` INT,
   `fkidNotaDefinitivaPeriodo` INT NOT NULL,
   `fkidEstudiante` INT NOT NULL,
   PRIMARY KEY (`idNotaEstudiante`),
@@ -711,7 +712,7 @@ DROP TABLE IF EXISTS `Familiar` ;
 CREATE TABLE IF NOT EXISTS `Familiar` (
   `identificacionFamiliar` BIGINT NOT NULL,
   `nombreFamiliar` VARCHAR(400) NOT NULL,
-  `apellidoFamiliar` VARCHAR(400) NOT NULL,
+  `ocupacionFamiliar` VARCHAR(400) NOT NULL,
   `correoFamiliar` VARCHAR(400) NULL,
   `celularFamiliar` VARCHAR(400) NULL,
   `parentescoFamiliar` VARCHAR(400) NOT NULL,

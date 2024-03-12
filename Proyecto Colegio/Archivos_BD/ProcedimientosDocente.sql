@@ -89,7 +89,8 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `obtenerDocentes` $$
 CREATE PROCEDURE `obtenerDocentes`() 
 BEGIN
-    SELECT (CONCAT(COALESCE(Usuario.primerNombreUsuario, ''), ' ', COALESCE(Usuario.segundoNombreUsuario, ''), 
+    SELECT  Docente.idDocente as IdDocente,
+			(CONCAT(COALESCE(Usuario.primerNombreUsuario, ''), ' ', COALESCE(Usuario.segundoNombreUsuario, ''), 
             COALESCE(Usuario.primerApellidoUsuario, ''), ' ', COALESCE(Usuario.segundoApellidoUsuario, ''))) AS Docente
     FROM Docente 
     INNER JOIN Usuario ON Docente.fkidentificacion = Usuario.identificacion;
@@ -129,4 +130,97 @@ BEGIN
     INNER JOIN Sede as s ON Docente.fkidSede = s.idSede
     where Docente.idDocente = (select ObtenerIdDocente(CAST(identificacion AS SIGNED)));
 END$$
+
+/*--------------------------Obtener Docentes Sede-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `ObtenerDocenteSede` $$
+create procedure `ObtenerDocenteSede`(
+	sedeRef varchar(400)
+) 
+begin
+    SELECT  d.idDocente as IdDocente,
+			CONCAT(COALESCE(u.primerNombreUsuario, ''), ' ', COALESCE(u.segundoNombreUsuario, ''), 
+				  COALESCE(u.primerApellidoUsuario, ''), ' ', COALESCE(u.segundoApellidoUsuario, '')) COLLATE utf8mb4_unicode_ci as Docentes
+	From Sede as s
+    inner join Docente as d on d.fkidSede = s.idSede 
+    inner join Usuario as u on d.fkidentificacion = u.identificacion
+    where s.nombreSede = sedeRef;
+END$$
+
+/*--------------------------Obtener Docentes Sede Grado-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `ObtenerDocentesSedeGrado` $$
+create procedure `ObtenerDocentesSedeGrado`(
+	sedeRef varchar(400),
+    nomGrupo varchar(400)
+) 
+begin
+	declare nomGrado varchar(400);
+    set nomGrado = (select g.nombreGrado from Grados as g
+				   inner join GradoGrupo as gg on gg.fkidGrado = g.idGrado and gg.grupoGrado = nomGrupo);
+    SELECT  d.idDocente as IdDocente,
+			CONCAT(COALESCE(u.primerNombreUsuario, ''), ' ', COALESCE(u.segundoNombreUsuario, ''), 
+				  COALESCE(u.primerApellidoUsuario, ''), ' ', COALESCE(u.segundoApellidoUsuario, '')) COLLATE utf8mb4_unicode_ci as Docentes
+	From Sede as s
+    inner join Docente as d on d.fkidSede = s.idSede 
+    inner join Usuario as u on d.fkidentificacion = u.identificacion
+    left join DocentesGrado as dg on dg.fkidDocente = d.idDocente 
+    inner join Grados as g on dg.fkidGrado = g.idGrado and g.nombreGrado = nomGrado
+    where s.nombreSede = sedeRef;
+END$$
+
+/*--------------------------Obtener Informacion Docentes Sede-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `ObtenerInfoDocenteSede` $$
+create procedure `ObtenerInfoDocenteSede`(
+	sedeRef varchar(400)
+) 
+begin
+    SELECT d.idDocente as IdDocente,
+		   CONCAT(COALESCE(u.primerNombreUsuario, ''), ' ', COALESCE(u.segundoNombreUsuario, ''), 
+		   COALESCE(u.primerApellidoUsuario, ''), ' ', COALESCE(u.segundoApellidoUsuario, '')) 
+		   COLLATE utf8mb4_unicode_ci as Docente,
+		   u.identificacion as Identificacion, COALESCE((select ObtenerNombreTipoSangre(fkidTipoSangre)), "Sin Definir") as TipoSangre, 
+		   COALESCE((select ObtenerNombreGenero(fkidGenero)), "Sin Definir") as Genero, COALESCE(u.telefonoFijo, "Sin Definir") as TelefonoFijo, COALESCE(u.direccion, "Sin Definir") as Direccion, 
+           COALESCE(u.telefonoCelular, "Sin Definir") as TelefonoCelular, COALESCE(u.correo, "Sin Definir") as Correo, COALESCE((select ObtenerNombreSede(d.fkidSede)), "Sin Definir") as Sede,
+           COALESCE(d.horasLaboralesSemanales, "Sin Definir") as HorasTrabajo, COALESCE((select ObtenerNombreDiscapacidad(u.fkidDiscapacidad)), "Sin Definir") as Discapacidad,
+           COALESCE((select ObtenerNombreSisben(u.fkidSisben)), "Sin Definir") as Sisben, COALESCE((select ObtenerNombreEstrato(u.fkidEstrato)), "Sin Definir") as Estrato,
+           COALESCE((select ObtenerNombreEPS(u.fkidEPS)), "Sin Definir") as EPS		   
+	From Sede as s
+    inner join Docente as d on d.fkidSede = s.idSede 
+    inner join Usuario as u on d.fkidentificacion = u.identificacion
+    where s.nombreSede = sedeRef;
+END$$
+
+/*--------------------------Obtener Informacion Docentes Sede Grado-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `ObtenerInfoDocentesSedeGrado` $$
+create procedure `ObtenerInfoDocentesSedeGrado`(
+	sedeRef varchar(400),
+    nomGrupo varchar(400)
+) 
+begin
+	declare nomGrado varchar(400);
+    
+    set nomGrado = (select g.nombreGrado from Grados as g
+				   inner join GradoGrupo as gg on gg.fkidGrado = g.idGrado and gg.grupoGrado = nomGrupo);
+                   
+    SELECT d.idDocente as IdDocente,
+		   CONCAT(COALESCE(u.primerNombreUsuario, ''), ' ', COALESCE(u.segundoNombreUsuario, ''), 
+		   COALESCE(u.primerApellidoUsuario, ''), ' ', COALESCE(u.segundoApellidoUsuario, '')) 
+		   COLLATE utf8mb4_unicode_ci as Docente,
+		   u.identificacion as Identificacion, COALESCE((select ObtenerNombreTipoSangre(fkidTipoSangre)), "Sin Definir") as TipoSangre, 
+		   COALESCE((select ObtenerNombreGenero(fkidGenero)), "Sin Definir") as Genero, COALESCE(u.telefonoFijo, "Sin Definir") as TelefonoFijo, COALESCE(u.direccion, "Sin Definir") as Direccion, 
+           COALESCE(u.telefonoCelular, "Sin Definir") as TelefonoCelular, COALESCE(u.correo, "Sin Definir") as Correo, COALESCE((select ObtenerNombreSede(d.fkidSede)), "Sin Definir") as Sede,
+           d.horasLaboralesSemanales as HorasTrabajo, COALESCE((select ObtenerNombreDiscapacidad(u.fkidDiscapacidad)), "Sin Definir") as Discapacidad,
+           COALESCE((select ObtenerNombreSisben(u.fkidSisben)), "Sin Definir") as Sisben, COALESCE((select ObtenerNombreEstrato(u.fkidEstrato)), "Sin Definir") as Estrato,
+           COALESCE((select ObtenerNombreEPS(u.fkidEPS)), "Sin Definir") as EPS				   
+	From Sede as s
+    inner join Docente as d on d.fkidSede = s.idSede 
+    inner join Usuario as u on d.fkidentificacion = u.identificacion
+    left join DocentesGrado as dg on dg.fkidDocente = d.idDocente 
+    inner join Grados as g on dg.fkidGrado = g.idGrado and g.nombreGrado = nomGrado
+    where s.nombreSede = sedeRef;
+END$$
+
 

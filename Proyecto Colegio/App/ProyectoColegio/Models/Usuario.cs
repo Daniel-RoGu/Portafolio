@@ -23,6 +23,8 @@
         private String? estrato { get; set; }
         private String? eps { get; set; }
         private String? genero { get; set; }
+        private String? grado { get; set; }
+        private String? grupo { get; set; }
 
         public long Identificacion
         {
@@ -148,6 +150,16 @@
         {
             get { return genero; }
             set { genero = value; }
+        }
+        public String? Grado
+        {
+            get { return grado; }
+            set { grado = value; }
+        }
+        public String? Grupo
+        {
+            get { return grupo; }
+            set { grupo = value; }
         }
 
     }

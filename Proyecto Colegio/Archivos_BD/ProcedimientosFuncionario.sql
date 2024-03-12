@@ -178,13 +178,26 @@ begin
 				value(nomCompetencia, objCompetencia, competenciaDetalle, "Disponible", (select ObtenerIdAsignatura(nomAsignatura)) );
 END$$
 
+/*--------------------------Registrar Periodo Academico-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `registrarPeriodoAcademico` $$
+create procedure `registrarPeriodoAcademico`(
+    nomPeriodo varchar(400),
+    inicia varchar(400),
+    termina varchar(400)
+) 
+begin
+	insert into periodoAcademico (periodoAcademico, fechaInicio, fechaFin, estadoPeriodo)
+				value(nomPeriodo, inicia, termina, "Disponible");
+END$$
+
 /*--------------------------Obtener Sedes-------------------------*/
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `ObtenerSedes` $$
 create procedure `ObtenerSedes`(
 ) 
 begin
-	select Sede.nombreSede as Sede from Sede;
+	select Sede.idSede as IdSede, Sede.nombreSede as Sede from Sede;
 END$$
 
 /*--------------------------Obtener Tipos de Sangre-------------------------*/
@@ -193,7 +206,7 @@ DROP PROCEDURE IF EXISTS `ObtenerTipoSangre` $$
 create procedure `ObtenerTipoSangre`(
 ) 
 begin
-	select ts.nombreTipoSangre as TipoSangre from tipoSangre as ts;
+	select ts.idTipoSangre as IdTipoSangre, ts.nombreTipoSangre as TipoSangre from tipoSangre as ts;
 END$$
 
 /*--------------------------Obtener Tipos de Documento-------------------------*/
@@ -202,7 +215,7 @@ DROP PROCEDURE IF EXISTS `ObtenerTipoDocumento` $$
 create procedure `ObtenerTipoDocumento`(
 ) 
 begin
-	select td.nombreTipoDocumento as TipoDocumento from tipoDocumento as td;
+	select td.idTipoDocumento as idTipoDocumento, td.nombreTipoDocumento as TipoDocumento from tipoDocumento as td;
 END$$
 
 
@@ -212,7 +225,7 @@ DROP PROCEDURE IF EXISTS `obtenerDiscapacidad` $$
 create procedure `obtenerDiscapacidad`(
 ) 
 begin
-	select d.nombreDiscapacidad as Discapacidad from Discapacidad as d;
+	select d.idDiscapacidad as IdDiscapacidad, d.nombreDiscapacidad as Discapacidad from Discapacidad as d;
 END$$
 
 
@@ -222,7 +235,7 @@ DROP PROCEDURE IF EXISTS `obtenerSisben` $$
 create procedure `obtenerSisben`(
 ) 
 begin
-	select s.nombreSisben as Siben from Sisben as s;
+	select s.idSisben as IdSisben, s.nombreSisben as Siben from Sisben as s;
 END$$
 
 
@@ -232,7 +245,7 @@ DROP PROCEDURE IF EXISTS `obtenerGenero` $$
 create procedure `obtenerGenero`(
 ) 
 begin
-	select g.nombreGenero as Genero from Genero as g;
+	select g.idGenero as IdGenero, g.nombreGenero as Genero from Genero as g;
 END$$
 
 
@@ -242,7 +255,7 @@ DROP PROCEDURE IF EXISTS `obtenerEPS` $$
 create procedure `obtenerEPS`(
 ) 
 begin
-	select EPS.nombreEPS as EPS from EPS;
+	select EPS.idEPS as IdEPS, EPS.nombreEPS as EPS from EPS;
 END$$
 
 
@@ -252,7 +265,7 @@ DROP PROCEDURE IF EXISTS `obtenerEstrato` $$
 create procedure `obtenerEstrato`(
 ) 
 begin
-	select e.nombreEstrato as Estrato from Estrato as e;
+	select e.idEstrato as IdEstrato, e.nombreEstrato as Estrato from Estrato as e;
 END$$
 
 /*--------------------------Obtener Asignaturas-------------------------*/
@@ -261,7 +274,7 @@ DROP PROCEDURE IF EXISTS `obtenerAsignaturas` $$
 create procedure `obtenerAsignaturas`(
 ) 
 begin
-	select a.nombreAsignatura as Asignatura from Asignatura as a;
+	select a.idAsignatura as IdAsignatura, a.nombreAsignatura as Asignatura from Asignatura as a;
 END$$
 
 /*--------------------------Obtener Grupos por Grado-------------------------*/
@@ -270,7 +283,46 @@ DROP PROCEDURE IF EXISTS `obtenerGruposGrado` $$
 create procedure `obtenerGruposGrado`(
 ) 
 begin
-	select gg.grupoGrado as Grupo from GradoGrupo as gg;
+	select gg.idGradoGrupo as IdGradoGrupo, gg.grupoGrado as Grupo from GradoGrupo as gg;
+END$$
+
+/*--------------------------Obtener Grados-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerGrados` $$
+create procedure `obtenerGrados`(
+) 
+begin
+	select g.idGrado as IdGrado, g.nombreGrado as Grado from Grados as g;
+END$$
+
+/*--------------------------Obtener Grupos por Grado de Sede-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerGruposGradoSede` $$
+create procedure `obtenerGruposGradoSede`(
+	sedeGradoGrupo varchar(400)
+) 
+begin
+	select DISTINCT gg.idGradoGrupo as IdGradoGrupo, gg.grupoGrado as Grupo 
+    from Sede as s
+    inner join SedeGrados as sg on sg.fkidSede = s.idSede
+    inner join Grados as g on sg.fkidGrado = g.idGrado
+    inner join GradoGrupo as gg on gg.fkidGrado = g.idGrado  
+    where s.nombreSede = sedeGradoGrupo;
+END$$
+
+
+/*--------------------------Obtener Grado de Sede-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerGradosXSede` $$
+create procedure `obtenerGradosXSede`(
+	sedeGradoGrupo varchar(400)
+) 
+begin
+	select DISTINCT g.idGrado as IdGrado, g.nombreGrado as Grupo 
+    from Sede as s
+    inner join SedeGrados as sg on sg.fkidSede = s.idSede
+    inner join Grados as g on sg.fkidGrado = g.idGrado 
+    where s.nombreSede = sedeGradoGrupo;
 END$$
 
 /*--------------------------Obtener Estudiantes Sede_Grado-------------------------*/
@@ -323,6 +375,35 @@ begin
     
 END$$
 
+/*--------------------------Obtener Estudiantes Sede Grupo 2-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerEstudiantesSedeGrupo2` $$
+create procedure `obtenerEstudiantesSedeGrupo2`(nomSede varchar(400), nomGrupo varchar(400)) 
+begin
+	select Us.identificacion as documento, Us.primerNombreUsuario as nomUsuario, Us.segundoNombreUsuario as nom2Usuario, 
+		   Us.primerApellidoUsuario as apellidoUsuario, Us.segundoApellidoUsuario as apellido2Usuario, Us.edadUsuario as edad,
+		   Us.telefonoCelular as telCelular, Us.telefonoFijo as telFijo, Us.correo as correoUss, 
+           Us.direccion as direccioUss, Us.barrioUbicacionUsuario as barrioUss, Us.fechaNacimiento as fechaNacimientoUss, Us.estadoUsuario as estadoUss, 
+           COALESCE((select ObtenerNombreTipoSangre(Us.fkidTipoSangre)), 'Sin definir') as tipoSangre,
+           COALESCE((select ObtenerNombreTipoDocumento(Us.fkidTipoDocumento)), 'Sin definir') as tipoDocumento, 
+           COALESCE((select ObtenerNombreDiscapacidad(Us.fkidDiscapacidad)), 'Sin definir') as nombreDiscapacidad, 
+           COALESCE((select ObtenerNombreSisben(Us.fkidSisben)), 'Sin definir') as nombreSisben,
+           COALESCE((select ObtenerNombreGenero(Us.fkidGenero)), 'Sin definir') as nombreGenero, 
+           COALESCE((SELECT ObtenerNombreEPS(Us.fkidEPS)), 'Sin definir') AS nombreEPS, 
+           COALESCE((select ObtenerNombreEstrato(Us.fkidEstrato)), 'Sin definir') as nombreEstrato, g.nombreGrado as Grado, 
+           gg.grupoGrado as Grupo
+    From Usuario as Us
+    inner join Estudiante as e on e.Usuario_identificacion = Us.identificacion
+    inner join estudiantesGradoGrupo as egg on egg.fkidEstudiante = e.idEstudiante 
+    inner join GradoGrupo as gg on gg.grupoGrado = nomGrupo and egg.fkidGradoGrupo = gg.idGradoGrupo  
+    inner join Grados as g on gg.fkidGrado = g.idGrado 
+    inner join sedeGrados as sg on sg.fkidGrado = g.idGrado 
+    inner join Sede as s on sg.fkidSede = s.idSede
+    inner join matricula as m on m.fkidEstudiante = e.idEstudiante and m.fkidSede = s.idSede
+    where s.nombreSede = nomSede;
+    
+END$$
+
 /*--------------------------Obtener Estudiantes Sede-------------------------*/
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `obtenerEstudiantesSede` $$
@@ -343,6 +424,34 @@ begin
     inner join Estudiante as e on e.Usuario_identificacion = Us.identificacion
     inner join matricula as m on m.fkidEstudiante = e.idEstudiante
     inner join Sede as s on m.fkidSede = s.idSede
+    where s.nombreSede = nomSede;
+    
+END$$
+
+/*--------------------------Obtener Estudiantes Sede 2-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerEstudiantesSede2` $$
+create procedure `obtenerEstudiantesSede2`(nomSede varchar(400)) 
+begin
+	select Us.identificacion as documento, Us.primerNombreUsuario as nomUsuario, Us.segundoNombreUsuario as nom2Usuario, 
+		   Us.primerApellidoUsuario as apellidoUsuario, Us.segundoApellidoUsuario as apellido2Usuario, Us.edadUsuario as edad,
+		   Us.telefonoCelular as telCelular, Us.telefonoFijo as telFijo, Us.correo as correoUss, 
+           Us.direccion as direccioUss, Us.barrioUbicacionUsuario as barrioUss, Us.fechaNacimiento as fechaNacimientoUss, Us.estadoUsuario as estadoUss, 
+           COALESCE((select ObtenerNombreTipoSangre(Us.fkidTipoSangre)), 'Sin definir') as tipoSangre,
+           COALESCE((select ObtenerNombreTipoDocumento(Us.fkidTipoDocumento)), 'Sin definir') as tipoDocumento, 
+           COALESCE((select ObtenerNombreDiscapacidad(Us.fkidDiscapacidad)), 'Sin definir') as nombreDiscapacidad, 
+           COALESCE((select ObtenerNombreSisben(Us.fkidSisben)), 'Sin definir') as nombreSisben,
+           COALESCE((select ObtenerNombreGenero(Us.fkidGenero)), 'Sin definir') as nombreGenero, 
+           COALESCE((SELECT ObtenerNombreEPS(Us.fkidEPS)), 'Sin definir') AS nombreEPS, 
+           COALESCE((select ObtenerNombreEstrato(Us.fkidEstrato)), 'Sin definir') as nombreEstrato, g.nombreGrado as Grado, 
+           gg.grupoGrado as Grupo
+    From Usuario as Us
+    inner join Estudiante as e on e.Usuario_identificacion = Us.identificacion
+    inner join matricula as m on m.fkidEstudiante = e.idEstudiante
+    inner join Sede as s on m.fkidSede = s.idSede
+    left join estudiantesGradoGrupo as egg on egg.fkidEstudiante = e.idEstudiante
+    inner join GradoGrupo as gg on egg.fkidGradoGrupo = gg.idGradoGrupo
+    inner join Grados as g on gg.fkidGrado = g.idGrado
     where s.nombreSede = nomSede;
     
 END$$

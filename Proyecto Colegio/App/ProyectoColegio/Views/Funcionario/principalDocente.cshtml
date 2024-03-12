@@ -1,0 +1,168 @@
+﻿
+@{
+    var listaDocenteSede = ViewBag.Docentes;
+    var sedes = ViewBag.Sedes;
+    var grupos = ViewBag.GruposGrado;
+    var sede = ViewBag.SedeSeleccionada;
+    var grupo = ViewBag.GrupoSeleccionado;
+}
+
+<h2>Gestion Docente</h2>
+
+<div class="form-group form-group-sm">
+    <label for="" class="my-0 py-0">Selecionar sede</label>
+    <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="sedeGestionDocente" data-live-search="true" data-style="btn-white">
+        <option value="">Todos</option>
+    </select>
+</div>
+
+@using (Html.BeginForm("principalDocente", "Funcionario", FormMethod.Post))
+{
+    <div class="contenedor-filtro-sede">
+        <div class="form-group">
+            <select class="form-select" name="sede" id="sede" aria-label="Default select example">
+                @*<option value="">Sede</option>*@
+                @*UNA VEZ SE FILTRE LA SEDE, AL INTENTAR POR FILTRO SE DEBE VOLVER A SELECCIONAR LA SEDE - SOLO APARECERA LA QUE SE FILTRO INICIALMENTE*@
+                @if (sedes != null)
+                {
+                    if (sede!=null)
+                    {
+                        <option value="">@sede</option>
+                        <option value="@sede">@sede</option>
+                    }
+                    else
+                    {
+                        <option value="">Sede</option>
+                        foreach (var item in sedes)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    }
+                    
+                }
+            </select>            
+        </div>
+    </div>
+    if (grupos!=null)
+    {
+        <div class="contenedor-filtro-grupo">
+            <div class="form-group">
+                <select class="form-select" name="grupo" id="grupo" aria-label="Default select example">
+                    <option value="">Grupo</option>
+                    @*@if (grupo!=null)
+                    {
+                        <option value="">@grupo</option>
+                    }
+                    else
+                    {
+                        <option value="">Grupo</option>
+                    }*@
+                    @foreach (var item in grupos)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+            </div>
+        </div>
+    }
+    
+    <div>
+        <button class="btn btn-primary" id="btnOpcionFiltrar" type="submit">Filtrar</button>
+    </div>
+}
+
+<br />
+    <button id="gestion-docente" onclick="window.location.href='/Funcionario/RegistrarDocente'" class="boton-principal">Registrar Docente</button>
+<br />
+
+    <table border="1">
+        @if(sede != null)
+        {          
+            if(grupo != null)
+            {
+                <h2>INFORMACION DOCENTES SEDE: @sede GRUPO: @grupo</h2>
+            }
+            else
+            {
+                <h2>INFORMACION DOCENTES SEDE: @sede</h2>
+            }
+        }
+        else
+        {
+            <h2>INFORMACION DOCENTES</h2>
+        }
+    
+
+        <thead>
+            <tr>
+                <th>Nombre Completo</th>
+                <th>Documento</th>
+                <th>Tipo de Sangre</th>
+                <th>Género</th>
+                <th>Número de Teléfono</th>
+                <th>Dirección</th>
+                <th>Teléfono Celular</th>
+                <th>Correo Electrónico</th>
+                <th>Sede Vinculado</th>
+                <th>Horas de Labor Semanal</th>
+                <th>Discapacidad</th>
+                <th>Sisben</th>
+                <th>Estrato</th>
+                <th>EPS</th>
+                @*<th>opciones</th>*@
+            </tr>
+        </thead>
+        <tbody>            
+            @if(listaDocenteSede != null){
+
+                foreach (List<string> item in listaDocenteSede)
+                {
+                    int contador = 0;
+                    
+
+                    <tr>
+                        @foreach (var item1 in item)
+                        {                        
+                            <td>@item1</td>
+
+                            int totalElementos = item.Count;
+                            contador++;
+                            if (contador == totalElementos)
+                            {
+                                <td>
+                                    @using (Html.BeginForm("registroDocenteGrado", "Funcionario", FormMethod.Post))
+                                    {
+                                        if (grupos!=null)
+                                        {
+                                            <div class="contenedor-filtro-grupo">
+                                                <div class="form-group">
+                                                    <select class="form-select" name="grupo" id="grupo" aria-label="Default select example">
+                                                        <option value="">Grupo</option>
+                                                        @foreach (var item2 in grupos)
+                                                        {
+                                                            <option value="@item2">@item2</option>
+
+                                                        }                                                                                                                                                              
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- Agrega un campo oculto para enviar el valor del "Nombre del docente" -->
+                                            <input type="hidden" name="nombreDocente" value="@item[0]" />
+
+                                            <button class="btn btn-primary" id="btnOpcionregistroDocenteGrado" type="submit">Agregar a grupo</button>
+                                        }
+                                    }
+                                </td>
+                                contador = 0;
+                        }
+                            
+                        }
+                    </tr>
+                }
+            }
+            
+        </tbody>
+    </table>
+
+
+<script src="/js/GestionFuncionario.js"></script>

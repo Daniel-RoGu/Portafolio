@@ -1,4 +1,5 @@
-﻿using ProyectoColegio.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using ProyectoColegio.Models;
 
 namespace ProyectoColegio.Data
 {
@@ -32,6 +33,8 @@ namespace ProyectoColegio.Data
                 { "nombreGenero", typeof(string)  },
                 { "nombreEps", typeof(string)  },
                 { "nombreEstrato", typeof(string)  },
+                { "Grado", typeof(string)  },
+                { "Grupo", typeof(string)  },
             };
 
             parametrosEstudiantesGrupo = atributosEstudiante.Count();
@@ -39,7 +42,7 @@ namespace ProyectoColegio.Data
 
             if (string.IsNullOrEmpty(nomSede))
             {
-                resultados = ManejoBaseDatos.ConsultarProcedimientoDinamico("MostrarEstudiantes", atributosEstudiante, Conexion);
+                resultados = ManejoBaseDatos.ConsultarProcedimientoDinamico("mostrarEstudiantes2", atributosEstudiante, Conexion);
             }
             else if (string.IsNullOrEmpty(nomGrupo))
             {                 
@@ -48,7 +51,7 @@ namespace ProyectoColegio.Data
                     { "nomSede", nomSede },
                 };
 
-                resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("obtenerEstudiantesSede", parametros, parametrosEstudiantesGrupo, Conexion);                              
+                resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("obtenerEstudiantesSede2", parametros, parametrosEstudiantesGrupo, Conexion);                              
             }
             else
             {
@@ -58,10 +61,9 @@ namespace ProyectoColegio.Data
                     { "nomGrupo", nomGrupo },
                 };
 
-                resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("obtenerEstudiantesSedeGrupo", parametros, parametrosEstudiantesGrupo, Conexion);
+                resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("obtenerEstudiantesSedeGrupo2", parametros, parametrosEstudiantesGrupo, Conexion);
             }
 
-            Console.WriteLine(resultados);
             return OrganizarResultados(resultados);
         }
 
@@ -93,10 +95,11 @@ namespace ProyectoColegio.Data
                 usuario.Genero = Convert.ToString(item[17]);
                 usuario.EPS = Convert.ToString(item[18]);
                 usuario.Estrato = Convert.ToString(item[19]);
+                usuario.Grado = Convert.ToString(item[20]);
+                usuario.Grupo = Convert.ToString(item[21]);
 
                 usuarios.Add(usuario);
             }
-            Console.WriteLine(usuarios);
 
             return usuarios;
 
@@ -136,7 +139,13 @@ namespace ProyectoColegio.Data
                     {
                         Dato.Add(Convert.ToString(obj));
                     }
-
+                    //foreach (var item1 in buscarEstudiante(Convert.ToString(item.Identificacion), Conexion))
+                    //{
+                    //    Dato.Add(item1);
+                    //}
+                    Dato.Add(item.Grado);
+                    Dato.Add(item.Grupo);
+                    
                     Datos.Add(Dato);
 
                 }
@@ -146,8 +155,7 @@ namespace ProyectoColegio.Data
             {
                 Console.WriteLine(ex.Message);
             }
-
-            
+           
             return Datos;
         }
 
@@ -169,10 +177,37 @@ namespace ProyectoColegio.Data
 
             // Llamar al método
             List<Object> resultados = ManejoBaseDatos.EjecutarProcedimientoConParametroYConsulta(nombreProcedimiento, nombreParametro, identificacion, numeroAtributos, Conexion);
+            
             return resultados;
         }
 
+        //public List<string> buscarEstudiante(string identificacion, string Conexion)
+        //{
+        //    List<string> GradoGrupoEst = new List<string>();    
 
+        //    Dictionary<string, Type> atributos = new Dictionary<string, Type>
+        //    {
+        //        // Definir aqui atributos y tipos esperados
+        //        { "Grado", typeof(string) },
+        //        { "Grupo", typeof(string) },
+        //    };
+
+        //    //inecesario la creaccion del diccionario, pero es un ejemplo optimo para identificar el porque del valor
+        //    int numeroAtributos = atributos.Count;
+
+        //    // Definir los parámetros necesarios para el procedimiento almacenado
+        //    string nombreProcedimiento = "obtenerGradoYGrupoEstudiante";
+        //    string nombreParametro = "identificacionEst";
+
+        //    // Llamar al método
+        //    List<Object> resultados = ManejoBaseDatos.EjecutarProcedimientoConParametroYConsulta(nombreProcedimiento, nombreParametro, identificacion, numeroAtributos, Conexion);
+
+        //    GradoGrupoEst.Add(Convert.ToString(resultados[0]));
+        //    GradoGrupoEst.Add(Convert.ToString(resultados[1]));
+
+        //    return GradoGrupoEst;
+
+        //}
 
     }
 }

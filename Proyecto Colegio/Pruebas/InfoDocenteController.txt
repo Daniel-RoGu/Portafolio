@@ -1,0 +1,200 @@
+@{
+    var idUs = ViewBag.idetificacionUs;
+    var asignaturas = ViewBag.Asignaturas;
+    var sedes = ViewBag.Sedes;
+    var grupos = ViewBag.GruposGrado;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Docente</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
+    <script src="/js/FlujoDeDatos.js"></script>
+</head>
+<body>
+
+    <div style="margin-top: 50px">
+        @*para eliminar*@
+    </div> 
+
+    <table border="1">
+        <tr>
+            <th>Asignaturas</th>
+            <th>Grupos</th>
+            <th>Opciones</th>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <select class="form-select" name="Asignaturas" id="asignaturasSelect" aria-label="Default select example">
+                        <option value="">Asignaturas</option>
+                        @foreach (var item in asignaturas)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+            </td>
+            <@using (Html.BeginForm("obtenerGrupoSeleccionado", "Docente", FormMethod.Post))
+            {
+                <td>
+                    <div class="form-group">
+                        <select class="form-select" name="Grupos" id="grupoSelectDocente" aria-label="Default select example" onchange="habilitarBoton()">
+                            <option value="">Grupos</option>
+                            @if (grupos != null)
+                            {
+                                @foreach (var item in grupos)
+                                {
+                                    <option value="@item">@item</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-primary" id="btnOpcion3" type="submit">Filtrar</button>
+                </td>
+            }
+
+        </tr>
+
+    </table>
+
+
+    <div style="margin-top: 50px">
+        @*para eliminar*@
+    </div>
+
+    @if (ViewBag.HabilitacionNotaFinal != null)
+    {
+        if (ViewBag.HabilitacionNotaFinal == true)
+        {
+            <div id="contenidoEstudiantes">
+                <h1>Estudiantes</h1>
+                <table border="1">
+                    <tr>
+                        <th>Documento</th>
+                        <th>Primer Nombre</th>
+                        <th>Segundo Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        @*<th>Edad</th>
+                        <th>Telefono Celular</th>
+                        <th>Telefono Fijo</th>
+                        <th>Correo Usuario</th>
+                        <th>Direccion Usuario</th>
+                        <th>Barrio Usuario</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Tipo Sangre</th>
+                        <th>Tipo Documento</th>
+                        <th>Discapacidad</th>
+                        <th>Sisben</th>
+                        <th>Genero</th>
+                        <th>EPS</th>
+                        <th>Estrato</th>
+                        <th>Codigo Estudiante</th>*@
+                        <th>Numero de fallas</th>
+                        <th>Nota Definitiva</th>
+                    </tr>
+
+                    @if (ViewBag.ListaEstudianteGrupo != null)
+                    {
+                        List<Object> Datos = new List<Object>();
+                        Datos = ViewBag.ListaEstudianteGrupo;
+
+                        foreach (List<String> usuario in Datos)
+                        {
+                            <tr>
+                                <td>@usuario[0]</td>
+                                <td>@usuario[1]</td>
+                                <td>@usuario[2]</td>
+                                <td>@usuario[3]</td>
+                                <td>@usuario[4]</td>
+                                @*<td>@usuario[5]</td>
+                                <td>@usuario[6]</td>
+                                <td>@usuario[7]</td>
+                                <td>@usuario[8]</td>
+                                <td>@usuario[9]</td>
+                                <td>@usuario[10]</td>
+                                <td>@usuario[11]</td>
+                                <td>@usuario[12]</td>
+                                <td>@usuario[13]</td>
+                                <td>@usuario[14]</td>
+                                <td>@usuario[15]</td>
+                                <td>@usuario[16]</td>
+                                <td>@usuario[17]</td>
+                                <td>@usuario[18]</td>
+                                <td>@usuario[19]</td>*@
+                                <td>
+                                    @*@Html.ActionLink("GestionarAsistencia", "GestionarAsistencia", new {identificacion=long.Parse(usuario[0])}, new {@class = "btn btn-success"})
+                                    @Html.ActionLink("GestionarNotas", "GestionarNotas", new {identificacionEst=long.Parse(usuario[0])}, new {@class = "btn btn-warning"})*@
+                                    <label class="control-label">Numero de fallas</label>
+                                    <input value="" class="form-control" placeholder="0" readonly />
+                                </td>
+                                <td>
+                                    <label class="control-label">Nota definitiva</label>
+                                    <input value="" class="form-control" placeholder="0.0" readonly />
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <div id="mensajeNoEstudiantes" class="alert alert-warning">
+                            Debe seleccionar un grupo para poder visualizar los estudiantes
+                        </div>
+                    }
+
+                </table>
+
+            </div>
+        }
+        else
+        {
+            <h1>AUN NO SE HAN HABILITADO EL CARGUE DE NOTAS FINALES DEL PERIODO</h1>
+        }
+    }
+    
+    <script>
+        // En este script, llama a la función del archivo JS cuando cambia el select
+        $(document).ready(function () {
+            $('#grupoSelectDocente').change(function () {
+                var valorSeleccionado = grupoSelectDocenteChanged();
+            });
+            
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+   public IActionResult Principal()
+        {
+            //trae los datos del usuario logeado
+            var identificacion = TempData["identificacion"];
+            ViewBag.idetificacionUs = identificacion;
+            var rol = TempData["rol"];
+            ViewBag.rol = rol;
+            var habilitarCargueNotaFinal = TempData["habilitarCargueNotaFinal"];
+            ViewBag.HabilitacionNotaFinal = habilitarCargueNotaFinal;
+
+            var sede = TempData["sede"];
+            var grupo = TempData["grupo"];
+            
+            if (sede != null && grupo != null)
+            {
+                ViewBag.ListaEstudianteGrupo = consultasGlobales.mostrarCsv(_contexto.Conexion, Convert.ToString(sede), Convert.ToString(grupo));
+                ViewBag.GrupoSeleccionado = grupo;
+            }            
+
+            //muestra info de asignaturas y grupos por grado desde bd
+            ViewBag.Asignaturas = variablesGlobales.Asignaturas(_contexto.Conexion);
+            ViewBag.GruposGrado = variablesGlobales.GruposGrado(_contexto.Conexion);
+
+            return View();
+        }

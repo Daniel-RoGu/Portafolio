@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap'); 
+
+:root{
+    --color-primary: #3070ac; 
+    --color-secundary: #d6eaf5; 
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Inter", sans-serif;
+    height: 100vh;
+}
+
+.container{
+    max-width: 100vw;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.nav{
+    background:  var(--color-primary);
+    height: 60px;
+    color: white;
+}
+.nav__container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background .5s 0s;
+}
+
+.nav__link{
+   color: white;
+   text-decoration: none;
+   margin-left: .2rem; 
+   padding: 15px 8px;
+}
+
+.nav__link:hover{
+    color: white;
+    background: rgba(240, 236, 236, 0.199);
+    
+    text-decoration: none;
+    transform: scale(1.6);
+}
+
+
+.nav__logo{
+    margin: auto 10px;
+}
+.container__main{
+    height: 90.2%;
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+} 
+
+
+.inputsubir {
+    display: none;
+}
+
+.archivo {
+    cursor: pointer;
+}
+
+.nombre-archivo{
+    width: 250px;
+    text-align:left;
+}
+
+.filtros{
+    width: 30%;
+}
+
+
+.barrapaginacion__container{
+    background-color: var(--color-secundary);
+    position: fixed;
+    bottom: 0px;
+   left: 0;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 40px;
+
+
+}
+
+.barrapaginacion{
+    margin: auto 0;
+}
+
+.button-controls{
+    outline: none;
+    border: none;
+    background-color: #3070ac00;
+}
+
+.input__controls{
+    width: 100px;
+    border-radius: 3px;
+    border: 1px solid rgb(136, 135, 135);
+    text-align: center;
+}
+
+.table__container{
+
+    height: 76%;
+    overflow-y: auto;
+}
+
+.table__container > .table__information{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.table_colums> .colums__text{
+    font-size: 0.85rem;
+    padding: 0;
+    margin: 0;
+    text-align: 0px;
+}
+
+
+.colums__text > .text__bold{
+    font-weight: 600;
+}
+
+.colums__options a{
+    display: block;
+    text-decoration: none;
+    width: 75%;
+}
+
+.btn__modals{
+    text-decoration: none;
+    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    width: 80px;
+    text-align: center;
+    
+    margin-right: 2px;
+    padding: 0px 6px;
+}
+
+.detalles__estu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.detalles__boton{
+    margin: auto 20px;
+}
+
+.text__decaoration, .text__decaoration:hover{
+    text-decoration: none;
+}
+
+.table__modals{
+    font-size: 0.8rem;
+}
+
+
+.tables--modals--sms, .tables--modals--sms tr, .tables--modals--sms td {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.text__Periodo{
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    font-size: .9rem;
+    text-align: center;
+
+
+}
+
