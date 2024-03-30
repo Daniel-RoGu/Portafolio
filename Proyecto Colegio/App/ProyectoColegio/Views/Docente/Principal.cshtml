@@ -1,171 +1,108 @@
-﻿@{
-    var idUs = ViewBag.idetificacionUs;
-    var asignaturas = ViewBag.Asignaturas;
-    var sedes = ViewBag.Sedes;
-    var grupos = ViewBag.GruposGrado;
-}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion Docente</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="/js/FlujoDeDatos.js"></script>
-</head>
-<body>
+﻿
 
-    <div style="margin-top: 50px">
-        @*para eliminar*@
+<div class="navbar navbar-light my-0 py-0 d-flex justify-content-between ">
+    
+   
+    <div class="form-group form-group-sm periodossDocente">
+        <label for="" class="my-0 py-0">Selecionar Periodo</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="periodoAcademico" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+
+
+        </select>
+    </div>
+    <div class="form-group form-group-sm periodossDocente">
+        <label for="" class="my-0 py-0">Selecionar grado</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="gradoDocente" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select>
+    </div>
+    <div class="form-group form-group-sm periodossDocente">
+        <label for="" class="my-0 py-0">Selecionar grupo</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="GrupoGradoDocente" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select>
+    </div>
+    <div class="form-group form-group-sm periodossDocente">
+        <label for="" class="my-0 py-0">Selecionar materia</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="idAsignaturasDocente" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select>
     </div>
 
-    <table border="1">
-        <tr>
-            <th>Asignaturas</th>
-            <th>Grupos</th>
-            <th>Opciones</th>
-        </tr>
-        <tr>
-            <td>
-                <div class="form-group">
-                    <select class="form-select" name="Asignaturas" id="asignaturasSelect" aria-label="Default select example">
-                        <option value="">Asignaturas</option>
-                        @foreach (var item in asignaturas)
-                        {
-                            <option value="@item">@item</option>
-                        }
-                    </select>
-                </div>
-            </td>
-            <@using (Html.BeginForm("obtenerGrupoSeleccionado", "Docente", FormMethod.Post))
-            {
-                    <td>
-                        <div class="form-group">
-                            <select class="form-select" name="Grupos" id="grupoSelectDocente" aria-label="Default select example" onchange="habilitarBoton()">
-                                <option value="">Grupos</option>
-                            @if (grupos != null)
-                            {
-                                @foreach (var item in grupos)
-                                {
-                                                <option value="@item">@item</option>
-                                }
-                            }
-                            </select>
-                        </div>
-                    </td>
-                    <td>
-                        <button class="btn btn-primary" id="btnOpcion3" type="submit">Filtrar</button>
-                    </td>
-            }
+ 
+   
+   
 
-        </tr>
-
-    </table>
-
-
-    <div style="margin-top: 50px">
-        @*para eliminar*@
+    <div class="form-group mx-2">
+        <label for=""> </label>
+        <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Buscar">
     </div>
 
-    @if (ViewBag.HabilitacionNotaFinal != null)
-    {
-        if (ViewBag.HabilitacionNotaFinal == true)
-        {
-            <div id="contenidoEstudiantes">
-                <h1>Estudiantes</h1>
-                <table border="1">
-                    <tr>
-                        <th>Documento</th>
-                        <th>Primer Nombre</th>
-                        <th>Segundo Nombre</th>
-                        <th>Primer Apellido</th>
-                        <th>Segundo Apellido</th>
-                        @*<th>Edad</th>
-                <th>Telefono Celular</th>
-                <th>Telefono Fijo</th>
-                <th>Correo Usuario</th>
-                <th>Direccion Usuario</th>
-                <th>Barrio Usuario</th>
-                <th>Fecha Nacimiento</th>
-                <th>Tipo Sangre</th>
-                <th>Tipo Documento</th>
-                <th>Discapacidad</th>
-                <th>Sisben</th>
-                <th>Genero</th>
-                <th>EPS</th>
-                <th>Estrato</th>
-                <th>Codigo Estudiante</th>*@
-                        <th>Numero de fallas</th>
-                        <th>Nota Definitiva</th>
-                    </tr>
 
-                    @if (ViewBag.ListaEstudianteGrupo != null)
-                    {
-                        List<Object> Datos = new List<Object>();
-                        Datos = ViewBag.ListaEstudianteGrupo;
+</div>
+<div class="table__container" id="tablaEstudiantesNotas">
+   
+</div>
+<div class="barrapaginacion__container">
+    <div class=" barrapaginacion barrapaginacion__control">
+        <button class="button-controls ">
+            <svg id="blue_copy" height="24" width="24" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_8_copy_4"><path d="M58.644,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L37.632,48.608c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669   c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385L16.869,51.379c-1.066-0.616-1.066-2.155,0-2.771   l39.375-22.733C57.311,25.259,58.644,26.029,58.644,27.26z" /><path d="M57.844,63.048l-2.376-1.372c-0.013,0.043-0.023,0.09-0.032,0.136l0.409,0.236c0.495,0.286,0.8,0.814,0.8,1.385v8.294   c0,1.008-0.894,1.693-1.803,1.575l1.404,0.81c1.066,0.616,2.399-0.154,2.399-1.385v-8.294   C58.644,63.862,58.339,63.334,57.844,63.048z" /><path d="M37.632,48.608l20.212-11.669c0.495-0.286,0.8-0.814,0.8-1.385V27.26c0-1.115-1.092-1.84-2.091-1.512   c0.054,0.16,0.091,0.328,0.091,0.512v8.294c0,0.571-0.305,1.1-0.8,1.385L35.632,47.608c-0.078,0.052-0.745,0.516-0.8,1.385   c-0.057,0.911,0.609,1.467,0.673,1.518c0.639,0.443,1.277,0.885,1.916,1.328c-0.032-0.112-0.07-0.312,0.019-0.51   c0.011-0.025,0.024-0.049,0.037-0.07C36.582,50.587,36.625,49.19,37.632,48.608z" /><path d="M58.644,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L37.632,48.608   c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385   L16.869,51.379c-1.066-0.616-1.066-2.155,0-2.771l39.375-22.733C57.311,25.259,58.644,26.029,58.644,27.26z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /><path d="M86.058,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L65.047,48.608c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669   c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385L44.283,51.379c-1.066-0.616-1.066-2.155,0-2.771   l39.375-22.733C84.725,25.259,86.058,26.029,86.058,27.26z" /><path d="M85.258,63.048l-2.376-1.372c-0.013,0.043-0.023,0.09-0.032,0.136l0.409,0.236c0.495,0.286,0.8,0.814,0.8,1.385v8.294   c0,1.008-0.894,1.693-1.803,1.575l1.404,0.81c1.066,0.616,2.399-0.154,2.399-1.385v-8.294   C86.058,63.862,85.753,63.334,85.258,63.048z" /><path d="M65.047,48.608l20.212-11.669c0.495-0.286,0.8-0.814,0.8-1.385V27.26c0-1.115-1.092-1.84-2.091-1.512   c0.054,0.16,0.091,0.328,0.091,0.512v8.294c0,0.571-0.305,1.1-0.8,1.385L63.047,47.608c-0.078,0.052-0.745,0.516-0.8,1.385   c-0.057,0.911,0.609,1.467,0.673,1.518c0.639,0.443,1.277,0.885,1.916,1.328c-0.032-0.112-0.07-0.312,0.019-0.51   c0.011-0.025,0.024-0.049,0.037-0.07C63.996,50.587,64.039,49.19,65.047,48.608z" /><path d="M86.058,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L65.047,48.608   c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385   L44.283,51.379c-1.066-0.616-1.066-2.155,0-2.771l39.375-22.733C84.725,25.259,86.058,26.029,86.058,27.26z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg>
+           
+        </button>
+        <button class="button-controls "><svg id="blue_copy" height="24" width="24" transform="rotate(180)" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_4_copy"><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7   C27.852,25.902,29.798,24.778,31.356,25.677z" /><path d="M69.981,47.977l-38.625-22.3c-0.233-0.134-0.474-0.21-0.716-0.259l37.341,21.559c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-0.349,0.201-0.716,0.288-1.078,0.301c0.656,0.938,1.961,1.343,3.078,0.699l38.625-22.3   C71.538,51.124,71.538,48.876,69.981,47.977z" /><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7C27.852,25.902,29.798,24.778,31.356,25.677z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
+        <input type="number" class=" input__controls">
+        <button class="button-controls "> <svg id="blue_copy" height="24" width="24" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_4_copy"><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7   C27.852,25.902,29.798,24.778,31.356,25.677z" /><path d="M69.981,47.977l-38.625-22.3c-0.233-0.134-0.474-0.21-0.716-0.259l37.341,21.559c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-0.349,0.201-0.716,0.288-1.078,0.301c0.656,0.938,1.961,1.343,3.078,0.699l38.625-22.3   C71.538,51.124,71.538,48.876,69.981,47.977z" /><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7C27.852,25.902,29.798,24.778,31.356,25.677z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
+        <button class="button-controls "> <svg id="blue_copy" height="24" width="24" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_8_copy_4_1_"><path d="M41.762,27.26v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669c1.066,0.616,1.066,2.155,0,2.771L42.562,63.048   c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771   L44.161,25.875C43.095,25.259,41.762,26.029,41.762,27.26z" /><path d="M83.537,48.608L44.161,25.875c-0.193-0.112-0.395-0.164-0.597-0.19l37.972,21.923c1.066,0.616,1.066,2.155,0,2.771   L42.161,73.112c-0.1,0.058-0.205,0.092-0.308,0.126c0.308,0.914,1.401,1.398,2.308,0.874l39.375-22.733   C84.603,50.763,84.603,49.224,83.537,48.608z" /><path d="M41.762,27.26v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669   c1.066,0.616,1.066,2.155,0,2.771L42.562,63.048c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385   l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771L44.161,25.875C43.095,25.259,41.762,26.029,41.762,27.26z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /><path d="M14.664,27.273v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669c1.066,0.616,1.066,2.155,0,2.771L15.464,63.061   c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771   L17.063,25.888C15.997,25.272,14.664,26.042,14.664,27.273z" /><path d="M56.438,48.621L17.063,25.888c-0.193-0.112-0.395-0.164-0.597-0.19l37.972,21.923c1.066,0.616,1.066,2.155,0,2.771   L15.063,73.125c-0.1,0.058-0.205,0.092-0.308,0.126c0.308,0.914,1.401,1.398,2.308,0.874l39.375-22.733   C57.505,50.776,57.505,49.237,56.438,48.621z" /><path d="M14.664,27.273v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669   c1.066,0.616,1.066,2.155,0,2.771L15.464,63.061c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385   l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771L17.063,25.888C15.997,25.272,14.664,26.042,14.664,27.273z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
+    </div>
+    <div class=" barrapaginacion barrapaginacion__text">
+        <label id="page" class="textoMenu">
+            Mostrando Registros 0 - 0 de 0
+        </label>
+    </div>
+</div>
 
-                        foreach (List<String> usuario in Datos)
-                        {
-                            <tr>
-                                <td>@usuario[0]</td>
-                                <td>@usuario[1]</td>
-                                <td>@usuario[2]</td>
-                                <td>@usuario[3]</td>
-                                <td>@usuario[4]</td>
-                                @*<td>@usuario[5]</td>
-                <td>@usuario[6]</td>
-                <td>@usuario[7]</td>
-                <td>@usuario[8]</td>
-                <td>@usuario[9]</td>
-                <td>@usuario[10]</td>
-                <td>@usuario[11]</td>
-                <td>@usuario[12]</td>
-                <td>@usuario[13]</td>
-                <td>@usuario[14]</td>
-                <td>@usuario[15]</td>
-                <td>@usuario[16]</td>
-                <td>@usuario[17]</td>
-                <td>@usuario[18]</td>
-                <td>@usuario[19]</td>*@
-                                <td>
-                                    @*@Html.ActionLink("GestionarAsistencia", "GestionarAsistencia", new {identificacion=long.Parse(usuario[0])}, new {@class = "btn btn-success"})
-                    @Html.ActionLink("GestionarNotas", "GestionarNotas", new {identificacionEst=long.Parse(usuario[0])}, new {@class = "btn btn-warning"})*@
-                                    <label class="control-label">Numero de fallas</label>
-                                    <input value="" class="form-control" placeholder="0" readonly />
-                                </td>
-                                <td>
-                                    <label class="control-label">Nota definitiva</label>
-                                    <input value="" class="form-control" placeholder="0.0" readonly />
-                                </td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <div id="mensajeNoEstudiantes" class="alert alert-warning">
-                            Debe seleccionar un grupo para poder visualizar los estudiantes
-                        </div>
-                    }
 
-                </table>
 
+<div class="modal fade" id="agregarNotas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header py-1 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Notas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarNotasModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        }
-        else
-        {
-            <h1>AUN NO SE HAN HABILITADO EL CARGUE DE NOTAS FINALES DEL PERIODO</h1>
-        }
-    }
+            <div class="modal-body">
+                <div class="container">
+                    <div class="form-row">
+                        <input type="hidden" id="documenteEstudiante" value=""/>
+                        <div class="col">
+                            <div class="form-group form-group-sm my-0">
+                                <label for="" class="laber-form my-0 py-0">Nota</label>
+                                <input type="text" class="form-control form-control-sm notasEstudiante" value="" placeholder="" id="notasEstudiante">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group form-group-sm ">
+                                <label for="" class="laber-form my-0 py-0">Inasistencias </label>
+                                <input type="text" class="form-control form-control-sm notasEstudiante" value="" placeholder="" id="fallaestudiante">
+                            </div>
+                        </div>
+                       
 
-    <script>
-        // En este script, llama a la función del archivo JS cuando cambia el select
-        $(document).ready(function () {
-            $('#grupoSelectDocente').change(function () {
-                var valorSeleccionado = grupoSelectDocenteChanged();
-            });
 
-        });
-    </script>
-</body>
-</html>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-0 py-1">
+                <div class="form-group d-flex">
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" id="cerraModalNotas" onclick="limpiarNotasModal()" value="Cancelar" data-dismiss="modal" readonly>
+                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" onclick="guardarEstudiante()" value="Guardar" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script src="/js/DocenteUser.js"></script>

@@ -1,0 +1,543 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!--BOLETIN DE 10 A 11 -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title> BOLETIN </title>
+    <style>
+        .parte-superior-boletin {
+            height: 20%;
+        }
+
+        .parte-central-boletin {
+            height: 60%;
+        }
+
+        .parte-inferior-boletin {
+            height: 20%;
+        }
+
+        .parte-central-boletin th,
+        .parte-central-boletin td {
+            border: 1px solid gray;
+        }
+
+        .parte-superior-boletin td {
+            height: 10px;
+        }
+
+        .parte-superior-boletin th {
+            height: 80px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            height: 80%;
+        }
+
+        th {
+            text-align: left;
+            background-color: #f2f2f2;
+        }
+
+        h4, h5, h6, p {
+            /* margin: 3px 0; */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 12px; /* Tamaño de fuente base */
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 11px; /* Tamaño de fuente base */
+        }
+
+        .contenedor {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h4 style="text-align: right;">Año Escolar - Año</h4>
+    </header>
+    <table style="border: 2px solid black;">
+        <thead>
+            <tr>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="parte-superior-boletin contenedor">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="center" style="width: 25%;">
+                                        <img width="20px" height="20px" style="margin-left: 50px;" src="../img/gallery_9055136.png" alt="">
+                                    </td>
+                                    <td class="encabezado-carnet" style="height: 50%;" colspan="2">
+                                        <section class="encabezado-central">
+                                            <h4>Institución Educativa Rural La Aguililla</h4>
+                                            <h5>TECNICO EN AGROECOLOGIA</h5>
+                                            <p>DANE: 283592003378</p>
+                                            <p>Creada según decreto 002027 del 15/12/2011</p>
+                                            <p>Res. de Aprob. 00352 del 24/04/2012</p>
+                                            <p>NIT: 900.218.599-1</p>
+                                            <h5>INFORME ACADEMICO AÑO ESCOLAR 2019</h5>
+                                        </section>
+                                    </td>
+                                    <td class="center" style="width: 25%;">
+                                        <img width="20px" height="20px" style="margin-right: 50px;" src="../img/gallery_9055136.png" alt="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5>SEDE</h5>
+                                    </td>
+                                    <td colspan="2">
+                                        <h5>GRADO</h5>
+                                    </td>
+                                    <td>
+                                        <h5>PERIODO</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3">
+                                        <p>LOS ANDES</p>
+                                    </td>
+                                    <td colspan="2">
+                                        <p>Nº GRADO</p>
+                                    </td>
+                                    <td rowspan="2">
+                                        <p>Nº PERIODO</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h5>APELLIDOS Y NOMBRES ESTUDIANTE</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left; padding-left: 30px;">
+                                        <p>PEPITO ROBERTO JAIMITO DAGOSTINO</p>
+                                    </td>
+                                    <td>
+                                        <h5>PUESTO</h5>
+                                    </td>
+                                    <td>
+                                        <p>Nº PUESTO</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="parte-central-boletin contenedor">
+                        <table class="table table-bordered border-primary">
+                            <tbody>
+                                <tr>
+                                    <td colspan="2"><h5>AREAS Y/O ASIGNATURAS</h5></td>
+                                    <td><h5>I.H</h5></td> <!--Intencidad Horaria-->
+                                    <td><h5>INASIST</h5></td>
+                                    <td><h5>DESCRIPCION</h5></td>
+                                    <td><h5>P1</h5></td>
+                                    <td><h5>P2</h5></td>
+                                    <td><h5>P3</h5></td>
+                                    <td><h5>P4</h5></td>
+                                    <td><h5>NOTAFINAL</h5></td>
+                                </tr>
+                                <tr>
+                                    <!--COMIENZA LA FILA 1-->
+                                    <td colspan="2" rowspan="2"><p>QUIMICA</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 1-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 2-->
+                                    <td colspan="2" rowspan="2"><p>FISICA</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 2-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 3-->
+                                    <td colspan="2" rowspan="2"><p>CIENCIAS POLITICAS</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 3-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 4-->
+                                    <td colspan="2" rowspan="2"><p>FILOSOFIA</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 4-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 5-->
+                                    <td colspan="2" rowspan="2"><p>ETICA Y VALORES</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 5-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 6-->
+                                    <td colspan="2" rowspan="2"><p>EDUCACION FÍSICA RECREACION Y DEPORTE</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 6-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 7-->
+                                    <td colspan="2" rowspan="2"><p>TECNOLOGIA E INFORMATICA</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 7-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 8-->
+                                    <td rowspan="4"><p>HUMANIDADES E IDIOMA EXTRANJERO</p></td>
+                                    <td rowspan="2"><p>ESPAÑOL</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2"><p>INGLES</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr> <!--TERMINA LA FILA 8-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 9-->
+                                    <td colspan="2" rowspan="2"><p>P. PEDAGOGICO PRODUCTIVO</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 9-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 10-->
+                                    <td colspan="2" rowspan="2"><p>ECOLOGIA</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 10-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 11-->
+                                    <td colspan="2" rowspan="2"><p>ARTISTICA</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 11-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 12-->
+                                    <td colspan="2" rowspan="2"><p>TRIGONOMETRIA</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 12-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 13-->
+                                    <td colspan="2" rowspan="2"><p>EMPRENDIMIENTO</p></td>
+                                    <td rowspan="2">valor</td>
+                                    <td rowspan="2">valor</td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 13-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 14-->
+                                    <td colspan="4" rowspan="2"><p>CONVIVENCIA</p></td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 14-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 15-->
+                                    <td colspan="4" rowspan="2"><p>PROMEDIO Y VALORACION FINAL DE TODAS LAS AREAS</p></td>
+                                    <td>Valoracion</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Desempeño</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>  <!--TERMINA LA FILA 15-->
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="parte-inferior-boletin contenedor">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: left;" colspan="3">
+                                        <h5>OBSERVACIONES:</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" height="80px"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>__________________________</p>
+                                        <p>RECTOR(A)</p>
+                                    </td>
+                                    <td>
+                                        <p>__________________________</p>
+                                        <p>TUTULAR</p>
+                                    </td>
+                                    <td>
+                                        <p>__________________________</p>
+                                        <p>SECRETARIO</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="height: 10px;"></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table style="height: 10%; margin: 0;">
+        <tr class="contenedor" class="center">
+            <td colspan="3">
+                <p style="color: #44780D; font-size: 40px;">______________________</p>
+                <h4>“Formamos para la vida, fundamentados en el desarrollo de los valores humanos”</h4>
+                <p>Corregimiento La Aguililla – Municipio de Puerto Rico Caquetá Email:</p>
+                <p>
+                    celaaguililla_pue@hotmail.com
+                    Celular 3132814145
+                </p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

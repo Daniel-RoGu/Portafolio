@@ -1,31 +1,72 @@
 ﻿@model ProyectoColegio.Models.Login
+@using ProyectoColegio.Data;
 
 @{
     <!--ViewData["Title"] = "Index";--->
+    var rol = DatosCompartidos.RolUsuario;
+    var grupo = DatosCompartidos.Grupo;
+    var grado = DatosCompartidos.Grado;
     ViewData["Title"] = "CargarCSV";
 }
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
+    
+    <meta charset="ISO-8859-1">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProyectoColegio</title>
-    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/Estilos-diego.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+   
     <link rel="stylesheet" href="~/css/bootstrap-select.min.css" />
+
+
    
 </head>
 <body>
  
     <header class="hero">
         <nav class="nav">
-            <section class="nav__container container">
-
+            <section class="nav__container container-ccs">
                 <div class="nav__links">
-                    <a href="#" class="nav__link">Principal</a>
-                    <a href="./pages/GestionDocentes.html" class="nav__link">Gestion de docentes</a>
-                    <a href="#" class="nav__link">Periodo academico</a>
-                    <a href="./pages/Certificados.html" class="nav__link">Certificaciones</a>
+                @if(rol == "Coordinador"){
+
+                        <a href="~/Funcionario/Index" class="nav__link">Principal</a>
+                        <a href="~/Docente/Index" class="nav__link">Gestion de docentes</a>
+                        <a href="~/Funcionario/GestionPeriodoAcademico.cshtml" class="nav__link">Periodo academico</a>
+                        <a href="~/Funcionario/gestionCertificados" class="nav__link">Certificaciones</a>
+             
+                }
+                else if (rol == "Docente")
+                {
+
+                        <a href="~/Docente/Principal" class="nav__link">Principal</a>
+                        <a href="~/Docente/HorarioDocente" class="nav__link">Horario</a>
+                
+                }
+                else if (rol == "Estudiante")
+                {
+                        <a href="~/Estudiante/Index" class="nav__link">Principal</a>
+                        if(grado == "0")
+                        {
+                            <a href="~/Estudiante/NotasEstudiantePreescolar1" class="nav__link">Boletin Actividades Rectoras</a>
+                            <a href="~/Estudiante/NotasEstudiantePreescolar2" class="nav__link">Boletin Dimensiones</a>
+                        }
+                        else if (grado == "1" || grado == "2" || grado == "3" || grado == "4" || grado == "5")
+                        {
+                            <a href="~/Estudiante/NotasEstudiante" class="nav__link">Boletin</a>
+                        }
+                        else if (grado == "6" || grado == "7" || grado == "8" || grado == "9")
+                        {
+                            <a href="~/Estudiante/NotasEstudianteBachiller" class="nav__link">Boletin</a>
+                        }
+                        else if (grado == "10" || grado == "11")
+                        {
+                            <a href="~/Estudiante/NotasEstudianteMediaAcademica" class="nav__link">Boletin</a>
+                        }
+                        
+                }
                 </div>
                 <figure class="nav__logo">
                     <h2 class="nav__title">logo</h2>
@@ -34,11 +75,47 @@
         </nav>
     </header>               
 
-    <section class="container__main container">
+    <section class="container__main container-ccs">
         @RenderBody()
     </section>
    
     <input type="hidden" id="hdfoculto" value="@Url.Content("~/")" />
+    <div class="modal fade" data-backdrop="static" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-md " role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header py-1 my-0 border-0">
+                    <span class="modal-title my-auto" id="errorModalLabel">
+
+                    </span>
+
+                </div>
+                <div class="modal-body my-0 py-1 mx-1">
+                    <div class="w-100 my-0 py-1 d-flex justify-content-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" version="1.1" viewBox="0 0 32 32">
+                            <g transform="scale(2)">
+                                <circle style="fill: #dc3545" cx="8" cy="8" r="7" />
+                                <rect style="fill:#ffffff" width="2" height="10" x="-.98" y="-16.29" transform="rotate(135)" />
+                                <rect style="fill:#ffffff" width="2" height="10" x="-12.29" y="-5.01" transform="rotate(-135)" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="my-0 py-1 text-center"><h5 id="cabecera_error" class="text-danger my-0">Error</h5></div>
+                        <div class="my-0 py-1"><h6 class="text-danger my-0" id="tituloError" style="font-size:14px"></h6></div>
+                        <div id="listado_errorres">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 py-0 my-0">
+                    <div class="form-group w-100 py-2 px-2 d-flex justify-content-center">
+
+                        <input type="submit" class="btn bg-danger text-white d-inline form-control w-auto" value="Cerrar" readonly data-dismiss="modal" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="~/js/jquery.slim.min.js"></script>
     <script src="~/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/popper.min.js"></script>
@@ -57,7 +134,7 @@
         function selectdate(id, data, optionValue) {
             const select = $('#' + id);
             select.empty();
-            select.append('<option  selected>TODOS</option>');
+            select.append('<option value="" disabled selected>Selecciona una opción</option>');
             data.forEach(option => {
                 select.append($('<option>', {
                     value: option.value,
@@ -73,6 +150,77 @@
             }
 
         }
+
+
+
+        function selectdatefiltro(id, data, optionValue) {
+            const select = $('#' + id);
+            select.empty();
+            select.append('<option value="TODOS" selected>TODOS</option>');
+            data.forEach(option => {
+                select.append($('<option>', {
+                    value: option.value,
+                    text: option.text,
+                    'data-subtext': option.subtext
+                }));
+            });
+            select.selectpicker('refresh');
+
+
+            if (optionValue !== '') {
+
+                selectOptionById(id, optionValue)
+            }
+
+        }
+
+
+
+
+
+        function removerClaseIninvalid(id) {
+
+            $('#' + id).selectpicker('destroy');
+            $('#' + id).removeClass('is-invalid');
+            $('#' + id).selectpicker();
+
+        }
+
+
+        function AddClassInvalid(id) {
+            $('#' + id).addClass('is-invalid').selectpicker('setStyle');
+
+        }
+
+
+
+        function resetSelect(id){
+            $('#' + id).val('');
+            $('#' + id).selectpicker('refresh')
+        }
+
+        function mostrarError(cabecera, titulo, listadoErrores) {
+            if (cabecera.trim() !== "" || cabecera !== null && listadoErrores !== null || listadoErrores.length > 0) {
+                $("#listado_errorres").empty();
+                $("#cabecera_error").text(cabecera);
+                $("#tituloError").text(titulo);
+                let campos = "";
+                campos += '<ul class="list-group">';
+                for (let i = 0; i < listadoErrores.length; i++) {
+                    campos += '<li class="list-group-item py-0 border-0"  style="font-size:13px">' + listadoErrores[i] + '</li>';
+
+                }
+                campos += '</ul>';
+                $("#listado_errorres").append(campos);
+                $("#errorModal").modal('show');
+            }
+
+
+
+
+        }
+
+
 
       
     </script>

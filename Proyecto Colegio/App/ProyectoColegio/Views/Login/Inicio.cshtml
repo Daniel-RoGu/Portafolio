@@ -8,73 +8,49 @@
     string disabledAttribute = "disabled";
     //string onclickAttribute = "onclick=\"window.location.href='/Funcionario/cargarCsv'\"";
 }
+@{
+    Layout = null;
+}
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="~/css/Login.css?v=1.0" />
-    <script>
-        var botonIniciarSesion = document.getElementById('botonIniciarSesion');
-        botonIniciarSesion.setAttribute('disabled', 'disabled'); // Deshabilitar el botón
-    </script> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="~/css/Login.css">
 </head>
 <body>
-    <div class="form-body">
+    <section class="form-body">
         <img src="" alt="" />
         <p class="text">Nombre Del Colegio</p>
         <p class="text">Florencia - Caquetá</p>
         <form asp-action="Inicio" class="login-form">
-            <input asp-for="UserName" placeholder="Nombre De Usuario" oninput="checkInputs()" />
-            <span asp-validation-for="UserName" class="text-danger"></span>
-            <input asp-for="Password" placeholder="Contraseña" oninput="checkInputs()" />
-            <span asp-validation-for="Password" class="text-danger"></span>
 
-            @*<button type="submit" class="btn btn-primary">Iniciar Sesión</button>*@
-            @*<button id="botonIniciarSesion" @disabledAttribute type="submit" class="btn btn-success">Iniciar Sesión</button>*@
-            <button id="botonIniciarSesion" type="submit" class="btn btn-success">Iniciar Sesión</button>
+            <input asp-for="UserName" placeholder="Usuario" oninput="checkInputs()">
+            <span asp-validation-for="UserName" class="error__dander"></span>
+            <input asp-for="Password" type="password" placeholder="Contraseña" oninput="checkInputs()">
+            <span asp-validation-for="Password" class="error__dander"></span>
+            <button id="botonIniciarSesion" type="submit">Iniciar Sesión</button>
         </form>
-       @* @{
-            var estadoUs = ViewBag.estado;
-            var estadoTemporal = TempData["estado"] as bool?;
 
-            if (estadoTemporal != null)
-            {
-                disabledAttribute = "enabled";
-                //onclickAttribute = ""; // Limpiamos el onclick si está deshabilitado
-                if (estadoTemporal == true)
-                {
-                    <p id="mensajeUsuario" style="background:green; display: none;">
-                        <span>USUARIO VALIDADO</span>
-                    </p>
-                }
-                else if (estadoTemporal == false)
-                {
-                    <p id="mensajeUsuario" style="background: red; display: none;">
-                        <span>USUARIO NO REGISTRADO</span>
-                    </p>                   
-                }
+    </section>
+    <script>
+        function checkInputs() {
+            var userName = document.querySelector('input[name="UserName"]').value;
+            var password = document.querySelector('input[name="Password"]').value;
+            var mensajeUsuario = document.getElementById('mensajeUsuario');
+            var botonIniciarSesion = document.getElementById('botonIniciarSesion');
+
+
+            if (userName.trim() !== '' && password.trim() !== '') {
+                mensajeUsuario.style.display = 'block';
+                botonIniciarSesion.removeAttribute('disabled'); // Habilitar el botón
+            } else {
+                mensajeUsuario.style.display = 'none';
+                botonIniciarSesion.setAttribute('disabled', 'disabled'); // Deshabilitar el botón
             }
-        }*@
-        
-    </div>
-
-</body>
-<script>
-    function checkInputs() {
-        var userName = document.querySelector('input[name="UserName"]').value;
-        var password = document.querySelector('input[name="Password"]').value;
-        var mensajeUsuario = document.getElementById('mensajeUsuario');
-        var botonIniciarSesion = document.getElementById('botonIniciarSesion');
-
-        if (userName.trim() !== '' && password.trim() !== '') {
-            mensajeUsuario.style.display = 'block';
-            botonIniciarSesion.removeAttribute('disabled'); // Habilitar el botón
-        } else {
-            mensajeUsuario.style.display = 'none';
-            botonIniciarSesion.setAttribute('disabled', 'disabled'); // Deshabilitar el botón
         }
-    }
-</script>
+    </script>
+</body>
 </html>

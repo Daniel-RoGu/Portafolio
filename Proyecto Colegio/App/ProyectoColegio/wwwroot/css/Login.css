@@ -1,73 +1,94 @@
-﻿* {
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+
 body {
+    font-family: "Inter", sans-serif;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(27deg, #34495e 50%, #2c3e50 50%);
 }
 
 .form-body {
     width: 400px;
     min-width: 300px;
-    border-radius: 10px;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    border: solid 1px #2980b9;
-    margin: 10px;
+    height: 470px;
+    background: #ffffff;
+    box-shadow: 1px 4px 12px 0px rgba(140,133,140,1);
 }
+
+    .form-body::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background: #3070ac;
+        z-index: -1;
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 50% 100%);
+    }
+
 
     .form-body img {
         width: 150px;
+        height: 130px;
         display: block;
-        margin: 20px auto;
+        margin: 10px auto;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
     }
 
 .text {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    color: #fff;
-    margin-bottom: 25px;
+    margin: 10px 0;
+    color: rgb(68, 67, 67);
 }
 
 .form-body input {
     display: block;
-    margin: auto;
-    height: 40px;
-    width: 75%;
+    margin: 5px auto; 
+    margin-bottom: 1px;
+    height: 35px;
+    width: 80%;
     padding-left: 10px;
-    color: #fff;
-    border: 1px solid #fff;
-    border-radius: 2px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: transparent;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    font-size: 1rem;
-    outline: none;
+    color: #000000;
+    border: 1px solid #afacac;
 }
 
     .form-body input[type="password"] {
-        margin-top: 20px;
+        margin-top: 5px;
     }
 
 ::placeholder {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 596);
 }
 
 .form-body input:hover {
     transition: .5s;
-    border: 1px solid #2980b9;
     color: #2498db;
+    outline: none;
+    border-bottom: 1px solid #2980b9;
 }
+
+
+.form-body input:focus {
+    outline: none;
+    border-bottom: 1px solid #2980b9;
+}
+
+
 
 .form-body button {
     display: block;
@@ -76,17 +97,32 @@ body {
     margin-bottom: 30px;
     height: 40px;
     width: 78%;
-    background: transparent;
-    color: #b9c4c6;
+    font-size: 1rem;
     border-radius: 2px;
-    cursor: pointer;
-    outline: navajowhite;
-    border: 2px solid #2980b9;
+    background-color: #3070ac;
+    color: #ffffff;
+    border: none;
     transition: all .5s ease;
 }
 
     .form-body button:hover {
         color: #d5dbdd;
-        border: 2px solid #3498db;
-        background: linear-gradient(#34495e, #2c3e50);
+        transform: scale(1.07);
     }
+
+    .form-body button:active {
+        color: #d5dbdd;
+        transform: scale(1);
+    }
+
+
+.form-body .login-form {
+    margin: 0 auto;
+}
+
+.error__dander {
+    margin: 0px 40px;
+    padding: 0px 0px;
+    padding-top: 0.1px;
+    color: rgb(247, 22, 67);
+}

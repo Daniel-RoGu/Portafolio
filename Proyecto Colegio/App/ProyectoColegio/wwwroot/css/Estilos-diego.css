@@ -15,10 +15,9 @@ body{
     height: 100vh;
 }
 
-.container{
+.container-ccs{
     max-width: 100vw;
     width: 100%;
-    overflow: hidden;
 }
 
 
@@ -81,21 +80,28 @@ body{
 .filtros{
     width: 30%;
 }
+.periodoss {
+    width: 20%;
+    margin: 0px 10px; 
+}
+
+.periodossDocente {
+    width: 18%;
+    margin: 0px 2px;
+}
 
 
-.barrapaginacion__container{
+.barrapaginacion__container {
     background-color: var(--color-secundary);
     position: fixed;
     bottom: 0px;
-   left: 0;
+    left: 0;
     height: 40px;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 0px 40px;
-
-
 }
 
 .barrapaginacion{
@@ -117,7 +123,7 @@ body{
 
 .table__container{
 
-    height: 76%;
+    height:98%;
     overflow-y: auto;
 }
 
@@ -190,4 +196,47 @@ body{
 
 
 }
+.table__horario {
+    text-align: center;
+}
 
+    .table__horario td p {
+        font-weight: 600;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .table__horario td {
+        margin: 0;
+        padding: 10px;
+    }
+
+
+.table__horario th {
+    background-color: #2766d3;
+    padding: 20px;
+    text-align: center;
+    border: none;
+    color:white
+}
+
+
+.table__horario th {
+   text-align:center
+}
+
+
+.table--boletin th {
+    margin: 0px;
+    padding: 6px;
+}
+
+.table--boletin td {
+    margin: 0px;
+    padding: 6px;
+}
+
+.text--table--notas {
+    padding:0px;
+    margin: 0px; 
+}

@@ -1,0 +1,447 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FORMATO-MATRICULA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contenedor {
+            width: 99%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        .borders th {
+            border: 1px solid black;
+        }
+
+        .borders td {
+            border: 1px solid black;
+        }
+
+
+
+        .table__cabezera {
+            width: 100%;
+            font-size: 0.7rem;
+        }
+
+        h4, h5, h6, p {
+            /* margin: 3px 0; */
+            margin: 3px;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 14px; /* Tamaño de fuente base */
+        }
+
+        .table__cabezera p,
+        h1,
+        h2,
+        h3 {
+            padding: 0;
+            margin: 0;
+        }
+
+        .notas__legal {
+            display: flex;
+            font-size: 0.7rem;
+        }
+
+    </style>
+</head>
+
+<body>
+    <table class="contenedor">
+        <tbody>
+            <tr>
+                <td>
+                    <table class="table__cabezera">
+                        <thead>
+                        <th style="width: 20%;">
+                            <img width="20px" height="20px" src="../img/gallery_9055136.png" alt="">
+                        </th>
+                        <th style="width: 60%;">
+                            <section class="encabezado-central">
+                                <p style="height: 40px;"></p>
+                                <h1>DEPARTAMENTO DEL CAQUETÁ</h1>
+                                <h2>MUNICIPIO DE PUERTO RICO</h2>
+                                <h3>INSTITUCION EDUCATIVA RURAL LA AGUILILLA</h3>
+                                <p>CON ESPECIALIDAD EN AGROECOLOGIA</p>
+                                <p>DANE 283592003378</p>
+                                <p>Creada según Decreto 002027 del 15 de diciembre de 2011</p>
+                                <p>Resolución de aprobación 00352 del 24 de Abril de 2012</p>
+                                <p style="height: 10px;"></p>
+                            </section>
+                        </th>
+                        <th style="width: 20%;">
+                            <img width="20px" height="20px" src="../img/gallery_9055136.png" alt="">
+                        </th>
+                        </thead>
+                    </table>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table border="1" class="contenedor borders">
+        <tbody>
+        <tbody>
+            <tr>
+                <td colspan="2">Nombre estudiante:</td>
+                <td colspan="2"> Valor Prueba Registro </td>
+            </tr>
+            <tr>
+                <td>Documento de identidad:</td>
+                <td>valor</td>
+                <td>Lugar de nacimiento:</td>
+                <td>valor</td>
+            </tr>
+            <tr>
+                <td>Fecha de nacimiento:</td>
+                <td>valor</td>
+                <td>Lugar de expedicion:</td>
+                <td>valor</td>
+            </tr>
+            <tr>
+                <td>Tipo de sangre:</td>
+                <td>valor</td>
+                <td>Nº Sisben:</td>
+                <td>valor</td>
+            </tr>
+            <tr>
+                <td>EPS:</td>
+                <td>valor</td>
+                <td>Direccion:</td>
+                <td>valor</td>
+            </tr>
+            <tr>
+                <td>Barrio:</td>
+                <td>valor</td>
+                <td>Telefono:</td>
+                <td>valor</td>
+            </tr>
+        </tbody>
+        </tbody>
+    </table>
+    <table border="1" class="contenedor borders" style="margin-top: 10px;">
+        <tbody>
+        <tbody>
+            <tr>
+                <td>Nombre del padre:</td>
+                <td>valor</td>
+                <td>Nº Cedula:</td>
+                <td>valor</td>
+            </tr>
+            <tr>
+                <td>Ocupacion u oficio:</td>
+                <td>valor</td>
+                <td>Nº Telefono:</td>
+                <td>valor</td>
+            </tr>
+            <tr>
+                <td>Fecha nacimiento padre de familia:</td>
+                <td>valor</td>
+                <td>Nivel de escolaridad:</td>
+                <td>valor</td>
+            </tr>
+
+            <tr>
+                <td>Desplazado:</td>
+                <td>valor</td>
+                <td>Ubicacion:</td>
+                <td>valor</td>
+            </tr>
+        </tbody>
+        </tbody>
+    </table>
+    <table border="1" class="contenedor borders" style="margin-top: 10px;">
+        <tbody>
+            <tr>
+                <td>Nombre de la madre:</td>
+                <td>valor</td>
+                <td>Nº Cedula:</td>
+                <td>valor</td>
+            </tr>
+            <tr>
+                <td>Ocupacion u oficio:</td>
+                <td>valor</td>
+                <td>Nº Telefono:</td>
+                <td>valor</td>
+            </tr>
+            <tr>
+                <td>Fecha nacimiento madre de familia:</td>
+                <td>valor</td>
+                <td>Nivel de escolaridad:</td>
+                <td>valor</td>
+            </tr>
+
+            <tr>
+                <td>Desplazado:</td>
+                <td>valor</td>
+                <td>Ubicacion:</td>
+                <td>valor</td>
+            </tr>
+        </tbody>
+    </table>
+    <table border="1" class="contenedor borders" style="margin-top: 10px;">
+        <thead>
+            <tr>
+                <th rowspan="2">GRADO</th>
+                <th colspan="3">FECHA DE MATRICULA</th>
+                <th rowspan="2">FIRMA PADRE DE FAMILIA</th>
+                <th rowspan="2">FIRMA ALUMNO</th>
+                <th rowspan="2">AÑO ESCOLAR</th>
+            </tr>
+            <tr>
+                <th>DIA</th>
+                <th>MES</th>
+                <th>AÑO</th>
+            </tr>
+        </thead>
+
+        <tbody class="">
+            <!-- se implementa el ciclo para obtener datos por cada estudiante -->
+            <tr class="fila-1">
+                <td>PREESCOLAR</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr class="fila-2">
+                <td>PRIMERO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr class="fila-1">
+                <td>SEGUNDO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr class="fila-1">
+                <td>TERCERO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr class="fila-1">
+                <td>CUARTO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr class="fila-1">
+                <td>QUINTO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr class="fila-1">
+                <td>SEXTO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr class="fila-1">
+                <td>SEPTIMO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr class="fila-1">
+                <td>OCTAVO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr class="fila-1">
+                <td>NOVENO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr class="fila-1">
+                <td>DECIMO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr class="fila-1">
+                <td>UNDECIMO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    <p style="height: 10px;"></p>
+                </td>
+            </tr>  
+            <tr>
+                <td>
+                    <h4>PERMISO PARA LA SALIDA: </h4>
+                </td>
+                <td>
+                    <h4>EXTERNA</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>OBSERVACIONES: </h4>
+                </td>
+                <td>
+                    <h4>NINGUNA</h3>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="notas__legal">
+                        <h4 style="padding: 0px; margin: 0px;">NOTA: </h4>
+                        <p style="padding: 0px; margin: 0px;">
+                            EL PADRE DE FAMILIA Y ESTUDIANTE, CONOCEN Y ACEPTAN EL MANUAL DE CONVIVENCIA QUE
+                            RIGE EN ESTA INSTITUCION.
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p style="height: 10px;"></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h4 style="text-align: center;">RETIRO DE ESTUDIANTES</h4>
+    <table border="1" class="contenedor borders">
+        <thead>
+            <tr>
+
+                <th>FECHA</th>
+
+                <th>FIRMA</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>-</td>
+
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>-</td>
+
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>-</td>
+
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="" style="margin: 10px auto; text-align: center;">
+        <tbody>
+            <tr>
+                <td>
+
+
+                    <div style="height: 80px;">
+                    </div>
+
+                    <p style="font-size: .8rem; text-align: center;  padding: 0 10px;">_______________________</p>
+                    <br>
+                    <p style="font-size: .8rem; text-align: center;  padding: 0 10px;">FIRMA RECTOR </p>
+
+
+                </td>
+                <td>
+
+                    <div style="height: 80px;">
+                    </div>
+                    <p style="font-size: .8rem; text-align: center;  padding: 0 10px;">_______________________</p>
+                    <br>
+                    <p style="font-size: .8rem; text-align: center;  padding: 0 10px;">FIRMA P. FLIA</p>
+
+                </td>
+                <td>
+
+                    <div style="height: 80px;">
+                    </div>
+
+                    <p style="font-size: .8rem; text-align: center;  padding: 0 10px;">_______________________</p>
+                    <br>
+                    <p style="font-size: .8rem; text-align: center;  padding: 0 10px;">FIRMA ALUMNO</p>
+
+                </td>
+                <td>
+
+
+                    <div style="height: 80px;">
+                    </div>
+                    <p style="font-size: .8rem; text-align: center;  padding: 0 10px;">_______________________</p>
+                    <br>
+                    <p style="font-size: .8rem; text-align: center; padding: 0 10px;">SECRETARIO</p>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+

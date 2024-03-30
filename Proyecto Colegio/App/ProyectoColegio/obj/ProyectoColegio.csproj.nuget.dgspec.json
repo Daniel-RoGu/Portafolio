@@ -46,7 +46,7 @@
           "dependencies": {
             "CsvHelper": {
               "target": "Package",
-              "version": "[30.1.0, )"
+              "version": "[31.0.2, )"
             },
             "CsvHelper.Excel.Core": {
               "target": "Package",

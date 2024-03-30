@@ -1,198 +1,367 @@
-﻿@using ProyectoColegio.Data; 
+﻿<div class="navbar navbar-light my-0 py-0 d-flex justify-content-between ">
+    <div class="form-group form-group-sm periodoss">
+        <label for="" class="my-0 py-0">Selecionar sede</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectsede" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select>
+    </div>
+    <div class="form-group form-group-sm periodoss">
+        <label for="" class="my-0 py-0">Selecionar grados</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectgrados" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select>
+    </div>
+    <div class="form-group form-group-sm periodoss">
+        <label for="" class="my-0 py-0">Selecionar grupos</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectgrupos" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select>
+    </div>
+    <div class="form-group form-group-sm periodoss">
+        <label for="" class="my-0 py-0">Documento</label>
 
-@{
-    var sedes = ViewBag.Sedes;
-    var grupos = ViewBag.Grupos;
-    var estudiantes = ViewBag.ListaEstudiantes;
-    var estudiante = DatosCompartidos.IdentificacionEstudiante; // hay que reiniciar el valor cuando se cierre la seccion
-}
+        <input type="text" class="form-control form-control-sm" value="" id="inputsearch" placeholder="Documento Estudiante">
+    </div>
 
-<div class="contenedor-buscar-estudiante">
-    @using (Html.BeginForm("obtenerIdentificacionEstudiante", "Funcionario", FormMethod.Post))
-    {
-        <input type="buscar" class="buscar-numero" name="identificacion" placeholder="Digite El Número De Identificación">
-        <button id="boton-buscar-dos" class="boton-buscar" type="submit">Buscar</button>
-    }
+    <div class="form-group mx-2">
+        <label for=""> </label>
+        <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Buscar" onclick="filtrosEstudiantes()">
+    </div>
+
+
+</div>
+<div class="table__container" id="tablaCertificados">
+   
+</div>
+<div class="barrapaginacion__container">
+    <div class=" barrapaginacion barrapaginacion__control">
+        <button class="button-controls" id="btn_inicio">
+            <svg id="blue_copy" height="24" width="24" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_8_copy_4"><path d="M58.644,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L37.632,48.608c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669   c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385L16.869,51.379c-1.066-0.616-1.066-2.155,0-2.771   l39.375-22.733C57.311,25.259,58.644,26.029,58.644,27.26z" /><path d="M57.844,63.048l-2.376-1.372c-0.013,0.043-0.023,0.09-0.032,0.136l0.409,0.236c0.495,0.286,0.8,0.814,0.8,1.385v8.294   c0,1.008-0.894,1.693-1.803,1.575l1.404,0.81c1.066,0.616,2.399-0.154,2.399-1.385v-8.294   C58.644,63.862,58.339,63.334,57.844,63.048z" /><path d="M37.632,48.608l20.212-11.669c0.495-0.286,0.8-0.814,0.8-1.385V27.26c0-1.115-1.092-1.84-2.091-1.512   c0.054,0.16,0.091,0.328,0.091,0.512v8.294c0,0.571-0.305,1.1-0.8,1.385L35.632,47.608c-0.078,0.052-0.745,0.516-0.8,1.385   c-0.057,0.911,0.609,1.467,0.673,1.518c0.639,0.443,1.277,0.885,1.916,1.328c-0.032-0.112-0.07-0.312,0.019-0.51   c0.011-0.025,0.024-0.049,0.037-0.07C36.582,50.587,36.625,49.19,37.632,48.608z" /><path d="M58.644,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L37.632,48.608   c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385   L16.869,51.379c-1.066-0.616-1.066-2.155,0-2.771l39.375-22.733C57.311,25.259,58.644,26.029,58.644,27.26z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /><path d="M86.058,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L65.047,48.608c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669   c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385L44.283,51.379c-1.066-0.616-1.066-2.155,0-2.771   l39.375-22.733C84.725,25.259,86.058,26.029,86.058,27.26z" /><path d="M85.258,63.048l-2.376-1.372c-0.013,0.043-0.023,0.09-0.032,0.136l0.409,0.236c0.495,0.286,0.8,0.814,0.8,1.385v8.294   c0,1.008-0.894,1.693-1.803,1.575l1.404,0.81c1.066,0.616,2.399-0.154,2.399-1.385v-8.294   C86.058,63.862,85.753,63.334,85.258,63.048z" /><path d="M65.047,48.608l20.212-11.669c0.495-0.286,0.8-0.814,0.8-1.385V27.26c0-1.115-1.092-1.84-2.091-1.512   c0.054,0.16,0.091,0.328,0.091,0.512v8.294c0,0.571-0.305,1.1-0.8,1.385L63.047,47.608c-0.078,0.052-0.745,0.516-0.8,1.385   c-0.057,0.911,0.609,1.467,0.673,1.518c0.639,0.443,1.277,0.885,1.916,1.328c-0.032-0.112-0.07-0.312,0.019-0.51   c0.011-0.025,0.024-0.049,0.037-0.07C63.996,50.587,64.039,49.19,65.047,48.608z" /><path d="M86.058,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L65.047,48.608   c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385   L44.283,51.379c-1.066-0.616-1.066-2.155,0-2.771l39.375-22.733C84.725,25.259,86.058,26.029,86.058,27.26z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg>
+
+        </button>
+        <button class="button-controls" id="btn_prev"><svg id="blue_copy" height="24" width="24" transform="rotate(180)" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_4_copy"><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7   C27.852,25.902,29.798,24.778,31.356,25.677z" /><path d="M69.981,47.977l-38.625-22.3c-0.233-0.134-0.474-0.21-0.716-0.259l37.341,21.559c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-0.349,0.201-0.716,0.288-1.078,0.301c0.656,0.938,1.961,1.343,3.078,0.699l38.625-22.3   C71.538,51.124,71.538,48.876,69.981,47.977z" /><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7C27.852,25.902,29.798,24.778,31.356,25.677z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
+        <input type="number" class="input__controls" id="controPaginacionInPut">
+        <button class="button-controls " id="btn_next"> <svg id="blue_copy" height="24" width="24" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_4_copy"><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7   C27.852,25.902,29.798,24.778,31.356,25.677z" /><path d="M69.981,47.977l-38.625-22.3c-0.233-0.134-0.474-0.21-0.716-0.259l37.341,21.559c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-0.349,0.201-0.716,0.288-1.078,0.301c0.656,0.938,1.961,1.343,3.078,0.699l38.625-22.3   C71.538,51.124,71.538,48.876,69.981,47.977z" /><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7C27.852,25.902,29.798,24.778,31.356,25.677z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
+        <button class="button-controls " id="btn_final"> <svg id="blue_copy" height="24" width="24" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_8_copy_4_1_"><path d="M41.762,27.26v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669c1.066,0.616,1.066,2.155,0,2.771L42.562,63.048   c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771   L44.161,25.875C43.095,25.259,41.762,26.029,41.762,27.26z" /><path d="M83.537,48.608L44.161,25.875c-0.193-0.112-0.395-0.164-0.597-0.19l37.972,21.923c1.066,0.616,1.066,2.155,0,2.771   L42.161,73.112c-0.1,0.058-0.205,0.092-0.308,0.126c0.308,0.914,1.401,1.398,2.308,0.874l39.375-22.733   C84.603,50.763,84.603,49.224,83.537,48.608z" /><path d="M41.762,27.26v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669   c1.066,0.616,1.066,2.155,0,2.771L42.562,63.048c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385   l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771L44.161,25.875C43.095,25.259,41.762,26.029,41.762,27.26z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /><path d="M14.664,27.273v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669c1.066,0.616,1.066,2.155,0,2.771L15.464,63.061   c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771   L17.063,25.888C15.997,25.272,14.664,26.042,14.664,27.273z" /><path d="M56.438,48.621L17.063,25.888c-0.193-0.112-0.395-0.164-0.597-0.19l37.972,21.923c1.066,0.616,1.066,2.155,0,2.771   L15.063,73.125c-0.1,0.058-0.205,0.092-0.308,0.126c0.308,0.914,1.401,1.398,2.308,0.874l39.375-22.733   C57.505,50.776,57.505,49.237,56.438,48.621z" /><path d="M14.664,27.273v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669   c1.066,0.616,1.066,2.155,0,2.771L15.464,63.061c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385   l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771L17.063,25.888C15.997,25.272,14.664,26.042,14.664,27.273z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
+    </div>
+    <div class=" barrapaginacion barrapaginacion__text">
+        <label id="page" class="textoMenu">
+            Mostrando Registros 0 - 0 de 0
+        </label>
+    </div>
 </div>
 
-<button id="plantilla-notas" onclick="window.location.href='/Pdf/index'" class="boton-principal">Plantilla de notas</button>
+<div class="modal fade" id="BoletinesModal" tabindex="-1" aria-labelledby="BoletinesModallabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-scrollable  ">
+        <div class="modal-content">
+            <div class="modal-header py-1 border-0">
+                <h5 class="modal-title" id="BoletinesModallabel">Boletines</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body py-0 my-0">
 
-<div class="contenedor-filtrar">
-    @using (Html.BeginForm("obtenerEstudiantesGestionCertificados", "Funcionario", FormMethod.Post))
-    {
-        <div class="contenedor-filtro-sede">
-            <div class="form-group">
-                <select class="form-select" name="sede" id="sede" aria-label="Default select example">
-                    <option value="">Sede</option>
-                    @if (sedes != null)
-                    {
-                        foreach (List<string> item in sedes)
-                        {
-                            <option value="@item[1]">@item[1]</option>
-                        }
-                    }
-                </select>
+                <div class="form-group form-group-sm">
+                    <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Boletin actual" readonly>
+                    <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Boletin Extendido" readonly data-toggle="modal" data-target="#notaacademicas">
+
+                </div>
+
+            </div>
+            <div class="modal-footer border-0 form-group py-1 my-1">
+                <div class="form-group d-flex">
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cerrar" data-dismiss="modal" readonly>
+                </div>
+
             </div>
         </div>
-        <div class="contenedor-filtro-grupo">
-            <div class="form-group">
-                <select class="form-select" name="grupo" id="grupo" aria-label="Default select example">
-                    <option value="">Grupo</option>
-                    @if (grupos != null && ViewBag.SedeSeleccionada != null)
-                    {
-                        foreach (List<string> item in grupos)
-                        {
-                            <option value="@item[1]">@item[1]</option>
-                        }
-                    }
-                </select>
-            </div>
-        </div>
-        <div>
-            <button class="btn btn-primary" id="btnOpcionFiltrar" type="submit">Filtrar</button>
-        </div>
-    }
+    </div>
 </div>
-     
 
-<div class="contenedor-tabla">
-
-    @if (ViewBag.SedeSeleccionada != null)
-    {
-        var sede = ViewBag.SedeSeleccionada;
-
-        if (ViewBag.GrupoSeleccionado != null)
-        {
-            var grupo = ViewBag.GrupoSeleccionado;
-            <h1>Lista de Estudiantes sede: @sede grupo: @grupo</h1>
-        }
-        else
-        {
-            <h1>Lista de Estudiantes sede: @sede</h1>
-        }
-
-    }
-    else
-    {
-        <h1>Lista de Estudiantes</h1>
-    }
-
-    <table id="tabla-estudiantes">
-        <tr>
-            <th>Documento</th>
-            <th>Primer Nombre</th>
-            <th>Segundo Nombre</th>
-            <th>Primer Apellido</th>
-            <th>Segundo Apellido</th>
-            <th>Tipo Sangre</th>
-            <th>Tipo Documento</th>
-            <th>Discapacidad</th>
-            <th>Sisben</th>
-            <th>Genero</th>
-            <th>EPS</th>
-            <th>Estrato</th>
-            <th>Codigo Estudiante</th>
-            <th>Grado</th>
-            <th>Grupo</th>
-            <th>Opciones</th>
-
-        </tr>
-        @if (ViewBag.ListaEstudiante != null)
-        {
-            List<Object> Datos = ViewBag.ListaEstudiante;
-
-            if (ViewBag.ListaEstudianteGrupo != null)
-            {
-                Datos = ViewBag.ListaEstudianteGrupo;
-            }
-
-            @if (estudiante != null)
-            {
-
-                foreach (List<String> usuario in Datos)
-                {
-                    if (usuario[0] == estudiante)
-                    {
-
-                        <tr>
-                            <td>@usuario[0]</td>
-                            <td>@usuario[1]</td>
-                            <td>@usuario[2]</td>
-                            <td>@usuario[3]</td>
-                            <td>@usuario[4]</td>
-                            <td>@usuario[12]</td>
-                            <td>@usuario[13]</td>
-                            <td>@usuario[14]</td>
-                            <td>@usuario[15]</td>
-                            <td>@usuario[16]</td>
-                            <td>@usuario[17]</td>
-                            <td>@usuario[18]</td>
-                            <td>@usuario[19]</td>
-                            <td>@usuario[20]</td>
-                            <td>@usuario[21]</td>
-                            <td>
-                                @if (@usuario[20] == "0")
-                                {
-                                    <button id="certificados-preescolar" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Certificados preescolar</button>
-                                }else{
-                                    <button id="boletin" onclick="window.location.href='/Funcionario/GestionPeriodoAcademico'" class="boton-principal">Boletin</button>
-                                }                                
-                                <button id="carnet-estudiantil" onclick="window.location.href='/Funcionario/principalDocente'" class="boton-principal">Carnet estudiantl</button>
-                                <button id="certificado-estudio" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Certificado de estudio</button>
-                                <button id="hoja-matricula" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Hoja de matricula</button>                                                               
-                                <button id="formato-observaciones" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Formato de observaciones</button>
-                                <button id="formato-paz-y-salvo" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Paz y salvo</button>                                
-                            </td>
-                         </tr>
-                     }
-                }
-            }
-            else
-            {
-                foreach (List<String> usuario in Datos)
-                {
-                    <tr>
-                        <td>@usuario[0]</td>
-                        <td>@usuario[1]</td>
-                        <td>@usuario[2]</td>
-                        <td>@usuario[3]</td>
-                        <td>@usuario[4]</td>
-                        <td>@usuario[12]</td>
-                        <td>@usuario[13]</td>
-                        <td>@usuario[14]</td>
-                        <td>@usuario[15]</td>
-                        <td>@usuario[16]</td>
-                        <td>@usuario[17]</td>
-                        <td>@usuario[18]</td>
-                        <td>@usuario[19]</td>
-                        <td>@usuario[20]</td>
-                        <td>@usuario[21]</td>
-                        <td>
-                            @if (@usuario[20] == "0")
-                            {
-                                <button id="certificados-preescolar" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Certificados preescolar</button>
-                            }
-                            else
-                            {
-                                <button id="boletin" onclick="window.location.href='/Funcionario/GestionPeriodoAcademico'" class="boton-principal">Boletin</button>
-                            }
-                            <button id="carnet-estudiantil" onclick="window.location.href='/Funcionario/principalDocente'" class="boton-principal">Carnet estudiantl</button>
-                            <button id="certificado-estudio" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Certificado de estudio</button>
-                            <button id="hoja-matricula" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Hoja de matricula</button>
-                            <button id="formato-observaciones" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Formato de observaciones</button>
-                            <button id="formato-paz-y-salvo" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Paz y salvo</button>
-                        </td>
-                    </tr>
-                }
-            }
-
-        }
-        else
-        {
-            <div id="mensajeNoEstudiantes" class="alert alert-warning">
-                No hay datos para mostrar
+<div class="modal fade" id="notaacademicas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg modal-dialog-scrollable h-100">
+        <div class="modal-content">
+            <div class="modal-header py-1  my-0 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">Boletin</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        }
+            <div class="modal-body h-100 my-0 py-0 ">
+                <div class="detalles__estu py-0 my-0  ">
+                    <div class="detalles__text table_colums">
+                        <div class="colums__text">
+                            <span class="text__bold">Grado: </span><span class="text__normal">quinto   - 2024 </span><br>
+                            <span class="text__bold">Nombre completo: </span><span class="text__normal">juanito perez nose</span><br>
 
-    </table>
+                        </div>
+                    </div>
+                    <div class="detalles__boton">
+                        <a class="form-control form-control-sm bg-primary text-white text__decaoration">
+                            Descargar boletin
+                        </a>
+                    </div>
+                </div>
+                <div class="">
+                    <p class="text__Periodo">Periodo 1</p>
+                    <table class="table table__information table__modals table-sm tables--modals--sms">
+                        <thead>
+                            <tr>
+
+                                <th>Materia</th>
+                                <th>Nota</th>
+                                <th>Falla</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Puedes agregar filas con datos aquí -->
+                            <tr>
+                                <td>Matemáticas</td>
+                                <td>8.5</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Ciencias Naturales</td>
+                                <td>9.0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Historia</td>
+                                <td>7.2</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>Literatura</td>
+                                <td>6.8</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Idiomas</td>
+                                <td>9.5</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Arte</td>
+                                <td>8.0</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Educación Física</td>
+                                <td>9.2</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text__Periodo">Periodo 1</p>
+                    <table class="table table__information table__modals table-sm tables--modals--sms">
+                        <thead>
+                            <tr>
+
+                                <th>Materia</th>
+                                <th>Nota</th>
+                                <th>Falla</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Puedes agregar filas con datos aquí -->
+                            <tr>
+                                <td>Matemáticas</td>
+                                <td>8.5</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Ciencias Naturales</td>
+                                <td>9.0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Historia</td>
+                                <td>7.2</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>Literatura</td>
+                                <td>6.8</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Idiomas</td>
+                                <td>9.5</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Arte</td>
+                                <td>8.0</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Educación Física</td>
+                                <td>9.2</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="text__Periodo">Periodo 1</p>
+                    <table class="table table__information table__modals table-sm tables--modals--sms">
+                        <thead>
+                            <tr>
+
+                                <th>Materia</th>
+                                <th>Nota</th>
+                                <th>Falla</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Puedes agregar filas con datos aquí -->
+                            <tr>
+                                <td>Matemáticas</td>
+                                <td>8.5</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Ciencias Naturales</td>
+                                <td>9.0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Historia</td>
+                                <td>7.2</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>Literatura</td>
+                                <td>6.8</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Idiomas</td>
+                                <td>9.5</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Arte</td>
+                                <td>8.0</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Educación Física</td>
+                                <td>9.2</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="text__Periodo">Periodo 1</p>
+                    <table class="table table__information table__modals table-sm tables--modals--sms">
+                        <thead>
+                            <tr>
+
+                                <th>Materia</th>
+                                <th>Nota</th>
+                                <th>Falla</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Puedes agregar filas con datos aquí -->
+                            <tr>
+                                <td>Matemáticas</td>
+                                <td>8.5</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Ciencias Naturales</td>
+                                <td>9.0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Historia</td>
+                                <td>7.2</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>Literatura</td>
+                                <td>6.8</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Idiomas</td>
+                                <td>9.5</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Arte</td>
+                                <td>8.0</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Educación Física</td>
+                                <td>9.2</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer border-0 py-1 my-0">
+                <div class="form-group d-flex">
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cancelar" data-dismiss="modal" readonly>
+                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" value="Guardar" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+
+<div class="modal fade" id="Registrobservacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header py-1 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">Certificados</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex ">
+                    <div class="">
+                        <div class="form-group form-group-sm">
+                            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="observador del estudiante" readonly>
+                            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="paz y salvo" readonly>
+                            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="carnet" readonly>
+
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group form-group-sm">
+                            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="certificado de estudio" readonly>
+                            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="hoja de matricula" readonly>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer py-1 border-0">
+
+                <div class="form-group d-flex">
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cerrar" data-dismiss="modal" readonly>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/Certificados.js"></script>

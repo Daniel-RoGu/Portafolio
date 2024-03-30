@@ -1,0 +1,480 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tecnico en Agroecologia - NombreInstitucion</title>
+    <!-- <style>
+        .table__cabezera{
+            width: 100%;
+        }
+        .table__cabezera th {
+            border: none;
+        }
+        .table__cabezera p, h1, h2, h3{
+            padding: 0;
+            margin: 0;
+        }
+
+        .table__cabezera p{
+            font-weight: 500;
+        }
+        .encabezado-central{
+            font-size: .8rem;
+        }
+
+        .encabezado-central h3, h4, p{
+            margin: 0 10px;
+        }
+        .center {
+            text-align: center;
+        }
+
+        .info__periodo{
+            width: 100%;
+            border-collapse: collapse ;
+            font-size: 0.9rem;
+            text-align: center;
+
+        }
+
+        .info__periodo  th, td{
+            padding: 10px 0;
+
+        }
+
+        .table__detalle__nota{
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .9rem;
+            text-align: center;
+        }
+
+        .table__detalle__nota th, td{
+           border: 1px solid black;
+           padding: 0;
+        }
+
+
+
+
+    </style> -->
+    <style>
+        /* .parte-superior-boletin {
+                    height: 20%;
+                }
+                .parte-central-boletin {
+                    height: 60%;
+                }
+                .parte-inferior-boletin {
+                    height: 20%;
+                } */
+
+        .parte-central-boletin th,
+        .parte-central-boletin td {
+            border: 1px solid gray;
+        }
+
+        /* .parte-superior-boletin td {
+                    height: 10px;
+                }
+
+                .parte-superior-boletin th {
+                    height: 80px;
+                } */
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            height: 80%;
+        }
+
+        th, td {
+            text-align: center;
+            /* background-color: #f2f2f2; */
+        }
+
+        h4, h5, h6, p {
+            /* margin: 3px 0; */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 12px; /* Tamaño de fuente base */
+        }
+
+        h4 {
+            /* margin: 3px 0; */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 14px; /* Tamaño de fuente base */
+        }
+
+        .contenedor {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table style="border: 1px solid black;">
+        <thead>
+            <tr>
+                <th hidden></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="parte-superior-boletin">
+                        <table class="table__cabezera; contenedor; center;">
+                            <thead>
+                            <th style="width: 20%;">  <img width="20px" height="20px" src="../img/gallery_9055136.png" alt=""></th>
+                            <th style="width: 60%;">
+                                <section class="encabezado-central">
+                                    <h3>Institución Educativa Rural La Aguililla</h3>
+                                    <h4>TECNICO EN AGROECOLOGIA</h4>
+                                    <p>DANE: 283592003378</p>
+                                    <p style="height: 10px;"></p>
+                                    <p>Creada según decreto 002027 del 15/12/2011</p>
+                                    <p>Res. de Aprob. 00352 del 24/04/2012</p>
+                                    <p>NIT: 900.218.599-1</p>
+                                    <p style="height: 10px;"></p>
+                                </section>
+                            </th>
+                            <th style="width: 20%;">  <img width="20px" height="20px" src="../img/gallery_9055136.png" alt=""></th>
+                            </thead>
+                        </table>
+                        <table class="info__periodo contenedor; center;">
+                            <thead>
+                                <tr>
+                                    <th hidden>col1</th>
+                                    <th hidden>col2</th>
+                                    <th hidden>col3</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td><h4>SEDE</h4></td>
+                                    <td><h4>GRADO</h4></td>
+                                    <td><h4>PERIODO</h4></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2"><p>LOS ANDES</p></td>
+                                    <td rowspan="2"><p>Nº GRADO</p></td>
+                                    <td rowspan="2"><p>Nº PERIODO</p></td>
+                                </tr>
+                            </tbody>
+                            <tr>
+                                <td colspan="3"><h4>APELLIDOS Y NOMBRES ESTUDIANTE</h4></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><p>Nombre</p></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <p style="height: 10px;"></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="parte-central-boletin">
+                        <table class="table__detalle__nota contenedor; center;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 20%;"><h4>ACTIVDADES RECTORAS</h4></td>
+                                    <td style="width: 30%;"><h4>PROPÓSITOS</h4></td>
+                                    <td style="width: 5%;"><h4>I.H</h4></td> <!--Intencidad horaria-->
+                                    <td style="width: 5%;"><h4>INASIST</h4></td>
+                                    <td style="width: 15%;"><h4>DESCRIPCION</h4></td>
+                                    <td style="width: 5%;"><h4>P1</h4></td>
+                                    <td style="width: 5%;"><h4>P2</h4></td>
+                                    <td style="width: 5%;"><h4>P3</h4></td>
+                                    <td style="width: 5%;"><h4>P4</h4></td>
+                                    <td style="width: 5%;"><h4>NOTAFINAL</h4></td>
+                                </tr>
+                                <tr>
+                                    <!--COMIENZA LA FILA 1-->
+                                    <td rowspan="2"><h4>ARTE</h4></td>
+                                    <td rowspan="4">
+                                        <h5>
+                                            Los niños y las niñas construyen su identidad en relación con los otros; se sienten
+                                            queridos, y valoran positivamente pertenecer a una familia, cultura y mundo.
+                                        </h5>
+                                    </td>
+                                    <td rowspan="2"><P>Valor</P></td>
+                                    <td rowspan="2"><P>Valor</P></td>
+                                    <td><P>VALORACION</P></td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td><P>DESEMPEÑO</P></td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2"><h4>JUEGO</h4></td>
+                                    <td rowspan="2"><p>Valor</p></td>
+                                    <td rowspan="2"><p>Valor</p></td>
+                                    <td><p>VALORACION</p></td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td><p>DESEMPEÑO</p></td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>       <!--TERMINA LA FILA 1-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 2-->
+                                    <td rowspan="4"><h4>MEDIO AMBIENTE</h4></td>
+                                    <td rowspan="4">
+                                        <h5>
+                                            Los niños y las niñas disfrutan aprender; exploran y se relacionan con el mundo para comprenderlo y construirlo.
+                                        </h5>
+                                    </td>
+                                    <td rowspan="2"><p>Valor</p></td>
+                                    <td rowspan="2"><p>Valor</p></td>
+                                    <td><p>VALORACION</p></td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td><p>DESEMPEÑO</p></td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2"><p>Valor</p></td>
+                                    <td rowspan="2"><p>Valor</p></td>
+                                    <td><p>VALORACION</p></td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td><p>DESEMPEÑO</p></td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>       <!--TERMINA LA FILA 2-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 3-->
+                                    <td rowspan="4"><h4>LITERATURA</h4></td>
+                                    <td rowspan="4">
+                                        <h5>
+                                            Los niños y las niñas son comunicadores activos de sus ideas, sentimientos
+                                            y emociones; expresan, imaginan y representan su realidad.
+                                        </h5>
+                                    </td>
+                                    <td rowspan="2"><p>Valor</p></td>
+                                    <td rowspan="2"><p>Valor</p></td>
+                                    <td><p>VALORACION</p></td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td><p>DESEMPEÑO</p></td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2"><p><p>Valor</p></p></td>
+                                    <td rowspan="2"><p>Valor</p></td>
+                                    <td><p>VALORACION</p></td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td><p>DESEMPEÑO</p></td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>       <!--TERMINA LA FILA 3-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 4-->
+                                    <td rowspan="2"><h4>ETICA Y VALORES</h4></td>
+                                    <td rowspan="2">
+                                        <h5>
+                                            Los niños y las niñas en la interaccion con los demás aprenden principios morales y valores éticos para la vida.
+                                        </h5>
+                                    </td>
+                                    <td rowspan="2"><p>Valor</p></td>
+                                    <td rowspan="2"><p>Valor</p></td>
+                                    <td><p>VALORACION</p></td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td><p>DESEMPEÑO</p></td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>   <!--TERMINA LA FILA 4-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 5-->
+                                    <td class="center" colspan="4" rowspan="2"><h4>CONVIVENCIA</h4></td>
+                                    <td><p>VALORACION</p></td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td><p>DESEMPEÑO</p></td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>   <!--TERMINA LA FILA 5-->
+                                <tr>
+                                    <!--COMIENZA LA FILA 6-->
+                                    <td class="center" colspan="4" rowspan="2"><h4>PROMEDIO Y VALORACION FINAL DE TODAS LAS AREAS</h4></td>
+                                    <td><p>VALORACION</p></td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                    <td>3.0</td>
+                                </tr>
+                                <tr>
+                                    <td><p>DESEMPEÑO</p></td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                    <td>bajo</td>
+                                </tr>   <!--TERMINA LA FILA 6-->
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="parte-inferior-boletin">
+                        <style>
+                            .table__firmas {
+                                border-collapse: collapse;
+                                width: 100%;
+                                text-align: center;
+                                /* border: 1px solid black; */
+                                border-top: none;
+                            }
+
+                                .table__firmas td {
+                                    border: none;
+                                }
+                        </style>
+                        <table class="table__firmas">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3">
+                                        <p style="height: 10px;"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;" colspan="3">
+                                        <h4>OBSERVACIONES:</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" height="80px"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>______________________________</p>
+                                        <p>RECTOR(A)</p>
+                                    </td>
+                                    <td>
+                                        <p>______________________________</p>
+                                        <p>TUTULAR</p>
+                                    </td>
+                                    <td>
+                                        <p>______________________________</p>
+                                        <p>SECRETARIO</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <p>"FORMAMOS PARA LA VIDA, FUNDAMENTADOS EN EL DESARROLLO DE LOS VALORES HUMANOS"</p>
+                                        <p>EMAIL: celaaguililla_pue@hotmail.com.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table style="height: 10%; margin: 0;">
+        <tr class="contenedor" class="center">
+            <td colspan="3">
+                <p style="color: #44780D; font-size: 40px;">______________________</p>
+                <h4>“Formamos para la vida, fundamentados en el desarrollo de los valores humanos”</h4>
+                <p>Corregimiento La Aguililla – Municipio de Puerto Rico Caquetá Email:</p>
+                <p>
+                    celaaguililla_pue@hotmail.com
+                    Celular 3132814145
+                </p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

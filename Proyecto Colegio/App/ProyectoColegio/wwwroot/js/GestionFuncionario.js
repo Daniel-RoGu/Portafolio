@@ -1,24 +1,6 @@
 window.onload = async function () {
-    //Selectores DOM
+
     selectorSedeFuncionario("");
-    /*selectorSedeDocente("");*/
-
-    //Funciones
-    //listargradosTodos("");
-
-    //listarTiposDeSangre("");
-    //ListarTiposDeDocumento("");
-    //ListarDiscapacidades("");
-    //ListarSisben("");
-    //ListarGeneros("");
-    //ListarEPS("");
-    //ListarEstratos("");
-
-    //Listas por agregrar
-
-
-
-    //obtenerlistadocentes();
 
 }
 

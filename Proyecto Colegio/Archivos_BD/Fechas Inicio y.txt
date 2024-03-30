@@ -1,0 +1,5 @@
+Fechas Inicio y Fin por Periodo
+22 Enero  al  5 Abril    Primer Periodo
+8 Abril  al  14 Junio Segundo Periodo
+8 Julio al 13 Septiembre Tercer Periodo
+16 Septiembre al 29 Noviembre Cuarto Periodo

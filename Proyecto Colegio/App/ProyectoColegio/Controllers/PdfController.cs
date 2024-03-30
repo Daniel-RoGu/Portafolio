@@ -18,15 +18,118 @@ namespace ProyectoColegio.Controllers
             _converter = converter;
         }
 
-        public IActionResult Index()
+        public string NotasMateria(string asignatura, string grado, string grupo, string periodo) {
+            
+            string retorno = "1";
+
+            DatosCompartidos.Asignatura = asignatura;
+            DatosCompartidos.Grado = grado;
+            DatosCompartidos.Grupo = grupo;
+            DatosCompartidos.Periodo = periodo;            
+
+            return retorno;
+        }
+
+        public IActionResult Index(string RutaPdf)
+        {
+            DatosCompartidos.RutaPDF = RutaPdf;
+            return View();
+        }
+
+        //vista del formato plantilla notas
+ 
+        public IActionResult vistaParaPDF()
+        {                     
+            return View();
+        }
+
+
+
+        public IActionResult formatoCarnet()
         {
             return View();
         }
 
-        public IActionResult vistaParaPDF()
+        public IActionResult formatoCertificadoEstudio() 
         {
             return View();
         }
+
+        public IActionResult formatoHojaMatricula ()
+        {
+            return View();
+        }
+
+        public IActionResult formatoObservacionDatosGenerales() 
+        {
+            return View(); 
+        }
+
+        public IActionResult formatoObservacionTipo1() 
+        {
+            return View(); 
+        }
+        
+        public IActionResult formatoObservacionTipo2() 
+        {
+            return View(); 
+        }
+        
+        public IActionResult formatoObservacionTipo3() 
+        {
+            return View(); 
+        }
+
+        public IActionResult formatoBoletinPrimariaBachiller() 
+        {
+            return View(); 
+        }
+
+        public IActionResult formatoBoletinBachiller() 
+        {
+            return View(); 
+        }
+        
+        public IActionResult formatoBoletinMedeiaAcademica() 
+        {
+            return View(); 
+        }
+        
+        public IActionResult formatoPazYSalvo1() 
+        {
+            return View(); 
+        }
+        
+        public IActionResult formatoPazYSalvo2() 
+        {
+            return View(); 
+        }
+        
+        public IActionResult formatoPazYSalvo3() 
+        {
+            return View(); 
+        }
+        
+        public IActionResult formatoPreescolarBoletin1() 
+        {
+            return View(); 
+        }
+        
+        public IActionResult formatoPreescolarBoletin2() 
+        {
+            return View(); 
+        }
+        
+        public IActionResult formatoPreescolarBoletin3() 
+        {
+            return View(); 
+        }
+        
+        public IActionResult formatoPreescolarCertificadoGrado() 
+        {
+            return View(); 
+        }
+
 
         public IActionResult MostrarPDFenPagina()
         {
@@ -34,7 +137,8 @@ namespace ProyectoColegio.Controllers
             string pagina_actual = HttpContext.Request.Path;
             string url_pagina = HttpContext.Request.GetEncodedUrl();
             url_pagina = url_pagina.Replace(pagina_actual, "");
-            url_pagina = $"{url_pagina}/Pdf/vistaParaPDF";
+            //url_pagina = $"{url_pagina}/Pdf/vistaParaPDF";
+            url_pagina = $"{url_pagina}/Pdf/{DatosCompartidos.RutaPDF}";
 
             //configuracion de PDF
             var pdf = new HtmlToPdfDocument()
@@ -64,7 +168,8 @@ namespace ProyectoColegio.Controllers
             string pagina_actual = HttpContext.Request.Path;
             string url_pagina = HttpContext.Request.GetEncodedUrl();
             url_pagina = url_pagina.Replace(pagina_actual, "");
-            url_pagina = $"{url_pagina}/Pdf/vistaParaPDF";
+            //url_pagina = $"{url_pagina}/Pdf/vistaParaPDF";
+            url_pagina = $"{url_pagina}/Pdf/{DatosCompartidos.RutaPDF}";
 
             //configuracion de PDF
             var pdf = new HtmlToPdfDocument()
@@ -89,6 +194,11 @@ namespace ProyectoColegio.Controllers
 
             return File(archivoPdf, "application/pdf", nombrePdf);
         }
+        
+        public void ActualizarRutaPdf(string RutaPdf)
+        {
+            DatosCompartidos.RutaPDF = RutaPdf;
+        }        
 
     }      
 

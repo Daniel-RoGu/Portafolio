@@ -23,6 +23,7 @@
         private String? estrato { get; set; }
         private String? eps { get; set; }
         private String? genero { get; set; }
+        public String? codigoEstudiante { get; set; }
         private String? grado { get; set; }
         private String? grupo { get; set; }
 

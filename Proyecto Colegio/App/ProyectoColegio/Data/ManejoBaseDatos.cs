@@ -251,7 +251,7 @@ namespace ProyectoColegio.Data
                     {
                         listaDatos.Add(mySqlDataReader.GetString(i));
                         listaIndividual.Add(mySqlDataReader.GetString(i));
-                    }
+                        }
 
                     
                     listaObjetos.Add(listaDatos);

@@ -1,32 +1,12 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\EstiloMenu.css",
-      "PackagePath": "staticwebassets\\css\\EstiloMenu.css"
-    },
-    {
-      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\EstiloRegistrarFamiliar.css",
-      "PackagePath": "staticwebassets\\css\\EstiloRegistrarFamiliar.css"
-    },
-    {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\Estilos-diego.css",
       "PackagePath": "staticwebassets\\css\\Estilos-diego.css"
     },
     {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\Login.css",
       "PackagePath": "staticwebassets\\css\\Login.css"
-    },
-    {
-      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\Menu.css",
-      "PackagePath": "staticwebassets\\css\\Menu.css"
-    },
-    {
-      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\VistaEstudiante.css",
-      "PackagePath": "staticwebassets\\css\\VistaEstudiante.css"
-    },
-    {
-      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\VistaEstudianteSecretaria.css",
-      "PackagePath": "staticwebassets\\css\\VistaEstudianteSecretaria.css"
     },
     {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\bootstrap-select.min.css",
@@ -37,20 +17,32 @@
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\estilos.css",
-      "PackagePath": "staticwebassets\\css\\estilos.css"
-    },
-    {
-      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
-    },
-    {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\BoletinEstudiante.js",
+      "PackagePath": "staticwebassets\\js\\BoletinEstudiante.js"
+    },
+    {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\Certificados.js",
+      "PackagePath": "staticwebassets\\js\\Certificados.js"
+    },
+    {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\ConvivenciaEstudiantes.js",
+      "PackagePath": "staticwebassets\\js\\ConvivenciaEstudiantes.js"
+    },
+    {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\DocenteUser.js",
+      "PackagePath": "staticwebassets\\js\\DocenteUser.js"
+    },
+    {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\FlujoDeDatos.js",
       "PackagePath": "staticwebassets\\js\\FlujoDeDatos.js"
+    },
+    {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\GestionCV.js",
+      "PackagePath": "staticwebassets\\js\\GestionCV.js"
     },
     {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\GestionDocentes.js",
@@ -59,6 +51,18 @@
     {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\GestionFuncionario.js",
       "PackagePath": "staticwebassets\\js\\GestionFuncionario.js"
+    },
+    {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\Gestion_horario.js",
+      "PackagePath": "staticwebassets\\js\\Gestion_horario.js"
+    },
+    {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\HoarioDocenteUser.js",
+      "PackagePath": "staticwebassets\\js\\HoarioDocenteUser.js"
+    },
+    {
+      "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\HorarioEstudiante.js",
+      "PackagePath": "staticwebassets\\js\\HorarioEstudiante.js"
     },
     {
       "Id": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\wwwroot\\js\\TratamientoCsv.js",

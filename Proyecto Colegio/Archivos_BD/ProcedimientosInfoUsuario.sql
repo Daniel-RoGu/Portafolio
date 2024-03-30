@@ -1,3 +1,4 @@
+/*-------orden de ejecucion de scripts ---------- Script Nº3*/
 use bdColegio;
 
 /*modificador de tabla para usar formato de texto utf8mb4*/
@@ -165,3 +166,31 @@ begin
     where u.identificacion = (SELECT CAST(identificacion AS SIGNED));
 END$$
 
+/*--------------------------Obtener Sede Estudiante-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerSedeEstudiante` $$
+create procedure `obtenerSedeEstudiante`(
+    identificacion bigint
+) 
+begin
+	select s.nombreSede 
+    from Usuario as u
+    inner join Estudiante as e on e.Usuario_identificacion = u.identificacion
+    inner join Matricula as m on m.fkidEstudiante = e.idEstudiante
+    inner join Sede as s on m.fkidSede = s.idSede
+    where u.identificacion = identificacion;
+END$$
+
+/*--------------------------Obtener Sede Estudiante-------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `obtenerSedeFuncionario` $$
+create procedure `obtenerSedeFuncionario`(
+    identificacion bigint
+) 
+begin
+	select s.nombreSede 
+    from Usuario as u
+    inner join Funcionario as f on f.Usuario_identificacion = u.identificacion
+    inner join Sede as s on f.fkidSede = s.idSede
+    where u.identificacion = identificacion;
+END$$

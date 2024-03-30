@@ -45,4 +45,32 @@ function fetchPostText(url, frm, callback) {
 
 }
 
+function setUrl(url) {
+    var raiz = document.getElementById("hdfoculto").value;
+    var urlAbsoluta = window.location.protocol + "//" +
+        window.location.host + raiz + url;
+    return urlAbsoluta;
+}
+
+
+
+function borrarContenidoPorClase(clase) {
+
+    var inputs = document.querySelectorAll('.' + clase);
+
+    inputs.forEach(function (input) {
+
+        if (input.type === 'text' || input.type === 'textarea') {
+
+            input.value = '';
+        } else if (input.type === 'checkbox') {
+
+            input.checked = false;
+        } else {
+
+            input.value = '';
+        }
+    });
+}
+
 

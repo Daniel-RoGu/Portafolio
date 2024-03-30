@@ -1,160 +1,104 @@
-﻿@{
-    List<string> rangosHorarios = new List<string>
-    {
-        "06:00-07:00 AM",
-        "07:00-08:00 AM",
-        "09:00-10:00 AM",
-        "10:00-11:00 AM",
-        "11:00-12:00 AM",
-        "12:00-01:00 Pm",
-        "01:00-02:00 Pm",
-        "02:00-03:00 Pm",
-        "03:00-04:00 Pm",
-        "04:00-05:00 Pm",
-        "05:00-06:00 Pm",
-    };
+﻿<div class="navbar navbar-light my-0 py-0 d-flex justify-content-between ">
 
-    var listaDocenteSede = ViewBag.Docentes;
-    var sedes = ViewBag.Sedes;
-    var grupos = ViewBag.GruposGrado;
-    var asignaturas = ViewBag.Asignaturas;
+    <div class="form-group form-group-sm periodoss">
+        <label for="" class="my-0 py-0">Selecionar sede</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectsede" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select>
+    </div>
+    <div class="form-group form-group-sm periodoss">
+        <label for="" class="my-0 py-0">Selecionar grados</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectgrados" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select>
+    </div>
+    <div class="form-group form-group-sm periodoss">
+        <label for="" class="my-0 py-0">Selecionar grupos</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectgrupos" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+        </select>
+    </div>
+    <div class="form-group form-group-sm periodoss">
+        <label for="" class="my-0 py-0">Selecionar Jornada</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="RamgosHorarios" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="AM">MAÑANA</option>
+            <option value="PM">TARDE</option>
+        </select>
+    </div>
 
-}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion de periodos academicos</title>
-</head>
-<body>
 
-    <h2>Registro de Periodo Academico</h2>
 
-    <form action="/procesar_registro" method="post">
-        <label class="control-label">Periodo academico</label>
-        <input value="" class="form-control" placeholder="periodo 1º" readonly />
-        <br>
-        <label for="fecha">Fecha Inicio (YYYY-MM-DD): </label>
-        <input type="text" id="fecha" name="fecha" pattern="\d{4}-\d{2}-\d{2}" title="Ingrese una fecha en formato YYYY-MM-DD" required>
-        <br>
-        <label for="fecha">Fecha Fin (YYYY-MM-DD): </label>
-        <input type="text" id="fecha" name="fecha" pattern="\d{4}-\d{2}-\d{2}" title="Ingrese una fecha en formato YYYY-MM-DD" required>
-        <br>
-        <input type="submit" value="Registrar">
-    </form>
-    <br>
-    <br>
 
-    <h2>Gestion de Asignaturas</h2>
+</div>
+<div class="table__container" id="horarioAcademico">
+  
 
-    @using (Html.BeginForm("GestionPeriodoAcademico", "Funcionario", FormMethod.Post))
-    {
-        <div class="contenedor-filtro-sede">
-            <div class="form-group">
-                <select class="form-select" name="sede" id="sede" aria-label="Default select example">
-                    <option value="">Sede</option>
-                    @if (sedes != null)
-                    {
-                        foreach (var item in sedes)
-                        {
-                            <option value="@item">@item</option>
-                        }
-                    }
-                </select>
+</div>
+
+
+<div class="barrapaginacion__container d-flex justify-content-end bg-white">
+    <div class="form-group my-2">
+
+        <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Agregar Materia" onclick="agregarHorario()" data-toggle="modal" data-target="#exampleModal">
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header py-1 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">Formulario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiaModalHorario()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body my-0 py-0">
+                <form>
+                    <div class="form-group form-group-sm my-0 py-0">
+                        <label for="dias" class="laber-form">Días</label>
+                        <select class="form-control form-control-sm border myselect" id="selectdias" data-live-search="true" data-style="btn-white">
+                            <option value="" disabled selected>Selecciona una opción</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-sm my-0 py-0">
+                        <label for="dias" class="laber-form">Horas</label>
+                        <select class="form-control form-control-sm border myselect" id="selectRangoHorario" data-live-search="true" data-style="btn-white">
+                            <option value="" disabled selected>Selecciona una opción</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-sm my-0 py-0">
+                        <label for="materia" class="laber-form">Materia</label>
+                        <select class="form-control form-control-sm border myselect" id="materiaSelect" data-live-search="true" data-style="btn-white">
+                            <option value="" disabled selected>Selecciona una opción</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-sm my-0 py-0">
+                        <label for="profesor" class="laber-form">Profesor</label>
+                        <select class="form-control form-control-sm border myselect " id="profesor" data-live-search="true" data-style="btn-white">
+                            <option value="" disabled selected>Selecciona una opción</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0 py-1">
+                <div class="form-group d-flex">
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" onclick="limpiaModalHorario()" id="cerrarmodalHorio" value="Cancelar" data-dismiss="modal" readonly>
+                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" value="Guardar" onclick="guardarHorarioForm()" readonly>
+                </div>
             </div>
         </div>
-
-        <div class="contenedor-filtro-grupo">
-            <div class="form-group">
-                <select class="form-select" name="grupo" id="grupo" aria-label="Default select example">
-                    <option value="">Grupo</option>
-                    @if (grupos != null)
-                    {
-                        foreach (var item in grupos)
-                        {
-                            <option value="@item">@item</option>
-                        }
-                    }
-                </select>
-            </div>
-        </div>
-
-        <div>
-            <button class="btn btn-primary" id="btnOpcionFiltrar" type="submit">Filtrar</button>
-        </div>
-    }
-
-    
-    <form action="/procesar_registro" method="post">
-        <table>
-            <tr>
-                <th>Hora</th>
-                <th>Lunes</th>
-                <th>Martes</th>
-                <th>Miercoles</th>
-                <th>Jueves</th>
-                <th>Viernes</th>
-            </tr>
-
-            @for (int i = 0; i < rangosHorarios.Count; i++)
-            {
-                <tr>
-                    <td>@rangosHorarios[i]</td>
-
-                    @for (int j = 0; j < 5; j++) // j<5 porque el número de columnas de la tabla corresponde a 6
-                    {
-                        <td>
-                            @using (Html.BeginForm("RegistrarDocenteAsignatura", "Funcionario", FormMethod.Post))
-                            {
-                                <div class="form-group">
-                                    <select class="form-select" name="asignaturas" id="asignaturas" aria-label="Default select example">
-                                        <option value="">Asignaturas</option>
-                                        @if (asignaturas != null)
-                                        {
-                                            foreach (var item in asignaturas)
-                                            {
-                                                <option value="@item">@item</option>
-                                            }
-                                        }
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-select" name="grupo" id="grupo" aria-label="Default select example">
-                                        <option value="">Docentes</option>
-                                        @if (listaDocenteSede != null)
-                                        {
-                                            foreach (var item in listaDocenteSede)
-                                            {
-                                                <option value="@item">@item</option>
-                                            }
-                                        }
-                                    </select>
-                                </div>
-
-                                if (j>0)
-                                {
-                                    <!-- Agrega un campo oculto para enviar el valor de "i" -->
-                                    <input type="hidden" name="dia" value="@j" />
-                                }
-                                if (i>=0)
-                                {
-                                    <!-- Agrega un campo oculto para enviar el valor de "j" -->
-                                    <input type="hidden" name="hora" value="@i" />
-                                }
-
-                                <button type="submit">Enviar</button>
-                            }
-                        </td>
-                    }
-                </tr>
-            }
+    </div>
+</div>
 
 
-        </table>
+<script src="~/js/Gestion_horario.js">
 
-    </form>
+</script>
 
-</body>
-</html>
+
 

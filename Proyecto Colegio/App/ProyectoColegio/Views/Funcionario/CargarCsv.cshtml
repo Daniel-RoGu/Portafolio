@@ -29,7 +29,7 @@
                 mostrarTabla();
             });
         });
-    </script>*@
+    </script>*@    
 </head>
 <body>
     @{
@@ -44,12 +44,22 @@
             <button id="gestion-periodo" onclick="window.location.href='/Funcionario/GestionPeriodoAcademico'" class="boton-principal">Gestion Periodo Academico</button>
             <button id="gestion-docente" onclick="window.location.href='/Funcionario/principalDocente'" class="boton-principal">Gestion Docente</button>
             <button id="certificados" onclick="window.location.href='/Funcionario/GestionCertificados'" class="boton-principal">Certificados</button>
-            @using (Html.BeginForm("controlHabilitacionCargueNotaPeriodo", "Docente", FormMethod.Post))
+            @using (Html.BeginForm("controlHabilitacionCargueNotaPeriodo", "Funcionario", FormMethod.Post))
             {
-                <input type="hidden" name="habilitarCargueNotaFinal" value="@true" />
-                <button id="boton-buscar-dos" class="boton-buscar" type="submit">Habilitar Cargue de Notas e Inasistencias</button>
+                <input type="hidden" name="habilitarCargueNotaFinal" value="true" />
+                <button id="boton-buscar-dos" class="boton-buscar" type="submit">HabilitarNotas</button>
+            }
+            @using (Html.BeginForm("controlHabilitacionCargueNotaPeriodo", "Funcionario", FormMethod.Post))
+            {
+                <input type="hidden" name="habilitarCargueNotaFinal" value="false" />
+                <button id="boton-buscar-dos" class="boton-buscar" type="submit">DesabilitarNotas</button>
             }
         </div>
+        @using (Html.BeginForm("Index", "Pdf", FormMethod.Post))
+        {
+            <input type="hidden" name="RutaPdf" value="vistaParaPDF" />
+            <button id="formatoRef" class="boton-certificado" type="submit">Formato</button>
+        }
         <div class="contenedor-buscar-estudiante">
             @using (Html.BeginForm("ObtenerIdentificacionEstudiante", "Funcionario", FormMethod.Post))
             {

@@ -3,11 +3,10 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
     <a class="btn btn-primary" asp-controller="Pdf" asp-action="MostrarPDFenPagina" target="_blank">Ver PDF en pagina</a>
     <a class="btn btn-primary" asp-controller="Pdf" asp-action="DescargarPDF">Descargar PDF</a>
     <br />
-    <br />
-    <embed src="@Url.Action("MostrarPDFenPagina", "Pdf")" width="800" height="400" type="application/pdf"/>
+
+    <embed src="@Url.Action("MostrarPDFenPagina", "Pdf")" width="1000" height="800" type="application/pdf"/>
 </div>

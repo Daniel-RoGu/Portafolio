@@ -20,12 +20,44 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvclxDYXJnZUpTT04uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Docente/ConvivenciaEstudiantesTitular.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jZW50ZVxDb252aXZlbmNpYUVzdHVkaWFudGVzVGl0dWxhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Docente/HorarioDocente.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jZW50ZVxIb3JhcmlvRG9jZW50ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Docente/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jZW50ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Docente/Principal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jZW50ZVxQcmluY2lwYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Estudiante/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Estudiante/NotasEstudiante.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZVxOb3Rhc0VzdHVkaWFudGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Estudiante/NotasEstudianteBachiller.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZVxOb3Rhc0VzdHVkaWFudGVCYWNoaWxsZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Estudiante/NotasEstudianteMediaAcademica.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZVxOb3Rhc0VzdHVkaWFudGVNZWRpYUFjYWRlbWljYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Estudiante/NotasEstudiantePreescolar1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZVxOb3Rhc0VzdHVkaWFudGVQcmVlc2NvbGFyMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Estudiante/NotasEstudiantePreescolar2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZVxOb3Rhc0VzdHVkaWFudGVQcmVlc2NvbGFyMi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/CargarCsv.cshtml]
@@ -44,12 +76,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cR2VzdGlvblBlcmlvZG9BY2FkZW1pY28uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/mostrarCsv.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cbW9zdHJhckNzdi5jc2h0bWw=
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/plantillaNotas.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9ccGxhbnRpbGxhTm90YXMuY3NodG1s
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/mostrarCsv.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9cbW9zdHJhckNzdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Funcionario/principalDocente.cshtml]
@@ -86,6 +118,74 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Login/Inicio.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5pY2lvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoBoletinBachiller.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9Cb2xldGluQmFjaGlsbGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoBoletinMedeiaAcademica.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9Cb2xldGluTWVkZWlhQWNhZGVtaWNhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoBoletinPrimariaBachiller.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9Cb2xldGluUHJpbWFyaWFCYWNoaWxsZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoCarnet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9DYXJuZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoCertificadoEstudio.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9DZXJ0aWZpY2Fkb0VzdHVkaW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoHojaMatricula.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9Ib2phTWF0cmljdWxhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoObservacionDatosGenerales.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9PYnNlcnZhY2lvbkRhdG9zR2VuZXJhbGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoObservacionTipo1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9PYnNlcnZhY2lvblRpcG8xLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoObservacionTipo2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9PYnNlcnZhY2lvblRpcG8yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoObservacionTipo3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9PYnNlcnZhY2lvblRpcG8zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoPazYSalvo1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9QYXpZU2Fsdm8xLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoPazYSalvo2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9QYXpZU2Fsdm8yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoPazYSalvo3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9QYXpZU2Fsdm8zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoPreescolarBoletin1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9QcmVlc2NvbGFyQm9sZXRpbjEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoPreescolarBoletin2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9QcmVlc2NvbGFyQm9sZXRpbjIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoPreescolarBoletin3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9QcmVlc2NvbGFyQm9sZXRpbjMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/formatoPreescolarCertificadoGrado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGRmXGZvcm1hdG9QcmVlc2NvbGFyQ2VydGlmaWNhZG9HcmFkby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Daniel/Desktop/TrabajoColegio/App/ProyectoColegio/Views/Pdf/Index.cshtml]

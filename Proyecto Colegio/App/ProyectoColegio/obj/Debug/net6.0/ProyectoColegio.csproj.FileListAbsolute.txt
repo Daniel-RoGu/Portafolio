@@ -2752,7 +2752,6 @@ C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\obj\Debug\net6.0\Proy
 C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\obj\Debug\net6.0\ProyectoColegio.genruntimeconfig.cache
 C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\obj\Debug\net6.0\ref\ProyectoColegio.dll
 C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\CsvHelper.dll
-C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\System.Linq.Async.dll
 C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\ClosedXML.dll
 C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\CsvHelper.Excel.dll
 C:\Users\Daniel\Desktop\TrabajoColegio\App\ProyectoColegio\bin\Debug\net6.0\DocumentFormat.OpenXml.dll

@@ -15,10 +15,12 @@
     <Content Include="Archivos_Python\InsercionTpDocumento.py" />
     <Content Include="Archivos_Python\InsercionTpSangre.py" />
     <Content Include="Archivos_Python\TratamientoExcel.py" />
+    <Content Include="img\icon1.png" />
+    <Content Include="img\icon2.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="30.1.0" />
+    <PackageReference Include="CsvHelper" Version="31.0.2" />
     <PackageReference Include="CsvHelper.Excel.Core" Version="27.2.1" />
     <PackageReference Include="DinkToPdf" Version="1.0.8" />
     <PackageReference Include="IronPython" Version="3.4.1" />

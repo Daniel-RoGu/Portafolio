@@ -3,14 +3,14 @@
 
     <div class="form-group form-group-sm my-auto py-0 col-auto">
         <div class="my-1 mx-2">
-            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Agregar docentes" data-toggle="modal" data-target="#AgregarFamiliar">
+            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Agregar docentes" onclick="AgregarDocentes()" data-toggle="modal" data-target="#AgregarFamiliar">
         </div>
     </div>
 </nav>
 <div class="navbar navbar-light my-0 py-0 d-flex justify-content-between ">
     <div class="form-group form-group-sm filtros">
         <label for="" class="my-0 py-0">Buscar docentes</label>
-        <input type="text" class="form-control form-control-sm  " value="" placeholder="Nombre docente">
+        <input type="text" class="form-control form-control-sm  " value="" placeholder="Nombre docente" id="identificacionD">
     </div>
     <div class="form-group form-group-sm filtros">
         <label for="" class="my-0 py-0">Selecionar sede</label>
@@ -27,7 +27,7 @@
 
     <div class="form-group mx-2">
         <label for=""> </label>
-        <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Buscar">
+        <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Buscar" onclick="obtenerlistadocentes()">
     </div>
 
 
@@ -37,14 +37,14 @@
 </div>
 <div class="barrapaginacion__container">
     <div class=" barrapaginacion barrapaginacion__control">
-        <button class="button-controls ">
+        <button class="button-controls" id="btn_inicio">
             <svg id="blue_copy" height="24" width="24" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_8_copy_4"><path d="M58.644,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L37.632,48.608c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669   c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385L16.869,51.379c-1.066-0.616-1.066-2.155,0-2.771   l39.375-22.733C57.311,25.259,58.644,26.029,58.644,27.26z" /><path d="M57.844,63.048l-2.376-1.372c-0.013,0.043-0.023,0.09-0.032,0.136l0.409,0.236c0.495,0.286,0.8,0.814,0.8,1.385v8.294   c0,1.008-0.894,1.693-1.803,1.575l1.404,0.81c1.066,0.616,2.399-0.154,2.399-1.385v-8.294   C58.644,63.862,58.339,63.334,57.844,63.048z" /><path d="M37.632,48.608l20.212-11.669c0.495-0.286,0.8-0.814,0.8-1.385V27.26c0-1.115-1.092-1.84-2.091-1.512   c0.054,0.16,0.091,0.328,0.091,0.512v8.294c0,0.571-0.305,1.1-0.8,1.385L35.632,47.608c-0.078,0.052-0.745,0.516-0.8,1.385   c-0.057,0.911,0.609,1.467,0.673,1.518c0.639,0.443,1.277,0.885,1.916,1.328c-0.032-0.112-0.07-0.312,0.019-0.51   c0.011-0.025,0.024-0.049,0.037-0.07C36.582,50.587,36.625,49.19,37.632,48.608z" /><path d="M58.644,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L37.632,48.608   c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385   L16.869,51.379c-1.066-0.616-1.066-2.155,0-2.771l39.375-22.733C57.311,25.259,58.644,26.029,58.644,27.26z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /><path d="M86.058,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L65.047,48.608c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669   c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385L44.283,51.379c-1.066-0.616-1.066-2.155,0-2.771   l39.375-22.733C84.725,25.259,86.058,26.029,86.058,27.26z" /><path d="M85.258,63.048l-2.376-1.372c-0.013,0.043-0.023,0.09-0.032,0.136l0.409,0.236c0.495,0.286,0.8,0.814,0.8,1.385v8.294   c0,1.008-0.894,1.693-1.803,1.575l1.404,0.81c1.066,0.616,2.399-0.154,2.399-1.385v-8.294   C86.058,63.862,85.753,63.334,85.258,63.048z" /><path d="M65.047,48.608l20.212-11.669c0.495-0.286,0.8-0.814,0.8-1.385V27.26c0-1.115-1.092-1.84-2.091-1.512   c0.054,0.16,0.091,0.328,0.091,0.512v8.294c0,0.571-0.305,1.1-0.8,1.385L63.047,47.608c-0.078,0.052-0.745,0.516-0.8,1.385   c-0.057,0.911,0.609,1.467,0.673,1.518c0.639,0.443,1.277,0.885,1.916,1.328c-0.032-0.112-0.07-0.312,0.019-0.51   c0.011-0.025,0.024-0.049,0.037-0.07C63.996,50.587,64.039,49.19,65.047,48.608z" /><path d="M86.058,27.26v8.294c0,0.571-0.305,1.1-0.8,1.385L65.047,48.608   c-1.066,0.616-1.066,2.155,0,2.771l20.212,11.669c0.495,0.286,0.8,0.814,0.8,1.385v8.294c0,1.231-1.333,2.001-2.399,1.385   L44.283,51.379c-1.066-0.616-1.066-2.155,0-2.771l39.375-22.733C84.725,25.259,86.058,26.029,86.058,27.26z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg>
-            </span>
+
         </button>
-        <button class="button-controls "><svg id="blue_copy" height="24" width="24" transform="rotate(180)" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_4_copy"><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7   C27.852,25.902,29.798,24.778,31.356,25.677z" /><path d="M69.981,47.977l-38.625-22.3c-0.233-0.134-0.474-0.21-0.716-0.259l37.341,21.559c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-0.349,0.201-0.716,0.288-1.078,0.301c0.656,0.938,1.961,1.343,3.078,0.699l38.625-22.3   C71.538,51.124,71.538,48.876,69.981,47.977z" /><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7C27.852,25.902,29.798,24.778,31.356,25.677z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
-        <input type="number" class=" input__controls">
-        <button class="button-controls "> <svg id="blue_copy" height="24" width="24" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_4_copy"><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7   C27.852,25.902,29.798,24.778,31.356,25.677z" /><path d="M69.981,47.977l-38.625-22.3c-0.233-0.134-0.474-0.21-0.716-0.259l37.341,21.559c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-0.349,0.201-0.716,0.288-1.078,0.301c0.656,0.938,1.961,1.343,3.078,0.699l38.625-22.3   C71.538,51.124,71.538,48.876,69.981,47.977z" /><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7C27.852,25.902,29.798,24.778,31.356,25.677z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
-        <button class="button-controls "> <svg id="blue_copy" height="24" width="24" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_8_copy_4_1_"><path d="M41.762,27.26v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669c1.066,0.616,1.066,2.155,0,2.771L42.562,63.048   c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771   L44.161,25.875C43.095,25.259,41.762,26.029,41.762,27.26z" /><path d="M83.537,48.608L44.161,25.875c-0.193-0.112-0.395-0.164-0.597-0.19l37.972,21.923c1.066,0.616,1.066,2.155,0,2.771   L42.161,73.112c-0.1,0.058-0.205,0.092-0.308,0.126c0.308,0.914,1.401,1.398,2.308,0.874l39.375-22.733   C84.603,50.763,84.603,49.224,83.537,48.608z" /><path d="M41.762,27.26v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669   c1.066,0.616,1.066,2.155,0,2.771L42.562,63.048c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385   l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771L44.161,25.875C43.095,25.259,41.762,26.029,41.762,27.26z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /><path d="M14.664,27.273v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669c1.066,0.616,1.066,2.155,0,2.771L15.464,63.061   c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771   L17.063,25.888C15.997,25.272,14.664,26.042,14.664,27.273z" /><path d="M56.438,48.621L17.063,25.888c-0.193-0.112-0.395-0.164-0.597-0.19l37.972,21.923c1.066,0.616,1.066,2.155,0,2.771   L15.063,73.125c-0.1,0.058-0.205,0.092-0.308,0.126c0.308,0.914,1.401,1.398,2.308,0.874l39.375-22.733   C57.505,50.776,57.505,49.237,56.438,48.621z" /><path d="M14.664,27.273v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669   c1.066,0.616,1.066,2.155,0,2.771L15.464,63.061c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385   l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771L17.063,25.888C15.997,25.272,14.664,26.042,14.664,27.273z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
+        <button class="button-controls" id="btn_prev"><svg id="blue_copy" height="24" width="24" transform="rotate(180)" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_4_copy"><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7   C27.852,25.902,29.798,24.778,31.356,25.677z" /><path d="M69.981,47.977l-38.625-22.3c-0.233-0.134-0.474-0.21-0.716-0.259l37.341,21.559c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-0.349,0.201-0.716,0.288-1.078,0.301c0.656,0.938,1.961,1.343,3.078,0.699l38.625-22.3   C71.538,51.124,71.538,48.876,69.981,47.977z" /><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7C27.852,25.902,29.798,24.778,31.356,25.677z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
+        <input type="number" class="input__controls" id="controPaginacionInPut">
+        <button class="button-controls " id="btn_next"> <svg id="blue_copy" height="24" width="24" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_4_copy"><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7   C27.852,25.902,29.798,24.778,31.356,25.677z" /><path d="M69.981,47.977l-38.625-22.3c-0.233-0.134-0.474-0.21-0.716-0.259l37.341,21.559c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-0.349,0.201-0.716,0.288-1.078,0.301c0.656,0.938,1.961,1.343,3.078,0.699l38.625-22.3   C71.538,51.124,71.538,48.876,69.981,47.977z" /><path d="M31.356,25.677l38.625,22.3c1.557,0.899,1.557,3.147,0,4.046   l-38.625,22.3c-1.557,0.899-3.504-0.225-3.504-2.023V27.7C27.852,25.902,29.798,24.778,31.356,25.677z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
+        <button class="button-controls " id="btn_final"> <svg id="blue_copy" height="24" width="24" style="enable-background:new 0 0 100 100;" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_8_copy_4_1_"><path d="M41.762,27.26v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669c1.066,0.616,1.066,2.155,0,2.771L42.562,63.048   c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771   L44.161,25.875C43.095,25.259,41.762,26.029,41.762,27.26z" /><path d="M83.537,48.608L44.161,25.875c-0.193-0.112-0.395-0.164-0.597-0.19l37.972,21.923c1.066,0.616,1.066,2.155,0,2.771   L42.161,73.112c-0.1,0.058-0.205,0.092-0.308,0.126c0.308,0.914,1.401,1.398,2.308,0.874l39.375-22.733   C84.603,50.763,84.603,49.224,83.537,48.608z" /><path d="M41.762,27.26v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669   c1.066,0.616,1.066,2.155,0,2.771L42.562,63.048c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385   l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771L44.161,25.875C43.095,25.259,41.762,26.029,41.762,27.26z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /><path d="M14.664,27.273v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669c1.066,0.616,1.066,2.155,0,2.771L15.464,63.061   c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771   L17.063,25.888C15.997,25.272,14.664,26.042,14.664,27.273z" /><path d="M56.438,48.621L17.063,25.888c-0.193-0.112-0.395-0.164-0.597-0.19l37.972,21.923c1.066,0.616,1.066,2.155,0,2.771   L15.063,73.125c-0.1,0.058-0.205,0.092-0.308,0.126c0.308,0.914,1.401,1.398,2.308,0.874l39.375-22.733   C57.505,50.776,57.505,49.237,56.438,48.621z" /><path d="M14.664,27.273v8.294c0,0.571,0.305,1.1,0.8,1.385l20.212,11.669   c1.066,0.616,1.066,2.155,0,2.771L15.464,63.061c-0.495,0.286-0.8,0.814-0.8,1.385v8.294c0,1.231,1.333,2.001,2.399,1.385   l39.375-22.733c1.066-0.616,1.066-2.155,0-2.771L17.063,25.888C15.997,25.272,14.664,26.042,14.664,27.273z" style="fill:none;stroke:#000000;stroke-miterlimit:10;" /></g></svg></button>
     </div>
     <div class=" barrapaginacion barrapaginacion__text">
         <label id="page" class="textoMenu">
@@ -67,49 +67,31 @@
             <div class="modal-body py-0 my-0">
                 <div class="detalles__estu py-2">
                     <div class="detalles__text table_colums">
-                        <div class="colums__text">
-                            <span class="text__bold">Codigo estudiante: </span><span class="text__normal">2165465</span><br>
-                            <span class="text__bold">Nombre completo: </span><span class="text__normal">juanito perez nose</span><br>
+                        <div class="colums__text" id="detallesDocentes">
+                            <span class="text__bold">Codigo docente: </span><span class="text__normal"></span><br>
+                            <span class="text__bold">Nombre completo: </span><span class="text__normal"></span><br>
+                            <span class="text__bold">Sede: </span><span class="text__normal"></span><br>
+                            <input type="hidden" id="sedeDocente" value="" />
                         </div>
                     </div>
 
                     <div class="detalles__boton">
-                        <a class="form-control form-control-sm bg-primary text-white text__decaoration" data-toggle="modal" data-target="#SelecionarMaterias">
+                        <a class="form-control form-control-sm bg-primary text-white text__decaoration" data-toggle="modal" onclick="asignaragradoMateria()" data-target="#SelecionarMaterias">
                             Agregar
                         </a>
                     </div>
 
                 </div>
-
-                <div class="table__container py-1 my-0">
-                    <table class="table table__information table__modals py-0 my-0">
-                        <thead>
-                            <tr>
-                                <th>NR</th>
-                                <th>Grado</th>
-                                <th>Materia</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Puedes agregar filas con datos aquí -->
-                            <tr>
-                                <td>1</td>
-                                <td>10</td>
-                                <td>Matematicas</td>
-                                <td>OPcion</td>
-                            </tr>
-
-                            <!-- Agrega más filas según sea necesario -->
-                        </tbody>
-                    </table>
+                <input type="hidden" id="documentoDocente" class="formularioDocente" value="">
+                <div class="table__container py-1 my-0" id="tablamaterias">
+                  
 
                 </div>
             </div>
             <div class="modal-footer border-0 form-group py-1 my-1">
                 <div class="form-group d-flex">
                     <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cerrar" data-dismiss="modal" readonly>
-                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" value="Aceptar" readonly>
+
                 </div>
 
             </div>
@@ -122,41 +104,43 @@
         <div class="modal-content">
             <div class="modal-header py-1 border-0">
                 <h5 class="modal-title" id="exampleModalLabel">Agregar Docentes</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarModalDocentes()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <div class="form-row">
+                    <div class="row">
+                       
+                       
                         <div class="col-3">
                             <div class="form-group form-group-sm my-0">
                                 <label for="" class="laber-form my-0 py-0">Nombre </label>
-                                <input type="text" class="form-control form-control-sm" value="" placeholder="Nombre completo">
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Nombre completo" id="Primernombredocente">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group form-group-sm ">
                                 <label for="" class="laber-form my-0 py-0">Segundo Nombre </label>
-                                <input type="text" class="form-control form-control-sm" value="" placeholder="Segundo Nombre">
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Segundo Nombre" id="Segundonombredocente">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group form-group-sm ">
                                 <label for="" class="laber-form my-0 py-0">Primer apellido </label>
-                                <input type="text" class="form-control form-control-sm" value="" placeholder="Primer apellido">
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Primer apellido" id="primerapellido">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group form-group-sm ">
                                 <label for="" class="laber-form my-0 py-0">Segundo apellido </label>
-                                <input type="text" class="form-control form-control-sm" value="" placeholder="Segundo apellido">
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Segundo apellido" id="segundopellido">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group form-group-sm ">
                                 <label for="" class="laber-form my-0 py-0">Documento</label>
-                                <input type="text" class="form-control form-control-sm" value="" placeholder="Documento">
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Documento" id="docuementoDocente2">
                             </div>
                         </div>
                         <div class="col-3">
@@ -169,14 +153,20 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group form-group-sm ">
+                                <label for="" class="laber-form my-0 py-0">Lugar expedición</label>
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Lugar expedición" id="lugarexpedicion">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group form-group-sm ">
                                 <label for="" class="laber-form my-0 py-0">Fecha nacimiento</label>
-                                <input type="date" class="form-control form-control-sm" value="" placeholder="Direccion">
+                                <input type="date" class="form-control form-control-sm formularioDocente" value="" placeholder="Direccion" id="fechanacimiento">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group form-group-sm ">
                                 <label for="" class="laber-form my-0 py-0">Edad</label>
-                                <input type="text" class="form-control form-control-sm" value="" placeholder="Edad">
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Edad" id="edad">
                             </div>
                         </div>
                         <div class="col-3">
@@ -191,41 +181,41 @@
                         <div class="col-3">
                             <div class="form-group form-group-sm">
                                 <label for="" class="laber-form my-0 py-0">Celular</label>
-                                <input type="text" class="form-control form-control-sm" value="" placeholder="Celular">
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Celular" id="celulardocente">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group form-group-sm ">
                                 <label for="" class="laber-form my-0 py-0">Telefono fijo</label>
-                                <input type="text" class="form-control form-control-sm" value="" placeholder="Telefono fijo">
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Telefono fijo" id="telefonofijo">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group form-group-sm">
                                 <label for="" class="laber-form my-0 py-0">Correo</label>
-                                <input type="text" class="form-control form-control-sm" value="" placeholder="Correo">
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Correo" id="correo">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group form-group-sm ">
                                 <label for="" class="my-0 py-0">Discapacidad</label>
                                 <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selecttipodiscapacidad" data-live-search="true" data-style="btn-white">
-                                    <option value="">Todos</option>
+                                    <option value="" disabled selected>Selecciona una opción</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group form-group-sm ">
                                 <label for="" class="laber-form my-0 py-0">Direccion</label>
-                                <input type="text" class="form-control form-control-sm" value="" placeholder="Direccion">
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Direccion" id="direccion">
                             </div>
                         </div>
 
                         <div class="col-3">
-                            <div class="form-group form-group-sm" >
+                            <div class="form-group form-group-sm">
                                 <label for="" class="my-0 py-0">Sisben</label>
                                 <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selecttiposisben" data-live-search="true" data-style="btn-white">
-                                    <option value="">Todos</option>
+                                    <option value="" disabled selected>Selecciona una opción</option>
                                 </select>
                             </div>
                         </div>
@@ -233,7 +223,7 @@
                             <div class="form-group form-group-sm ">
                                 <label for="" class="my-0 py-0">Genero</label>
                                 <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selecttipogenero" data-live-search="true" data-style="btn-white">
-                                    <option value="">Todos</option>
+                                    <option value="" disabled selected>Selecciona una opción</option>
                                 </select>
                             </div>
                         </div>
@@ -242,7 +232,7 @@
                             <div class="form-group form-group-sm ">
                                 <label for="" class="my-0 py-0">Eps</label>
                                 <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selecttipoeps" data-live-search="true" data-style="btn-white">
-                                    <option value="">Todos</option>
+                                    <option value="" disabled selected>Selecciona una opción</option>
                                 </select>
                             </div>
                         </div>
@@ -250,7 +240,7 @@
                             <div class="form-group form-group-sm ">
                                 <label for="" class="my-0 py-0">Estrato</label>
                                 <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selecttipoestrato" data-live-search="true" data-style="btn-white">
-                                    <option value="">Todos</option>
+                                    <option value="" disabled selected>Selecciona una opción</option>
                                 </select>
                             </div>
                         </div>
@@ -258,7 +248,7 @@
                         <div class="col-3">
                             <div class="form-group form-group-sm ">
                                 <label for="" class="laber-form my-0 py-0">Horas de trabajo</label>
-                                <input type="text" class="form-control form-control-sm" value="" placeholder="Horas de trabajo">
+                                <input type="text" class="form-control form-control-sm formularioDocente" value="" placeholder="Horas de trabajo" id="horasTrabajo">
                             </div>
                         </div>
 
@@ -266,7 +256,7 @@
                             <div class="form-group form-group-sm">
                                 <label for="" class="my-0 py-0">Selecionar sede</label>
                                 <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectsededocente" data-live-search="true" data-style="btn-white">
-                                    <option value="">Todos</option>
+                                    <option value="" disabled selected>Selecciona una opción</option>
                                 </select>
                             </div>
                         </div>
@@ -277,8 +267,8 @@
             </div>
             <div class="modal-footer border-0 py-1">
                 <div class="form-group d-flex">
-                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cancelar" data-dismiss="modal" readonly>
-                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" value="Guardar" readonly>
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" id="botoncancelarDocente" onclick="limpiarModalDocentes()" value="Cancelar" data-dismiss="modal" readonly>
+                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" onclick="guardardocentes()" value="Guardar" readonly>
                 </div>
             </div>
         </div>
@@ -291,31 +281,26 @@
         <div class="modal-content">
             <div class="modal-header py-1 border-0">
                 <h5 class="modal-title" id="exampleModalLabel">Agregar Docentes</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick=" limpiarAsignarMateriaModal()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <div class="form-group form-group-sm ">
-                    <label for="" class="laber-form my-0 py-0">Sede</label>
-                    <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectsede" data-live-search="true" data-style="btn-white">
-                        <option value="">Todos</option>
-                    </select>
-                </div>
+
 
                 <div class="form-group form-group-sm ">
                     <label for="" class="laber-form my-0 py-0">grado</label>
-                    <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectsede" data-live-search="true" data-style="btn-white">
-                        <option value="">Todos</option>
+                    <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectgrado" data-live-search="true" data-style="btn-white">
+                        <option value="" disabled selected>Selecciona una opción</option>
                     </select>
                 </div>
 
        
                 <div class="form-group form-group-sm ">
                     <label for="" class="laber-form my-0 py-0">Materia</label>
-                    <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectsede" data-live-search="true" data-style="btn-white">
-                        <option value="">Todos</option>
+                    <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectMaterias" data-live-search="true" data-style="btn-white">
+                        <option value="" disabled selected>Selecciona una opción</option>
                     </select>
                 </div>
 
@@ -323,8 +308,93 @@
 
             <div class="modal-footer border-0 py-1">
                 <div class="form-group d-flex">
-                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cancelar" data-dismiss="modal" readonly>
-                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" value="Guardar" readonly>
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" id="asignarcerraModal" onclick=" limpiarAsignarMateriaModal()" value="Cancelar" data-dismiss="modal" readonly>
+                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" onclick="guardarasignaturasDocente()" value="Guardar" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="AsignargradoTitular" tabindex="-1" aria-labelledby="GestionFamiliarlabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable h-75">
+        <div class="modal-content">
+            <div class="modal-header py-1 border-0">
+                <h5 class="modal-title" id="GestionFamiliarlabel">Asignacion de titular</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body py-0 my-0">
+                <div class="detalles__estu py-2">
+                    <div class="detalles__text table_colums">
+                        <div class="colums__text" id="detallesDocentesTitular">
+                            <span class="text__bold">Codigo docente: </span><span class="text__normal"></span><br>
+                            <span class="text__bold">Nombre completo: </span><span class="text__normal"></span><br>
+                            <span class="text__bold">Sede: </span><span class="text__normal"></span><br>
+                            <input type="hidden" id="sedeDocenteTitular" value="" />
+                        </div>
+                    </div>
+
+                    <div class="detalles__boton">
+                        <a class="form-control form-control-sm bg-primary text-white text__decaoration" data-toggle="modal" onclick="asignaragradoMateriaTitular()" data-target="#TitularGrupo">
+                            Agregar
+                        </a>
+                    </div>
+
+                </div>
+                <input type="hidden" id="documentoDocenteTitular" class="formularioDocente" value="">
+                <div class="table__container py-1 my-0" id="GradosTitular">
+                </div>
+            </div>
+            <div class="modal-footer border-0 form-group py-1 my-1">
+                <div class="form-group d-flex">
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cerrar" data-dismiss="modal" readonly>
+        </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="TitularGrupo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header py-1 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">Asignar titular</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpirModalAgregarTitular()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+
+                <div class="form-group form-group-sm ">
+                    <label for="" class="laber-form my-0 py-0">grado</label>
+                    <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectgradotitular" data-live-search="true" data-style="btn-white">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group form-group-sm ">
+                    <label for="" class="laber-form my-0 py-0">Grupo</label>
+                    <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="selectgrupotitular" data-live-search="true" data-style="btn-white">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="modal-footer border-0 py-1">
+                <div class="form-group d-flex">
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" id="cerraagragratitularModal" onclick="limpirModalAgregarTitular()" value="Cancelar" data-dismiss="modal" readonly>
+                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" onclick="asignarTitularGrupo()" value="Guardar" readonly>
                 </div>
             </div>
         </div>

@@ -1,0 +1,56 @@
+﻿<nav class="navbar navbar-light my-0 py-0 d-flex justify-content-between my-1">
+
+    <div class=" table_colums">
+        <div class="" id="detallesDocentes">
+            <span class="text__bold">Grado: </span><span class="text__normal"></span><br>
+            <span class="text__bold">Sede: </span><span class="text__normal"></span><br>
+
+            <input type="hidden" id="grupo" value="" />
+        </div>
+    </div>
+    <div class="form-group form-group-sm periodossDocente">
+        <label for="" class="my-0 py-0">Selecionar Periodo</label>
+        <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="periodoAcademico" data-live-search="true" data-style="btn-white">
+            <option value="" disabled selected>Selecciona una opción</option>
+
+
+        </select>
+    </div>
+</nav>
+<div class="table__container" id="tablaconvivenciaEstudiantes">
+</div>
+<div class="modal fade" id="agregarNotasCovivencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header py-1 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Nota de convivencia</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarnotaConvivenciaEstudiante()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="form-row">
+                        <input type="hidden" id="documenteEstudianteC" value="" />
+                        <div class="col">
+                            <div class="form-group form-group-sm my-0">
+                                <label for="" class="laber-form my-0 py-0">Nota</label>
+                                <input type="text" class="form-control form-control-sm notasEstudiante" value="" placeholder="" id="Notaconvivencia">
+                            </div>
+                        </div>
+                        
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-0 py-1">
+                <div class="form-group d-flex">
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" id="cerraModalNotasConvivencia" onclick="limpiarnotaConvivenciaEstudiante()" value="Cancelar" data-dismiss="modal" readonly>
+                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" onclick="guardarNotaconvivencia()" value="Guardar" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/ConvivenciaEstudiantes.js"></script>

@@ -1,3 +1,4 @@
+/*-------orden de ejecucion de scripts ---------- Script Nº4*/
 use bdColegio;
 
 /*--------------------------Registrar Estudiante-------------------------*/
@@ -94,14 +95,25 @@ create procedure `registrarFamiliar`(
     parentescoFamiliarEs varchar(400),
     responsabilidadEconomicaFamiliarEs varchar(400),
     esAcudiente varchar(400),
+    esdesplazado varchar(400),
+    fechaNacimientoAcudiente varchar(400),
+    nivelEscolaridadAcudiente varchar(400),
+    ubicacionAcudiente varchar(400),
     generoFamiliarEs varchar(400),
     identificacionEstudianteEs long
 ) 
 begin
-	insert into Familiar (identificacionFamiliar, nombreFamiliar, ocupacionFamiliar, correoFamiliar, celularFamiliar, 
-						   parentescoFamiliar, responsabilidadEconomicaEstudiante, estadoAcudiente, Genero_idGenero, Estudiante_idEstudiante)
-				value(identificacionFamiliarEs, nombreFamiliarEs, ocupacionFamiliarEs, correoFamiliarEs, celularFamiliarEs, parentescoFamiliarEs,
-					  responsabilidadEconomicaFamiliarEs, esAcudiente, (select ObtenerIdGenero(generoFamiliarEs)), (select ObtenerIdEstudiante(identificacionEstudianteEs)));
+	if ((FunexisteFamiliarEstudiante(identificacionFamiliarEs)) = 0) then
+		insert into Familiar (identificacionFamiliar, nombreFamiliar, ocupacionFamiliar, correoFamiliar, celularFamiliar, 
+							   parentescoFamiliar, responsabilidadEconomicaEstudiante, estadoAcudiente, esDezplazado, fechaNacimiento,
+							   nivelEscolaridad, ubicacion, fkidGenero, Estudiante_idEstudiante)
+					value(identificacionFamiliarEs, nombreFamiliarEs, ocupacionFamiliarEs, correoFamiliarEs, celularFamiliarEs, parentescoFamiliarEs,
+						  responsabilidadEconomicaFamiliarEs, esAcudiente, esdesplazado, fechaNacimientoAcudiente, nivelEscolaridadAcudiente, ubicacionAcudiente,
+						  (select ObtenerIdGenero(generoFamiliarEs)), (select ObtenerIdEstudiante(identificacionEstudianteEs)));
+		select 1 as ValidacionRegistro;
+	else
+		select 0 as ValidacionRegistro;
+	end if;
 END$$
 
 /*--------------------------Registrar Observacion-------------------------*/
@@ -179,3 +191,36 @@ begin
 END$$
 
 
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `existeFamiliarEstudiante` $$
+create procedure `existeFamiliarEstudiante`(identificacionFamiliar long) 
+begin
+    SELECT COUNT(*) > 0 AS existe_valor
+	FROM Familiar as f
+	WHERE f.identificacionFamiliar = identificacionFamiliar;
+END$$
+
+/*--------------------------Obtener Periodo Habilitado -------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `ObtenerGrupoEstudiante` $$
+create procedure `ObtenerGrupoEstudiante`(identificacionEstudiante long) 
+begin    
+		SELECT DISTINCT gg.grupoGrado as Grupo
+        From Estudiante AS e
+        inner join EstudiantesGradoGrupo as egg on egg.fkidEstudiante = e.idEstudiante
+        inner join GradoGrupo as gg on egg.fkidGradoGrupo = gg.idGradoGrupo
+        WHERE e.Usuario_identificacion = identificacionEstudiante;
+END$$
+
+/*--------------------------Obtener Periodo Habilitado -------------------------*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `ObtenerGradoEstudiante` $$
+create procedure `ObtenerGradoEstudiante`(identificacionEstudiante long) 
+begin    
+		SELECT DISTINCT g.nombreGrado as Grado
+        From Estudiante AS e
+        inner join EstudiantesGradoGrupo as egg on egg.fkidEstudiante = e.idEstudiante
+        inner join GradoGrupo as gg on egg.fkidGradoGrupo = gg.idGradoGrupo
+        inner join Grados as g on gg.fkidGrado = g.idGrado
+        WHERE e.Usuario_identificacion = identificacionEstudiante;
+END$$
