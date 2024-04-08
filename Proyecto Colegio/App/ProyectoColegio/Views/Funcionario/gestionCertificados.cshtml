@@ -31,6 +31,12 @@
 
 </div>
 <div class="table__container" id="tablaCertificados">
+
+    <div class="h-100 w-100  d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 5rem; height: 5rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
    
 </div>
 <div class="barrapaginacion__container">
@@ -61,10 +67,10 @@
                 </button>
             </div>
             <div class="modal-body py-0 my-0">
-
+                <input type="hidden" id="identificacionEstudanteBoletin" value="" />
                 <div class="form-group form-group-sm">
-                    <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Boletin actual" readonly>
-                    <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Boletin Extendido" readonly data-toggle="modal" data-target="#notaacademicas">
+                    <input type="submit" class="form-control form-control-sm bg-primary text-white" value="Boletin" onclick="generarCertificadoEstudioBoletin()" readonly>
+                  
 
                 </div>
 
@@ -79,247 +85,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="notaacademicas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-lg modal-dialog-scrollable h-100">
-        <div class="modal-content">
-            <div class="modal-header py-1  my-0 border-0">
-                <h5 class="modal-title" id="exampleModalLabel">Boletin</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body h-100 my-0 py-0 ">
-                <div class="detalles__estu py-0 my-0  ">
-                    <div class="detalles__text table_colums">
-                        <div class="colums__text">
-                            <span class="text__bold">Grado: </span><span class="text__normal">quinto   - 2024 </span><br>
-                            <span class="text__bold">Nombre completo: </span><span class="text__normal">juanito perez nose</span><br>
-
-                        </div>
-                    </div>
-                    <div class="detalles__boton">
-                        <a class="form-control form-control-sm bg-primary text-white text__decaoration">
-                            Descargar boletin
-                        </a>
-                    </div>
-                </div>
-                <div class="">
-                    <p class="text__Periodo">Periodo 1</p>
-                    <table class="table table__information table__modals table-sm tables--modals--sms">
-                        <thead>
-                            <tr>
-
-                                <th>Materia</th>
-                                <th>Nota</th>
-                                <th>Falla</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Puedes agregar filas con datos aquí -->
-                            <tr>
-                                <td>Matemáticas</td>
-                                <td>8.5</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>Ciencias Naturales</td>
-                                <td>9.0</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>Historia</td>
-                                <td>7.2</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>Literatura</td>
-                                <td>6.8</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Idiomas</td>
-                                <td>9.5</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>Arte</td>
-                                <td>8.0</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Educación Física</td>
-                                <td>9.2</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="text__Periodo">Periodo 1</p>
-                    <table class="table table__information table__modals table-sm tables--modals--sms">
-                        <thead>
-                            <tr>
-
-                                <th>Materia</th>
-                                <th>Nota</th>
-                                <th>Falla</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Puedes agregar filas con datos aquí -->
-                            <tr>
-                                <td>Matemáticas</td>
-                                <td>8.5</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>Ciencias Naturales</td>
-                                <td>9.0</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>Historia</td>
-                                <td>7.2</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>Literatura</td>
-                                <td>6.8</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Idiomas</td>
-                                <td>9.5</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>Arte</td>
-                                <td>8.0</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Educación Física</td>
-                                <td>9.2</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <p class="text__Periodo">Periodo 1</p>
-                    <table class="table table__information table__modals table-sm tables--modals--sms">
-                        <thead>
-                            <tr>
-
-                                <th>Materia</th>
-                                <th>Nota</th>
-                                <th>Falla</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Puedes agregar filas con datos aquí -->
-                            <tr>
-                                <td>Matemáticas</td>
-                                <td>8.5</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>Ciencias Naturales</td>
-                                <td>9.0</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>Historia</td>
-                                <td>7.2</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>Literatura</td>
-                                <td>6.8</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Idiomas</td>
-                                <td>9.5</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>Arte</td>
-                                <td>8.0</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Educación Física</td>
-                                <td>9.2</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <p class="text__Periodo">Periodo 1</p>
-                    <table class="table table__information table__modals table-sm tables--modals--sms">
-                        <thead>
-                            <tr>
-
-                                <th>Materia</th>
-                                <th>Nota</th>
-                                <th>Falla</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Puedes agregar filas con datos aquí -->
-                            <tr>
-                                <td>Matemáticas</td>
-                                <td>8.5</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>Ciencias Naturales</td>
-                                <td>9.0</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>Historia</td>
-                                <td>7.2</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>Literatura</td>
-                                <td>6.8</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Idiomas</td>
-                                <td>9.5</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>Arte</td>
-                                <td>8.0</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Educación Física</td>
-                                <td>9.2</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-
-
-            </div>
-            <div class="modal-footer border-0 py-1 my-0">
-                <div class="form-group d-flex">
-                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cancelar" data-dismiss="modal" readonly>
-                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" value="Guardar" readonly>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
@@ -335,18 +100,22 @@
             </div>
             <div class="modal-body">
                 <div class="d-flex ">
-                    <div class="">
+                    <input type="hidden" id="identificacionEstudante" />
+                    <div class="col">
                         <div class="form-group form-group-sm">
-                            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="observador del estudiante" readonly>
-                            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="paz y salvo" readonly>
-                            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="carnet" readonly>
+                          
+                            <input type="submit" class="form-control form-control-sm bg-primary text-white" onclick="generarCertificadoEstudiante('formatoPazYSalvo1')" value="paz y salvo 1" readonly>
+                            <input type="submit" class="form-control form-control-sm bg-primary text-white" onclick="generarCertificadoEstudiante('formatoPazYSalvo2')" value="paz y salvo 2" readonly>
+                            <input type="submit" class="form-control form-control-sm bg-primary text-white" onclick="generarCertificadoEstudiante('formatoPazYSalvo3')" value="paz y salvo 3" readonly>
+                           
 
                         </div>
                     </div>
-                    <div class="">
+                    <div class="col">
                         <div class="form-group form-group-sm">
-                            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="certificado de estudio" readonly>
-                            <input type="submit" class="form-control form-control-sm bg-primary text-white" value="hoja de matricula" readonly>
+                            <input type="submit" class="form-control form-control-sm bg-primary text-white" onclick="generarCertificadoEstudio()" value="certificado de estudio" readonly>
+                            <input type="submit" class="form-control form-control-sm bg-primary text-white" onclick="generarCertificadoEstudiante('formatoHojaMatricula')" value="hoja de matricula" readonly>
+                            <input type="submit" class="form-control form-control-sm bg-primary text-white" onclick="generarCertificadoEstudiante('formatoCarnet')" value="carnet" readonly>
 
                         </div>
                     </div>

@@ -181,7 +181,7 @@ namespace ProyectoColegio.Data
                 MySqlConnection conexion = gestorConexion.ObtenerConexion();
                 //conexion.Open();
                 //String sql = "call obtenerCodigoEstudiantes(@identificacionUs)";
-                string sqlConsulta = $"CALL bdColegio.{nombreProcedimiento}(@{nombreParametro})";
+                string sqlConsulta = $"CALL db_aa74fb_bdcoleg.{nombreProcedimiento}(@{nombreParametro})";
                 MySqlCommand conexionCommand = new MySqlCommand(sqlConsulta, conexion);
                 conexionCommand.Parameters.AddWithValue($"@{nombreParametro}", valorParametro);
                 MySqlDataReader mySqlDataReader = conexionCommand.ExecuteReader();
@@ -223,7 +223,7 @@ namespace ProyectoColegio.Data
                 //conexion.Open();
 
                 // Construye la consulta con los parámetros
-                string sqlConsulta = $"CALL bdColegio.{nombreProcedimiento}(";
+                string sqlConsulta = $"CALL db_aa74fb_bdcoleg.{nombreProcedimiento}(";
 
                 foreach (var parametro in parametros)
                 {

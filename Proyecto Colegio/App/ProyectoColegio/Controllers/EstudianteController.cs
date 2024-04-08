@@ -238,10 +238,11 @@ namespace ProyectoColegio.Controllers
                     listaPeriodos.Add(new Periodo { Nombre_periodo = periodo, Nota_periodo = NotaXPeriodoXAsignatura(Convert.ToString(item[0]), periodo) });
 
                 }
+                string notaFinal = Convert.ToString(item[3]).Replace('.', ',');
                 notaEstudiante.Materia = Convert.ToString(item[0]);
                 notaEstudiante.Carga_Horario = Convert.ToString(item[1]);
                 notaEstudiante.Inasistencia = Convert.ToString(item[2]);
-                notaEstudiante.Nota_final = Convert.ToString(item[3]);
+                notaEstudiante.Nota_final = notaFinal;
                 notaEstudiante.Periodo = listaPeriodos;
                 notasEstudiante.Add(notaEstudiante);
 
@@ -302,9 +303,16 @@ namespace ProyectoColegio.Controllers
             estudianteBoletin.Sede = DatosCompartidos.MiDato;
             estudianteBoletin.Grado = DatosCompartidos.Grado; 
             estudianteBoletin.Grupo = DatosCompartidos.Grupo;
-            estudianteBoletin.Notas_estudiante = notasEstudiante;     
-
-            return Json(notasEstudiante);         
+            estudianteBoletin.Notas_estudiante = notasEstudiante;
+            DatosCompartidos.EstudianteCertificados.NombreUsuario = DatosCompartidos.NombreUsuario;
+            DatosCompartidos.EstudianteCertificados.Identificacion = Convert.ToInt32(DatosCompartidos.MiDato);
+            DatosCompartidos.EstudianteCertificados.Grado = DatosCompartidos.Grado;
+            DatosCompartidos.EstudianteCertificados.Grupo = DatosCompartidos.Grupo;
+            DatosCompartidos.EstudianteCertificados.SedeEstudiante = DatosCompartidos.SedeUsuario;
+            DatosCompartidos.DatosNotas = estudianteBoletin;
+            ObtenerPuestoEstudianteBoletin();
+            ObtenerFirmaTitular();
+            return Json(estudianteBoletin);         
         }
 
         public IActionResult NotasEstudiantePreescolar1() { return View(); } // notas1 estudiante de Preescolar
@@ -358,7 +366,321 @@ namespace ProyectoColegio.Controllers
 
             return nota;
         }
-        
+
+        public void ObtenerPuestoEstudianteBoletin()
+        {
+
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+            {
+                    { "DocEstudiante", Convert.ToInt32(DatosCompartidos.MiDato) },
+                    { "grupoRef", DatosCompartidos.Grupo },
+            };
+
+            int parametrosRecividos = 2;
+            var resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("ObtenerPuestoEstudianteBoletin", parametros, parametrosRecividos, _contexto.Conexion);
+           
+            foreach (List<object> item in resultados)
+            {
+
+                if (Convert.ToString(item[0]) == DatosCompartidos.MiDato)
+                {
+                    DatosCompartidos.PuestoPeriodo = Convert.ToString(item[1]);
+                }
+                 
+            }
+            
+        }
+
+        public JsonResult InfoBoletinEstudianteIdentificacion(int idEstudiante)
+        {
+            EstudianteBoletin estudianteBoletin = new EstudianteBoletin();
+            List<NotasEstudiante> notasEstudiante = new List<NotasEstudiante>();
+
+            List<Object> DatosRef = ObtenerMateriasXEstudianteInfoParcial2(idEstudiante);
+            List<string> periodos = Periodos();
+
+
+            foreach (List<object> item in DatosRef)
+            {
+                NotasEstudiante notaEstudiante = new NotasEstudiante();
+
+                List<Periodo> listaPeriodos = new List<Periodo>();
+
+                foreach (string periodo in periodos)
+                {
+
+                    listaPeriodos.Add(new Periodo { Nombre_periodo = periodo, Nota_periodo = NotaXPeriodoXAsignatura2(Convert.ToString(item[0]), periodo) });
+
+                }
+                string notaFinal = Convert.ToString(item[3]).Replace('.', ',');
+                notaEstudiante.Materia = Convert.ToString(item[0]);
+                notaEstudiante.Carga_Horario = Convert.ToString(item[1]);
+                notaEstudiante.Inasistencia = Convert.ToString(item[2]);
+                notaEstudiante.Nota_final = notaFinal;
+                notaEstudiante.Periodo = listaPeriodos;
+                notasEstudiante.Add(notaEstudiante);
+
+            }
+
+            var resultados = new List<Periodo>();
+
+            foreach (string periodo in periodos)
+            {
+                float sumaNotas = 0;
+                int cantidadMaterias = 0;
+
+                foreach (var materia in notasEstudiante)
+                {
+                    var notaPeriodo = materia.Periodo.FirstOrDefault(p => p.Nombre_periodo == periodo)?.Nota_periodo;
+                    if (notaPeriodo != null)
+                    {
+                        sumaNotas += Convert.ToSingle(notaPeriodo);
+                        cantidadMaterias++;
+
+                    }
+
+                }
+                if (cantidadMaterias > 0)
+                {
+                    float promedioPeriodo = sumaNotas / cantidadMaterias;
+                    resultados.Add(new Periodo { Nombre_periodo = periodo, Nota_periodo = promedioPeriodo.ToString() });
+                }
+                else
+                {
+
+                    resultados.Add(new Periodo { Nombre_periodo = periodo, Nota_periodo = "0" });
+                }
+
+
+
+            }
+
+            float notaFinalPeriodo = 0;
+            foreach (var periodo in resultados)
+            {
+                notaFinalPeriodo += Convert.ToSingle(periodo.Nota_periodo);
+            }
+
+            float promedio_final = notaFinalPeriodo / resultados.Count;
+            notasEstudiante.Add(
+               new NotasEstudiante
+               {
+                   Materia = "PROMEDIO Y VALORACION FINAL DE TODAS LAS AREAS",
+                   Carga_Horario = "0",
+                   Inasistencia = "0",
+                   Nota_final = promedio_final.ToString(),
+                   Periodo = resultados
+
+
+
+               });
+
+
+
+            estudianteBoletin.Nombre_estudiante = DatosCompartidos.EstudianteCertificados.NombreUsuario;
+            estudianteBoletin.Sede = Convert.ToString(DatosCompartidos.EstudianteCertificados.Identificacion);
+            estudianteBoletin.Grado = DatosCompartidos.EstudianteCertificados.Grado;
+            estudianteBoletin.Grupo = DatosCompartidos.EstudianteCertificados.Grupo;
+            estudianteBoletin.Notas_estudiante = notasEstudiante;
+
+            DatosCompartidos.DatosNotas = estudianteBoletin;
+            ObtenerPuestoEstudianteBoletin2();
+            return Json(estudianteBoletin);
+        }
+
+        public List<object> ObtenerMateriasXEstudianteInfoParcial2(int idEstudiante)
+        {
+            var resultados = new List<object>();
+            List<object> estudiantes = new List<object>();
+            string grupo = DatosCompartidos.EstudianteCertificados.Grupo;
+            long identificacion = idEstudiante;
+
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+            {
+                    { "DocEstudianteRef", identificacion },
+                    { "GrupoRef", grupo },
+            };
+
+            int parametrosRecividos = 4;
+            resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("ObtenerEstudiantesNotasXGrupoInfoParcial", parametros, parametrosRecividos, _contexto.Conexion);
+
+            foreach (var item in resultados)
+            {
+                estudiantes.Add(item);
+                //DatosCompartidos.ListaEstudiantesXGrupo.Add(Convert.ToString(item));
+            }
+
+            return estudiantes;
+        }
+
+        public void ObtenerPuestoEstudianteBoletin2()
+        {
+
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+            {
+                    { "DocEstudiante", DatosCompartidos.EstudianteCertificados.Identificacion },
+                    { "grupoRef", DatosCompartidos.EstudianteCertificados.Grupo },
+            };
+
+            int parametrosRecividos = 2;
+            var resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("ObtenerPuestoEstudianteBoletin", parametros, parametrosRecividos, _contexto.Conexion);
+
+            foreach (List<object> item in resultados)
+            {
+
+                if (Convert.ToString(item[0]) == DatosCompartidos.MiDato)
+                {
+                    DatosCompartidos.PuestoPeriodo = Convert.ToString(item[1]);
+                }
+
+            }
+
+        }
+
+        public string NotaXPeriodoXAsignatura2(string asignaturaRef, string periodoRef)
+        {
+            var resultados = new List<object>();
+            string nota = "0";
+            string grupo = DatosCompartidos.EstudianteCertificados.Grupo;
+            long identificacion = DatosCompartidos.EstudianteCertificados.Identificacion;
+
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+            {
+                    { "documentoEstudiante", identificacion },
+                    { "asignaturaRef", asignaturaRef },
+                    { "periodoRef", periodoRef },
+            };
+
+            int parametrosRecividos = 1;
+            resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("ObtenerNotasEstudiantesXMateria", parametros, parametrosRecividos, _contexto.Conexion);
+
+            foreach (var item in resultados)
+            {
+                nota = Convert.ToString(item);
+            }
+
+            return nota;
+        }
+
+        public List<string> ObtenerFirmaTitular()
+        {
+            // Obtener los datos de la imagen de la base de datos
+            long DocDueñoRef = Convert.ToInt32(ObtenerTitularXGrupo());
+            List<string> Imagen = new List<string>();
+
+            foreach (var item in ObtenerImagen("FirmaRector.png"))
+            {
+                DatosCompartidos.FirmaRector = Convert.ToString(item);
+            }
+            foreach (var item in ObtenerImagen("FirmaSecretario.png"))
+            {
+                DatosCompartidos.FirmaSecretario = Convert.ToString(item);
+            }
+
+            try
+            {
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    { "DocDueñoRef", DocDueñoRef },
+                };
+
+                int grupoAtributosEsperadosGrupo = 4;
+
+                var resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("obtenerFirmaTitular", parametros, grupoAtributosEsperadosGrupo, _contexto.Conexion);
+
+                // Verificar si se encontraron resultados
+                if (resultados.Count > 0)
+                {
+                    foreach (List<object> item in resultados)
+                    {
+                        //Imagen.Add(Convert.ToString(item[1])); //nombre de la imagen
+                        //Imagen.Add(Convert.ToString(item[2])); //contenido de la imagen
+                        DatosCompartidos.FirmaTitular = Convert.ToString(item[2]);
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener la imagen de la base de datos: {ex.Message}");
+                // Manejar el error adecuadamente, por ejemplo, mostrando un mensaje al usuario
+            }
+
+            return Imagen;
+        }
+
+        public string ObtenerTitularXGrupo()
+        {
+            // Obtener los datos de la imagen de la base de datos
+            string docente = "0";
+
+            try
+            {
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    { "nomGrupo", DatosCompartidos.Grupo },
+                };
+
+                int grupoAtributosEsperadosGrupo = 2;
+
+                var resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("obtenerTutilarGrupoxGrupo", parametros, grupoAtributosEsperadosGrupo, _contexto.Conexion);
+
+                // Verificar si se encontraron resultados
+                if (resultados.Count > 0)
+                {
+                    foreach (List<object> item in resultados)
+                    {
+                        docente = Convert.ToString(item[0]); //solo me va retornar el doc
+                        //docente = Convert.ToString(item[1]); //devuleve el nombre
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener la imagen de la base de datos: {ex.Message}");
+                // Manejar el error adecuadamente, por ejemplo, mostrando un mensaje al usuario
+            }
+
+            return docente;
+        }
+
+        public List<string> ObtenerImagen(string nombreArchivo)
+        {
+            // Obtener los datos de la imagen de la base de datos
+            List<string> Imagen = new List<string>();
+
+            try
+            {
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    { "nombreArchivoRef", nombreArchivo },
+                };
+
+                int grupoAtributosEsperadosGrupo = 4;
+
+                var resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("obtenerImagen2", parametros, grupoAtributosEsperadosGrupo, _contexto.Conexion);
+
+                // Verificar si se encontraron resultados
+                if (resultados.Count > 0)
+                {
+                    foreach (List<object> item in resultados)
+                    {
+                        Imagen.Add(Convert.ToString(item[1]));
+                        Imagen.Add(Convert.ToString(item[2]));
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener la imagen de la base de datos: {ex.Message}");
+                // Manejar el error adecuadamente, por ejemplo, mostrando un mensaje al usuario
+            }
+
+            return Imagen;
+        }
 
     }
+    
 }

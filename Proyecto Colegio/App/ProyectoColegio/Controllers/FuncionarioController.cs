@@ -25,6 +25,9 @@ using DinkToPdf;
 using DinkToPdf.Contracts;
 using System.Linq;
 using static iText.Layout.Borders.Border;
+using System.Web;
+
+
 
 namespace ProyectoColegio.Controllers
 {
@@ -554,8 +557,11 @@ namespace ProyectoColegio.Controllers
             
         }
         //https://localhost:7227/Funcionario/retornarInfoFamiliaresEstudianteXCertificados/?identificacion=106600
-        public JsonResult retornarInfoFamiliaresEstudianteXCertificados (int identificacion) //idEstudiante - codigo
+        public string retornarInfoFamiliaresEstudianteXCertificados (int identificacion) //idEstudiante - codigo
         {
+            string retorno = "";
+            List<Familiar> familiares = new List<Familiar>();
+
             if (identificacion != 0)
             {                
                 List<object> familiaresEst = new List<object>();
@@ -564,25 +570,70 @@ namespace ProyectoColegio.Controllers
                 {
                     { "identificacionEst", identificacion },
                 };
-                int parametrosEsperados = 27;
+                int parametrosEsperados = 35;
                 List<Object> resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("ObtenerInfoFamiliaresEstudiante_Certificados", parametrosConsulta, parametrosEsperados, _contexto.Conexion);
 
-                foreach (var item in resultados)
+                //foreach (var item in resultados)
+                //{
+                //    object familiarEst = new object();
+                //    familiarEst = item;
+                //    familiaresEst.Add(familiarEst);
+                //}
+                foreach (List<Object> item in resultados)
                 {
-                    object familiarEst = new object();
-                    familiarEst = item;
-                    familiaresEst.Add(familiarEst);
+                    Usuario estudiante = new Usuario();
+                    Familiar familiar = new Familiar();
 
+                    estudiante.NombreUsuario = Convert.ToString(item[0]);
+                    estudiante.FechaNacimiento = Convert.ToString(item[8]);
+                    estudiante.Identificacion = Convert.ToInt32(item[1]);
+                    estudiante.Discapacidad = Convert.ToString(item[12]);
+                    estudiante.Direccion = Convert.ToString(item[6]);
+                    estudiante.esInternado = Convert.ToString(item[30]);
+                    estudiante.TelefonoCelular = Convert.ToString(item[3]);
+                    estudiante.EPS = Convert.ToString(item[15]);
+                    estudiante.esDesplazado = Convert.ToString(item[9]);
+                    estudiante.SedeEstudiante = Convert.ToString(item[31]);
+                    estudiante.TipoSangre = Convert.ToString(item[10]);
+                    estudiante.Grado = Convert.ToString(item[28]);
+                    estudiante.Grupo = Convert.ToString(item[29]);
+                    estudiante.CiudadNacimiento = Convert.ToString(item[32]);
+                    estudiante.CiudadExpedicionDocumento = Convert.ToString(item[33]);
+                    estudiante.TipoDocumento = Convert.ToString(item[34]);
+
+                    familiar.nombresFamiliar = Convert.ToString(item[17]);
+                    try
+                    {
+                        familiar.identificacionFamiliar = Convert.ToInt32(item[27]);
+                    }
+                    catch (FormatException)
+                    {
+                        familiar.identificacionFamiliar = 0;
+                    }
+
+                    familiar.ocupacionFamiliar = Convert.ToString(item[18]);
+                    familiar.celularFamiliar = Convert.ToString(item[19]);
+                    familiar.ubicacion = Convert.ToString(item[26]);
+                    familiar.parentescoFamiliar = Convert.ToString(item[20]);
+                    familiar.desplazado = Convert.ToString(item[23]);
+                    familiar.fechaNacimiento = Convert.ToString(item[24]);
+                    familiar.nivelEscolaridad = Convert.ToString(item[25]);
+                    familiares.Add(familiar);
+
+                    DatosCompartidos.EstudianteCertificados = estudiante;
+                    DatosCompartidos.Familiares = familiares;
                 }
 
-                return Json(familiaresEst);
+                foreach (var item in ObtenerFoto(identificacion))
+                {
+                    DatosCompartidos.Foto = Convert.ToString(item);
+                }
+
+                retorno = "1"; 
             }
-            else
-            {
-                return Json(null);
-            }
-            
-        }
+
+            return retorno;
+        }       
 
         public string RegistrarDocenteRetorno(Docente docente)
         {
@@ -685,6 +736,11 @@ namespace ProyectoColegio.Controllers
             }
 
             return retorno;
+        }
+
+        public ActionResult controlPeriodo() {
+
+            return View();  
         }
 
         public IActionResult CargarCsv()
@@ -1562,36 +1618,16 @@ namespace ProyectoColegio.Controllers
         }
 
         public IActionResult gestionCertificados()
-        {
-            //var sede = TempData["sedeGestionCertificado"];
-            //var grupo = TempData["grupoGestionCertificado"];
+        {            
 
-            //if (variablesGlobales.Sedes(_contexto.Conexion) != null && variablesGlobales.GruposGrado(_contexto.Conexion) != null)
-            //{
-            //    ViewBag.GruposGrado = variablesGlobales.GruposGrado(_contexto.Conexion);
-            //    ViewBag.Sedes = variablesGlobales.Sedes(_contexto.Conexion);
-
-            //    //muestra todos los estudiantes de la institucion
-            //    ViewBag.ListaEstudiante = consultasGlobales.mostrarCsv(_contexto.Conexion, null, null);
-            //}
-
-            //if (sede != null)
-            //{
-            //    //muestra los estudiantes por sede
-            //    ViewBag.ListaEstudianteGrupo = consultasGlobales.mostrarCsv(_contexto.Conexion, Convert.ToString(sede), null);
-            //    //ViewBag.GruposGrado = variablesGlobales.GruposGradoSede(Convert.ToString(sede), _contexto.Conexion);
-            //    ViewBag.SedeSeleccionada = sede;
-
-            //    if (grupo != null)
-            //    {
-            //        //muestra los estudiantes por grupo de sede
-            //        ViewBag.ListaEstudianteGrupo = consultasGlobales.mostrarCsv(_contexto.Conexion, Convert.ToString(sede), Convert.ToString(grupo));
-            //        ViewBag.GrupoSeleccionado = grupo;
-            //    }
-
-            //    Console.WriteLine("sede: " + temp.algo );
-            //    Console.WriteLine(grupo);
-            //}
+            foreach (var item in ObtenerImagen("FirmaRector.png"))
+            {
+                DatosCompartidos.FirmaRector = Convert.ToString(item);
+            }
+            foreach (var item in ObtenerImagen("FirmaSecretario.png"))
+            {
+                DatosCompartidos.FirmaSecretario = Convert.ToString(item);
+            }            
 
             return View();
         }
@@ -1937,6 +1973,173 @@ namespace ProyectoColegio.Controllers
             }
 
             return bandera; 
+        }       
+
+        //public IActionResult SubirImagen()
+        //{
+        //    return View();
+        //}
+        
+
+        //[HttpPost]
+        //public async Task<IActionResult> SubirImagen(Imagenes modelo)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Verificar si se seleccionó un archivo
+        //        if (modelo.ImagenArchivo != null && modelo.ImagenArchivo.Length > 0)
+        //        {
+        //            // Leer el contenido del archivo
+        //            using (var memoryStream = new MemoryStream())
+        //            {
+        //                await modelo.ImagenArchivo.CopyToAsync(memoryStream);
+
+        //                try
+        //                {
+        //                    // Convertir la imagen a base64
+        //                    string base64String = Convert.ToBase64String(memoryStream.ToArray());
+
+        //                    // Llamar al procedimiento almacenado con la imagen en formato base64
+        //                    Dictionary<string, object> parametros = new Dictionary<string, object>
+        //                    {
+        //                        { "nombreImagen", modelo.ImagenArchivo.FileName },
+        //                        { "datosImagen", base64String },
+        //                    };
+
+        //                    ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarImagen2", parametros, _contexto.Conexion);
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    Console.WriteLine($"Error al ejecutar el procedimiento almacenado: {ex.Message}");
+        //                    // Manejar el error adecuadamente, por ejemplo, mostrando un mensaje al usuario
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError(string.Empty, "No se ha seleccionado ningún archivo.");
+        //        }
+        //    }
+
+        //    //return View("TuVista", modelo);
+        //    return View();
+        //}
+
+
+        public string SubirImagen(long DocEstudiante, string ImagenArchivo, string nombreImagen)
+        {
+            string bandera = ""; 
+            if (!string.IsNullOrEmpty(ImagenArchivo))
+            {
+                try
+                {
+                        Dictionary<string, object> parametros = new Dictionary<string, object>
+                        {
+                                { "propietarioIdRef", DocEstudiante },
+                                { "nombreImagenRef", nombreImagen },
+                                { "datosImagenRef", ImagenArchivo },
+                        };
+
+                        ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarFoto", parametros, _contexto.Conexion);
+                    
+                    bandera = "1"; 
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al ejecutar el procedimiento almacenado: {ex.Message}");
+                }
+
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "No se ha seleccionado ningún archivo.");
+            }            
+
+            return bandera; 
+
+        }
+        
+        public string SubirFirma(long DocFuncionario, string ImagenArchivo, string nombreImagen, string Propietario)
+        {
+            string bandera = ""; 
+            if (!string.IsNullOrEmpty(ImagenArchivo))
+            {
+                try
+                {
+                    
+                        Dictionary<string, object> parametros = new Dictionary<string, object>
+                        {
+                                { "propietarioIdRef", DocFuncionario },
+                                { "nombreImagen", nombreImagen },
+                                { "datosImagen", ImagenArchivo },
+                                { "tipoPropietarioRef", Propietario },
+                        };
+
+                        ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarImagen2", parametros, _contexto.Conexion);
+                    
+                    bandera = "1"; 
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error al ejecutar el procedimiento almacenado: {ex.Message}");
+                }
+
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "No se ha seleccionado ningún archivo.");
+            }
+
+
+            return bandera; 
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SubirFoto(Imagenes modelo)
+        {
+            if (ModelState.IsValid)
+            {
+                // Verificar si se seleccionó un archivo
+                if (modelo.ImagenArchivo != null && modelo.ImagenArchivo.Length > 0)
+                {
+                    // Leer el contenido del archivo
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await modelo.ImagenArchivo.CopyToAsync(memoryStream);
+
+                        try
+                        {
+                            // Convertir la imagen a base64
+                            string base64String = Convert.ToBase64String(memoryStream.ToArray());
+
+                            // Llamar al procedimiento almacenado con la imagen en formato base64
+                            Dictionary<string, object> parametros = new Dictionary<string, object>
+                            {
+                                { "propietarioIdRef", Convert.ToInt32(modelo.IdPropietario) },
+                                { "nombreImagenRef", modelo.ImagenArchivo.FileName },
+                                { "datosImagenRef", base64String },                                
+                            };
+
+                            ManejoBaseDatos.EjecutarProcedimientoMultiParametro("registrarFoto", parametros, _contexto.Conexion);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error al ejecutar el procedimiento almacenado: {ex.Message}");
+                            // Manejar el error adecuadamente, por ejemplo, mostrando un mensaje al usuario
+                        }
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "No se ha seleccionado ningún archivo.");
+                }
+            }
+
+            //return View("TuVista", modelo);
+            return RedirectToAction("SubirImagen", "Funcionario");
         }
 
         public JsonResult ObtenerDocentesTitularGrupo(long documento)
@@ -1960,6 +2163,142 @@ namespace ProyectoColegio.Controllers
             return Json(grupo);
         }
 
+        public List<object> ObtenerImagenesTodas()
+        {
+            List<string> imagen = new List<string>();
+            List<object> imagenes = new List<object>();
+            List<string> tiposFirmas = new List<string> { "FirmaRector.png", "FirmaSecretario.png", "FirmaTiturlar.png", "FirmaEstudiante.png" };
+            
+            for (int i = 0; i < tiposFirmas.Count; i++)
+            {
+                List<string> imagenRecuperado = ObtenerImagen(tiposFirmas[i]);
+
+                if (imagenRecuperado != null)
+                {
+                    imagenes.Add(imagenRecuperado);
+                }
+
+            }
+            return imagenes;
+        }
+
+        //public FileContentResult ObtenerImagen(string nombreArchivo)
+        //{
+        //    // Obtener los datos de la imagen de la base de datos
+        //    byte[] datosImagen = null;
+        //    string nombreImagen = "";
+
+        //    try
+        //    {
+        //        Dictionary<string, object> parametros = new Dictionary<string, object>
+        //        {
+        //            { "nombreImagenRef", nombreArchivo },
+        //        };
+
+        //        int grupoAtributosEsperadosGrupo = 2;
+
+        //        var resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("obtenerImagen", parametros, grupoAtributosEsperadosGrupo, _contexto.Conexion);
+
+        //        // Verificar si se encontraron resultados
+        //        if (resultados.Count > 0)
+        //        {
+        //            // Se espera que el primer resultado contenga los datos de la imagen
+        //            datosImagen = (byte[])resultados[1];
+        //            nombreImagen = (string)resultados[0];
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error al obtener la imagen de la base de datos: {ex.Message}");
+        //        // Manejar el error adecuadamente, por ejemplo, mostrando un mensaje al usuario
+        //    }
+
+        //    // Verificar si se encontraron datos de imagen
+        //    if (datosImagen != null && datosImagen.Length > 0)
+        //    {
+        //        // Convertir los datos de la imagen en un objeto FileContentResult
+        //        return new FileContentResult(datosImagen, nombreImagen); // Ajusta el tipo MIME según el tipo de imagen
+        //    }
+        //    else
+        //    {
+        //        // Si no se encontraron datos de imagen, devolver un objeto FileContentResult vacío
+        //        return new FileContentResult(new byte[0], "image/png"); // Devuelve una imagen de marcador de posición o un mensaje de error
+        //    }
+        //} 
+
+        public List<string> ObtenerImagen(string nombreArchivo)
+        {
+            // Obtener los datos de la imagen de la base de datos
+            List<string> Imagen = new List<string>();
+
+            try
+            {
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    { "nombreArchivoRef", nombreArchivo },
+                };
+
+                int grupoAtributosEsperadosGrupo = 4;
+
+                var resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("obtenerImagen2", parametros, grupoAtributosEsperadosGrupo, _contexto.Conexion);
+
+                // Verificar si se encontraron resultados
+                if (resultados.Count > 0)
+                {
+                    foreach (List<object> item in resultados)
+                    {
+                        Imagen.Add(Convert.ToString(item[1]));
+                        Imagen.Add(Convert.ToString(item[2]));
+                    }                    
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener la imagen de la base de datos: {ex.Message}");
+                // Manejar el error adecuadamente, por ejemplo, mostrando un mensaje al usuario
+            }
+
+            return Imagen;
+        }
+
+        public List<string> ObtenerFoto(long DocEstudiante)
+        {
+            // Obtener los datos de la imagen de la base de datos
+            List<string> Imagen = new List<string>();
+
+            try
+            {
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    { "propietarioIdRef", DocEstudiante },
+                };
+
+                int grupoAtributosEsperadosGrupo = 3;
+
+                var resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("obtenerFoto", parametros, grupoAtributosEsperadosGrupo, _contexto.Conexion);
+
+                // Verificar si se encontraron resultados
+                if (resultados.Count > 0)
+                {
+                    foreach (List<object> item in resultados)
+                    {
+                        Imagen.Add(Convert.ToString(item[0]));
+                        Imagen.Add(Convert.ToString(item[1]));
+                        Imagen.Add(Convert.ToString(item[2]));
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener la imagen de la base de datos: {ex.Message}");
+                // Manejar el error adecuadamente, por ejemplo, mostrando un mensaje al usuario
+            }
+
+            return Imagen;
+        }
+
         public JsonResult ObtenerGruposSinTitular(int idGradoRef)
         {
             List<Object> grupos = new List<Object>();
@@ -1980,6 +2319,58 @@ namespace ProyectoColegio.Controllers
 
             return Json(grupos);
         }
+
+        public JsonResult ObtenerPeriodoAcademico()
+        {
+            List<PeriodoAcademico> periodos = new List<PeriodoAcademico>();
+
+            Dictionary<string, Type> atributosSede = new Dictionary<string, Type>
+            {
+                { "IdPeriodo", typeof(int) },
+                { "Periodo", typeof(string) },
+                { "Comienza", typeof(string) },
+                { "Termina", typeof(string) },
+                { "Estado", typeof(string) },
+            };
+
+            var resultados = ManejoBaseDatos.ConsultarProcedimientoDinamico("ObtenerPeriodosAcademico", atributosSede, _contexto.Conexion);
+
+            foreach (List<object> item in resultados)
+            {
+                PeriodoAcademico periodo = new PeriodoAcademico();
+                periodo.idperiodo = Convert.ToInt32(item[0]);
+                periodo.periodo = Convert.ToString(item[1]);
+                periodo.fechaInicio = Convert.ToString(item[2]);
+                periodo.fechaFin = Convert.ToString(item[3]);
+                periodo.estadoPeriodo = Convert.ToString(item[4]);
+                periodos.Add(periodo);
+            }
+
+            return Json(periodos);
+        }
+
+        public string actualizarPeriodo(int idPeriodoRef, string estadoPeriodoRef)
+        {
+            string retorno = "0";
+
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+            {
+                 { "idPeriodoRef", idPeriodoRef },
+                 { "estadoPeriodoRef", estadoPeriodoRef },
+            };
+
+            int grupoAtributosEsperadosGrupo = 1;
+
+            var resultados = ManejoBaseDatos.EjecutarProcedimientoConMultiParametroYConsulta("actualizarPeriodosAcademico", parametros, grupoAtributosEsperadosGrupo, _contexto.Conexion);
+
+            foreach (var item in resultados)
+            {
+                retorno = Convert.ToString(item);
+            }
+
+            return retorno;
+        }
+
     }
 
 }

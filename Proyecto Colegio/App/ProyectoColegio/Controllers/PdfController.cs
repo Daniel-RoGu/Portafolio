@@ -4,6 +4,12 @@ using Rotativa.AspNetCore;
 using DinkToPdf;
 using DinkToPdf.Contracts;
 using ProyectoColegio.Data;
+using System.Text;
+using ProyectoColegio.Models;
+using System.Net.Http;
+using System.Threading.Tasks;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 
 namespace ProyectoColegio.Controllers
 {
@@ -80,20 +86,9 @@ namespace ProyectoColegio.Controllers
             return View(); 
         }
 
-        public IActionResult formatoBoletinPrimariaBachiller() 
-        {
-            return View(); 
-        }
+        public IActionResult Boletin() { return View(); }
 
-        public IActionResult formatoBoletinBachiller() 
-        {
-            return View(); 
-        }
-        
-        public IActionResult formatoBoletinMedeiaAcademica() 
-        {
-            return View(); 
-        }
+
         
         public IActionResult formatoPazYSalvo1() 
         {
@@ -133,6 +128,7 @@ namespace ProyectoColegio.Controllers
 
         public IActionResult MostrarPDFenPagina()
         {
+     
             //sirbe para obtener la ruta de la vista que se quiere imprimir
             string pagina_actual = HttpContext.Request.Path;
             string url_pagina = HttpContext.Request.GetEncodedUrl();
@@ -152,7 +148,8 @@ namespace ProyectoColegio.Controllers
                 {
                     new ObjectSettings()
                     {
-                        Page = url_pagina
+                        Page = url_pagina,
+                        WebSettings ={ LoadImages = true, EnableJavascript=true }
                     }
                 }
             };
@@ -183,7 +180,8 @@ namespace ProyectoColegio.Controllers
                 {
                     new ObjectSettings()
                     {
-                        Page = url_pagina
+                        Page = url_pagina,
+                        WebSettings ={ LoadImages = true, EnableJavascript=true }
                     }
                 }
             };
@@ -194,12 +192,14 @@ namespace ProyectoColegio.Controllers
 
             return File(archivoPdf, "application/pdf", nombrePdf);
         }
-        
+
         public void ActualizarRutaPdf(string RutaPdf)
         {
             DatosCompartidos.RutaPDF = RutaPdf;
-        }        
+        }
 
-    }      
+    }
 
-}
+}         
+
+

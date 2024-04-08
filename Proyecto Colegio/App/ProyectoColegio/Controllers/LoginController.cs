@@ -233,7 +233,34 @@ namespace ProyectoColegio.Controllers
             }
             return grado;
         }
-        
 
+        [HttpPost]
+        public IActionResult VaciarDatosCompartidos()
+        {
+            DatosCompartidos.MiDato = "";
+            DatosCompartidos.SedeUsuario = "";
+            DatosCompartidos.NombreUsuario = "";
+            DatosCompartidos.RolUsuario = "";
+            DatosCompartidos.IdentificacionEstudiante = "";
+            DatosCompartidos.RutaPDF = "";
+            DatosCompartidos.ListaEstudiantesXGrupo = new List<string>();
+            DatosCompartidos.Asignatura = "";
+            DatosCompartidos.Grado = "";
+            DatosCompartidos.Grupo = "";
+            DatosCompartidos.Periodo = "";
+            DatosCompartidos.PuestoPeriodo = "";
+            DatosCompartidos.DatosNotas = new EstudianteBoletin();
+            DatosCompartidos.FirmaRector = "";
+            DatosCompartidos.FirmaSecretario = "";
+            DatosCompartidos.FirmaTitular = "";
+            DatosCompartidos.FirmaRestauranteEscolar = "";
+            DatosCompartidos.FirmaResidenciaEscolar = "";
+            DatosCompartidos.FirmaCafeteria = "";
+            DatosCompartidos.Foto = "";
+            DatosCompartidos.Familiares = new List<Familiar>();
+            DatosCompartidos.EstudianteCertificados = new Usuario();
+
+            return RedirectToAction("Inicio", "Login");
+        }
     }
 }

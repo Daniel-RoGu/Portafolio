@@ -26,6 +26,11 @@
         public String? codigoEstudiante { get; set; }
         private String? grado { get; set; }
         private String? grupo { get; set; }
+        public String? esInternado { get; set; }
+        public String? esDesplazado { get; set; }
+        public String? SedeEstudiante { get; set; }
+        public String? CiudadNacimiento { get; set; }
+        public String? CiudadExpedicionDocumento { get; set; }
 
         public long Identificacion
         {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\ProyectoColegio.csproj": {}
+    "C:\\Users\\Daniel\\Desktop\\App_IE_LaAguililla\\ProyectoColegio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\ProyectoColegio.csproj": {
+    "C:\\Users\\Daniel\\Desktop\\App_IE_LaAguililla\\ProyectoColegio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\ProyectoColegio.csproj",
+        "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\App_IE_LaAguililla\\ProyectoColegio.csproj",
         "projectName": "ProyectoColegio",
-        "projectPath": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\ProyectoColegio.csproj",
+        "projectPath": "C:\\Users\\Daniel\\Desktop\\App_IE_LaAguililla\\ProyectoColegio.csproj",
         "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Daniel\\Desktop\\TrabajoColegio\\App\\ProyectoColegio\\obj\\",
+        "outputPath": "C:\\Users\\Daniel\\Desktop\\App_IE_LaAguililla\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -72,6 +72,16 @@
               "target": "Package",
               "version": "[4.7.0, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.28, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.28, )"
+            },
             "Microsoft.Net.Compilers.Toolset": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -97,6 +107,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.3, )"
             },
             "Rotativa.AspNetCore": {
               "target": "Package",

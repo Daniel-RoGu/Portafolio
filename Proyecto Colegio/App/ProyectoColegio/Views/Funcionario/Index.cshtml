@@ -21,6 +21,17 @@
         </div>
     </div>
     </form>
+
+    <div class="form-group form-group-sm my-0 py-2 col-auto">
+
+
+        <a href="#" class="form-control form-control-sm bg-primary text-white" data-toggle="modal" data-target="#firmasPersonal">Firmas </a>
+
+    </div>
+    <div class="form-group form-group-sm my-0 py-2 col-auto">
+        <a href="~/Funcionario/controlPeriodo" class="form-control form-control-sm bg-primary text-white">Control Periodos </a>
+    
+    </div>
 </nav>
 <div class="navbar navbar-light my-0 py-0 d-flex justify-content-between ">
     <div class="form-group form-group-sm periodoss">
@@ -53,6 +64,11 @@
 
 </div>
 <div class="table__container" id="idestudiantes">
+    <div class="h-100 w-100  d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 5rem; height: 5rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
  
 </div>
 <div class="barrapaginacion__container">
@@ -113,7 +129,7 @@
             <div class="modal-footer border-0 form-group py-1 my-1">
                 <div class="form-group d-flex">
                     <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cerrar" data-dismiss="modal" readonly>
-                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" value="Aceptar" readonly>
+
                 </div>
 
             </div>
@@ -242,7 +258,7 @@
 
 
 <div class="modal fade" id="Registrobservacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-dialog  modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header py-1 border-0">
                 <h5 class="modal-title" id="exampleModalLabel">Registro de observaciones</h5>
@@ -251,18 +267,116 @@
                 </button>
             </div>
             <div class="modal-body">
-
-               
+                <input type="hidden" id="documentoEstudiante" value ="" />
+                <input type="submit" class="form-control form-control-sm bg-primary text-white" onclick="generarObservacioneDatosGenerales()" value="Formato de datos acudientes" readonly>
+                <input type="submit" class="form-control form-control-sm bg-primary text-white" onclick="formatosObservaciones('formatoObservacionTipo1')" value="Formato tipo 1" readonly>
+                <input type="submit" class="form-control form-control-sm bg-primary text-white" onclick="formatosObservaciones('formatoObservacionTipo2')" value="Formato tipo 2" readonly>
+                <input type="submit" class="form-control form-control-sm bg-primary text-white" onclick="formatosObservaciones('formatoObservacionTipo3')" value="Formato tipo 3" readonly>
          
             </div>
             <div class="modal-footer py-1 border-0">
 
                 <div class="form-group d-flex">
                     <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cerrar" data-dismiss="modal" readonly>
-                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" value="Aceptar" readonly>
+                  
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="FotoEstudiantes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header py-1 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">Foto estudiantes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick=" limpiarModalAdjuntos()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" value="" id="identificadorEstudiante" />
+                <img id="previewImg" width="200px" height="200px" />
+
+                <input type="file" class="inputsubir" id="fotos" name="file" accept="image/png, .jpeg, .jpg" onchange="previewImage()" />
+                <label class="form-control form-control-sm my-1 py-0 px-3  nombre-archivo-foto" for="fotos">seleccione archivo</label>
+                <input type="submit" value="Guardar Foto" class="form-control form-control-sm bg-primary text-white my-2" onclick=" cargarFilesFotos()" />
+              
+            </div>
+            <div class="modal-footer py-1 border-0">
+
+                <div class="form-group d-flex">
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cerrar" id="cerraModalImg" onclick=" limpiarModalAdjuntos()" data-dismiss="modal" readonly>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="firmasPersonal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header py-1 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">Firmas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarModalAdjuntosFirmas()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               
+                <img id="PreviewFirma" width="400px" height="200px" class="mx-4 d-block" />
+
+                <input type="file" class="inputsubir" id="Firmas" name="file" accept="image/png, .jpeg, .jpg" onchange="previewFirma()" />
+                <label class="form-control form-control-sm my-1 py-0 px-3 nombre-archivo-firmas" for="Firmas">seleccione archivo</label>
+
+                <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="Propietario" data-live-search="true" data-style="btn-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Rector">Firma del Rector</option>
+                    <option value="Secretario">Firma del Secretario</option>
+                    <option value="Titular">Firma del Titular</option>
+                    <option value="RestauranteEscolar">Firma del Restaurante Escolar</option>
+                    <option value="ResidenciaEscolar">Firma de la Residencia Escolar</option>
+                    <option value="Cafeteria">Firma de la Cafetería</option>
+
+           
+                </select>
+                <input type="text" value="" class="form-control form-control-sm  my-2" id="documentoPropietario" placeholder="Documento"/>
+
+                <input type="submit" value="Guardar Firma" class="form-control form-control-sm bg-primary text-white my-2" onclick="cargarFilesFirma()" />
+
+            </div>
+            <div class="modal-footer py-1 border-0">
+
+                <div class="form-group d-flex">
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" value="Cerrar" id="cerraModalfirma" onclick=" limpiarModalAdjuntosFirmas()" data-dismiss="modal" readonly>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalControlPeriodos" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <table id="tablaPeriodos">
+            <thead>
+                <tr>
+                    <th>Periodo</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha de Fin</th>
+                    <th>Estado</th>
+                    <th>Toggle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se llenará dinámicamente con JavaScript -->
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -290,4 +404,81 @@
         }
 
     });
+
+
+    document.getElementById('fotos').addEventListener('change', function () {
+        var val = this.value;
+
+        var siblings = this.parentNode.children;
+        for (var i = 0; i < siblings.length; i++) {
+            if (siblings[i].classList.contains('fotos')) {
+                siblings[i].textContent = val;
+            }
+        }
+
+        var fileName = val.split('\\').pop();
+        var truncatedFileName = fileName.length <= 20 ? fileName : fileName.substring(0, 18) + "...." + fileName.substring(fileName.length - 5);
+        for (var j = 0; j < siblings.length; j++) {
+            if (siblings[j].classList.contains('nombre-archivo-foto')) {
+                siblings[j].textContent = truncatedFileName;
+            }
+        }
+
+    });
+
+
+
+    document.getElementById('Firmas').addEventListener('change', function () {
+        var val = this.value;
+
+        var siblings = this.parentNode.children;
+        for (var i = 0; i < siblings.length; i++) {
+            if (siblings[i].classList.contains('Firmas')) {
+                siblings[i].textContent = val;
+            }
+        }
+
+        var fileName = val.split('\\').pop();
+        var truncatedFileName = fileName.length <= 20 ? fileName : fileName.substring(0, 18) + "...." + fileName.substring(fileName.length - 5);
+        for (var j = 0; j < siblings.length; j++) {
+            if (siblings[j].classList.contains('nombre-archivo-firmas')) {
+                siblings[j].textContent = truncatedFileName;
+            }
+        }
+
+    });
+
+    function previewImage() {
+        var preview = document.getElementById('previewImg');
+        var fileInput = document.getElementById('fotos');
+
+        // Verificar si se seleccionó un archivo
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            }
+
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+
+    function previewFirma() {
+        var preview = document.getElementById('PreviewFirma');
+        var fileInput = document.getElementById('Firmas');
+
+        // Verificar si se seleccionó un archivo
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+
+            reader.onl0oad = function (e) {
+                preview.src = e.target.result;
+            }
+
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+
+
 </script>

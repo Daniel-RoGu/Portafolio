@@ -1,0 +1,56 @@
+﻿
+@model Imagenes
+
+@{
+    ViewData["Title"] = "Subir Imagen";
+}
+
+<h1>@ViewData["Title"]</h1>
+<!--                             PARA CARGAR FIRMAS                       -->
+<form asp-action="SubirImagen" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="ImagenArchivo" class="control-label"></label>
+        <input asp-for="ImagenArchivo" type="file" class="form-control" accept=".png, .jpg, .jpeg" />
+        <span asp-validation-for="ImagenArchivo" class="text-danger"></span>
+    </div>
+    @*<div class="form-group">
+        <label asp-for="Propietario" class="control-label"></label>
+        <input asp-for="Propietario" class="form-control" />
+        <span asp-validation-for="Propietario" class="text-danger"></span>
+    </div>*@
+    <div class="form-group">
+        <label asp-for="Propietario" class="control-label"></label>
+        <select asp-for="Propietario" class="form-control" id="selectFirma">
+            <option value="FirmaRector.png">Firma del Rector</option>
+            <option value="FirmaSecretario.png">Firma del Secretario</option>
+            <option value="FirmaTitular.png">Firma del Titular</option>
+           @* <option value="FirmaEstudiante.png">Firma del Estudiante</option>*@
+            <option value="FirmaRestauranteEscolar.png">Firma del Restaurante Escolar</option>
+            <option value="FirmaResidenciaEscolar.png">Firma de la Residencia Escolar</option>
+            <option value="FirmaCafeteria.png">Firma de la Cafetería</option>
+            @*<option value="FirmaPadreFamilia.png">Firma del Padre de Familia</option>*@
+        </select>
+        <span asp-validation-for="Propietario" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Subir</button>
+</form>
+<!--                      PARA CARGAR LA FOTO DEL ESTUDIANTE                          -->
+<form asp-action="SubirFoto" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="ImagenArchivo" class="control-label"></label>
+        <input asp-for="ImagenArchivo" type="file" class="form-control" accept=".png, .jpg, .jpeg" />
+        <span asp-validation-for="ImagenArchivo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label hidden asp-for="Propietario" class="control-label"></label>
+        <input hidden asp-for="Propietario" value="Foto.png" class="form-control" />
+        <span asp-validation-for="Propietario" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IdPropietario" class="control-label"></label>
+        <input asp-for="IdPropietario" class="form-control" />
+        <span asp-validation-for="IdPropietario" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Subir</button>
+</form>

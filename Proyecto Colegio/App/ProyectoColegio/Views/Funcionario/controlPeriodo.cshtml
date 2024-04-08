@@ -1,0 +1,38 @@
+﻿
+
+<div class="table__container my-3" id="controlPeriodos">
+  
+</div>
+
+
+<div class="modal fade" id="EstadoControlPeriodo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-sm">
+        <div class="modal-content">
+            <div class="modal-header py-1 border-0">
+                <h5 class="modal-title" id="exampleModalLabel">Cambiar estado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarModalPeriodoEstado()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="idperiodoacademico" value="" />
+                <select class="form-control form-control-sm bg-white m-0 p-0 border myselect" id="estadoperiodo" data-live-search="true" data-style="btn-white">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Habilitado">Habilitado</option>
+                    <option value="Deshabilitado">Deshabilitado</option>
+
+
+
+                </select>
+            </div>
+            <div class="modal-footer py-1 border-0">
+
+                <div class="form-group d-flex">
+                    <input type="submit" class="form-control form-control-sm bg-secondary text-white" id="cerraperiodoModal" value="Cerrar" onclick="limpiarModalPeriodoEstado()" data-dismiss="modal" readonly>
+                    <input type="submit" class="form-control  form-control-sm bg-primary text-white" onclick=" guardarcambioEstadoPeriodo()" value="Guardar" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/controlPeriodo.js"></script>
